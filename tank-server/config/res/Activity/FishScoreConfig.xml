@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="root" Rate="20" Default="50000000"/>
+</config>

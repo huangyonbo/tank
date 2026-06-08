@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_pkg_online1" Name="在线奖励1" OnlineMin="1"/>
+ <item Id="item_pkg_online2" Name="在线奖励2" OnlineMin="5"/>
+ <item Id="item_pkg_online3" Name="在线奖励3" OnlineMin="10"/>
+ <item Id="item_pkg_online4" Name="在线奖励4" OnlineMin="15"/>
+ <item Id="item_pkg_online5" Name="在线奖励5" OnlineMin="30"/>
+ <item Id="item_pkg_online6" Name="在线奖励6" OnlineMin="60"/>
+</config>

@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_battery_bbcy_forever" Price="288" Properties="Diamond" show="false"/>
+ <item Id="item_skill_frozen" Price="5" Properties="Diamond" show="false"/>
+ <item Id="item_skill_speed" Price="5" Properties="Diamond" show="false"/>
+ <item Id="item_skill_lock" Price="5" Properties="Diamond" show="false"/>
+ <item Id="item_powerstone" Price="1" Properties="Diamond" show="false"/>
+ <item Id="item_skill_bind_bomb" Price="4" Properties="Diamond" show="false"/>
+ <item Id="item_skill_normal_bomb" Price="20" Properties="Diamond" show="false"/>
+ <item Id="item_skill_missile" Price="100" Properties="Diamond" show="false"/>
+ <item Id="item_skill_nbomb" Price="500" Properties="Diamond" show="false"/>
+ <item Id="item_skill_hbomb" Price="1000" Properties="Diamond" show="false"/>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Step="1" Name="渔场任务引导" Condition="161" description="当玩家达成渔场任务条件后，增加箭头指引玩家点击，(箭头持续5秒后消失），玩家再次进入渔场后，若还没领取则重复引导"/>
+ <item Id="2" Step="2" Name="钻石商店引导" Condition="64" description="人物5级即可解锁 上古宝阁，当玩家首次回到大厅时，开始引导"/>
+ <item Id="3" Step="3" Name="锻造炮台引导" Condition="9,164,165" description="当玩家炮倍满足10000炮倍且材料足够升级时，开始引导"/>
+ <item Id="4" Step="4" Name="开天父合成引导" Condition="162" description="当玩家首次集齐【开天斧】、【史诗战斧】时，出现合成引导（软引导）"/>
+ <item Id="5" Step="5" Name="灵石场进入引导" Condition="163" description="当玩家持有一个【开天斧】、【史诗战斧】处于大厅位置时，出现灵石转换引导"/>
+ <item Id="6" Step="6" Name="升炮引导" Condition="165" description="玩家第一次升炮时引导,炮值&lt;=10000"/>
+</config>

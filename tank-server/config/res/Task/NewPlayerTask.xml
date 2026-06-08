@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="task0" PreTask="" Count="5" Condition="1" Reward="item_pkg_NewHandTask1"/>
+ <item Id="task1" PreTask="" Count="10" Condition="1" Reward="item_pkg_NewHandTask2"/>
+ <item Id="task2" PreTask="" Count="50" Condition="1" Reward="item_pkg_NewHandTask3"/>
+ <item Id="task3" PreTask="" Count="100" Condition="1" Reward="item_pkg_NewHandTask4"/>
+ <item Id="task4" PreTask="" Count="150" Condition="1" Reward="item_pkg_NewHandTask5"/>
+ <item Id="task5" PreTask="" Count="1" Condition="12" Reward="item_pkg_NewHandTask6"/>
+ <item Id="task6" PreTask="" Count="1" Condition="13" Reward="item_pkg_NewHandTask7"/>
+ <item Id="task7" PreTask="" Count="1" Condition="14" Reward="item_pkg_NewHandTask8"/>
+ <item Id="task8" PreTask="" Count="1" Condition="7" Reward="item_pkg_NewHandTask9"/>
+ <item Id="task9" PreTask="" Count="1" Condition="7" Reward="item_pkg_NewHandTask10"/>
+ <item Id="task10" PreTask="" Count="1" Condition="7" Reward="item_pkg_NewHandTask11"/>
+ <item Id="task11" PreTask="" Count="1" Condition="7" Reward="item_pkg_NewHandTask12"/>
+ <item Id="task12" PreTask="" Count="1" Condition="6" Reward="item_pkg_NewHandTask13"/>
+</config>

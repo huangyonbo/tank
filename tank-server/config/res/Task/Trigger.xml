@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="login" Type="0"/>
+ <item Id="killfish" Type="1"/>
+ <item Id="unlock" Type="2"/>
+ <item Id="usegold" Type="3"/>
+ <item Id="useitem" Type="4"/>
+</config>

@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" type="1" num="500" rate="3000"/>
+ <item Id="2" type="1" num="600" rate="2500"/>
+ <item Id="3" type="1" num="800" rate="1700"/>
+ <item Id="4" type="1" num="1000" rate="1100"/>
+ <item Id="5" type="1" num="1200" rate="700"/>
+ <item Id="6" type="1" num="1500" rate="400"/>
+ <item Id="7" type="1" num="2000" rate="300"/>
+ <item Id="8" type="1" num="3000" rate="200"/>
+ <item Id="9" type="1" num="5000" rate="100"/>
+ <item Id="10" type="2" num="500" rate="3000"/>
+ <item Id="11" type="2" num="600" rate="2500"/>
+ <item Id="12" type="2" num="800" rate="1700"/>
+ <item Id="13" type="2" num="1000" rate="1100"/>
+ <item Id="14" type="2" num="1200" rate="700"/>
+ <item Id="15" type="2" num="1500" rate="400"/>
+ <item Id="16" type="2" num="2000" rate="300"/>
+ <item Id="17" type="2" num="3000" rate="200"/>
+ <item Id="18" type="2" num="5000" rate="100"/>
+ <item Id="19" type="3" num="500" rate="3000"/>
+ <item Id="20" type="3" num="600" rate="2500"/>
+ <item Id="21" type="3" num="800" rate="1700"/>
+ <item Id="22" type="3" num="1000" rate="1100"/>
+ <item Id="23" type="3" num="1200" rate="700"/>
+ <item Id="24" type="3" num="1500" rate="400"/>
+ <item Id="25" type="3" num="2000" rate="300"/>
+ <item Id="26" type="3" num="3000" rate="200"/>
+ <item Id="27" type="3" num="5000" rate="100"/>
+</config>

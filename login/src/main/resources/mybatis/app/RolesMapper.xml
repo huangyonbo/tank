@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.login.app.dao.RolesDao">
+
+	<update id="updateChannel">
+		update roles
+		<set>
+			`channel` = #{target}
+		</set>
+		where id = #{uid} and `channel` = #{old}
+	</update>
+
+	<update id="updateRegisterDeviceId">
+		update roles
+		<set>
+			`reg_device` = #{regId}
+		</set>
+		where id = #{uid}
+	</update>
+    <select id="search" resultType="com.login.app.domain.RolesDO">
+        select * from roles where id = #{value}
+    </select>
+</mapper>

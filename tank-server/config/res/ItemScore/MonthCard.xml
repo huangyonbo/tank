@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<config>
+ <item EmailDay="3" Id="monthCard" ItemPkg="item_pkg_monthCard"/>
+</config>

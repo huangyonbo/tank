@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config>
+ <item Condition="0" Count="1" Id="task1" Reward="item_nyr_count"/>
+ <item Condition="33" Count="900000" Id="task2" Reward="item_nyr_count"/>
+ <item Condition="33" Count="1800000" Id="task3" Reward="item_nyr_count"/>
+ <item Condition="33" Count="3600000" Id="task4" Reward="item_nyr_count"/>
+</config>

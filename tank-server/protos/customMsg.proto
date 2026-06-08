@@ -1,0 +1,911 @@
+
+syntax = "proto2";
+
+option java_package = "game.custommsg";
+
+message EnterRoom {
+    optional int32 roomType = 1;
+    optional int32 deskType = 2;
+}
+
+message Fire {
+	optional int32 bulletid = 1;
+	optional float angle = 2;
+  optional float percentX = 3;
+  optional float percentY = 4;
+}
+
+message SyncFire {
+	optional int32 seatid = 1;
+	optional float angle = 2;
+	optional int32 bulletid = 3;
+  optional float percentX = 4;
+  optional float percentY = 5;
+}
+
+message HitFish {
+	optional int32 bulletid = 1;
+	optional int32 count = 2;
+	repeated int32 fishindex = 3;
+	optional int64 robot = 4;
+}
+
+message OutFish {
+	optional int32 count = 1;
+	repeated int32 fishindex = 2;
+	repeated int32 fishtype = 3;
+	repeated int32 pathid = 4;
+	repeated int32 survivalTime = 5;
+	optional int32 flag = 6;
+  repeated int64 outTime = 7;
+  repeated string showAni = 8;
+}
+
+message DropInfo {
+	optional string itemid = 1;
+	optional int32 count = 2;
+	optional string pokerType = 3;
+	optional int32 multiple = 4;
+}
+
+message DieFishInfo {
+	optional int32 fishindex = 1;
+	optional int32 bet = 2;
+	repeated DropInfo drop = 3;
+	optional int32 betMultiple = 4;
+	optional int64 score = 5;
+	optional int32 mysteryValue = 6;
+	repeated double boxMultiple = 7;
+	optional int32 boxResult = 8;
+}
+
+message FishDead {
+	optional int32 seatid = 1;
+	optional int64 score = 2;
+	repeated DieFishInfo fishes = 3;
+  optional int32 killerId = 4;
+}
+
+message Formation {
+	optional int32 fmt = 1;
+}
+
+message LevelAward{
+    optional int32 level = 1;
+}
+
+message GetVipPack{
+    optional int32 vipLevel = 1 ;
+}
+
+message UseItem {
+	optional int32 pos = 1;
+	optional int32 count = 2;
+}
+
+message GmCmd {
+	optional string cmd = 1;
+}
+
+message Chat{
+	optional int32 chatType = 1;
+}
+
+message SyncChat{
+	optional int32 seatId = 1;
+	optional int32 chatType = 2;
+}
+
+message UseTitle{
+    optional string titleId = 1;
+}
+
+message LoginReward{
+	optional int32 LoginDays = 1;
+}
+
+message ReadMail {
+	optional string mailid = 1;
+}
+
+message GetMailAppendix {
+	optional string mailid = 1;
+}
+
+message GetAchievementAward{
+    optional int32 pos = 1;
+}
+
+message BombKillFish {
+    optional int32 localFish = 1;
+	repeated int32 fishindex = 2;
+}
+
+message GetActivityAward {
+	optional string activityId = 1;
+}
+
+message ServerCode{
+    optional int32 code = 1;
+}
+
+message OnUseSkill {
+	optional int32 seatid = 1;
+	optional string skill = 2;
+	optional int32 level = 3;
+}
+
+message GetActivityInfo {
+	optional bool needList = 1;
+	optional string activityId = 2;
+}
+
+message ActivityInfo {
+
+message ActivityList {
+	optional string activityId = 1;
+	optional string activityName = 2;
+}
+message ActivityData {
+	optional int32 condition = 1;
+	optional int32 limitedNum = 2;
+	optional string reward = 3;
+	optional int32 num = 4;  
+}
+	repeated ActivityList activityList = 1 ;
+	optional int32 activityId =2 ;
+	repeated ActivityData activityData = 3 ;
+	optional int32 finishCount = 4;
+}
+
+message CheckUidInfo {
+	optional int32 uid = 1;
+}
+
+message CheckUidInfoRes {
+	optional string name = 1;
+}
+
+message SendItem {
+	optional int32 uid = 1;
+	optional int32 pos = 2;
+	optional int32 count = 3;
+}
+
+message DelMail {
+	optional string mailid = 1;
+}
+
+message LivenessGradeAchieved {
+	optional int32 grade = 1;
+}
+
+message GetStoreItems {
+	optional int32 itemType = 1;
+}
+
+message StoreItem {
+	optional string itemId =1;
+	optional int32 saleStatus = 2;
+	optional int32 salesCount = 3;
+	optional int32 stock = 4;
+	optional int32 price = 5;
+	optional int32 minVipLevel = 6;
+	optional int32 sequence = 7;
+}
+
+message StoreItems {
+	optional int32 itemType = 1;
+	repeated StoreItem storeItem = 2;
+}
+
+message GetHeadId {
+	optional int32 uid = 1;
+}
+
+message HeadIdRes {
+	optional int32 headid = 1;
+}
+
+message GetHeadUrl {
+	optional int32 headid = 1;
+}
+
+message HeadUrlRes {
+	optional string head = 1;
+}
+
+message GetProList {
+	optional string name = 1;
+	optional string type = 2;
+	optional bool sub = 3;
+}
+
+message ProListData {
+	repeated int32 rand = 1;
+	repeated int32 uid = 2;
+	repeated string name = 3;
+	repeated int64 value = 4;
+	repeated int32 vip = 5;
+	repeated string title = 6;
+	repeated int32 sex = 7;
+	
+	repeated int32 randt3 = 8;
+	repeated int32 uidt3 = 9;
+	repeated string namet3 = 10;
+	repeated int64 valuet3 = 11;
+	repeated int32 vipt3 = 12;
+	repeated string titlet3 = 13;
+	repeated int32 sex3 = 14;
+}
+
+message ReadItem {
+	optional int32 pos = 1;
+}
+
+message UseBatterySkill {
+	optional float angle = 1;
+}
+
+message SyncBatterySkill {
+	optional int32 seatid = 1;
+	optional float angle = 2;
+}
+
+message BuyStoreBattery {
+	optional int32 itemType = 1;
+	optional string itemId = 2;
+}
+
+message BuyStoreGoods {
+	optional int32 itemType = 1;
+	optional string itemId = 2;
+	optional int32 buyCount = 3;
+	optional string fullName = 4;
+	optional string qq = 5;
+	optional string wechat = 6;
+	optional string cellphone = 7;
+	optional string address = 8;
+}
+
+message BuyStoreGoodsResult {
+	optional int32 resultCode = 1;
+	optional int32 lockLevel = 2;
+}
+
+message ItemTip {
+	optional int32 type = 1;
+	repeated string itemId = 2;
+	repeated int32 itemCount = 3;
+}
+
+message RecoveryFmt {
+	optional int32 fmt = 1;
+	optional int64 start = 2;
+}
+
+message ServerTime {
+	optional int64 time = 1;
+}
+
+message ColorGoldReward {
+	optional int32 id = 1;
+}
+
+message ColorGoldRes {
+	optional int32 code = 1;
+	optional string reward = 2;
+}
+
+message LockFish {
+	optional int32 fishindex = 1;
+}
+
+message GetSevenDayReward {
+    optional int32 pos = 1;
+}
+
+message ReqRoomPlayers {
+	repeated int32 type = 1;
+	repeated int32 count = 2;
+}
+
+message GetRechargeRebateAward {
+	 optional int32 awardIndex = 1;
+}
+
+message BuySupportGift {
+    optional string supportId = 1;
+    optional string description = 2;
+	optional int32 index = 3;
+}
+
+message BuyMysteryGift{
+    optional int32 pos = 1;
+    optional string description = 2;
+	optional int32 index = 3;
+}
+
+message PreOrder {
+	optional string goodsId = 1;
+	optional string description = 2;
+	optional string extra = 3;
+	optional int32 index = 4;
+	optional string cashTicket = 5;
+}
+
+message PreOrderResp {
+	optional string resp = 1;
+}
+
+message BuyLimitGift{
+    optional int32 pos = 1;
+    optional string description = 2;
+	optional int32 index = 3;
+}
+
+message PopNoticeList {
+	repeated string tag = 1;
+	repeated string title = 2;
+	repeated string content = 3;
+	repeated string picture = 4;
+}
+
+message QACommit {
+	optional int32 type = 1;
+	optional string content = 2;
+}
+
+message GetOnlineGift{
+    optional string giftId = 1;
+}
+
+message OnUseBomb {
+	optional int32 seatid = 1;
+	optional string skill = 2;	
+	optional int32 score = 3;
+	repeated int32 fishindex = 4;
+}
+
+message ReqChangeName {
+	optional string name = 1;	
+}
+
+message FeedBackService {
+	optional string serviceInfo = 1;	
+}
+
+message Uid {
+	optional int32 uid = 1;
+}
+
+message PlayerData {
+    optional int32 code = 1;
+    optional int32 level = 2;
+    optional int32 headid = 3;
+    optional int32 bet = 4;
+    optional int32 skin = 5;
+    optional int32 maxScore = 6;
+    optional string name = 7;
+    optional string sign = 8;
+    optional string title = 9;
+    optional int32 score = 10;
+}
+
+message BuyMonthCard{
+    optional string goodsId = 1;
+	optional int32 index = 2;
+}
+
+message GetAwardMonthCard{
+
+}
+
+message Int32 {
+	optional int32 value = 1;
+}
+
+message Int64 {
+	optional int64 value = 1;
+}
+
+message String {
+	optional string value = 1;
+}
+
+message CommonVal {
+	optional int32 valInt32 = 1;
+	optional int64 valInt64 = 2;
+	optional float valFloat = 3;
+	optional double valDouble = 4;
+	optional string valString = 5;
+	optional bool valBool = 6;
+}
+
+message BoolAndString {
+	optional bool success = 1;
+	optional string result = 2;
+}
+
+message Combine {
+	optional string item = 1;
+	optional int32 count = 2;
+}
+
+message VipLevelUp{
+    optional int32 level=1;
+}
+
+message ScrollMsg {
+	optional string txtid = 1;
+	optional int32 count = 2;
+	repeated string params = 3;
+}
+
+message AchievementTip {
+	optional string achievementId = 1;
+	optional string titleId = 2;
+}
+
+message ExchangeAward {
+	optional int32 id = 1;
+}
+
+message UseTinder {
+	optional int32 count = 1;
+}
+
+message ActivityRank {
+	optional int32 type = 1;
+}
+
+message ActivityRankRewardResult {
+	optional int32 code = 1;
+	optional string property = 2;
+	optional int32 value = 3;
+}
+
+message SkillKillFish {
+	optional int32 seatid = 1;
+	optional int32 score = 2;
+	repeated int32 deadFish = 3;
+}
+
+message HitEgg {
+	optional int32 count = 1;
+}
+
+message HitEggResp {
+	repeated string configId = 1;
+	repeated int32 number = 2;
+}
+
+message EggGoldInfo {
+    optional int64 gold = 1;
+    repeated string playerName = 2;
+    repeated string itemId = 3;
+    repeated int32 itemCount = 4;
+}
+
+message LuckyNumberList {
+	repeated int32 rand = 1;
+	repeated int32 uid = 2;
+	repeated string name = 3;
+	repeated int64 value = 4;
+	repeated int32 vip = 5;
+	repeated string title = 6;
+	repeated int32 sex = 7;
+	repeated int32 hitEggCount = 8;
+}
+
+message NationalDraw
+{
+    repeated string reward = 1;
+}
+
+message NationalDayInfo
+{
+    optional int64 jockport = 1;
+    optional int32 group = 2;
+}
+
+message BuyStone {
+	optional string item = 1;
+	optional int32 count = 2;
+}
+
+message RefreshStock {
+	repeated string item = 1;
+	repeated int32 count = 2;
+}
+
+message ArenaList {
+	repeated int32 id = 1;
+	repeated int32 icon = 2;
+	repeated int32 state = 3;
+	repeated int64 time = 4;
+	repeated string limit = 5;
+	repeated string reward = 6;
+	repeated string sign = 7;
+	repeated string name = 8;
+	repeated int32 incount = 9;
+	repeated int32 protect = 10;
+	repeated int32 turnid = 11;
+	repeated int32 maxcount = 12;
+	repeated int64 coin = 13;
+}
+
+message ArenaRes {
+	optional int32 rank = 1;
+	optional int64 score = 2;
+	optional int64 maxScore = 3;
+}
+
+message CreateBossDesk {
+	optional int32 type = 1;
+	optional string passwd = 2;
+}
+
+message EnterBossDesk {
+	optional int32 type = 1;
+	optional int32 id = 2;
+	optional string passwd = 3;
+}
+
+message BossDeskList {
+	repeated int32 id = 1;
+	repeated int32 inCount = 2;
+	repeated int32 seatCount = 3;
+	repeated bool needpw = 4;
+	repeated int32 owner = 5;
+}
+
+message BossKilled {
+	optional int32 owner = 1;
+	optional int32 killer = 2;
+	repeated int32 uid = 3;
+	repeated string name = 4;
+	repeated int64 used = 5;
+	repeated int64 reward = 6;
+}
+
+message MessageTip {
+	optional string textid = 1;
+	repeated string args = 2;
+}
+
+message UseCard {
+	optional int32 pos = 1;
+	optional int32 type = 2;
+}
+
+message ArenaRanks {
+	optional int32 code = 1;
+	optional string reward = 2;
+	repeated string name = 3;
+	repeated int64 score = 4;
+	repeated int32 sex = 5;
+	repeated int32 vip = 6;
+}
+
+message ActivityList{
+	repeated int32 id = 1;
+	repeated int32 type = 2;
+	repeated int64 start = 3;
+	repeated int64 stop = 4;
+	repeated string startShow = 5;
+	repeated string stopShow = 6;
+	repeated string param = 7;
+	repeated int32 weight = 8;
+}
+
+message RealName {
+	optional string name = 1;
+	optional string idnum = 2;
+}
+
+message DailyDrawRes {
+	optional string item = 1;
+	optional int32 count = 2;
+}
+
+message LastOption {
+	optional int32 type = 1;
+	optional string value = 2;
+}
+
+message DeskData {
+	optional int32 deskid = 1;
+	optional int32 type = 2;
+	optional int32 minbv = 3;
+	optional int32 maxbv = 4;
+	optional string limit = 5;
+	repeated int32 seatid = 6;
+	repeated int32 uid = 7;
+	repeated int32 viplv = 8;
+	repeated string name = 9;
+	repeated int32 level = 10;
+	repeated int32 head = 11;
+	optional int32 roomType = 12;
+}
+
+message DeskList {
+	optional string pwcfg = 1;
+	optional int32 code = 2;
+	repeated DeskData desk = 3;
+}
+
+message SitDown {
+	optional int32 deskid = 1;
+	optional int32 seatid = 2;
+	optional int32 type = 3;
+}
+
+message CreatePw {
+	optional int32 seatid = 1;
+	optional string passwd = 2;
+	optional int32 roomType = 3;
+}
+
+message EnterPw {
+	optional string passwd = 1;
+	optional int32 seatid = 2;
+}
+
+message PayResult {
+	optional int32 orderid = 1;
+	optional string key = 2;
+}
+
+message RecvSendItem {
+	optional string name = 1;
+	optional string time = 2;
+	repeated string itemId = 3;
+	repeated int32 itemCount = 4;
+}
+
+message SupremeRankInfo {
+    optional int64 jockport = 1;
+}
+
+message BossBattleCfg {
+	repeated string itemid = 1;
+	repeated int32 count = 2;
+	repeated int64 jackpot = 3;
+	repeated int32 minbv = 4;
+	repeated int32 maxbv = 5;
+	repeated int32 time = 6;
+	repeated int32 deskcount = 7;
+}
+
+message RecruitBind {
+    optional string shareCode = 1;
+}
+
+message RecruitBindResult {
+	optional int32 resultCode = 1;
+}
+
+message RecruitInfo {
+    optional int32 friendAmount = 1;
+    repeated int32 recharge = 2;
+    repeated int32 card = 3;
+}
+
+message BombAmmoTransform {
+    optional string itemId = 1;
+    optional int32 amount = 2;
+}
+
+message BombEdenConfig {
+    optional int32 open = 1;
+    optional int64 startTimestamp = 2;
+    optional int64 stopTimestamp = 3;
+}
+
+message OnStartTinder {
+	optional int32 seatid = 1;
+	optional string skill = 2;
+}
+
+message BombMonster {
+ 	optional string itemId = 1;
+ 	optional int32 count = 2;
+ }
+
+message MonsterAward {
+  	optional int32 type = 1;
+  	optional int32 uid = 2;
+  	optional string itemId = 3;
+  	optional int32 count = 4;
+}
+
+message MonsterInfo {
+  	optional int32 monster = 1;
+  	optional int64 refreshTime = 2;
+}
+
+message BombMonsterResult {
+  	optional int32 code = 1;
+  	optional string itemId = 2;
+    optional int32 count = 3;
+}
+
+message MonsterAwardRecord{
+    optional int32 type = 1;
+  	optional string username = 2;
+  	optional string itemId = 3;
+  	optional string pkgId = 4;
+  	optional int32 count = 5;
+  	optional int32 uid = 6;
+}
+
+message MonsterAwardRecords {
+	repeated MonsterAwardRecord record = 1;
+}
+
+message MonopolyDiceResult {
+	optional int32 code = 1;
+	optional int32 step = 2;
+}
+
+message MonopolyAwardRecord{
+    optional int32 uid = 1;
+  	optional string username = 2;
+  	optional string award = 3;
+  	optional int32 count = 4;
+}
+
+message MonopolyAwardRecords {
+	repeated MonopolyAwardRecord record = 1;
+}
+
+message FishingStackRankData {
+	repeated ProListData data = 1;
+	repeated int32 rank = 2;
+}
+
+message TransformToStone {
+	optional int32 count = 1;
+}
+
+message ChangePassword {
+	optional string oldPassword = 1;
+	optional string newPassword = 2;
+}
+
+message BindPhone {
+	optional string phone = 1;
+	optional string password = 2;
+	optional string messageCode = 3;
+	optional string accountNumber = 4;
+}
+
+message UnBindPhone {
+	optional string phone = 1;
+	optional string username = 2;
+	optional string messageCode = 3;
+}
+
+message BuyAssistPKG {
+    optional string itemId = 1;
+    optional string description = 2;
+	optional int32 index = 3;
+}
+
+message LuckyCardInvert {
+    optional int32 position = 1;
+}
+
+message LuckyCardAwardRecord {
+  	optional int32 uid = 1;
+  	optional string username = 2;
+  	optional string award = 3;
+}
+message LuckyCardAwardRecords {
+	repeated LuckyCardAwardRecord record = 1;
+}
+
+message SpiritScore {
+    optional int32 base = 1;
+    optional int32 vip = 2;
+	optional int32 fieryDragon = 3;
+	optional int32 seatId = 4;
+}
+
+message HitFishPointsRankInfo {
+    optional int64 jackpot = 1;
+}
+
+message BuyRmbPKG {
+    optional string itemId = 1;
+    optional string description = 2;
+	optional int32 index = 3;
+}
+
+message GiveUpRmbPKG {
+    optional string itemId = 1;
+}
+
+message NewerWelfareLotteryRst{
+    optional int32 code = 1;
+    optional int32 number = 2;
+}
+
+message BuyDayCard{
+    optional string goodsId = 1;
+	optional int32 index = 2;
+}
+
+message OpenResult {
+  	optional int32 code = 1;
+  	repeated string itemId = 2;
+    repeated int32 count = 3;
+}
+
+message TreasureResult {
+  	optional int32 code = 1;
+    optional int32 result = 2;
+}
+
+message AntiIndulgenceMsg {
+    required int32 type = 1;
+}
+
+message MustOpenAuthenticationUIMsg{
+    required int32 backLogin = 1;
+}
+
+message AutoLockTestChange {
+    optional int32 fishindex = 1;
+}
+
+message BindProxy {
+	required int32 proxyId = 1;
+}
+
+message BindProxyResult{
+    optional int32 code = 1;
+}
+
+message FuncFishUIChange{
+    required int32 type= 1;
+	required int32 op=2;//1打开，2关闭，3跟新
+	required int32 seatId=3;
+	optional int32 enterTimer=4;
+	optional string uiData=5;
+}
+
+message FuncFishCommitData{
+	required int32 type= 1;
+	required int32 op = 2;
+    required string data= 3;
+}
+
+message FishSkillInfo{
+    required int32 type= 1;
+    required int32 op=2;
+    required int32 seatId=3;
+    optional int32 lifeTime=4;
+	optional int32 fishIndex=5;
+}
+
+message FishSkillInitData{
+	required int32 type=1;
+	required string jsonData=2;
+}
+
+message FishSkillCommitData{
+	required int32 type=1;
+    repeated int32 fishIndex=2;
+}
+
+message FishSkillKillFish {
+	required int32 type=1;
+	required int32 seatId=2;
+	required int32 gold=3;
+}
+
+message RankData{
+
+}

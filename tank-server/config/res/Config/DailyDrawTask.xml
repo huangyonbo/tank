@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="ticket_task0" Reward="item_pkg_daily_draw_task" TargetCount="1" TargetDetail="" TargetType="1" Title="今日完成一次游戏登陆"/>
+ <item Id="ticket_task1" Reward="item_pkg_daily_draw_task" TargetCount="1000" TargetDetail="0" TargetType="0" Title="今日在任何岛屿内累计击杀1000条鱼"/>
+ <item Id="ticket_task2" Reward="item_pkg_daily_draw_task" TargetCount="20" TargetDetail="fish30,fish31,fish32,fish33,fish34" TargetType="0" Title="今日成功击杀20条黄金鱼"/>
+ <item Id="ticket_task3" Reward="item_pkg_daily_draw_task" TargetCount="5" TargetDetail="fish21,fish22,fish23,fish24,fish25" TargetType="0" Title="今日成功击杀5条鱼王"/>
+ <item Id="ticket_task4" Reward="item_pkg_daily_draw_task" TargetCount="500000" TargetDetail="" TargetType="3" Title="今日累计消耗500000金币"/>
+</config>

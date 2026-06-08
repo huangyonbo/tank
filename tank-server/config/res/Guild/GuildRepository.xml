@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_skill_frozen" Name="冰冻" GuildRepository="1"/>
+ <item Id="item_skill_speed" Name="加速" GuildRepository="1"/>
+ <item Id="item_skill_lock" Name="锁定" GuildRepository="1"/>
+ <item Id="item_skill_rage" Name="狂暴" GuildRepository="1"/>
+ <item Id="item_skill_summon" Name="召唤" GuildRepository="1"/>
+ <item Id="item_skill_double" Name="翻倍" GuildRepository="1"/>
+ <item Id="item_skill_bind_bomb" Name="初级三叉戟" GuildRepository="0"/>
+ <item Id="item_skill_normal_bomb" Name="中级三叉戟" GuildRepository="0"/>
+ <item Id="item_skill_missile" Name="高级三叉戟" GuildRepository="0"/>
+ <item Id="item_skill_nbomb" Name="至尊三叉戟" GuildRepository="1"/>
+ <item Id="item_skill_hbomb" Name="传说三叉戟" GuildRepository="1"/>
+ <item Id="item_stone" Name="能量石" GuildRepository="0"/>
+ <item Id="item_mithril" Name="秘银" GuildRepository="0"/>
+ <item Id="item_powerstone" Name="强化石" GuildRepository="0"/>
+ <item Id="item_forgerock" Name="海神锭" GuildRepository="0"/>
+ <item Id="item_debris_GoldenStorm" Name="九尾幻灵炮炮台碎片" GuildRepository="0"/>
+ <item Id="item_debris_Mermaid" Name="美人鱼炮台炮台碎片" GuildRepository="0"/>
+ <item Id="item_debris_ankangyu" Name="安康鱼房间碎片" GuildRepository="1"/>
+ <item Id="item_debris_eyu" Name="海马将军房间碎片" GuildRepository="1"/>
+ <item Id="item_debris_hudieyu" Name="朱雀房间碎片" GuildRepository="1"/>
+ <item Id="item_debris_moguiyu" Name="沉船舰长房间碎片" GuildRepository="1"/>
+ <item Id="item_PurpleWafer" Name="紫色晶元" GuildRepository="0"/>
+ <item Id="item_YellowWafer" Name="黄色晶元" GuildRepository="0"/>
+ <item Id="item_RedWafer" Name="红色晶元" GuildRepository="0"/>
+</config>

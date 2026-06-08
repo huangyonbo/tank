@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Rate="0.35"/>
+ <item Id="2" Rate="0.2"/>
+ <item Id="3" Rate="0.1"/>
+ <item Id="4" Rate="0.05"/>
+ <item Id="5" Rate="0.05"/>
+ <item Id="6" Rate="0.05"/>
+ <item Id="7" Rate="0.05"/>
+ <item Id="8" Rate="0.05"/>
+ <item Id="9" Rate="0.05"/>
+ <item Id="10" Rate="0.05"/>
+</config>

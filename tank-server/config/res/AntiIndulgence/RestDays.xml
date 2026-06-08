@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" restDate="2020-01-01 00:00:00"/>
+ <item Id="2" restDate="2020-01-24 00:00:00"/>
+ <item Id="3" restDate="2020-01-25 00:00:00"/>
+ <item Id="4" restDate="2020-01-26 00:00:00"/>
+ <item Id="5" restDate="2020-01-27 00:00:00"/>
+ <item Id="6" restDate="2020-01-28 00:00:00"/>
+ <item Id="7" restDate="2020-01-29 00:00:00"/>
+ <item Id="8" restDate="2020-01-30 00:00:00"/>
+ <item Id="9" restDate="2020-04-04 00:00:00"/>
+ <item Id="10" restDate="2020-04-05 00:00:00"/>
+ <item Id="11" restDate="2020-04-06 00:00:00"/>
+ <item Id="12" restDate="2020-05-01 00:00:00"/>
+ <item Id="13" restDate="2020-05-02 00:00:00"/>
+ <item Id="14" restDate="2020-05-03 00:00:00"/>
+ <item Id="15" restDate="2020-05-04 00:00:00"/>
+ <item Id="16" restDate="2020-05-05 00:00:00"/>
+ <item Id="17" restDate="2020-06-25 00:00:00"/>
+ <item Id="18" restDate="2020-06-26 00:00:00"/>
+ <item Id="19" restDate="2020-06-27 00:00:00"/>
+ <item Id="20" restDate="2020-10-01 00:00:00"/>
+ <item Id="21" restDate="2020-10-02 00:00:00"/>
+ <item Id="22" restDate="2020-10-03 00:00:00"/>
+ <item Id="23" restDate="2020-10-04 00:00:00"/>
+ <item Id="24" restDate="2020-10-05 00:00:00"/>
+ <item Id="25" restDate="2020-10-06 00:00:00"/>
+ <item Id="26" restDate="2020-10-07 00:00:00"/>
+ <item Id="27" restDate="2020-10-08 00:00:00"/>
+</config>

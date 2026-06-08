@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Item="item_debris_normal_bomb" Target="item_skill_normal_bomb" Count="10"/>
+ <item Id="2" Item="item_debris_missile" Target="item_skill_missile" Count="10"/>
+ <item Id="3" Item="item_debris_nbomb" Target="item_skill_nbomb" Count="10"/>
+ <item Id="4" Item="item_debris_hbomb" Target="item_skill_hbomb" Count="10"/>
+ <item Id="5" Item="item_debris_GoldenStorm" Target="item_battery_GoldenStorm" Count="100"/>
+ <item Id="6" Item="item_debris_ChuXi" Target="item_battery_ChuXi" Count="100"/>
+ <item Id="7" Item="item_battery_Mermaid" Target="item_debris_Mermaid" Count="100"/>
+</config>

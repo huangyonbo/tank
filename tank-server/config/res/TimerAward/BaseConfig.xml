@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="DailyTimes" Value="2"/>
+ <item Id="WeekendMulti" Value="2"/>
+</config>

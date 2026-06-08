@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Items="item_dongfeng_s*1" Awards="item_gold_1*10000"/>
+ <item Id="2" Items="item_nanfeng_s*1" Awards="item_gold_1*20000"/>
+ <item Id="3" Items="item_xifeng_s*1" Awards="item_gold_1*50000"/>
+ <item Id="4" Items="item_beifeng_s*1" Awards="item_gold_1*100000"/>
+ <item Id="5" Items="item_hongzhong_s*1" Awards="item_gold_1*200000"/>
+ <item Id="6" Items="item_facai_s*1" Awards="item_gold_1*300000"/>
+ <item Id="7" Items="item_baiban_s*1" Awards="item_gold_1*500000"/>
+ <item Id="8" Items="item_dongfeng_s*1;item_xifeng_s*1" Awards="item_gold_1*80000"/>
+ <item Id="9" Items="item_nanfeng_s*1;item_beifeng_s*1" Awards="item_gold_1*150000"/>
+ <item Id="10" Items="item_dongfeng_s*1;item_xifeng_s*1;item_nanfeng_s*1;item_beifeng_s*1" Awards="item_gold_1*200000"/>
+ <item Id="11" Items="item_hongzhong_s*1;item_facai_s*1;item_baiban_s*1" Awards="item_gold_1*1100000"/>
+ <item Id="12" Items="item_dongfeng_s*1;item_xifeng_s*1;item_nanfeng_s*1;item_beifeng_s*1;item_hongzhong_s*1;item_facai_s*1;item_baiban_s*1" Awards="item_gold_1*1400000"/>
+</config>

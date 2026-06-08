@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" num="1.2" fish="fish1" rate="900"/>
+ <item Id="2" num="1.5" fish="fish1" rate="360"/>
+ <item Id="3" num="2" fish="fish1" rate="180"/>
+ <item Id="4" num="3" fish="fish1" rate="90"/>
+ <item Id="5" num="4" fish="fish1" rate="60"/>
+</config>

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Min="1000" Max="5000"/>
+ <item Id="2" Min="5000" Max="10000"/>
+ <item Id="3" Min="10000" Max="50000"/>
+ <item Id="4" Min="50000" Max="100000"/>
+</config>

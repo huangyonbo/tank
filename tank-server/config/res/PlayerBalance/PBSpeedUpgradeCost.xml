@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <item Id="1" lv="1" speedUpgradeCost="90" />
+  <item Id="2" lv="2" speedUpgradeCost="250" />
+  <item Id="3" lv="3" speedUpgradeCost="500" />
+  <item Id="4" lv="4" speedUpgradeCost="1300" />
+  <item Id="5" lv="5" speedUpgradeCost="2600" />
+  <item Id="6" lv="6" speedUpgradeCost="5200" />
+  <item Id="7" lv="7" speedUpgradeCost="10400" />
+  <item Id="8" lv="8" speedUpgradeCost="13000" />
+  <item Id="9" lv="9" speedUpgradeCost="15500" />
+  <item Id="10" lv="10" speedUpgradeCost="20500" />
+</root>

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" ItemId="item_skill_bind_bomb" Count="2" Cost="40000" Weight="3"/>
+ <item Id="2" ItemId="item_skill_bind_bomb" Count="1" Cost="20000" Weight="10"/>
+ <item Id="3" ItemId="item_gold_1" Count="25000" Cost="25000" Weight="10"/>
+ <item Id="4" ItemId="item_gold_1" Count="15000" Cost="15000" Weight="20"/>
+ <item Id="5" ItemId="item_gold_1" Count="12000" Cost="12000" Weight="18"/>
+ <item Id="6" ItemId="item_diamond_1" Count="20" Cost="20000" Weight="24"/>
+ <item Id="7" ItemId="item_diamond_1" Count="15" Cost="15000" Weight="15"/>
+</config>

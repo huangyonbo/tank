@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="0" ProtectPlay="2000000"/>
+ <item Id="1" ProtectPlay="8000000"/>
+ <item Id="2" ProtectPlay="16000000"/>
+ <item Id="3" ProtectPlay="40000000"/>
+ <item Id="4" ProtectPlay="80000000"/>
+ <item Id="5" ProtectPlay="140000000"/>
+ <item Id="6" ProtectPlay="160000000"/>
+ <item Id="7" ProtectPlay="180000000"/>
+ <item Id="8" ProtectPlay="200000000"/>
+ <item Id="9" ProtectPlay="220000000"/>
+ <item Id="10" ProtectPlay="240000000"/>
+ <item Id="11" ProtectPlay="260000000"/>
+ <item Id="12" ProtectPlay="280000000"/>
+</config>

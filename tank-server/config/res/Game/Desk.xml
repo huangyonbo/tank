@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="desk0" Name="炼金遗迹" Script="FishDesk" Type="0" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk1" Name="珊瑚海峡" Script="FishDesk" Type="1" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk2" Name="地心熔岩" Script="FishDesk" Type="2" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk3" Name="神秘洞窟" Script="FishDesk" Type="3" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk4" Name="至尊选座" Script="FishDesk" Type="4" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk5" Name="赤炎火龙" Script="FishDesk" Type="5" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="5" BossID="fish95"/>
+ <item Id="desk6" Name="狂暴火龙" Script="FishDesk" Type="6" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="5" BossID="fish96"/>
+ <item Id="desk7" Name="竞技场" Script="ArenaDesk" Type="7" SeatCount="4" Rule="0" Coin="ArenaCoin" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk8" Name="鱼王争霸" Script="BossDesk" Type="8" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk9" Name="珊瑚海峡英雄模式" Script="FishDesk" Type="9" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk10" Name="地心熔岩英雄模式" Script="FishDesk" Type="10" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk11" Name="神秘洞窟英雄模式" Script="FishDesk" Type="11" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk12" Name="魔晶初级房" Script="FishDesk" Type="12" SeatCount="4" Rule="0" Coin="BombCoin" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk13" Name="魔晶中级房" Script="FishDesk" Type="13" SeatCount="4" Rule="0" Coin="BombCoin" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk14" Name="魔晶高级房" Script="FishDesk" Type="14" SeatCount="4" Rule="0" Coin="BombCoin" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk15" Name="魔晶大师房" Script="FishDesk" Type="15" SeatCount="4" Rule="0" Coin="BombCoin" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk16" Name="新手渔村" Script="FishDesk" Type="16" SeatCount="4" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk17" Name="魔晶单人模式" Script="FishDesk" Type="17" SeatCount="1" Rule="0" Coin="BombCoin" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk18" Name="休闲场深海秘境" Script="FishDesk" Type="18" SeatCount="1" Rule="0" Coin="Gold" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk19" Name="海神殿深海秘境" Script="FishDesk" Type="19" SeatCount="1" Rule="0" Coin="BombCoin" BulletMax="20" BossTime="0" BossID=""/>
+ <item Id="desk20" Name="上古遗迹" Script="FishDesk" Type="20" SeatCount="1" Rule="0" Coin="BombCoin" BulletMax="20" BossTime="0" BossID=""/>
+</config>

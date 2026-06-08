@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Rank="1" Property="ColorTicket" Value="20000" Appendix="item_color_ticket_1*20000"/>
+ <item Id="2" Rank="2" Property="ColorTicket" Value="10000" Appendix="item_color_ticket_1*10000"/>
+ <item Id="3" Rank="3" Property="ColorTicket" Value="5000" Appendix="item_color_ticket_1*5000"/>
+ <item Id="4" Rank="4" Property="ColorTicket" Value="2000" Appendix="item_color_ticket_1*2000"/>
+ <item Id="5" Rank="5" Property="ColorTicket" Value="2000" Appendix="item_color_ticket_1*2000"/>
+ <item Id="6" Rank="6" Property="ColorTicket" Value="2000" Appendix="item_color_ticket_1*2000"/>
+ <item Id="7" Rank="7" Property="ColorTicket" Value="2000" Appendix="item_color_ticket_1*2000"/>
+ <item Id="8" Rank="8" Property="ColorTicket" Value="2000" Appendix="item_color_ticket_1*2000"/>
+ <item Id="9" Rank="9" Property="ColorTicket" Value="2000" Appendix="item_color_ticket_1*2000"/>
+ <item Id="10" Rank="10" Property="ColorTicket" Value="2000" Appendix="item_color_ticket_1*2000"/>
+ <item Id="11" Rank="11" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="12" Rank="12" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="13" Rank="13" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="14" Rank="14" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="15" Rank="15" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="16" Rank="16" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="17" Rank="17" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="18" Rank="18" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="19" Rank="19" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="20" Rank="20" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="21" Rank="21" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="22" Rank="22" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="23" Rank="23" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="24" Rank="24" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="25" Rank="25" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="26" Rank="26" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="27" Rank="27" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="28" Rank="28" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="29" Rank="29" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+ <item Id="30" Rank="30" Property="ColorTicket" Value="1000" Appendix="item_color_ticket_1*1000"/>
+</config>

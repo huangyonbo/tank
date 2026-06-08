@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="0" Type="0" FishType="1" FishPkg="SmallPkg" Count="&lt;2=12;&lt;3=8;&lt;5=6" Interval="500" UniquePath="50" MaxCount="15" LastCache="5"/>
+ <item Id="1" Type="0" FishType="2" FishPkg="TeamPkg" Count="1&lt;15&amp;&lt;2=3" Interval="4000" UniquePath="50" MaxCount="6" LastCache="2"/>
+ <item Id="2" Type="0" FishType="3" FishPkg="NormalPkg" Count="&lt;20=1" Interval="4000" UniquePath="50" MaxCount="5" LastCache="3"/>
+ <item Id="3" Type="0" FishType="4" FishPkg="BigPkg" Count="&lt;20=1" Interval="3600" UniquePath="50" MaxCount="5" LastCache="2"/>
+ <item Id="4" Type="0" FishType="5" FishPkg="ColorPkg" Count="&lt;20=1" Interval="4000" UniquePath="50" MaxCount="5" LastCache="2"/>
+ <item Id="5" Type="0" FishType="6" FishPkg="GroupPkg" Count="&lt;5=0.5:1;&lt;2=0.3:1" Interval="2800" UniquePath="50" MaxCount="5" LastCache="1"/>
+ <item Id="6" Type="0" FishType="7" FishPkg="BombPkg" Count="&lt;1=0.6:1" Interval="1500" UniquePath="50" MaxCount="1" LastCache="5"/>
+ <item Id="7" Type="1" FishType="8" FishPkg="FuncPkg" Count="&lt;1=1" Interval="125000" UniquePath="50" MaxCount="1" LastCache="3"/>
+ <item Id="8" Type="0" FishType="9" FishPkg="BossPkg" Count="&lt;3=1" Interval="60000" UniquePath="50" MaxCount="2" LastCache="3"/>
+ <item Id="9" Type="0" FishType="11" FishPkg="SpecPkg" Count="&lt;3=1" Interval="3000" UniquePath="50" MaxCount="4" LastCache="3"/>
+ <item Id="10" Type="0" FishType="1" FishPkg="SmallPkg1" Count="&lt;2=8;&lt;3=6;&lt;5=4" Interval="500" UniquePath="50" MaxCount="10" LastCache="0"/>
+ <item Id="11" Type="0" FishType="1" FishPkg="SmallPkg2" Count="&lt;2=8;&lt;3=6;&lt;5=4" Interval="500" UniquePath="50" MaxCount="8" LastCache="0"/>
+ <item Id="12" Type="0" FishType="1" FishPkg="SmallPkg3" Count="&lt;2=6;&lt;3=4;&lt;5=2" Interval="500" UniquePath="50" MaxCount="8" LastCache="0"/>
+ <item Id="13" Type="0" FishType="1" FishPkg="SmallPkg4" Count="&lt;1=3;&lt;2=2;&lt;3=1" Interval="500" UniquePath="50" MaxCount="5" LastCache="0"/>
+</config>

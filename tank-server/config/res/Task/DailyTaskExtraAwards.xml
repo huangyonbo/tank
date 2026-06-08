@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="20" Award="item_pkg_dailyTaskExtraAward1"/>
+ <item Id="60" Award="item_pkg_dailyTaskExtraAward2"/>
+ <item Id="80" Award="item_pkg_dailyTaskExtraAward3"/>
+ <item Id="120" Award="item_pkg_dailyTaskExtraAward4"/>
+</config>

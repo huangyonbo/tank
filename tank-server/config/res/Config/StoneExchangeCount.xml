@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="0" StoneCount="2,1,1,0,0"/>
+ <item Id="1" StoneCount="3,2,1,0,0"/>
+ <item Id="2" StoneCount="4,2,2,1,1"/>
+ <item Id="3" StoneCount="4,2,2,2,1"/>
+ <item Id="4" StoneCount="2,2,2,3,4"/>
+ <item Id="5" StoneCount="1,1,2,5,11"/>
+ <item Id="6" StoneCount="2,2,3,8,17"/>
+ <item Id="7" StoneCount="2,2,4,11,23"/>
+ <item Id="8" StoneCount="3,3,6,14,31"/>
+ <item Id="9" StoneCount="4,4,7,17,36"/>
+ <item Id="10" StoneCount="4,5,8,21,45"/>
+ <item Id="11" StoneCount="5,5,9,23,51"/>
+ <item Id="12" StoneCount="6,6,11,30,62"/>
+</config>

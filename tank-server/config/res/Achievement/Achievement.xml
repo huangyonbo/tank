@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <item Id="1" Achievement="0" lv1="100" lv1Award="100" lv2="500" lv2Award="200" lv3="1500" lv3Award="300" lv4="3500" lv4Award="400" lv5="5000" lv5Award="500" />
+  <item Id="2" Achievement="1" lv1="10" lv1Award="100" lv2="50" lv2Award="200" lv3="150" lv3Award="300" lv4="350" lv4Award="400" lv5="500" lv5Award="500" />
+  <item Id="3" Achievement="2" lv1="13" lv1Award="100" lv2="80" lv2Award="200" lv3="250" lv3Award="300" lv4="450" lv4Award="400" lv5="700" lv5Award="500" />
+  <item Id="4" Achievement="3" lv1="60" lv1Award="100" lv2="350" lv2Award="200" lv3="1000" lv3Award="300" lv4="1500" lv4Award="400" lv5="3200" lv5Award="500" />
+  <item Id="5" Achievement="4" lv1="10" lv1Award="100" lv2="50" lv2Award="200" lv3="150" lv3Award="300" lv4="350" lv4Award="400" lv5="500" lv5Award="500" />
+  <item Id="6" Achievement="5" lv1="600" lv1Award="100" lv2="3500" lv2Award="200" lv3="10000" lv3Award="300" lv4="15000" lv4Award="400" lv5="32000" lv5Award="500" />
+  <item Id="7" Achievement="6" lv1="15" lv1Award="100" lv2="50" lv2Award="200" lv3="100" lv3Award="300" lv4="180" lv4Award="400" lv5="320" lv5Award="500" />
+  <item Id="8" Achievement="7" lv1="16" lv1Award="100" lv2="150" lv2Award="200" lv3="320" lv3Award="300" lv4="600" lv4Award="400" lv5="900" lv5Award="500" />
+  <item Id="9" Achievement="8" lv1="13" lv1Award="100" lv2="80" lv2Award="200" lv3="250" lv3Award="300" lv4="450" lv4Award="400" lv5="700" lv5Award="500" />
+  <item Id="10" Achievement="9" lv1="10" lv1Award="100" lv2="20" lv2Award="200" lv3="30" lv3Award="300" lv4="40" lv4Award="400" lv5="50" lv5Award="500" />
+  <item Id="11" Achievement="10" lv1="30" lv1Award="100" lv2="60" lv2Award="200" lv3="100" lv3Award="300" lv4="150" lv4Award="400" lv5="200" lv5Award="500" />
+  <item Id="12" Achievement="11" lv1="90" lv1Award="100" lv2="94" lv2Award="200" lv3="97" lv3Award="300" lv4="99" lv4Award="400" lv5="100" lv5Award="500" />
+  <item Id="13" Achievement="12" lv1="1200" lv1Award="100" lv2="3600" lv2Award="200" lv3="7200" lv3Award="300" lv4="14400" lv4Award="400" lv5="28800" lv5Award="500" />
+  <item Id="14" Achievement="13" lv1="12" lv1Award="100" lv2="9" lv2Award="200" lv3="6" lv3Award="300" lv4="3" lv4Award="400" lv5="1" lv5Award="500" />
+  <item Id="15" Achievement="14" lv1="2" lv1Award="100" lv2="3" lv2Award="200" lv3="4" lv3Award="300" lv4="5" lv4Award="400" lv5="6" lv5Award="500" />
+  <item Id="16" Achievement="15" lv1="15" lv1Award="100" lv2="45" lv2Award="200" lv3="100" lv3Award="300" lv4="160" lv4Award="400" lv5="250" lv5Award="500" />
+</root>

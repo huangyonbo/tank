@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_pkg_coupons_1" Price="1"/>
+ <item Id="item_pkg_coupons_6" Price="6"/>
+ <item Id="item_pkg_coupons_12" Price="12"/>
+ <item Id="item_pkg_coupons_30" Price="30"/>
+ <item Id="item_pkg_coupons_50" Price="50"/>
+ <item Id="item_pkg_coupons_128" Price="128"/>
+ <item Id="item_pkg_coupons_328" Price="328"/>
+ <item Id="item_pkg_coupons_648" Price="648"/>
+</config>

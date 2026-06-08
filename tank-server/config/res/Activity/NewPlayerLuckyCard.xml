@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item CardNumber="1" Id="0" probability="40"/>
+ <item CardNumber="2" Id="1" probability="30"/>
+ <item CardNumber="3" Id="2" probability="20"/>
+ <item CardNumber="4" Id="3" probability="5"/>
+ <item CardNumber="5" Id="4" probability="5"/>
+</config>

@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Index="0" Rank="1" Scale="0.25"/>
+ <item Id="2" Index="0" Rank="2" Scale="0.1"/>
+ <item Id="3" Index="0" Rank="3" Scale="0.07"/>
+ <item Id="4" Index="0" Rank="4" Scale="0.055"/>
+ <item Id="5" Index="0" Rank="5" Scale="0.055"/>
+ <item Id="6" Index="1" Rank="1" Scale="0.05"/>
+ <item Id="7" Index="1" Rank="2" Scale="0.045"/>
+ <item Id="8" Index="1" Rank="3" Scale="0.04"/>
+ <item Id="9" Index="1" Rank="4" Scale="0.04"/>
+ <item Id="10" Index="1" Rank="5" Scale="0.04"/>
+ <item Id="11" Index="2" Rank="1" Scale="0.035"/>
+ <item Id="12" Index="2" Rank="2" Scale="0.03"/>
+ <item Id="13" Index="2" Rank="3" Scale="0.025"/>
+ <item Id="14" Index="2" Rank="4" Scale="0.025"/>
+ <item Id="15" Index="2" Rank="5" Scale="0.025"/>
+ <item Id="16" Index="3" Rank="1" Scale="0.02"/>
+ <item Id="17" Index="3" Rank="2" Scale="0.015"/>
+ <item Id="18" Index="3" Rank="3" Scale="0.01"/>
+ <item Id="19" Index="3" Rank="4" Scale="0.01"/>
+ <item Id="20" Index="3" Rank="5" Scale="0.01"/>
+ <item Id="21" Index="4" Rank="1" Scale="0.0085"/>
+ <item Id="22" Index="4" Rank="2" Scale="0.007"/>
+ <item Id="23" Index="4" Rank="3" Scale="0.006"/>
+ <item Id="24" Index="4" Rank="4" Scale="0.006"/>
+ <item Id="25" Index="4" Rank="5" Scale="0.006"/>
+ <item Id="26" Index="5" Rank="1" Scale="0.004"/>
+ <item Id="27" Index="5" Rank="2" Scale="0.0035"/>
+ <item Id="28" Index="5" Rank="3" Scale="0.003"/>
+ <item Id="29" Index="5" Rank="4" Scale="0.003"/>
+ <item Id="30" Index="5" Rank="5" Scale="0.003"/>
+</config>

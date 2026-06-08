@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_gold_120000" Price="120"/>
+ <item Id="item_gold_300000" Price="300"/>
+ <item Id="item_gold_500000" Price="500"/>
+ <item Id="item_gold_1080000" Price="1080"/>
+ <item Id="item_gold_3280000" Price="3280"/>
+ <item Id="item_gold_6180000" Price="6480"/>
+ <item Id="item_gold_1000" Price="10"/>
+</config>

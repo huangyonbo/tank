@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" ItemId="item_gold_1" Count="20000" Gold="20000" Rate="0.1"/>
+ <item Id="2" ItemId="item_gold_1" Count="30000" Gold="30000" Rate="0.08"/>
+ <item Id="3" ItemId="item_gold_1" Count="40000" Gold="40000" Rate="0.04"/>
+ <item Id="4" ItemId="item_gold_1" Count="60000" Gold="60000" Rate="0.03"/>
+ <item Id="5" ItemId="item_gold_1" Count="100000" Gold="100000" Rate="0.02"/>
+ <item Id="6" ItemId="item_gold_1" Count="200000" Gold="200000" Rate="0.0026"/>
+ <item Id="7" ItemId="item_diamond_1" Count="20" Gold="20000" Rate="0.1"/>
+ <item Id="8" ItemId="item_diamond_1" Count="50" Gold="50000" Rate="0.06"/>
+ <item Id="9" ItemId="item_diamond_1" Count="60" Gold="60000" Rate="0.04"/>
+ <item Id="10" ItemId="item_diamond_1" Count="100" Gold="100000" Rate="0.02"/>
+ <item Id="11" ItemId="item_skill_lock" Count="5" Gold="0" Rate="0.08"/>
+ <item Id="12" ItemId="item_skill_lock" Count="10" Gold="0" Rate="0.06"/>
+ <item Id="13" ItemId="item_skill_lock" Count="15" Gold="0" Rate="0.02"/>
+ <item Id="14" ItemId="item_skill_frozen" Count="5" Gold="0" Rate="0.08"/>
+ <item Id="15" ItemId="item_skill_frozen" Count="10" Gold="0" Rate="0.06"/>
+ <item Id="16" ItemId="item_skill_frozen" Count="15" Gold="0" Rate="0.03"/>
+ <item Id="17" ItemId="item_skill_speed" Count="5" Gold="0" Rate="0.08"/>
+ <item Id="18" ItemId="item_skill_speed" Count="10" Gold="0" Rate="0.06"/>
+ <item Id="19" ItemId="item_skill_speed" Count="15" Gold="0" Rate="0.02"/>
+ <item Id="20" ItemId="item_skill_missile" Count="1" Gold="500000" Rate="0.002"/>
+ <item Id="21" ItemId="item_skill_nbomb" Count="1" Gold="2500000" Rate="0.0003"/>
+ <item Id="22" ItemId="item_skill_hbomb" Count="1" Gold="5000000" Rate="0.0001"/>
+ <item Id="23" ItemId="item_color_ticket_1" Count="200" Gold="120000" Rate="0.01"/>
+ <item Id="24" ItemId="item_color_ticket_1" Count="500" Gold="300000" Rate="0.005"/>
+</config>

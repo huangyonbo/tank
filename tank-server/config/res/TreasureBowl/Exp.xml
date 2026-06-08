@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_debris_primary_treasure_bowl" Exp="10"/>
+ <item Id="item_debris_middle_treasure_bowl" Exp="100"/>
+ <item Id="item_debris_senior_treasure_bowl" Exp="1000"/>
+</config>

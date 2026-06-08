@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Consume="30" Property="Ticket" CatchTimes="50" MaxFishCount="5" ScreenQuantity="25" RobotQuantity="100" SystemCommission="0.98"/>
+</config>

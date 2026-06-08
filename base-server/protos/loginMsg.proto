@@ -1,0 +1,18 @@
+
+syntax = "proto2";
+
+option java_package = "framework.net.message";
+
+message CheckLoginRequest {
+    optional int32 id = 1;
+    optional int32 uid = 2;
+    optional string token = 3;
+}
+
+message CheckLoginResponse {
+	optional int32 id = 1;
+	optional bool isSuccess = 2;
+	optional string name = 3;
+	optional int32 sex = 4;
+	optional string headurl = 5;
+}

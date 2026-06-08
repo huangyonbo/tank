@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Award="item_stamp_luoyu" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="2" Award="item_stamp_qiuyu" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="3" Award="item_stamp_feiyi" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="4" Award="item_stamp_taowu" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="5" Award="item_stamp_qiongqi" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="6" Award="item_stamp_dijiang" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="7" Award="item_stamp_taotie" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="8" Award="item_stamp_qingqiuhu" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="9" Award="item_stamp_baize" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="10" Award="item_stamp_jingwei" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="11" Award="item_stamp_yingzhao" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="12" Award="item_stamp_xingtian" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="13" Award="item_stamp_zhongshanshen" Limit="3" CostItem="item_exploits*2" desc=""/>
+ <item Id="14" Award="item_stamp_pangu" Limit="3" CostItem="item_exploits*2" desc=""/>
+</config>

@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Item="item_skill_frozen" Diamond="10"/>
+ <item Id="2" Item="item_skill_speed" Diamond="10"/>
+ <item Id="3" Item="item_skill_lock" Diamond="10"/>
+ <item Id="4" Item="item_skill_bind_bomb" Diamond="8"/>
+ <item Id="5" Item="item_skill_normal_bomb" Diamond="40"/>
+ <item Id="6" Item="item_skill_missile" Diamond="200"/>
+ <item Id="7" Item="item_skill_nbomb" Diamond="500"/>
+ <item Id="8" Item="item_skill_hbomb" Diamond="1000"/>
+ <item Id="9" Item="item_powerstone" Diamond="1"/>
+ <item Id="10" Item="item_skill_summon" Diamond="10"/>
+ <item Id="11" Item="item_skill_rage" Diamond="10"/>
+ <item Id="12" Item="item_skill_double" Diamond="10"/>
+</config>

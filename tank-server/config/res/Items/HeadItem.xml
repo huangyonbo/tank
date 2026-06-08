@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_head_id1" Name="默认头像1" Script="HeadItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="-1" BgID="1"/>
+ <item Id="item_head_id2" Name="默认头像2" Script="HeadItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="-1" BgID="2"/>
+ <item Id="item_head_id3" Name="金币/钻石商城12元头像" Script="HeadItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="24" BgID="3"/>
+ <item Id="item_head_id4" Name="金币/钻石商城28元头像" Script="HeadItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="24" BgID="4"/>
+ <item Id="item_head_id5" Name="金币/钻石商城50元头像" Script="HeadItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="24" BgID="5"/>
+ <item Id="item_head_id6" Name="金币/钻石商城108元头像" Script="HeadItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="24" BgID="6"/>
+ <item Id="item_head_id7" Name="金币/钻石商城328元头像" Script="HeadItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="72" BgID="7"/>
+ <item Id="item_head_id8" Name="金币/钻石商城618元头像" Script="HeadItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="168" BgID="8"/>
+ <item Id="item_head_id9" Name="新春头像头像" Script="HeadItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="-1" BgID="9"/>
+</config>

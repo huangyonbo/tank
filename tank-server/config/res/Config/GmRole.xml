@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" RoleName="super" Cmds="select,sp,gp,gr,sr,addRow,addItem,outfish,outgroup"/>
+ <item Id="2" RoleName="role1" Cmds="psp,psr,pgp"/>
+ <item Id="3" RoleName="role2" Cmds="pAddRow"/>
+ <item Id="4" RoleName="role3" Cmds="sp"/>
+</config>

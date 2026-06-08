@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" FundId="item_primary_fund" Price="88" Level="1" Profit="250" DayIndex="1" Reward="3200000"/>
+ <item Id="2" FundId="item_primary_fund" Price="88" Level="1" Profit="250" DayIndex="2" Reward="1500000"/>
+ <item Id="3" FundId="item_primary_fund" Price="88" Level="1" Profit="250" DayIndex="3" Reward="1500000"/>
+ <item Id="4" FundId="item_primary_fund" Price="88" Level="1" Profit="250" DayIndex="4" Reward="1500000"/>
+ <item Id="5" FundId="item_primary_fund" Price="88" Level="1" Profit="250" DayIndex="5" Reward="1500000"/>
+ <item Id="6" FundId="item_primary_fund" Price="88" Level="1" Profit="250" DayIndex="6" Reward="1500000"/>
+ <item Id="7" FundId="item_intermediate_fund" Price="188" Level="2" Profit="300" DayIndex="1" Reward="8000000"/>
+ <item Id="8" FundId="item_intermediate_fund" Price="188" Level="2" Profit="300" DayIndex="2" Reward="4000000"/>
+ <item Id="9" FundId="item_intermediate_fund" Price="188" Level="2" Profit="300" DayIndex="3" Reward="4000000"/>
+ <item Id="10" FundId="item_intermediate_fund" Price="188" Level="2" Profit="300" DayIndex="4" Reward="4000000"/>
+ <item Id="11" FundId="item_intermediate_fund" Price="188" Level="2" Profit="300" DayIndex="5" Reward="4000000"/>
+ <item Id="12" FundId="item_intermediate_fund" Price="188" Level="2" Profit="300" DayIndex="6" Reward="4000000"/>
+ <item Id="13" FundId="item_senior_fund" Price="388" Level="3" Profit="350" DayIndex="1" Reward="19400000"/>
+ <item Id="14" FundId="item_senior_fund" Price="388" Level="3" Profit="350" DayIndex="2" Reward="9700000"/>
+ <item Id="15" FundId="item_senior_fund" Price="388" Level="3" Profit="350" DayIndex="3" Reward="9700000"/>
+ <item Id="16" FundId="item_senior_fund" Price="388" Level="3" Profit="350" DayIndex="4" Reward="9700000"/>
+ <item Id="17" FundId="item_senior_fund" Price="388" Level="3" Profit="350" DayIndex="5" Reward="9700000"/>
+ <item Id="18" FundId="item_senior_fund" Price="388" Level="3" Profit="350" DayIndex="6" Reward="9700000"/>
+ <item Id="19" FundId="item_supreme_fund" Price="588" Level="4" Profit="400" DayIndex="1" Reward="33600000"/>
+ <item Id="20" FundId="item_supreme_fund" Price="588" Level="4" Profit="400" DayIndex="2" Reward="16800000"/>
+ <item Id="21" FundId="item_supreme_fund" Price="588" Level="4" Profit="400" DayIndex="3" Reward="16800000"/>
+ <item Id="22" FundId="item_supreme_fund" Price="588" Level="4" Profit="400" DayIndex="4" Reward="16800000"/>
+ <item Id="23" FundId="item_supreme_fund" Price="588" Level="4" Profit="400" DayIndex="5" Reward="16800000"/>
+ <item Id="24" FundId="item_supreme_fund" Price="588" Level="4" Profit="400" DayIndex="6" Reward="16800000"/>
+</config>

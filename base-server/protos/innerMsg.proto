@@ -1,0 +1,652 @@
+
+syntax = "proto2";
+
+option java_package = "framework.net.message";
+
+message SerInfo {
+    optional string name = 1;
+    optional string type = 2;
+}
+
+message SyncLoad {
+	optional int32 load = 1;
+}
+
+message String {
+	optional string value = 1;
+}
+
+message LoadPlayer {
+	optional int32 uid = 1;
+	optional int32 sex = 2;
+	optional string name = 3;
+	optional string headurl = 4;
+	optional string addr = 5;
+	optional string deviceId = 6;
+	optional string deviceName = 7;
+	optional string cliname = 8;
+	optional string cliver = 9;
+	optional string macAddr = 10;
+	optional string front = 11;
+	optional int32 channel = 12;
+	optional string payinfo = 13;
+	optional string phoneBrand = 14;
+	optional string phoneModel = 15;
+	optional string phone = 16;
+  optional string recruiter = 17;
+  optional bool certification = 18;
+  optional int32 age = 19;
+  optional bool testPay = 20;
+  optional int32 inviteVip = 21;
+}
+
+message RequestRoleData {
+	optional int32 uid = 1;
+	optional string headurl = 2;
+	optional string addr = 3;
+	optional string deviceId = 4;
+	optional string deviceName = 5;
+	optional string cliname = 6;
+	optional string phoneBrand = 7;
+	optional string phoneModel = 8;
+	optional string phone = 9;
+}
+
+message LoadRoleData {
+	optional int32 code = 1;
+	optional int32 headid = 2;
+	optional string regtime = 3;
+	optional bytes data = 4;
+	optional string name = 5;
+	optional int32 sex = 6;
+	optional bool realname = 7;
+	optional int32 inviteVip = 8;
+}
+
+message StoreRoleData {
+	optional int32 uid = 1;
+	optional int32 sex = 2;
+	optional string name = 3;
+	optional string headurl = 4;
+	optional bytes data = 5;
+	optional int32 offline = 6;
+	optional string addr = 7;
+	optional string deviceId = 8;
+	optional string deviceName = 9;
+	optional string cliname = 10;
+	optional string regtime = 11;
+	optional int32 channel = 12;
+	optional string phoneBrand = 13;
+	optional string phoneModel = 14;
+	optional string lastOpt = 15;
+	optional int64 bombCoin=16;
+	optional int32 bombItem=17;
+	optional int32 vip=18;
+}
+
+message ForwardMsg{
+	optional int32 msgid = 1;
+	optional int32 uid = 2;
+	optional bytes data = 3;
+}
+
+message CliDisconnect {
+	optional int32 uid = 1;
+	optional int32 code = 2;
+}
+
+message AddPlayer {
+	optional int32 uid = 1;
+	optional uint64 objectid = 2;
+	optional string front = 3;
+	optional string back = 4;
+	optional string name = 5;
+	optional int32 headid = 6;
+	optional string head = 7;
+}
+
+message DelPlayer {
+	optional int32 uid = 1;
+}
+
+message PlayerChangeSer {
+	optional int32 uid = 1;
+	optional uint64 objectid = 2;
+	optional string front = 3;
+	optional string back = 4;
+}
+
+message CommandMsg {
+	optional int32 cmdid = 1;
+	optional uint64 objectid = 2;
+	optional bytes data = 3;
+}
+
+message BroadCastToClients {
+	optional int32 msgid = 1;
+	optional bytes data = 2;
+	repeated int32 uids = 3;
+}
+
+message BroadCastToAllClients {
+	optional int32 msgid = 1;
+	optional bytes data = 2;
+}
+
+message NotifyNextReady {
+	required string name = 1;
+}
+
+message CrossPlayer{
+	optional bytes data = 1;
+}
+
+message CustomMsg {
+	optional int32 msgid = 1;
+	optional bytes data = 2;
+}
+
+message Request {
+	optional int32 reqid = 1;
+	optional int32 msgid = 2;
+	optional bytes data = 3;
+}
+
+message Response {
+	optional int32 reqid = 1;
+	optional bytes data = 2;
+}
+
+message ChangeServer {
+	optional int32 uid = 1;
+	optional bytes data = 2;
+}
+
+message ChangeBack {
+	optional int32 uid = 1;
+	optional int32 back = 2;
+}
+
+message ChangeServerResult {
+	optional int32 uid = 1;
+	optional int32 code = 2;
+}
+
+message ReqObjectListRes {
+	optional int32 count = 1;
+	repeated uint64 objectid = 2;
+	repeated string name = 3;
+	repeated string script = 4;
+}
+
+message ReqObjectData {
+	optional uint64 objectid = 1;
+}
+
+message ReqObjectDataRes {
+	optional uint64 objectid = 1;
+	optional bytes data = 2;
+	optional int32 count = 3;
+	repeated uint64 childid = 4;
+	repeated string childname = 5;
+	repeated string childscript = 6;
+}
+
+message AddPubSpace {
+	optional string name = 1;
+}
+
+message AddPubData {
+	optional string spacename = 1;
+	optional string name = 2;
+	optional bytes data = 3;
+}
+
+message AddPubPro {
+	optional string spacename = 1;
+	optional string dataname = 2;
+	optional string name = 3;
+	optional bytes data = 4;
+}
+
+message AddPubRec {
+	optional string spacename = 1;
+	optional string dataname = 2;
+	optional string name = 3;
+	optional bytes data = 4;
+}
+
+message DelPubSpace {
+	optional string name = 1;
+}
+
+message DelPubData {
+	optional string spacename = 1;
+	optional string name = 2;
+}
+message DelPubPro {
+	optional string spacename = 1;
+	optional string dataname = 2;
+	optional string name = 3;
+}
+message DelPubRec {
+	optional string spacename = 1;
+	optional string dataname = 2;
+	optional string name = 3;
+}
+message SetPubPro {
+	optional string spacename = 1;
+	optional string dataname = 2;
+	optional string name = 3;
+	optional bytes data = 4;
+}
+message SetPubRec {
+	optional string spacename = 1;
+	optional string dataname = 2;
+	optional string name = 3;
+	optional int32 row = 4;
+	optional int32 col = 5;
+	optional bytes data = 6;
+}
+
+message AddPubRecRow {
+	optional string spacename = 1;
+	optional string dataname = 2;
+	optional string name = 3;
+	optional int32 row = 4;
+	optional bytes data = 5;
+}
+message SetPubRecColType {
+	optional string spacename = 1;
+	optional string dataname = 2;
+	optional string name = 3;
+	optional int32 col = 4;
+	optional int32 type = 5;
+}
+message DelPubRecRow {
+	optional string spacename = 1;
+	optional string dataname = 2;
+	optional string name = 3;
+	optional int32 row = 4;
+}
+
+message ClearPubRec {
+	optional string spacename = 1;
+	optional string dataname = 2;
+	optional string name = 3;
+}
+
+message SendMail{
+	optional int32 type = 1;
+	optional string title = 2;
+	optional string context = 3;
+	optional int32 senderuid = 4;
+	optional string sendername = 5;
+	optional int32 recvuid = 6;
+	optional string recvname = 7;
+	optional int64 lifetime = 8;
+	optional string appendix = 9;
+	optional int32 channel = 10;
+	optional int32 system = 11;
+}
+
+message QueryMail{
+	required int32 uid = 1;
+	required int32 channel = 2;
+	required string mailid = 3;
+}
+
+message QueryMailRes{
+	repeated ReadMailRes mails=1;
+}
+
+message ReadMail{
+	optional string mailid = 1;
+}
+
+message ReadMailRes{
+	optional int32 type = 1;
+	optional string title = 2;
+	optional string context = 3;
+	optional int32 senderuid = 4;
+	optional string sendername = 5;
+	optional int32 recvuid = 6;
+	optional string recvname = 7;
+	optional string sendtime = 8;
+	optional string endtime = 9;
+	optional string appendix = 10;
+	optional int32 system = 11;
+	optional string id=12;
+}
+
+message DelMail{
+	optional string mailid = 1;
+}
+
+message KickPlayer {
+	required int32 uid = 1;
+	required int32 code = 2;
+}
+
+message GameLog {
+	required int32 uid = 1;
+	required int32 channel = 2;
+	required int32 type = 3;
+	required int32 targetuid = 4;
+	required string context = 5;
+	required string reason = 6;
+	required int32 kind = 7;
+	required string system = 8;
+}
+
+message PubSpaceListRes {
+	repeated string name = 1;
+}
+
+message PubDataList {
+	required string name = 1;
+}
+
+message PubDataListRes {
+	repeated string name = 1;
+}
+
+message PubData {
+	required string spacename = 1;
+	required string name = 2;
+}
+
+message PubDataRes {
+	required bytes data = 1;
+}
+
+
+message ProLog {
+	required int32 uid = 1;
+	required string name = 2;
+	required string context = 3;
+	required string reason = 4;
+}
+
+message MailLog {
+	required int32 uid = 1;
+	required int32 type = 2;
+	required string mailid = 3;
+	required string context = 4;
+	required string reason = 5;
+	optional string senderHas = 6;
+	optional string recvHas = 7;
+}
+
+message PlayLog {
+	required int32 uid = 1;
+	required int32 type = 2;
+	required int32 room = 3;
+	required int64 desk = 4;
+	required int64 gold = 5;
+	required string context = 6;
+	required string reason = 7;
+}
+
+message OfflineData {
+	required int32 uid = 1;
+	required int32 type = 2;
+	required string context = 3;
+	required string reason = 4;
+}
+
+message ReqOfflineData {
+	required int32 uid = 1;
+}
+
+message ReqOfflineDataRes {
+	repeated int32 id = 1;
+	repeated int32 type = 2;
+	repeated string context = 3;
+	repeated string reason = 4;
+}
+
+message DelOfflineData {
+	repeated int32 id = 1;
+}
+
+message Frozen {
+	required int32 uid = 1;
+}
+
+message ChangeName {
+	required int32 uid = 1;
+	required string newName = 2;
+}
+
+message ComResponse {
+	required int32 code = 1;
+}
+
+message Advice {
+	required int32 uid = 1;
+	required int32 channel = 2;
+	required int32 type = 3;
+	required string cliVer = 4;
+	required string context = 5;
+}
+
+message WarningItemScoreLog {
+	optional int32 uid = 1;
+	optional int32 vipLevel = 2;
+	optional string nickName = 3;
+	optional int32 chargeScore = 4;
+	optional int32 killFishItemScore = 5;
+	optional int32 drawAwardItemScore = 6;
+	optional int32 curItemScore = 7;
+	optional int32 maxItemScore = 8;
+	optional int64 bombCoin = 9;
+	optional int64 gold = 10;
+}
+
+message WarningMoJinLog {
+	optional int32 uid = 1;
+	optional int32 vipLevel = 2;
+	optional string nickName = 3;
+	optional int64 play = 4;
+	optional int64 win = 5;
+	optional int64 cur = 6;
+	optional int32 hbomb = 7;
+	optional int32 hbomb_debris = 8;
+	optional int32 nbomb = 9;
+	optional int32 nbomb_debris = 10;
+	optional string other_detail = 11;
+	optional int64 dmojin = 12;
+}
+
+message ItemLog {
+	optional int32 uid = 1;
+	optional string createTime = 2;
+	optional string nickName = 3;
+	optional int32 vipLevel = 4;
+	optional string item = 5;
+	optional int32 count = 6;
+	optional string output = 7;
+	optional string uesWay = 8;
+	optional string playerHas = 9;
+	optional string roomName = 10;
+}
+
+message ActivityLuckyPuzzleLog {
+	optional int32 uid = 1;
+	optional string createTime = 2;
+	optional string nickName = 3;
+	optional int32 option = 4;
+	optional string items = 5;
+}
+
+
+message BlackList {
+	required int32 type = 1;
+	required string context = 2;
+}
+
+message CommonVal {
+	optional int32 valInt32 = 1;
+	optional int64 valInt64 = 2;
+	optional float valFloat = 3;
+	optional double valDouble = 4;
+	optional string valString = 5;
+	optional bool valBool = 6;
+}
+
+message Dau {
+	required int32 uid = 1;
+	required int32 time = 2;
+	required int32 count = 3;
+	required int32 channel = 4;
+	required string date = 5;
+	required bool isnew = 6;
+}
+
+message OnlinePeak {
+	required int32 count = 1;
+	required int32 channel = 2;
+	required string date = 3;
+}
+
+message ReqRedeemCode {
+	required int32 uid = 1;
+	required int32 channel = 2;
+	required string devid = 3;
+	required string code = 4;
+}
+
+message RedeemCodeRes {
+	required string context = 1;
+}
+
+message UseCardItem {
+	required int32 uid = 1;
+	required string itemid = 2;
+	required int32 type = 3;
+}
+
+message UseCardItemRes {
+	repeated string id = 1;
+	repeated string passwd = 2;
+	repeated string end = 3;
+	repeated string itemid = 4;
+}
+
+message GetActivityData {
+	repeated int32 id = 1;
+}
+
+message GetActivityDataRes {
+	repeated int32 id = 1;
+	repeated int32 type = 2;
+	repeated int32 version = 3;
+	repeated string channel = 4;
+	repeated bool switch = 5;
+	repeated string param = 6;
+	repeated string start = 7;
+	repeated string stop = 8;
+	repeated string startShow = 9;
+	repeated string stopShow = 10;
+	repeated int32 weight = 11;
+}
+
+message GetVersionDataRes {
+	repeated int32 id = 1;
+	repeated string version = 2;
+	repeated string channel = 3;
+	repeated string appendix = 4;
+	repeated string start = 5;
+	repeated string stop = 6;
+}
+
+message GetDailyRewardDataRes {
+	repeated int32 id = 1;
+	repeated int32 recvUid = 2;
+	repeated string channel = 3;
+	repeated string appendix = 4;
+	repeated string start = 5;
+	repeated string stop = 6;
+	repeated string vipLevel = 7;
+	repeated string level = 8;
+	repeated string bulletVal = 9;
+}
+
+message RealName {
+	required int32 uid = 1;
+	required string name = 2;
+	required string idcard = 3;
+}
+
+message BindProxy {
+	required int32 uid = 1;
+	required int32 proxyId = 2;
+}
+
+message BaseValue {
+	optional float floatValue = 1;
+	optional int32 intValue = 2;
+	optional int64 longValue = 3;
+	optional string strValue = 4;
+}
+
+message ExchangeCard {
+	optional int32 uid = 1;
+	optional string items = 2;
+	optional string goods = 3;
+}
+
+message CardStats {
+	optional string statsTime = 1;
+	optional int32 uid = 2;
+	optional int32 friendAmount = 3;
+	optional int32 friendRecharge = 4;
+	optional int32 fansRecharge = 5;
+	optional int32 cardAmount = 6;
+}
+
+message Recruit {
+	optional int32 uid = 1;
+	optional string openDate = 2;
+}
+
+message LoadDataFromDb{
+	required string dao=1;
+	required string method=2;
+	repeated string types=3;
+	repeated string values=4;
+}
+
+message ComeFromDbData{
+	required int32 code=1;
+	optional string datas=2;
+}
+
+message ServerModuleData{
+	required int32 type=1;
+	required string come=2;
+	optional string datas=3;
+}
+
+message CmdUpdateProp{
+	repeated int32 uids=1;
+	repeated string keys=2;
+	repeated string values=3;
+}
+
+message CmdUpdateRecord{
+	repeated int32 uids=1;
+	repeated string keys=2;
+	repeated int32 ops=3;
+	repeated string values=4;
+	repeated int32 rows=5;
+	repeated int32 cols=6;
+}
+
+message RoleParam {
+	optional int32 code = 1;
+	optional bytes param = 2;
+	optional int32 uid = 3;
+	optional string nickname = 4;
+}

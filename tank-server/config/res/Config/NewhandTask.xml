@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="task0" PreTask="" Reward="item_pkg_NewHandTask1" TargetCount="5" TargetDetail="0" TargetType="0" Title="成功捕获5条任意鱼"/>
+ <item Id="task1" PreTask="task0" Reward="item_pkg_NewHandTask2" TargetCount="10" TargetDetail="0" TargetType="0" Title="成功捕获10条任意鱼"/>
+ <item Id="task2" PreTask="task1" Reward="item_pkg_NewHandTask3" TargetCount="50" TargetDetail="0" TargetType="0" Title="成功捕获50条任意鱼"/>
+ <item Id="task3" PreTask="task2" Reward="item_pkg_NewHandTask4" TargetCount="100" TargetDetail="0" TargetType="0" Title="成功捕获100条任意鱼"/>
+ <item Id="task4" PreTask="task3" Reward="item_pkg_NewHandTask5" TargetCount="150" TargetDetail="0" TargetType="0" Title="成功捕获150条任意鱼"/>
+ <item Id="task5" PreTask="" Reward="item_pkg_NewHandTask6" TargetCount="1" TargetDetail="item_skill_lock" TargetType="4" Title="使用1个锁定道具"/>
+ <item Id="task6" PreTask="task5" Reward="item_pkg_NewHandTask7" TargetCount="1" TargetDetail="item_skill_frozen" TargetType="4" Title="使用1个冰冻道具"/>
+ <item Id="task7" PreTask="task6" Reward="item_pkg_NewHandTask8" TargetCount="1" TargetDetail="item_skill_speed" TargetType="4" Title="使用1个狂暴道具"/>
+ <item Id="task8" PreTask="" Reward="item_pkg_NewHandTask9" TargetCount="1" TargetDetail="fish30" TargetType="0" Title="成功捕获1条黄金鲨"/>
+ <item Id="task9" PreTask="task8" Reward="item_pkg_NewHandTask10" TargetCount="1" TargetDetail="fish31" TargetType="0" Title="成功捕获1条黄金锤头鲨"/>
+ <item Id="task10" PreTask="task9" Reward="item_pkg_NewHandTask11" TargetCount="1" TargetDetail="fish32" TargetType="0" Title="成功捕获1条黄金海豚"/>
+ <item Id="task11" PreTask="task10" Reward="item_pkg_NewHandTask12" TargetCount="1" TargetDetail="fish34" TargetType="0" Title="成功捕获1条金蟾"/>
+ <item Id="task12" PreTask="" Reward="item_pkg_NewHandTask13" TargetCount="1" TargetDetail="fish21" TargetType="0" Title="成功捕获1条安康鱼王"/>
+</config>

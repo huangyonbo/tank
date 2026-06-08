@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" ItemId="item_gold_1" ItemName="金币" Count="20000" Price="20000"/>
+ <item Id="2" ItemId="item_skill_lock" ItemName="锁定" Count="10" Price="0"/>
+ <item Id="3" ItemId="item_powerstone" ItemName="强化石" Count="100" Price="0"/>
+ <item Id="4" ItemId="item_gold_1" ItemName="金币" Count="30000" Price="30000"/>
+ <item Id="5" ItemId="item_skill_frozen" ItemName="冰冻" Count="10" Price="0"/>
+ <item Id="6" ItemId="item_stone" ItemName="能量石" Count="20" Price="0"/>
+ <item Id="7" ItemId="item_diamond_1" ItemName="钻石" Count="30" Price="30000"/>
+ <item Id="8" ItemId="item_skill_speed" ItemName="狂暴" Count="10" Price="0"/>
+ <item Id="9" ItemId="item_skill_lock" ItemName="锁定" Count="10" Price="0"/>
+ <item Id="10" ItemId="item_gold_1" ItemName="金币" Count="30000" Price="30000"/>
+ <item Id="11" ItemId="item_mithril" ItemName="秘银" Count="2" Price="0"/>
+ <item Id="12" ItemId="item_diamond_1" ItemName="钻石" Count="30" Price="30000"/>
+ <item Id="13" ItemId="item_powerstone" ItemName="强化石" Count="100" Price="0"/>
+ <item Id="14" ItemId="item_stone" ItemName="能量石" Count="20" Price="0"/>
+ <item Id="15" ItemId="item_skill_nbomb" ItemName="铂金弹头" Count="1" Price="2500000"/>
+ <item Id="16" ItemId="item_skill_speed" ItemName="狂暴" Count="15" Price="0"/>
+ <item Id="17" ItemId="item_gold_1" ItemName="金币" Count="50000" Price="50000"/>
+ <item Id="18" ItemId="item_mithril" ItemName="秘银" Count="2" Price="0"/>
+ <item Id="19" ItemId="item_skill_lock" ItemName="锁定" Count="15" Price="0"/>
+ <item Id="20" ItemId="item_color_ticket_1" ItemName="话费券" Count="500" Price="50000"/>
+ <item Id="21" ItemId="item_skill_frozen" ItemName="冰冻" Count="20" Price="0"/>
+ <item Id="22" ItemId="item_powerstone" ItemName="强化石" Count="100" Price="0"/>
+ <item Id="23" ItemId="item_skill_hbomb" ItemName="钻石弹头" Count="1" Price="5000000"/>
+ <item Id="24" ItemId="item_skill_lock" ItemName="锁定" Count="20" Price="0"/>
+ <item Id="25" ItemId="item_powerstone" ItemName="强化石" Count="200" Price="0"/>
+ <item Id="26" ItemId="item_color_ticket_1" ItemName="话费券" Count="1000" Price="100000"/>
+ <item Id="27" ItemId="item_pkg_monopoly_ending_1" ItemName="宝箱" Count="1" Price="60000"/>
+</config>

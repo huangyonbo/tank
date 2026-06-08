@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="root" Name="终极豪礼" Addition="" FinalReward="item_pkg_christmas"/>
+ <item Id="item_pkg_limit1" Name="双旦礼包1" Addition="item_pkg_limitadd_1" FinalReward=""/>
+ <item Id="item_pkg_limit2" Name="双旦礼包2" Addition="item_pkg_limitadd_2" FinalReward=""/>
+ <item Id="item_pkg_limit3" Name="双旦礼包3" Addition="item_pkg_limitadd_3" FinalReward=""/>
+ <item Id="item_pkg_limit4" Name="双旦礼包4" Addition="item_pkg_limitadd_4" FinalReward=""/>
+</config>

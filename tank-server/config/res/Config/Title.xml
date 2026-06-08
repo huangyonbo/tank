@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="title1" Title="大富翁" LifeTime="604800"/>
+ <item Id="title2" Title="核弹库" LifeTime="604800"/>
+ <item Id="title3" Title="爆裂狂" LifeTime="604800"/>
+ <item Id="title4" Title="鱼王猎人" LifeTime="604800"/>
+ <item Id="title5" Title="我是贵族" LifeTime="-1"/>
+ <item Id="title6" Title="鹰眼" LifeTime="-1"/>
+ <item Id="title7" Title="冰封万里" LifeTime="-1"/>
+ <item Id="title8" Title="狂暴战士" LifeTime="-1"/>
+ <item Id="title9" Title="捕鱼达人" LifeTime="-1"/>
+ <item Id="title10" Title="小有成就" LifeTime="-1"/>
+ <item Id="title11" Title="成就达人" LifeTime="-1"/>
+ <item Id="title12" Title="名满世界" LifeTime="-1"/>
+ <item Id="title13" Title="贵族1" LifeTime="-1"/>
+ <item Id="title14" Title="贵族2" LifeTime="-1"/>
+ <item Id="title15" Title="贵族3" LifeTime="-1"/>
+ <item Id="title16" Title="贵族4" LifeTime="-1"/>
+ <item Id="title17" Title="贵族5" LifeTime="-1"/>
+ <item Id="title18" Title="贵族6" LifeTime="-1"/>
+ <item Id="title19" Title="贵族7" LifeTime="-1"/>
+ <item Id="title20" Title="贵族8" LifeTime="-1"/>
+ <item Id="title21" Title="贵族9" LifeTime="-1"/>
+ <item Id="title22" Title="贵族10" LifeTime="-1"/>
+ <item Id="title23" Title="贵族11" LifeTime="-1"/>
+</config>

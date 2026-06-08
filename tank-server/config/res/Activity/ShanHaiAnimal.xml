@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_gold_10" Award2="item_gold_20" Award3="item_gold_50" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="2" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_gold_10" Award2="item_gold_20" Award3="item_gold_50" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="3" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_gold_10" Award2="item_gold_20" Award3="item_gold_50" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="4" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_gold_10" Award2="item_gold_20" Award3="item_gold_50" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="5" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_gold_10" Award2="item_gold_20" Award3="item_gold_50" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="6" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_gold_10" Award2="item_gold_20" Award3="item_gold_50" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="7" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_gold_10" Award2="item_gold_20" Award3="item_gold_50" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="8" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_gold_10" Award2="item_gold_20" Award3="item_gold_50" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="9" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_Old_God_Box" Award2="item_Old_God_Box" Award3="item_Old_God_Box" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="10" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_Old_God_Box" Award2="item_Old_God_Box" Award3="item_Old_God_Box" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="11" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_Old_God_Box" Award2="item_Old_God_Box" Award3="item_Old_God_Box" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="12" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_Old_God_Box" Award2="item_Old_God_Box" Award3="item_Old_God_Box" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="13" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_Old_God_Box" Award2="item_Old_God_Box" Award3="item_Old_God_Box" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="14" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_Old_God_Box" Award2="item_Old_God_Box" Award3="item_Old_God_Box" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+ <item Id="15" CostItemR="1" CostItemSR="2" CostItemSSR="3" Award1="item_Old_God_Box" Award2="item_Old_God_Box" Award3="item_Old_God_Box" AddOverTimeCost="4" DayLimit="10" State="1" Des=""/>
+</config>

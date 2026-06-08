@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" BulletLevel="17"/>
+ <item Id="2" BulletLevel="26"/>
+ <item Id="3" BulletLevel="30"/>
+ <item Id="4" BulletLevel="35"/>
+ <item Id="5" BulletLevel="43"/>
+</config>

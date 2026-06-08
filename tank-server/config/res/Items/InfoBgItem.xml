@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_info_bg_billiongold_7D" Name="亿万富豪俱乐部背景框（7天）" Script="InfoBgItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="168" BgID="1"/>
+ <item Id="item_info_bg_vip0" Name="贵族背景框" Script="InfoBgItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="-1" BgID="2"/>
+ <item Id="item_info_bg_store_12" Name="金币/钻石商城12元背景框" Script="InfoBgItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="6" BgID="3"/>
+ <item Id="item_info_bg_store_28" Name="金币/钻石商城28元背景框" Script="InfoBgItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="12" BgID="3"/>
+ <item Id="item_info_bg_store_50" Name="金币/钻石商城50元背景框" Script="InfoBgItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="24" BgID="3"/>
+ <item Id="item_info_bg_store_108" Name="金币/钻石商城108元背景框" Script="InfoBgItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="36" BgID="3"/>
+ <item Id="item_info_bg_store_328" Name="金币/钻石商城328元背景框" Script="InfoBgItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="48" BgID="3"/>
+ <item Id="item_info_bg_store_618" Name="金币/钻石商城618元背景框" Script="InfoBgItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="72" BgID="3"/>
+ <item Id="item_info_bg_Secret_24h" Name="秘境之王背景框（24h）" Script="InfoBgItem" LifeTime="-1" AutoUse="1" Cost="0" TimeLimit="24" BgID="4"/>
+</config>

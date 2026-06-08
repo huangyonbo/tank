@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_gold_300000" Switch="true" Price="120" Virtual="true" Stock="1000" Limit="" ItemName="金币" CostMaterial="钻石" ItemId="" Properties="Diamond" Version="1" DayReset="true" Sequence="1" Remark="校验所填数字与更新前不一致，则表内数据刷新"/>
+ <item Id="item_gold_500000" Switch="true" Price="200" Virtual="true" Stock="1000" Limit="" ItemName="金币" CostMaterial="钻石" ItemId="" Properties="Diamond" Version="1" DayReset="true" Sequence="2" Remark="校验所填数字与更新前一致，则表内数据不刷新"/>
+ <item Id="item_gold_1000000" Switch="true" Price="400" Virtual="true" Stock="1000" Limit="" ItemName="金币" CostMaterial="钻石" ItemId="" Properties="Diamond" Version="1" DayReset="true" Sequence="3" Remark=""/>
+ <item Id="item_gold_5000000" Switch="true" Price="2000" Virtual="true" Stock="1000" Limit="" ItemName="金币" CostMaterial="钻石" ItemId="" Properties="Diamond" Version="1" DayReset="true" Sequence="4" Remark=""/>
+ <item Id="item_gold_5200000" Switch="false" Price="2080" Virtual="true" Stock="1000" Limit="" ItemName="金币" CostMaterial="钻石" ItemId="" Properties="Diamond" Version="1" DayReset="true" Sequence="5" Remark=""/>
+ <item Id="item_gold_55000000" Switch="true" Price="22000" Virtual="true" Stock="1000" Limit="" ItemName="金币" CostMaterial="钻石" ItemId="" Properties="Diamond" Version="1" DayReset="true" Sequence="6" Remark=""/>
+ <item Id="item_card_iQIYI_20" Switch="false" Price="2000" Virtual="true" Stock="10" Limit="0,0,1" ItemName="爱奇艺月卡" CostMaterial="奖券" ItemId="" Properties="ColorTicket" Version="1" DayReset="true" Sequence="7" Remark=""/>
+ <item Id="item_card_Youku_20" Switch="false" Price="2000" Virtual="true" Stock="10" Limit="0,0,1" ItemName="优酷视频月卡" CostMaterial="奖券" ItemId="" Properties="ColorTicket" Version="1" DayReset="true" Sequence="8" Remark=""/>
+ <item Id="item_card_Tencent_20" Switch="false" Price="2000" Virtual="true" Stock="10" Limit="0,0,1" ItemName="腾讯视频月卡" CostMaterial="奖券" ItemId="" Properties="ColorTicket" Version="1" DayReset="true" Sequence="9" Remark=""/>
+ <item Id="item_bombcoin_1000000" Switch="false" Price="2500" Virtual="true" Stock="1000" Limit="0,0,1" ItemName="100万魔晶" CostMaterial="奖券" ItemId="" Properties="ColorTicket" Version="1" DayReset="true" Sequence="10" Remark=""/>
+ <item Id="item_skill_normal_bomb" Switch="false" Price="200" Virtual="true" Stock="1000" Limit="" ItemName="中级战斧" CostMaterial="奖券" ItemId="" Properties="ColorTicket" Version="1" DayReset="true" Sequence="11" Remark=""/>
+ <item Id="item_skill_missile" Switch="false" Price="1000" Virtual="true" Stock="1000" Limit="" ItemName="高级战斧" CostMaterial="奖券" ItemId="" Properties="ColorTicket" Version="1" DayReset="true" Sequence="12" Remark=""/>
+ <item Id="item_skill_nbomb" Switch="false" Price="5000" Virtual="true" Stock="1000" Limit="" ItemName="史诗战斧" CostMaterial="奖券" ItemId="" Properties="ColorTicket" Version="1" DayReset="true" Sequence="13" Remark=""/>
+ <item Id="item_skill_hbomb" Switch="false" Price="10000" Virtual="true" Stock="1000" Limit="" ItemName="开天斧" CostMaterial="奖券" ItemId="" Properties="ColorTicket" Version="1" DayReset="true" Sequence="14" Remark=""/>
+ <item Id="item_pkg_powerstone" Switch="false" Price="100" Virtual="true" Stock="1000" Limit="" ItemName="强化石" CostMaterial="钻石" ItemId="" Properties="Diamond" Version="1" DayReset="true" Sequence="15" Remark=""/>
+</config>

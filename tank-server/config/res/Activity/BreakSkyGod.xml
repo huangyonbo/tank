@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" CostItem="item_God_Arm*100" Type="" des=""/>
+ <item Id="2" CostItem="item_God_Foot*100" Type="" des=""/>
+ <item Id="3" CostItem="item_God_Heart*100" Type="" des=""/>
+ <item Id="4" CostItem="item_God_Body*100" Type="" des=""/>
+ <item Id="5" CostItem="item_God_Hand*100" Type="" des=""/>
+ <item Id="6" CostItem="item_God_Blood*100" Type="" des=""/>
+</config>

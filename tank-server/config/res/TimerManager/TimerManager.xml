@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="listTimer" StartDate="2000-01-01 00:00:00" EndDate="2099-12-31 23:59:59" Weeks="1111111" Time="23:59:00" Module="ActivityMgr" StartMethod="" EndMethod="" CheckWeek="" CheckMethod="OnDailyCheckTimer" Server="Game1"/>
+ <item Id="WeekTimer" StartDate="2000-01-01 00:00:00" EndDate="2099-12-31 23:59:59" Weeks="1000000" Time="23:59:00" Module="ActivityMgr" StartMethod="" EndMethod="" CheckWeek="" CheckMethod="OnWeekCheckTimer" Server="Game1"/>
+</config>

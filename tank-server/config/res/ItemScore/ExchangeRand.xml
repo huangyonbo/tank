@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_skill_bind_bomb" Stone="-0.6:1;0.6-0.8:1;0.8-1:1;1-:1" ColorGold="-0.6:1;0.6-0.8:1;0.8-1:1;1-:1"/>
+ <item Id="item_skill_normal_bomb" Stone="-0.6:1;0.6-0.8:1;0.8-1:1;1-:1" ColorGold="-0.6:1;0.6-0.8:1;0.8-1:1;1-:1"/>
+ <item Id="item_skill_missile" Stone="-0.6:1;0.6-0.8:0.7;0.8-1:0.3;1-:0.15" ColorGold="-0.6:1;0.6-0.8:0.7;0.8-1:0.3;1-:0.15"/>
+ <item Id="item_skill_nbomb" Stone="-0.6:1;0.6-0.8:0.7;0.8-1:0.3;1-:0.5" ColorGold="-0.6:1;0.6-0.8:0.7;0.8-1:0.3;1-:0"/>
+ <item Id="item_skill_hbomb" Stone="-0.6:1;0.6-0.8:0.7;0.8-1:0.3;1-:0" ColorGold="-0.6:1;0.6-0.8:0.7;0.8-1:0.3;1-:0"/>
+</config>

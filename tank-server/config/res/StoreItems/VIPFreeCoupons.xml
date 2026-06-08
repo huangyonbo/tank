@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="0" Award="item_gold_1000*10"/>
+ <item Id="1" Award="item_gold_1000*20"/>
+ <item Id="2" Award="item_gold_1000*30"/>
+ <item Id="3" Award="item_gold_1000*40"/>
+ <item Id="4" Award="item_gold_1000*50"/>
+ <item Id="5" Award="item_gold_1000*100"/>
+ <item Id="6" Award="item_gold_1000*200"/>
+ <item Id="7" Award="item_gold_1000*300"/>
+ <item Id="8" Award="item_gold_1000*400"/>
+ <item Id="9" Award="item_gold_1000*500"/>
+ <item Id="10" Award="item_gold_1000*600"/>
+ <item Id="11" Award="item_gold_1000*700"/>
+ <item Id="12" Award="item_gold_1000*800"/>
+ <item Id="13" Award="item_gold_1000*900"/>
+ <item Id="14" Award="item_gold_1000*1000"/>
+</config>

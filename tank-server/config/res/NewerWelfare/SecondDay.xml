@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Standard="0" Symbol="=" Range="10000-50000"/>
+ <item Id="2" Standard="6" Symbol="&lt;" Range="30000-80000"/>
+ <item Id="3" Standard="6" Symbol="&gt;=" Range="50000-99999"/>
+</config>

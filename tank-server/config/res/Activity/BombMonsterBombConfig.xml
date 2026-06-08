@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Award="item_pkg_bomb_monster_base_1" Blood="1-3" Cost="2" Die="0" Id="item_skill_bind_bomb" VipLevel="4"/>
+ <item Award="item_pkg_bomb_monster_base_2" Blood="12-28" Cost="15" Die="0" Id="item_skill_normal_bomb" VipLevel="4"/>
+ <item Award="item_pkg_bomb_monster_base_3" Blood="40-60" Cost="50" Die="1" Id="item_skill_missile" VipLevel="4"/>
+ <item Award="item_pkg_bomb_monster_base_4" Blood="200-300" Cost="250" Die="1" Id="item_skill_nbomb" VipLevel="4"/>
+ <item Award="item_pkg_bomb_monster_base_5" Blood="450-550" Cost="500" Die="1" Id="item_skill_hbomb" VipLevel="4"/>
+</config>

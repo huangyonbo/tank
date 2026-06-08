@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_pkg_coupons_ios_1" Price="1"/>
+ <item Id="item_pkg_coupons_ios_6" Price="6"/>
+ <item Id="item_pkg_coupons_ios_12" Price="12"/>
+ <item Id="item_pkg_coupons_ios_30" Price="30"/>
+ <item Id="item_pkg_coupons_ios_50" Price="50"/>
+ <item Id="item_pkg_coupons_ios_128" Price="128"/>
+ <item Id="item_pkg_coupons_ios_328" Price="328"/>
+ <item Id="item_pkg_coupons_ios_648" Price="648"/>
+</config>

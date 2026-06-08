@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="achievement1" ItemAward="item_achievement_5-&gt;item_achievement_10-&gt;item_achievement_15;item_title9" Target="" TargetCounts="30-&gt;60-&gt;90" Type="1"/>
+ <item Id="achievement2" ItemAward="item_achievement_10-&gt;item_achievement_20-&gt;item_achievement_30-&gt;item_achievement_40;item_title5" Target="" TargetCounts="3-&gt;6-&gt;9-&gt;12" Type="6"/>
+ <item Id="achievement3" ItemAward="item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_10" Target="" TargetCounts="100000-&gt;1000000-&gt;10000000-&gt;100000000-&gt;1000000000-&gt;10000000000" Type="3"/>
+ <item Id="achievement4" ItemAward="item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_10" Target="" TargetCounts="10000-&gt;100000-&gt;1000000-&gt;1000000-&gt;100000000-&gt;1000000000" Type="4"/>
+ <item Id="achievement5" ItemAward="item_achievement_5-&gt;item_achievement_10-&gt;item_achievement_15-&gt;item_achievement_20;item_title6" Target="item_skill_lock" TargetCounts="10-&gt;100-&gt;500-&gt;1000" Type="8"/>
+ <item Id="achievement6" ItemAward="item_achievement_5-&gt;item_achievement_10-&gt;item_achievement_15-&gt;item_achievement_20;item_title7" Target="item_skill_frozen" TargetCounts="10-&gt;100-&gt;500-&gt;1000" Type="8"/>
+ <item Id="achievement7" ItemAward="item_achievement_5-&gt;item_achievement_10-&gt;item_achievement_15-&gt;item_achievement_20;item_title8" Target="item_skill_speed" TargetCounts="10-&gt;100-&gt;500-&gt;1000" Type="8"/>
+ <item Id="achievement8" ItemAward="item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_10" Target="" TargetCounts="10000-&gt;100000-&gt;1000000-&gt;10000000-&gt;50000000" Type="7"/>
+ <item Id="achievement9" ItemAward="item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_5-&gt;item_achievement_10" Target="" TargetCounts="100-&gt;500-&gt;1000-&gt;5000-&gt;10000" Type="9"/>
+ <item Id="achievement10" ItemAward="item_title10-&gt;item_title11-&gt;item_title12" Target="" TargetCounts="100-&gt;280-&gt;400" Type="10"/>
+ <item Id="achievement11" ItemAward="item_title13-&gt;item_title14-&gt;item_title15-&gt;item_title16-&gt;item_title17-&gt;item_title18-&gt;item_title19-&gt;item_title20-&gt;item_title21-&gt;item_title22-&gt;item_title23" Target="" TargetCounts="1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6-&gt;7-&gt;8-&gt;9-&gt;10-&gt;11" Type="6"/>
+</config>

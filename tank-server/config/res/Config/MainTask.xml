@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item GunValue="100" Id="main0" NeedDiamond="500" NeedMaterial1="5" NeedMaterial2="5" Reward="item_pkg1"/>
+ <item GunValue="500" Id="main1" NeedDiamond="1000" NeedMaterial1="10" NeedMaterial2="20" Reward="item_pkg2"/>
+ <item GunValue="1000" Id="main2" NeedDiamond="2000" NeedMaterial1="20" NeedMaterial2="40" Reward="item_pkg3"/>
+ <item GunValue="2000" Id="main3" NeedDiamond="3000" NeedMaterial1="40" NeedMaterial2="60" Reward="item_pkg4"/>
+ <item GunValue="3000" Id="main4" NeedDiamond="4000" NeedMaterial1="80" NeedMaterial2="150" Reward="item_pkg5"/>
+ <item GunValue="5000" Id="main5" NeedDiamond="8000" NeedMaterial1="120" NeedMaterial2="300" Reward="item_pkg6"/>
+ <item GunValue="10000" Id="main6" NeedDiamond="20000" NeedMaterial1="300" NeedMaterial2="500" Reward="item_pkg7"/>
+</config>

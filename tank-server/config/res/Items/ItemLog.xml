@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_skill_hbomb" Flag="1"/>
+ <item Id="item_skill_nbomb" Flag="1"/>
+ <item Id="item_debris_nbomb" Flag="1"/>
+ <item Id="item_debris_hbomb" Flag="1"/>
+ <item Id="item_color_ticket_1" Flag="1"/>
+ <item Id="item_card_jd_50" Flag="1"/>
+ <item Id="item_card_jd_100" Flag="1"/>
+ <item Id="item_card_jd_500" Flag="1"/>
+ <item Id="item_card_jd_1000" Flag="1"/>
+ <item Id="item_card_recharge_10" Flag="1"/>
+ <item Id="item_card_recharge_50" Flag="1"/>
+ <item Id="item_card_recharge_100" Flag="1"/>
+ <item Id="item_card_recharge_vir_100" Flag="1"/>
+ <item Id="item_card_recharge_30" Flag="1"/>
+ <item Id="item_card_Tencent_10" Flag="1"/>
+ <item Id="item_card_Tencent_20" Flag="1"/>
+ <item Id="item_card_Tencent_50" Flag="1"/>
+ <item Id="item_card_Tencent_198" Flag="1"/>
+ <item Id="item_card_Tencent_51" Flag="1"/>
+ <item Id="item_card_Youku_20" Flag="1"/>
+ <item Id="item_card_Youku_56" Flag="1"/>
+ <item Id="item_card_Youku_198" Flag="1"/>
+ <item Id="item_card_iQIYI_20" Flag="1"/>
+ <item Id="item_card_iQIYI_58" Flag="1"/>
+ <item Id="item_card_iQIYI_198" Flag="1"/>
+ <item Id="item_bombcoin_1000000" Flag="1"/>
+ <item Id="item_bombcoin_1" Flag="1"/>
+</config>

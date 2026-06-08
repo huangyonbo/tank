@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Condition="1" Reward="item_pkg1"/>
+ <item Id="2" Condition="2" Reward="item_pkg10"/>
+ <item Id="3" Condition="3" Reward="item_pkg10"/>
+ <item Id="4" Condition="4" Reward="item_pkg10"/>
+ <item Id="5" Condition="5" Reward="item_pkg10"/>
+ <item Id="6" Condition="6" Reward="item_pkg10"/>
+ <item Id="7" Condition="7" Reward="item_pkg10"/>
+</config>

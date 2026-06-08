@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.login.app.dao.AccountCancelRecordDao">
+	<select id="get" resultType="com.login.app.domain.AccountCancelRecordDO">
+		select * from account_cancel_record where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.login.app.domain.AccountCancelRecordDO">
+		select * from account_cancel_record
+		<where>
+			<if test="id != null and id != ''"> and id = #{id}</if>
+			<if test="uid != null and uid != ''"> and uid = #{uid}</if>
+			<if test="level != null and level != ''"> and level = #{level}</if>
+			<if test="vipLevel != null and vipLevel != ''"> and vip_level = #{vipLevel}</if>
+			<if test="createTime != null and createTime != ''"> and create_time = #{createTime}</if>
+			<if test="channel != null and channel != ''"> and channel = #{channel}</if>
+			<if test="accumulateRecharge != null and accumulateRecharge != ''"> and accumulate_recharge = #{accumulateRecharge}</if>
+			<if test="diamond != null and diamond != ''"> and diamond = #{diamond}</if>
+			<if test="gold != null and gold != ''"> and gold = #{gold}</if>
+			<if test="bombCoin != null and bombCoin != ''"> and bomb_coin = #{bombCoin}</if>
+			<if test="colorTicket != null and colorTicket != ''"> and color_ticket = #{colorTicket}</if>
+			<if test="itemScore != null and itemScore != ''"> and item_score = #{itemScore}</if>
+			<if test="itemScoreLimit != null and itemScoreLimit != ''"> and item_score_limit = #{itemScoreLimit}</if>
+			<if test="itemParam != null and itemParam != ''"> and item_param = #{itemParam}</if>
+			<if test="status != null and status != ''"> and status = #{status}</if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="count" resultType="int">
+		select count(*) from account_cancel_record
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="uid != null and uid != ''"> and uid = #{uid} </if>
+			<if test="level != null and level != ''"> and level = #{level} </if>
+			<if test="vipLevel != null and vipLevel != ''"> and vip_level = #{vipLevel} </if>
+			<if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+			<if test="channel != null and channel != ''"> and channel = #{channel} </if>
+			<if test="accumulateRecharge != null and accumulateRecharge != ''"> and accumulate_recharge = #{accumulateRecharge} </if>
+			<if test="diamond != null and diamond != ''"> and diamond = #{diamond} </if>
+			<if test="gold != null and gold != ''"> and gold = #{gold} </if>
+			<if test="bombCoin != null and bombCoin != ''"> and bomb_coin = #{bombCoin} </if>
+			<if test="colorTicket != null and colorTicket != ''"> and color_ticket = #{colorTicket} </if>
+			<if test="itemScore != null and itemScore != ''"> and item_score = #{itemScore} </if>
+			<if test="itemScoreLimit != null and itemScoreLimit != ''"> and item_score_limit = #{itemScoreLimit} </if>
+			<if test="itemParam != null and itemParam != ''"> and item_param = #{itemParam} </if>
+			<if test="status != null and status != ''"> and status = #{status} </if>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="com.login.app.domain.AccountCancelRecordDO" useGeneratedKeys="true" keyProperty="id">
+		insert into account_cancel_record
+		(
+			`uid` ,
+		 	`level` ,
+		 	`vip_level` ,
+		 	`create_time` ,
+		 	`channel` ,
+		 	`accumulate_recharge` ,
+		 	`diamond` ,
+		 	`gold` ,
+		 	`bomb_coin` ,
+		 	`color_ticket` ,
+		 	`item_score` ,
+		 	`item_score_limit` ,
+		 	`item_param` ,
+		 	`status`
+		)
+		values
+		(
+		 	 #{uid} ,
+		 	 #{level} ,
+			 #{vipLevel} ,
+			 #{createTime} ,
+			 #{channel} ,
+			 #{accumulateRecharge} ,
+			 #{diamond} ,
+			 #{gold} ,
+			 #{bombCoin} ,
+			 #{colorTicket} ,
+			 #{itemScore} ,
+			 #{itemScoreLimit} ,
+			 #{itemParam} ,
+			 #{status}
+		 )
+	</insert>
+
+	<update id="update" parameterType="com.login.app.domain.AccountCancelRecordDO">
+		update account_cancel_record
+		<set>
+			<if test="uid != null">`uid` = #{uid}, </if>
+			<if test="level != null">`level` = #{level}, </if>
+			<if test="vipLevel != null">`vip_level` = #{vipLevel}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="channel != null">`channel` = #{channel}, </if>
+			<if test="accumulateRecharge != null">`accumulate_recharge` = #{accumulateRecharge}, </if>
+			<if test="diamond != null">`diamond` = #{diamond}, </if>
+			<if test="gold != null">`gold` = #{gold}, </if>
+			<if test="bombCoin != null">`bomb_coin` = #{bombCoin}, </if>
+			<if test="colorTicket != null">`color_ticket` = #{colorTicket}, </if>
+			<if test="itemScore != null">`item_score` = #{itemScore}, </if>
+			<if test="itemScoreLimit != null">`item_score_limit` = #{itemScoreLimit}, </if>
+			<if test="itemParam != null">`item_param` = #{itemParam}, </if>
+			<if test="status != null">`status` = #{status}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="remove">
+		delete from account_cancel_record where id = #{value}
+	</delete>
+
+</mapper>

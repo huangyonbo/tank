@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <item Id="1" TargetTypes="0" targetValues="30" />
+  <item Id="2" TargetTypes="1" targetValues="1" />
+  <item Id="3" TargetTypes="2" targetValues="6" />
+  <item Id="4" TargetTypes="3" targetValues="6" />
+  <item Id="5" TargetTypes="4" targetValues="1" />
+  <item Id="6" TargetTypes="5" targetValues="2" />
+  <item Id="7" TargetTypes="6" targetValues="1" />
+</root>

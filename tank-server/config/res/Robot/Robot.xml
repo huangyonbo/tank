@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="robot_normal" Name="机器人" Script="Robot" StartState="1"/>
+ <item Id="robot_arena" Name="机器人" Script="Robot" StartState="3"/>
+</config>

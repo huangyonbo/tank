@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" MysteryMin="0.0003" MysteryMax="0.02" MysteryValueLimit="6000" PkgName="item_pkg_Midgard" PkgTime="24"/>
+</config>

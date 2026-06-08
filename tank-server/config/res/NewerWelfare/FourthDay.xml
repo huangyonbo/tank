@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Standard="0" Symbol="=" Range="150000-300000"/>
+ <item Id="2" Standard="6" Symbol="&lt;" Range="300000-500000"/>
+ <item Id="3" Standard="50" Symbol="&lt;" Range="400000-700000"/>
+ <item Id="4" Standard="100" Symbol="&lt;" Range="500000-1000000"/>
+ <item Id="5" Standard="300" Symbol="&lt;" Range="1000000-2000000"/>
+ <item Id="6" Standard="500" Symbol="&lt;" Range="2000000-4000000"/>
+ <item Id="7" Standard="500" Symbol="&gt;=" Range="3000000-9999999"/>
+</config>

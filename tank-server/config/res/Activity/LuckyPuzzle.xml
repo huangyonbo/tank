@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="fish135" Name="章鱼博士" Index="1" ConfigType="1"/>
+ <item Id="fish152" Name="章鱼博士（海神殿）" Index="1" ConfigType="1"/>
+ <item Id="fish136" Name="人鱼女皇" Index="2" ConfigType="1"/>
+ <item Id="fish153" Name="人鱼女皇（海神殿）" Index="2" ConfigType="1"/>
+ <item Id="fish158" Name="至尊人鱼女皇" Index="2" ConfigType="1"/>
+ <item Id="fish137" Name="玄武" Index="3" ConfigType="1"/>
+ <item Id="fish154" Name="玄武（海神殿）" Index="3" ConfigType="1"/>
+ <item Id="fish159" Name="至尊玄武" Index="3" ConfigType="1"/>
+ <item Id="fish138" Name="牛魔王" Index="4" ConfigType="1"/>
+ <item Id="fish155" Name="牛魔王（海神殿）" Index="4" ConfigType="1"/>
+ <item Id="fish160" Name="至尊牛魔王" Index="4" ConfigType="1"/>
+ <item Id="fish21" Name="安康鱼" Index="1" ConfigType="2"/>
+ <item Id="fish97" Name="安康鱼（鱼王争霸）" Index="1" ConfigType="2"/>
+ <item Id="fish22" Name="海马将军" Index="2" ConfigType="2"/>
+ <item Id="fish98" Name="海马将军（鱼王争霸）" Index="2" ConfigType="2"/>
+ <item Id="fish107" Name="至尊海马将军" Index="2" ConfigType="2"/>
+ <item Id="fish23" Name="朱雀" Index="3" ConfigType="2"/>
+ <item Id="fish99" Name="朱雀（鱼王争霸）" Index="3" ConfigType="2"/>
+ <item Id="fish108" Name="至尊朱雀" Index="3" ConfigType="2"/>
+ <item Id="fish24" Name="沉船舰长" Index="4" ConfigType="2"/>
+ <item Id="fish100" Name="沉船舰长（鱼王争霸）" Index="4" ConfigType="2"/>
+ <item Id="fish109" Name="至尊沉船舰长" Index="4" ConfigType="2"/>
+</config>

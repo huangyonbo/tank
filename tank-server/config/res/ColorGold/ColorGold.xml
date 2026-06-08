@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Count="5" Consume="500" RewardPkg="pkg_cg_1" RewardPkg1="pkg_cg_01" RewardPkg2="pkg_cg_001"/>
+ <item Id="2" Count="5" Consume="5000" RewardPkg="pkg_cg_2" RewardPkg1="pkg_cg_02" RewardPkg2="pkg_cg_002"/>
+ <item Id="3" Count="5" Consume="50000" RewardPkg="pkg_cg_3" RewardPkg1="pkg_cg_03" RewardPkg2="pkg_cg_003"/>
+ <item Id="4" Count="5" Consume="200000" RewardPkg="pkg_cg_4" RewardPkg1="pkg_cg_04" RewardPkg2="pkg_cg_004"/>
+ <item Id="5" Count="5" Consume="1000000" RewardPkg="pkg_cg_5" RewardPkg1="pkg_cg_05" RewardPkg2="pkg_cg_005"/>
+ <item Id="6" Count="5" Consume="5000000" RewardPkg="pkg_cg_6" RewardPkg1="pkg_cg_06" RewardPkg2="pkg_cg_006"/>
+</config>

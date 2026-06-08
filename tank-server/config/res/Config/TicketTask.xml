@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="ticket_task0" Reward="item_pkg_activityTask1" TargetCount="1" TargetDetail="" TargetType="1" Title="活动期间累计登陆1天"/>
+ <item Id="ticket_task1" Reward="item_pkg_activityTask2" TargetCount="3" TargetDetail="" TargetType="1" Title="活动期间累计登陆3天"/>
+ <item Id="ticket_task2" Reward="item_pkg_activityTask3" TargetCount="5" TargetDetail="" TargetType="1" Title="活动期间累计登陆5天"/>
+ <item Id="ticket_task3" Reward="item_pkg_activityTask4" TargetCount="1000" TargetDetail="0" TargetType="0" Title="活动期间累计击杀1000条鱼"/>
+ <item Id="ticket_task4" Reward="item_pkg_activityTask5" TargetCount="2000" TargetDetail="0" TargetType="0" Title="活动期间累计击杀2000条鱼"/>
+ <item Id="ticket_task5" Reward="item_pkg_activityTask6" TargetCount="5000" TargetDetail="0" TargetType="0" Title="活动期间累计击杀5000条鱼"/>
+ <item Id="ticket_task6" Reward="item_pkg_activityTask7" TargetCount="100" TargetDetail="item_skill_frozen,item_skill_speed,item_skill_lock" TargetType="4" Title="活动期间累计使用100冰冻狂暴"/>
+ <item Id="ticket_task7" Reward="item_pkg_activityTask8" TargetCount="200" TargetDetail="item_skill_frozen,item_skill_speed,item_skill_lock" TargetType="4" Title="活动期间累计使用200冰冻狂暴"/>
+ <item Id="ticket_task8" Reward="item_pkg_activityTask9" TargetCount="300" TargetDetail="item_skill_frozen,item_skill_speed,item_skill_lock" TargetType="4" Title="活动期间累计使用300冰冻狂暴"/>
+ <item Id="ticket_task9" Reward="item_pkg_activityTask10" TargetCount="100" TargetDetail="fish30,fish31,fish32,fish33,fish34" TargetType="0" Title="活动期间累计击杀100条黄金鱼"/>
+ <item Id="ticket_task10" Reward="item_pkg_activityTask11" TargetCount="200" TargetDetail="fish30,fish31,fish32,fish33,fish34" TargetType="0" Title="活动期间累计击杀200条黄金鱼"/>
+ <item Id="ticket_task11" Reward="item_pkg_activityTask12" TargetCount="300" TargetDetail="fish30,fish31,fish32,fish33,fish34" TargetType="0" Title="活动期间累计击杀300条黄金鱼"/>
+ <item Id="ticket_task12" Reward="item_pkg_activityTask13" TargetCount="20" TargetDetail="fish21,fish22,fish23,fish24,fish25" TargetType="0" Title="活动期间成功捕获20条鱼王"/>
+ <item Id="ticket_task13" Reward="item_pkg_activityTask14" TargetCount="50" TargetDetail="fish21,fish22,fish23,fish24,fish25" TargetType="0" Title="活动期间成功捕获50条鱼王"/>
+ <item Id="ticket_task14" Reward="item_pkg_activityTask15" TargetCount="100" TargetDetail="fish21,fish22,fish23,fish24,fish25" TargetType="0" Title="活动期间成功捕获100条鱼王"/>
+ <item Id="ticket_task15" Reward="item_pkg_activityTask16" TargetCount="100000" TargetDetail="" TargetType="3" Title="活动期间累计消耗100000金币"/>
+ <item Id="ticket_task16" Reward="item_pkg_activityTask17" TargetCount="500000" TargetDetail="" TargetType="3" Title="活动期间累计消耗500000金币"/>
+ <item Id="ticket_task17" Reward="item_pkg_activityTask18" TargetCount="1000000" TargetDetail="" TargetType="3" Title="活动期间累计消耗1000000金币"/>
+</config>

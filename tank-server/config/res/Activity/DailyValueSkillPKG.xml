@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" PKGId="item_daily_value_skill_pkg_1" Price="15" DiscountPrice="6"/>
+ <item Id="2" PKGId="item_daily_value_skill_pkg_2" Price="59" DiscountPrice="28"/>
+ <item Id="3" PKGId="item_daily_value_skill_pkg_3" Price="169" DiscountPrice="88"/>
+ <item Id="4" PKGId="item_daily_value_skill_pkg_4" Price="340" DiscountPrice="188"/>
+</config>

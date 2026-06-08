@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Items="item_dongfeng*1" Awards="item_gold_1*1000"/>
+ <item Id="2" Items="item_nanfeng*1" Awards="item_gold_1*2500"/>
+ <item Id="3" Items="item_xifeng*1" Awards="item_gold_1*5000"/>
+ <item Id="4" Items="item_beifeng*1" Awards="item_gold_1*7500"/>
+ <item Id="5" Items="item_hongzhong*1" Awards="item_gold_1*10000"/>
+ <item Id="6" Items="item_facai*1" Awards="item_gold_1*12500"/>
+ <item Id="7" Items="item_baiban*1" Awards="item_gold_1*15000"/>
+ <item Id="8" Items="item_dongfeng*1;item_xifeng*1" Awards="item_gold_1*6500"/>
+ <item Id="9" Items="item_nanfeng*1;item_beifeng*1" Awards="item_gold_1*11000"/>
+ <item Id="10" Items="item_dongfeng*1;item_xifeng*1;item_nanfeng*1;item_beifeng*1" Awards="item_gold_1*18000"/>
+ <item Id="11" Items="item_hongzhong*1;item_facai*1;item_baiban*1" Awards="item_gold_1*40000"/>
+ <item Id="12" Items="item_dongfeng*1;item_xifeng*1;item_nanfeng*1;item_beifeng*1;item_hongzhong*1;item_facai*1;item_baiban*1" Awards="item_gold_1*60000"/>
+</config>

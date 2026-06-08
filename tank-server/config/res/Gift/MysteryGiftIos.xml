@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_mystery1_ios" BaseItem="item_pkg_mystery1_ios" RandItem="pkg_mg_extreme_1_ios"/>
+ <item Id="item_mystery2_ios" BaseItem="item_pkg_mystery2_ios" RandItem="pkg_mg_extreme_2_ios"/>
+ <item Id="item_mystery3_ios" BaseItem="item_pkg_mystery3_ios" RandItem="pkg_mg_extreme_3_ios"/>
+</config>

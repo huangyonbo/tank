@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" RechargeValue="100" Award="item_pkg10"/>
+ <item Id="2" RechargeValue="500" Award="item_pkg11"/>
+</config>

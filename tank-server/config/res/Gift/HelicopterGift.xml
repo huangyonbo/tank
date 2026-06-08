@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_pkg_LiftingGun_1"/>
+ <item Id="item_pkg_LiftingGun_2"/>
+ <item Id="item_pkg_LiftingGun_3"/>
+ <item Id="item_pkg_LiftingGun_4"/>
+ <item Id="item_pkg_LiftingGun_5"/>
+ <item Id="item_pkg_LiftingGun_6"/>
+</config>

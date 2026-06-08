@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="0" isDefault="1" price="0" online="1"/>
+ <item Id="1" isDefault="0" price="1" online="0"/>
+ <item Id="2" isDefault="0" price="1" online="0"/>
+ <item Id="3" isDefault="0" price="1" online="1"/>
+ <item Id="4" isDefault="0" price="1" online="1"/>
+ <item Id="5" isDefault="0" price="1" online="0"/>
+ <item Id="6" isDefault="0" price="1" online="0"/>
+ <item Id="7" isDefault="0" price="1" online="1"/>
+ <item Id="8" isDefault="0" price="1" online="1"/>
+</config>

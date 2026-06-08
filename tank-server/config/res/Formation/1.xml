@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config time="56.0">
+ <item Count="75" Fishid="fish1" Id="0"/>
+ <item Count="75" Fishid="fish1" Id="1"/>
+ <item Count="37" Fishid="fish7" Id="2"/>
+ <item Count="37" Fishid="fish7" Id="3"/>
+ <item Count="35" Fishid="fish12" Id="4"/>
+ <item Count="35" Fishid="fish12" Id="5"/>
+ <item Count="4" Fishid="fish30" Id="6"/>
+</config>

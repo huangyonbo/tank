@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_voucher_200" Price="200" Virtual="1" Stock="10000" Limit="20" ItemName="200元代金券" CostMaterial="兑换卡" Properties="ExchangeCard"/>
+ <item Id="item_gold_120000" Price="10" Virtual="1" Stock="10000" Limit="100" ItemName="12万金币" CostMaterial="兑换卡" Properties="ExchangeCard"/>
+ <item Id="item_diamond_300" Price="25" Virtual="1" Stock="10000" Limit="100" ItemName="300钻石" CostMaterial="兑换卡" Properties="ExchangeCard"/>
+ <item Id="item_skill_missile" Price="30" Virtual="1" Stock="10000" Limit="100" ItemName="高级三叉戟" CostMaterial="兑换卡" Properties="ExchangeCard"/>
+ <item Id="item_skill_hbomb" Price="200" Virtual="1" Stock="10000" Limit="30" ItemName="传说三叉戟" CostMaterial="兑换卡" Properties="ExchangeCard"/>
+ <item Id="item_card_recharge_vir_100" Price="100" Virtual="0" Stock="10000" Limit="20" ItemName="100元话费券" CostMaterial="兑换卡" Properties="ExchangeCard"/>
+</config>

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Name="鱼王争霸_安康鱼" Debris="item_debris_ankangyu" Count="100" Boss="fish97" MinBV="100" MaxBV="500" Jackpot="50000" Time="10" MaxCount="40"/>
+ <item Id="2" Name="鱼王争霸_海马将军" Debris="item_debris_eyu" Count="100" Boss="fish98" MinBV="500" MaxBV="5000" Jackpot="1000000" Time="15" MaxCount="40"/>
+ <item Id="3" Name="鱼王争霸_朱雀" Debris="item_debris_hudieyu" Count="100" Boss="fish99" MinBV="5000" MaxBV="20000" Jackpot="5000000" Time="20" MaxCount="40"/>
+ <item Id="4" Name="鱼王争霸_沉船舰长" Debris="item_debris_moguiyu" Count="100" Boss="fish100" MinBV="20000" MaxBV="100000" Jackpot="25000000" Time="25" MaxCount="40"/>
+</config>

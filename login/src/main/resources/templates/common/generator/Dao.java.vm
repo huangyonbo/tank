@@ -1,0 +1,34 @@
+package ${package}.dao;
+
+import ${package}.domain.${className}DO;
+import java.util.List;
+import java.util.Map;
+import org.apache.ibatis.annotations.Mapper;
+
+import com.login.common.mybatis.ano.OnSqlDo;
+import com.login.common.mybatis.DataSourceType;
+
+/**
+ * ${comments}
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Mapper
+public interface ${className}Dao {
+
+	@OnSqlDo(DataSourceType.LOGIN)
+	${className}DO get(${pk.attrType} ${pk.attrname});
+	@OnSqlDo(DataSourceType.LOGIN)
+	List<${className}DO> list(Map<String,Object> map);
+	@OnSqlDo(DataSourceType.LOGIN)
+	int count(Map<String,Object> map);
+	@OnSqlDo(DataSourceType.LOGIN)
+	int save(${className}DO ${classname});
+	@OnSqlDo(DataSourceType.LOGIN)
+	int update(${className}DO ${classname});
+	@OnSqlDo(DataSourceType.LOGIN)
+	int remove(${pk.attrType} ${pk.columnName});
+	@OnSqlDo(DataSourceType.LOGIN)
+	int batchRemove(${pk.attrType}[] ${pk.attrname}s);
+}

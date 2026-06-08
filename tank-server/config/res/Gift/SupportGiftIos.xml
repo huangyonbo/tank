@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_pkg_supply2_ios" Name="补给礼包2"/>
+ <item Id="item_pkg_supply3_ios" Name="补给礼包3"/>
+ <item Id="item_pkg_supply4_ios" Name="补给礼包4"/>
+ <item Id="item_pkg_supply5_ios" Name="补给礼包5"/>
+ <item Id="item_pkg_supply6_ios" Name="补给礼包6"/>
+ <item Id="item_pkg_supply7_ios" Name="补给礼包7"/>
+ <item Id="item_pkg_supply8_ios" Name="补给礼包8"/>
+ <item Id="item_pkg_supply9_ios" Name="补给礼包9"/>
+</config>

@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Scale="35000"/>
+ <item Id="2" Scale="15000"/>
+ <item Id="3" Scale="15000"/>
+ <item Id="4" Scale="5000"/>
+ <item Id="5" Scale="5000"/>
+ <item Id="6" Scale="5000"/>
+ <item Id="7" Scale="5000"/>
+ <item Id="8" Scale="5000"/>
+ <item Id="9" Scale="5000"/>
+ <item Id="10" Scale="5000"/>
+</config>

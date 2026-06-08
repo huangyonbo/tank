@@ -1,0 +1,227 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_real_1" Name="NERF拉尔弗酸奶机ZCW-S09" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_2" Name="NERF拉尔弗酸奶机PA-102" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_3" Name="NERF拉尔弗煮蛋器PA-611" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_4" Name="NERF拉尔弗蒸煮饭盒MD-818" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_5" Name="真我buds经典款有线耳机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_6" Name="埃斯曼电动牙刷" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_7" Name="X1骨传导蓝牙耳机空气传感耳机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_8" Name="格卡诺GKN-KQZG-4 5L空气炸锅（红色）" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_9" Name="格卡诺4L空气炸锅（柠檬黄）GKN-KQZG-9" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_10" Name="格卡诺GKN-DKX-3 多功能电烤箱12L（旗舰版）" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_11" Name="米狗（MEEE GOU） 电动牙刷成人男女软毛清洁声波电动牙刷 MX213电动牙刷" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_12" Name="扬子FB-288电动剃须刀全身水洗干湿双剃刮胡刀剃胡刀胡须刀便携快充" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_13" Name="践程 (健程）可视眼部按摩仪磁石按摩护眼仪HY001" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_14" Name="E88航模无人机4k高清双摄航拍器四轴折叠遥控飞机定高4k双摄像头三电套餐" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_15" Name="【vivo原装】耳机XE710线控HiFi入耳式iQOOneo3x27x30Proz5xz6s6通用 原装 XE710" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_16" Name="大屏爆款蓝牙耳机入耳塞式触摸防水三屏数显5.1耳机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_17" Name="GKN格卡诺家用多功能自动搅拌机便携果汁机小型果蔬料理机 GKN-ZZJ-01榨汁机CPZZJ189" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_18" Name="卡屋养生壶XM-Y16" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_19" Name="美国nerf拉尔弗单层电热饭盒 MD-838 白色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_20" Name="GKN格卡诺电饭煲家用智能预约电饭锅5L大容量3-6人GKN-DFB-04电饭煲(特供款)CPDFB179" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_21" Name="GKN格卡诺小型涮烤一体锅 多功能煎涮电火锅无烟电烤炉 GKN-TA-169涮烤一体锅（34寸）CPSKG34C023" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_22" Name="GKN格卡诺 四合一扫地机 GKN-SDJ-6(加湿款)CPSDJ253" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_23" Name="GKN-SDJ-5三合一扫地机(29寸)" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_24" Name="米狗（MEEE GOU） 米狗电动智能冲牙器便携式正畸牙齿清洁清洗水牙线家用去除器洗牙齿污垢清洁 米狗冲牙器MX186" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_25" Name="爱登堡（Edenbo）商务休闲双肩包F1722-1黑色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_26" Name="智能消毒 刀具 砧板 筷子消毒机 餐具保洁机（豆青色）" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_27" Name="小米 Xiaomi Sound 高保真智能音箱 智能音箱 小爱同学 小爱音箱 小米音响 银色星光款 音箱 音响" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_28" Name="美菱（MeiLing）4L迷你小型冰箱学生寝室宿舍租房单元用放化妆品冰箱 4L\/可车用 经典白（带小熊）" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_29" Name="美的快捷微波炉 微电脑操控 智能蒸煮菜单 21L 转盘加热PM2003（黑色）" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_30" Name="ilift光子硅胶洁面仪 IF-1018" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_31" Name="方舟 刀架消毒机FDJ-10/白色332*90*216cm" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_32" Name="梵高（VanGogh）女士手表瑞士原装腕表时尚轻奢钢带石英手表男防水情侣表送女友 麦田群鸦Gent07-1-BM" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_33" Name="PLOVER自动扣皮带男士裤腰带金色银色工字扣头二选一GD09AK38/GD09AK39 金色扣头" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_34" Name="京鱼座 【京东自有品牌】小战鼓 音响 音箱 蓝牙5.1 无线连接 便携低音炮" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_35" Name="亚马逊美队盾牌TWS蓝牙音箱 户外运动迷你便携音响" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_36" Name="苏泊尔电压力锅SY-50FH33Q 容积5L" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_37" Name="陶瓷暖暖杯55度智能恒温暖暖杯牛奶加热保温杯垫" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_38" Name="智能摇摇快速降温杯恒温55度水杯不锈钢儿童保温杯礼盒装" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_39" Name="兰士顿 蓝牙耳机挂脖式运动跑步 磁吸入耳式高清通话 黑色 2只情侣装" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_40" Name="新款CT7蓝牙通话1.7无线充AI语音助手RTL8762C支付NFC智能手表环" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_41" Name="颐电 蓝牙音箱 耳机音箱 AD-0352AI语音音箱 白色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_42" Name="华为手环4e 运动手环 智能手环 两种佩戴方式/14天长续航/睡眠监测/跑姿骑行篮球运动指导" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_43" Name="猎擎GX50发光游戏键盘电竞机械手感" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_44" Name="布艺插卡无线蓝牙音箱迷你便携式" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_45" Name="儿童小黄鸭电动牙刷+3个刷头套装超声波洗牙器软毛充电款" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_46" Name="天梭瑞士手表 俊雅系列 商务休闲石英男表 T063.617.16.037.00" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_47" Name="天梭瑞士手表 俊雅系列商务休闲石英男表 T063.610.36.037.00" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_48" Name="米狗（MEEE GOU） 颈椎按摩仪颈电脉冲按摩器 颈椎按摩仪MKG01" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_49" Name="法国奥利维拉珍珠吊坠2737/1076/1071" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_50" Name="宏森百纳空气炸锅5L家用大容量触屏多功能无油烟电炸锅大功率低脂薯条机不沾煎炸锅先科" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_51" Name="米狗（MEEE GOU） 米狗电动智能冲牙器便携式正畸牙齿清洁清洗水牙线家用去除器洗牙齿污垢清洁 米狗冲牙器MX175" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_52" Name="康佳(KONKA)手持挂烫机 KG-HS1" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_53" Name="创维（Skyworth） 变频家用破壁机自动豆浆机多功能料理机绞肉机辅食机 P23A红色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_54" Name="GkN-TXD-1 GkN-TXD-12格卡诺电动剃须刀" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_55" Name="小米Redmi AirDots 3 真无线蓝牙耳机 蓝牙5.2 动圈动铁双单元 超长续航 入耳式耳机 耳塞式 小米耳机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_56" Name="松下Panasonic微电脑电饭煲SR-MGT108" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_57" Name="西屋（Westinghouse）咖啡机WKF-C63" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_58" Name="九阳烤箱KX10-V601" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_59" Name="Apple Magic Keyboard 妙控键盘 - 中文 (拼音) Mac键盘" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_60" Name="格卡诺挂壁式取暖器GKN-11（新款）" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_61" Name="美商海盗船（USCORSAIR） 8GB DDR4 3000 台式机内存条 复仇者LPX系列 游戏型" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_62" Name="荣耀亲选 北通H2 手机游戏手柄安卓苹果手游" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_63" Name="荣耀路由4 WiFi6千兆路由 ax3000 专属网络芯片 网课游戏加速 多连不卡家用穿墙 双频优选 高速无线路由" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_64" Name="迪斯智能颈部按摩器DE-F30白色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_65" Name="小米手环6 NFC版 全面彩屏 离线支付 30种运动模式 24h心率检测 50米防水 智能手环 运动手环" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_66" Name="L08云台手机运动防抖自拍杆 单轴稳定器蓝牙直播稳拍器支架脚架" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_67" Name="澳得迈(AODMA) DY-109 声波震动电动牙刷 清除牙渍 粉色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_68" Name="小米小爱音箱Play 小爱同学 AIoT语音控制 蓝牙Mesh网关 超级故事王 智能音箱 智能音响 小爱音响" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_69" Name="OPPO Enco Free2i 真无线入耳式蓝牙降噪耳机 主动降噪 超长续航 个性化降噪通用小米苹果华为手机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_70" Name="米狗（MEEE GOU） 筋膜枪膜肌肉放松器肌膜枪肩颈腿部腰部按摩器电动按摩仪健身 J12灰色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_71" Name="米家 小米电动剃须刀 陶瓷刀头 金属机身 胡须密度监测 直驱无刷马达 S700" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_72" Name="银雕G5有线鼠标发光游戏电竞机械静音" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_73" Name="康佳（KONKA）KC-VS53 家用扫地机器人一键启动全自动扫拖一体智能吸尘器清洁吸尘器" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_74" Name="米狗（MEEE GOU） 颈椎按摩仪颈电脉冲按摩器 颈椎按摩仪MKG-02" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_75" Name="米狗（MEEE GOU） 电动牙刷儿童男女软毛清洁声波电动牙刷 电动牙刷" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_76" Name="小米充电宝 原装20000毫安时 50W PD快充适配小米/红米手机 充电宝内含数据线" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_77" Name="vivo XE160原装耳机3.5mm接口 白色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_78" Name="扫地狗扫地机器人SDG-D001/扫地狗" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_79" Name="洛斐lofree小翘69键/101键机械键盘专用键帽A区B区主题键帽复古色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_80" Name="Apple 苹果 HomePod mini 智能音响/音箱 语音音响/音箱 智能家居" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_81" Name="Tezo Spark火花2代真无线蓝牙耳机低延时电竞游戏耳机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_82" Name="华为FreeBuds4i无线蓝牙耳机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_83" Name="Dior迪奥旷野男士淡香氛经典淡香水 EDT 100ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_84" Name="CHANEL香奈儿蔚蓝男士香水蔚蓝淡香50ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_85" Name="TOM FORD汤姆福特桃涩花蜜 TF苦桃女士香水 50ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_86" Name="迪奥（DIOR）女士香水 粉色魅惑清新 EDT淡香水 100ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_87" Name="迪奥 旷野之心淡香水 男款 60ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_88" Name="香奈儿 邂逅系列邂逅柔情淡香水 EDT 50ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_89" Name="迪奥（Dior）迪奥真我女士香水 真我心悦50ml（淡香）" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_90" Name="香奈儿（Chanel）邂逅柔情淡香水100ml 粉邂逅" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_91" Name="香奈儿COCO100ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_92" Name="香奈儿N5 浓香100ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_93" Name="兰蔻菁纯柔润唇膏口红3.4g 196#505#01" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_94" Name="兰蔻菁纯眼霜20ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_95" Name="兰蔻大眼精华 20ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_96" Name="迪奥Dior口红#626#999#888#520" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_97" Name="TOM FORD汤姆福TF黑管口红07# 08# 09# 10#15# 16# 69# 80#" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_98" Name="YSL圣罗兰口红" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_99" Name="雅诗兰黛雅诗兰黛DW粉底液30ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_100" Name="欧莱雅青春密码酵素精华肌底液限量版 50ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_101" Name="欧莱雅复颜清乳柔肤水 130ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_102" Name="Armani/阿玛尼红黑管挚爱哑光唇膏大牌口红 4g 400 # 500 # 405 # 406 # 403 # 201" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_103" Name="纪梵希丝绒口红 N37#" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_104" Name="海蓝之谜修复精粹水150ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_105" Name="Redmi小爱触屏音箱Pro8英寸电池版 音响 蓝牙音箱 小爱同学 智能音箱 小米音箱 大屏蓝牙音响 小米红米" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_106" Name="OPPO手环时尚版 智能手环 运动手环 心率手环 连续血氧监测/睡眠监测/支持NFC 通用小米华为苹果手机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_107" Name="罗技（Logitech）K835机械键盘 有线键盘 游戏办公键盘 84键 黑色 TTC轴 红轴" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_108" Name="创维空气净化器Q45" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_109" Name="LMK女式手提包可斜跨8302#8367#8359#826901 随机发放" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_110" Name="小米米家电磁炉青春版家用小型持续加热火锅炒菜灶一体" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_111" Name="REBIRTH丽泊芙手表(白、粉、黑）颜色随机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_112" Name="T13蓝牙无线耳机入耳式黑科技TWS耳机入耳式超长续航大电量" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_113" Name="小黄鸭陶瓷保鲜碗三件套 密封碗 礼品碗套装礼盒装" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_114" Name="头戴式蓝牙耳机（钢铁侠/蜘蛛侠联名卡）" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_115" Name="AOC GK410青轴 有线键盘 机械游戏键盘104键 背光键盘 金属面板" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_116" Name="JBL CLIP4 无线音乐盒四代 蓝牙便携音箱+低音炮" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_117" Name="engue恩谷温度显示暖手宝+移动电源?LP-68" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_118" Name="千幻魔镜 G04BS十一代vr眼镜智能蓝牙链接 3D眼镜手机VR游戏机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_119" Name="Enlliean鹰伦U型颈椎按摩仪SKT-Y8807U 颈椎按摩器 颈部按摩仪劲锥脖子护颈仪富贵包劲" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_120" Name="九阳电烤箱家用多功能烘焙 定时控温 迷你10L容量 KX10-V601" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_121" Name="涮烤一体锅（36寸） GKN-TA-168" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_122" Name="小米米家声波电动牙刷T500家用智能防水充电式" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_123" Name="EDEI宜阁酸奶机 S-001" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_124" Name="X.X.PIE形象派 背包3106/黑色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_125" Name="山水煮茶器 SZC-Q6黑色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_126" Name="美的（Midea）YBJ10G3 挂烫机 智能 蒸汽 加热 家用 迷你 烫衣机 小型电熨斗 便携式 旅行熨烫机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_127" Name="PLOVER香港啄木鸟男士自动扣皮带GD24AK21-DA-B1" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_128" Name="香奈儿 新版山茶花三合一洗面奶洁面乳150ml" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_129" Name="山水29吋80厘米高遥控塔扇STF-1929R" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_130" Name="X.X.PIE形象派 背包3225/黑色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_131" Name="柯迈龙 平衡车R9plus-颜色随机/包装尺寸650*290*330mm/" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_132" Name="创维龙头净水器 CW120K" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_133" Name="外星人（Alienware）Pro Backpack 猎户座 17英寸 双肩包 多场景适用 笔记本双肩包 游戏电脑包" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_134" Name="vivo TWS 2e真无线耳机新品蓝牙耳机iqoovivotws2e" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_135" Name="雷蛇 Razer 毒蝰终极版 Cyberpunk 2077限定 赛博朋克 无线游戏电竞鼠标" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_136" Name="SK-II大红瓶面霜修护霜提拉紧致80g滋润款" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_137" Name="荣耀手表GS Pro25天续航103种运动模式智能手表男女蓝牙通话手环心率官方旗舰店碳石黑" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_138" Name="E350M有线蓝牙音响电脑桌面长条木质音箱" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_139" Name="Apple/苹果 AirPods (第二代)" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_140" Name="外交官 拉杆箱DS-13023 黄色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_141" Name="乔力（JOASLI）Q5家用静音动感单车" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_142" Name="康佳(KONKA)咖啡机 KCF-CS2" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_143" Name="GKN-HYY-1 护眼仪(黑色)" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_144" Name="华义泰 52 x6 /39 07s蓝牙音响" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_145" Name="天猫精灵 方糖AI智能音箱蓝牙音响无线wifi智能音响" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_146" Name="美的手持吸尘器SN7/SN9" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_147" Name="勒德威 K11多功能 家用电动折叠健身跑步机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_148" Name="勒德威品牌F950豪华按摩椅" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_149" Name="E99k3高清航拍4k折叠四轴飞行器遥控三面避障无人机跨境遥控飞机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_150" Name="迪士尼CE-872V家庭ktv麦克风话筒音响一体机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_151" Name="大疆（DJI） 大疆 DJI Air 2S 航拍无人机 一英寸相机 5.4K超高清视频 智能 畅飞套装（DJI 带屏遥控器）" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_152" Name="健知美动感单车室内磁控全包围静音智能健身车" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_153" Name="Recci锐思REP-W12挂耳式单耳耳机蓝牙5.0无线蓝牙耳机 黑色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_154" Name="COACH 蔻驰商务公文包修闲翻盖中号手提电脑包 F50050拼棕 / F50052浮雕 / F50051 PVC 黑" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_155" Name="ilift按摩仪" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_156" Name="迪奥口红小样四件套礼盒" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_157" Name="智能温度显示保温杯中国风国潮礼品LED测温商务保温杯礼盒装" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_158" Name="ilift吸黑头仪 IF-1701" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_159" Name="G5马卡龙高清屏幕掌上游戏机+500游戏" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_160" Name="大疆 DJI Mini 2 航拍无人机 便携可折叠无人机航拍飞行器" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_161" Name="小黄鸭款恒温速干吹风机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_162" Name="山水电饭煲" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_163" Name="山水（sansui）SKX09电烤箱 立式电烤箱" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_164" Name="康佳电火锅" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_165" Name="NERF空气炸锅" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_166" Name="NERF电烤箱" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_167" Name="九阳养生壶" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_168" Name="山水电热水壶" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_169" Name="山水养生壶" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_170" Name="山水多士炉" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_171" Name="山水多功能料理机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_172" Name="山水电煮锅" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_173" Name="九阳开水煲" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_174" Name="西屋（Westinghouse） 西屋 空气净化器家用除甲醛除菌除异味除二手烟味AWT-2000G" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_175" Name="美菱电热水壶" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_176" Name="山水加湿器" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_177" Name="豹牌电饼铛" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_178" Name="山水（sansui）电炖养生杯KT-920 " LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_179" Name="豹牌电热水壶" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_180" Name="丽特斐空气炸锅" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_181" Name="山水微电脑火锅" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_182" Name="海尔加湿器" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_183" Name="米狗扫地机器人" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_184" Name="米家 不粘锅" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_185" Name="HYTC不粘锅" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_186" Name="动感单车柯迈龙K300" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_187" Name="托尼洛.兰博基尼双色20寸城市车2002 7速" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_188" Name="托尼洛.兰博基尼20寸自行车LB2003 单速" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_189" Name="平衡车豹行" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_190" Name="创维电动牙刷" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_191" Name="华为Freelace pro无线耳机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_192" Name="华为FreeBuds 3 无线耳机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_193" Name="hoco.浩酷耳机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_194" Name="华为WATCH GT2 pro" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_195" Name="网易严选真无线蓝牙耳机 H38" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_196" Name="海尔（haier） 头部按摩器充电式头皮按摩仪干湿两用电动龙抓手颈肩背腰腿部全身" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_197" Name="BENTLEY 男士商务时尚三色表带腕表BL520-60MWWB" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_198" Name="施华洛世奇 红色天鹅 ICONIC SWAN 项链女 锁骨链女 天鹅项链" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_199" Name="施华洛世奇 黑色天鹅 ICONIC SWAN 项链女 锁骨链女 天鹅项链" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_200" Name="施华洛世奇 SIGNUM 耀动天鹅 项链 红色 5631675" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_201" Name="施华洛世奇 SIGNUM 耀动天鹅 手链 红色 5631674" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_202" Name="施华洛世奇天鹅 ICONIC SWAN 项链 优雅魅力 蓝色渐变（大）5512095" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_203" Name="施华洛世奇天鹅 ICONIC SWAN 项链 优雅魅力 粉色天鹅" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_204" Name="施华洛世奇 SIGNUM 玫瑰金天鹅手链" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_205" Name="小米电视EA40 2022款 40英寸 金属全面屏 蓝牙语音 全高清 人工智能平板教育电视机L40M7-EA" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_206" Name="华为智慧屏SE 55鸿蒙HarmonyOS电视机55英寸" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_207" Name="OPPO智能电视【3年整机质保】R1 65英寸 4K悬浮全面屏 四核疾速处理器 Wi-Fi 6 低蓝光护眼 无开机广告电视机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_208" Name="TCL 洗衣机家用6公斤全自动洗衣机自动断电三级能效TB-V60A亮灰色" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_209" Name="宾爵（BEGEEL）官方定制款进口手表" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_210" Name="尼诺里拉(ninoriva)手表男士大表盘多针运动皮带男表NR51018防水商务石英表 玫瑰金棕带" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_211" Name=" 梵高（VAN GOGH）梵高VanGogh 男士手表日内瓦系列艺术小秒针腕表 向日葵M-RGLB-1320" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_212" Name="梵高（VAN GOGH）梵高VanGogh 男士手表日内瓦系列艺术小秒针腕表 海景M-SGBR" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_213" Name="MOONGU&amp;CO. 蒙娜丽莎手表" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_214" Name="MOONGU&amp;CO. MOONGN&amp;CO.绿色心情腕表" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_215" Name="华为折叠手机mate xs 2 " LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_216" Name="iPhone14" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_217" Name=" iPad Air" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_218" Name="荣耀平板V7" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_219" Name="SUNKTA女士腕表" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_220" Name="荣耀play 5T手机" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_221" Name="耀手表GS Pro " LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_222" Name="CHARLES＆KEITH女包" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_223" Name="斐乐（FILA）手表" LifeTime="-1" Cost="0" Virtual="0"/>
+ <item Id="item_real_224" Name="澳得迈电动牙刷" LifeTime="-1" Cost="0" Virtual="0"/>
+</config>

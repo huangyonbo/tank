@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_gold_120000" Condition="50"/>
+ <item Id="item_gold_280000" Condition="250"/>
+ <item Id="item_gold_500000" Condition="600"/>
+ <item Id="item_gold_1080000" Condition="1000"/>
+ <item Id="item_gold_3280000" Condition="3000"/>
+ <item Id="item_gold_6180000" Condition="7000"/>
+ <item Id="item_diamond_120" Condition="50"/>
+ <item Id="item_diamond_280" Condition="250"/>
+ <item Id="item_diamond_500" Condition="600"/>
+ <item Id="item_diamond_1080" Condition="1000"/>
+ <item Id="item_diamond_3280" Condition="3000"/>
+ <item Id="item_diamond_6180" Condition="7000"/>
+</config>

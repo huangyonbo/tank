@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="0" Name="普品" Exp="0" Items="item_gold_1*50,item_diamond_1*50,item_diamond_1*100"/>
+ <item Id="1" Name="良品" Exp="100" Items="item_gold_1*500,item_diamond_1*500"/>
+ <item Id="2" Name="精品" Exp="600" Items="item_gold_1*5000,item_diamond_1*5000"/>
+ <item Id="3" Name="优品" Exp="1600" Items="item_gold_1*50000,item_diamond_1*50000"/>
+ <item Id="4" Name="极品" Exp="6600" Items="item_gold_1*500000,item_diamond_1*500000"/>
+ <item Id="5" Name="仙品" Exp="16600" Items="item_gold_1*5000000,item_diamond_1*5000000"/>
+ <item Id="6" Name="神品" Exp="66600" Items="item_gold_1*50000000,item_diamond_1*50000000"/>
+</config>

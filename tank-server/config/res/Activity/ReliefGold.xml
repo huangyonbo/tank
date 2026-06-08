@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Condition="10000" Limit="3" Award="item_gold_5000"/>
+</config>

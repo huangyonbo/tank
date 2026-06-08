@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_month_card" Name="月卡" Script="FunctionItem" LifeTime="-1" AutoUse="true" Cost="0" Type="0" MonthCardLifeTime="30" FireScore="0"/>
+ <item Id="item_huozhong" Name="火种" Script="FunctionItem" LifeTime="-1" AutoUse="true" Cost="15" Type="1" MonthCardLifeTime="0" FireScore="20"/>
+ <item Id="item_huozhong_s" Name="火种" Script="FunctionItem" LifeTime="-1" AutoUse="true" Cost="40" Type="2" MonthCardLifeTime="0" FireScore="20"/>
+ <item Id="item_thunder_dragon_points" Name="雷龙积分" Script="FunctionItem" LifeTime="-1" AutoUse="true" Cost="0" Type="3" MonthCardLifeTime="0" FireScore="0"/>
+</config>

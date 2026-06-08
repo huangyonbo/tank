@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <item Id="1" lv="1" armorUpgradeCost="950" />
+  <item Id="2" lv="2" armorUpgradeCost="1900" />
+  <item Id="3" lv="3" armorUpgradeCost="3900" />
+  <item Id="4" lv="4" armorUpgradeCost="7800" />
+  <item Id="5" lv="5" armorUpgradeCost="15500" />
+  <item Id="6" lv="6" armorUpgradeCost="31000" />
+  <item Id="7" lv="7" armorUpgradeCost="62000" />
+  <item Id="8" lv="8" armorUpgradeCost="124500" />
+  <item Id="9" lv="9" armorUpgradeCost="249500" />
+  <item Id="10" lv="10" armorUpgradeCost="374500" />
+  <item Id="11" lv="11" armorUpgradeCost="499000" />
+  <item Id="12" lv="12" armorUpgradeCost="624000" />
+  <item Id="13" lv="13" armorUpgradeCost="749000" />
+  <item Id="14" lv="14" armorUpgradeCost="874000" />
+  <item Id="15" lv="15" armorUpgradeCost="998500" />
+</root>

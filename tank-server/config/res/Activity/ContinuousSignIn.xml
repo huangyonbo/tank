@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" AwardCondition="1" Award="item_pkg_continuous1" Doubling="true"/>
+ <item Id="2" AwardCondition="2" Award="item_pkg_continuous2" Doubling="true"/>
+ <item Id="3" AwardCondition="3" Award="item_pkg_continuous3" Doubling="true"/>
+ <item Id="4" AwardCondition="4" Award="item_pkg_continuous4" Doubling="true"/>
+ <item Id="5" AwardCondition="5" Award="item_pkg_continuous5" Doubling="true"/>
+ <item Id="6" AwardCondition="6" Award="item_pkg_continuous6" Doubling="true"/>
+ <item Id="7" AwardCondition="7" Award="item_pkg_continuous7" Doubling="true"/>
+</config>

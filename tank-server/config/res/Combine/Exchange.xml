@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Item="" Property="NYW_WORD1*1;NYW_WORD2*1" Target="item_gold_1*30000"/>
+ <item Id="2" Item="" Property="NYW_WORD3*1;NYW_WORD4*1" Target="item_gold_1*80000"/>
+ <item Id="3" Item="" Property="NYW_WORD1*1;NYW_WORD2*1;NYW_WORD3*1;NYW_WORD4*1" Target="item_gold_1*200000"/>
+</config>

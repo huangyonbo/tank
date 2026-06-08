@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="task0" Reward="item_nationaldraw_count" Count="1" Condition="0"/>
+ <item Id="task1" Reward="item_nationaldraw_count" Count="1500" Condition="19"/>
+ <item Id="task2" Reward="item_nationaldraw_count" Count="1000" Condition="27"/>
+ <item Id="task3" Reward="item_nationaldraw_count" Count="500" Condition="34"/>
+ <item Id="task4" Reward="item_nationaldraw_count" Count="10" Condition="12"/>
+ <item Id="task5" Reward="item_nationaldraw_count" Count="15" Condition="12"/>
+ <item Id="task6" Reward="item_nationaldraw_count" Count="20" Condition="12"/>
+ <item Id="task7" Reward="item_nationaldraw_count" Count="30" Condition="22"/>
+ <item Id="task8" Reward="item_nationaldraw_count" Count="15" Condition="29"/>
+ <item Id="task9" Reward="item_nationaldraw_count" Count="10" Condition="35"/>
+ <item Id="task10" Reward="item_nationaldraw_count" Count="20" Condition="25"/>
+ <item Id="task11" Reward="item_nationaldraw_count" Count="15" Condition="31"/>
+ <item Id="task12" Reward="item_nationaldraw_count" Count="10" Condition="36"/>
+ <item Id="task13" Reward="item_nationaldraw_count" Count="100000" Condition="10"/>
+ <item Id="task14" Reward="item_nationaldraw_count" Count="500000" Condition="10"/>
+ <item Id="task15" Reward="item_nationaldraw_count" Count="1000000" Condition="10"/>
+</config>

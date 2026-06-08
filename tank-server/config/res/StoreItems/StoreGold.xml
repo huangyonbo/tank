@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_pkg_storegold_12" Price="120"/>
+ <item Id="item_pkg_storegold_28" Price="280"/>
+ <item Id="item_pkg_storegold_50" Price="500"/>
+ <item Id="item_pkg_storegold_108" Price="1080"/>
+ <item Id="item_pkg_storegold_328" Price="3280"/>
+ <item Id="item_pkg_storegold_618" Price="6480"/>
+ <item Id="item_gold_1000" Price="10"/>
+</config>

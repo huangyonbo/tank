@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<config>
+ <item CostGold="500000" CreateVipLimit="4" Id="1" MemberMax="80" QuitTimeLimit="12" VisitLvLimit="5" VisitVipLimit="2"/>
+</config>

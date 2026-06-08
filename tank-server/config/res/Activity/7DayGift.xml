@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="ver" Award="" Version="0"/>
+ <item Id="1" Award="item_pkg_7day1" Version=""/>
+ <item Id="2" Award="item_pkg_7day2" Version=""/>
+ <item Id="3" Award="item_pkg_7day3" Version=""/>
+ <item Id="4" Award="item_pkg_7day4" Version=""/>
+ <item Id="5" Award="item_pkg_7day5" Version=""/>
+ <item Id="6" Award="item_pkg_7day6" Version=""/>
+ <item Id="7" Award="item_pkg_7day7" Version=""/>
+</config>

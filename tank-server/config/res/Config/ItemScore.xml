@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="0" InitItemScoreLimit="100"/>
+ <item Id="1" InitItemScoreLimit="180"/>
+ <item Id="2" InitItemScoreLimit="420"/>
+ <item Id="3" InitItemScoreLimit="820"/>
+ <item Id="4" InitItemScoreLimit="1380"/>
+ <item Id="5" InitItemScoreLimit="2100"/>
+ <item Id="6" InitItemScoreLimit="2980"/>
+ <item Id="7" InitItemScoreLimit="4020"/>
+ <item Id="8" InitItemScoreLimit="5220"/>
+ <item Id="9" InitItemScoreLimit="6580"/>
+ <item Id="10" InitItemScoreLimit="8100"/>
+ <item Id="11" InitItemScoreLimit="9780"/>
+ <item Id="12" InitItemScoreLimit="11620"/>
+</config>

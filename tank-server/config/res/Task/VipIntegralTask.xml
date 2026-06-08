@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="task0" PreTask="" Reward="item_pkg_VipIntegralTask7*1" Count="100000000" Condition="10"/>
+ <item Id="task1" PreTask="" Reward="item_pkg_VipIntegralTask8*1" Count="200000000" Condition="10"/>
+ <item Id="task2" PreTask="" Reward="item_pkg_VipIntegralTask1*1" Count="500000000" Condition="10"/>
+ <item Id="task3" PreTask="" Reward="item_pkg_VipIntegralTask2*1" Count="1500000000" Condition="10"/>
+ <item Id="task4" PreTask="" Reward="item_pkg_VipIntegralTask3*1" Count="3000000000" Condition="10"/>
+ <item Id="task5" PreTask="" Reward="item_pkg_VipIntegralTask4*1" Count="5000000000" Condition="10"/>
+ <item Id="task6" PreTask="" Reward="item_pkg_VipIntegralTask5*1" Count="7500000000" Condition="10"/>
+ <item Id="task7" PreTask="" Reward="item_pkg_VipIntegralTask6*1" Count="10000000000" Condition="10"/>
+</config>

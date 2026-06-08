@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Level="1" CostItem="item_blood_taotie*1" Effect="0.01" Type="1"/>
+ <item Id="2" Level="2" CostItem="item_blood_taotie*2" Effect="0.02" Type="1"/>
+ <item Id="3" Level="3" CostItem="item_blood_taotie*3" Effect="0.03" Type="1"/>
+ <item Id="4" Level="4" CostItem="item_blood_taotie*4" Effect="0.04" Type="1"/>
+ <item Id="5" Level="5" CostItem="item_blood_taotie*5" Effect="0.05" Type="1"/>
+ <item Id="6" Level="6" CostItem="item_blood_taotie*6" Effect="0.06" Type="1"/>
+ <item Id="7" Level="7" CostItem="item_blood_taotie*7" Effect="0.07" Type="1"/>
+ <item Id="8" Level="8" CostItem="item_blood_taotie*8" Effect="0.08" Type="1"/>
+ <item Id="9" Level="9" CostItem="item_blood_taotie*9" Effect="0.09" Type="1"/>
+ <item Id="10" Level="10" CostItem="item_blood_taotie*10" Effect="0.1" Type="1"/>
+ <item Id="11" Level="1" CostItem="item_blood_dijiang*1" Effect="0.01" Type="2"/>
+ <item Id="12" Level="2" CostItem="item_blood_dijiang*2" Effect="0.02" Type="2"/>
+ <item Id="13" Level="3" CostItem="item_blood_dijiang*3" Effect="0.03" Type="2"/>
+ <item Id="14" Level="4" CostItem="item_blood_dijiang*4" Effect="0.04" Type="2"/>
+ <item Id="15" Level="5" CostItem="item_blood_dijiang*5" Effect="0.05" Type="2"/>
+ <item Id="16" Level="6" CostItem="item_blood_dijiang*6" Effect="0.06" Type="2"/>
+ <item Id="17" Level="7" CostItem="item_blood_dijiang*7" Effect="0.07" Type="2"/>
+ <item Id="18" Level="8" CostItem="item_blood_dijiang*8" Effect="0.08" Type="2"/>
+ <item Id="19" Level="9" CostItem="item_blood_dijiang*9" Effect="0.09" Type="2"/>
+ <item Id="20" Level="10" CostItem="item_blood_dijiang*10" Effect="0.1" Type="2"/>
+ <item Id="21" Level="1" CostItem="item_blood_qiongqi*1" Effect="0.01" Type="3"/>
+ <item Id="22" Level="2" CostItem="item_blood_qiongqi*2" Effect="0.02" Type="3"/>
+ <item Id="23" Level="3" CostItem="item_blood_qiongqi*3" Effect="0.03" Type="3"/>
+ <item Id="24" Level="4" CostItem="item_blood_qiongqi*4" Effect="0.04" Type="3"/>
+ <item Id="25" Level="5" CostItem="item_blood_qiongqi*5" Effect="0.05" Type="3"/>
+ <item Id="26" Level="6" CostItem="item_blood_qiongqi*6" Effect="0.06" Type="3"/>
+ <item Id="27" Level="7" CostItem="item_blood_qiongqi*7" Effect="0.07" Type="3"/>
+ <item Id="28" Level="8" CostItem="item_blood_qiongqi*8" Effect="0.08" Type="3"/>
+ <item Id="29" Level="9" CostItem="item_blood_qiongqi*9" Effect="0.09" Type="3"/>
+ <item Id="30" Level="10" CostItem="item_blood_qiongqi*10" Effect="0.1" Type="3"/>
+</config>

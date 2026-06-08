@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.login.bms.dao.GamePlayerDao">
+
+
+	<select id="getByID" resultType="com.login.bms.domain.GamePlayerEntity">
+		select * from roles where id = #{value}
+<!--		<where>-->
+<!--			<if test="id != null and id != ''"> and id = #{id}</if>-->
+<!--			<if test="channel != null and channel != ''"> and channel= #{channel}</if>-->
+<!--		</where>-->
+<!--&lt;!&ndash;		<choose>&ndash;&gt;-->
+<!--&lt;!&ndash;			<when test="sort != null and sort.trim() != ''">&ndash;&gt;-->
+<!--&lt;!&ndash;				order by ${sort} ${order}&ndash;&gt;-->
+<!--&lt;!&ndash;			</when>&ndash;&gt;-->
+<!--&lt;!&ndash;			<otherwise>&ndash;&gt;-->
+<!--&lt;!&ndash;				order by id desc&ndash;&gt;-->
+<!--&lt;!&ndash;			</otherwise>&ndash;&gt;-->
+<!--&lt;!&ndash;		</choose>&ndash;&gt;-->
+<!--		<if test="offset != null and limit != null">-->
+<!--			limit #{offset}, #{limit}-->
+<!--		</if>-->
+	</select>
+</mapper>

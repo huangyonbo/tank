@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_skill_frozen" Score="0"/>
+ <item Id="item_skill_lock" Score="0"/>
+ <item Id="item_skill_speed" Score="0"/>
+ <item Id="item_skill_bind_bomb" Score="0"/>
+ <item Id="item_skill_normal_bomb" Score="0"/>
+ <item Id="item_skill_missile" Score="30"/>
+ <item Id="item_skill_nbomb" Score="250"/>
+ <item Id="item_skill_hbomb" Score="500"/>
+ <item Id="item_debris_missile" Score="3"/>
+ <item Id="item_debris_nbomb" Score="25"/>
+ <item Id="item_debris_hbomb" Score="50"/>
+</config>

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="supportGift" Version="2018/5/8"/>
+ <item Id="limitGift" Version="2018/10/1"/>
+ <item Id="ticketTaskVer" Version="2018/11/30"/>
+ <item Id="supportGiftIos" Version="2019/3/2"/>
+ <item Id="limitGiftIos" Version="2019/3/2"/>
+</config>

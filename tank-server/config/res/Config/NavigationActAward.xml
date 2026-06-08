@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" ExpLevelUp="10" TotalExpLevelUp="10" Award="item_pkg_NavigationlevelUp1" Award_Elite="item_pkg_NavigationlevelUp_Elite1"/>
+ <item Id="2" ExpLevelUp="20" TotalExpLevelUp="30" Award="item_pkg_NavigationlevelUp2" Award_Elite="item_pkg_NavigationlevelUp_Elite2"/>
+ <item Id="3" ExpLevelUp="25" TotalExpLevelUp="55" Award="item_pkg_NavigationlevelUp3" Award_Elite="item_pkg_NavigationlevelUp_Elite3"/>
+ <item Id="4" ExpLevelUp="30" TotalExpLevelUp="85" Award="item_pkg_NavigationlevelUp4" Award_Elite="item_pkg_NavigationlevelUp_Elite4"/>
+ <item Id="5" ExpLevelUp="35" TotalExpLevelUp="120" Award="item_pkg_NavigationlevelUp5" Award_Elite="item_pkg_NavigationlevelUp_Elite5"/>
+ <item Id="6" ExpLevelUp="40" TotalExpLevelUp="160" Award="item_pkg_NavigationlevelUp6" Award_Elite="item_pkg_NavigationlevelUp_Elite6"/>
+ <item Id="7" ExpLevelUp="45" TotalExpLevelUp="205" Award="item_pkg_NavigationlevelUp7" Award_Elite="item_pkg_NavigationlevelUp_Elite7"/>
+ <item Id="8" ExpLevelUp="50" TotalExpLevelUp="255" Award="item_pkg_NavigationlevelUp8" Award_Elite="item_pkg_NavigationlevelUp_Elite8"/>
+ <item Id="9" ExpLevelUp="60" TotalExpLevelUp="315" Award="item_pkg_NavigationlevelUp9" Award_Elite="item_pkg_NavigationlevelUp_Elite9"/>
+ <item Id="10" ExpLevelUp="70" TotalExpLevelUp="385" Award="item_pkg_NavigationlevelUp10" Award_Elite="item_pkg_NavigationlevelUp_Elite10"/>
+ <item Id="11" ExpLevelUp="80" TotalExpLevelUp="465" Award="item_pkg_NavigationlevelUp11" Award_Elite="item_pkg_NavigationlevelUp_Elite11"/>
+ <item Id="12" ExpLevelUp="90" TotalExpLevelUp="555" Award="item_pkg_NavigationlevelUp12" Award_Elite="item_pkg_NavigationlevelUp_Elite12"/>
+ <item Id="13" ExpLevelUp="100" TotalExpLevelUp="655" Award="item_pkg_NavigationlevelUp13" Award_Elite="item_pkg_NavigationlevelUp_Elite13"/>
+ <item Id="14" ExpLevelUp="115" TotalExpLevelUp="770" Award="item_pkg_NavigationlevelUp14" Award_Elite="item_pkg_NavigationlevelUp_Elite14"/>
+ <item Id="15" ExpLevelUp="130" TotalExpLevelUp="900" Award="item_pkg_NavigationlevelUp15" Award_Elite="item_pkg_NavigationlevelUp_Elite15"/>
+ <item Id="16" ExpLevelUp="145" TotalExpLevelUp="1045" Award="item_pkg_NavigationlevelUp16" Award_Elite="item_pkg_NavigationlevelUp_Elite16"/>
+ <item Id="17" ExpLevelUp="160" TotalExpLevelUp="1205" Award="item_pkg_NavigationlevelUp17" Award_Elite="item_pkg_NavigationlevelUp_Elite17"/>
+ <item Id="18" ExpLevelUp="175" TotalExpLevelUp="1380" Award="item_pkg_NavigationlevelUp18" Award_Elite="item_pkg_NavigationlevelUp_Elite18"/>
+ <item Id="19" ExpLevelUp="190" TotalExpLevelUp="1570" Award="item_pkg_NavigationlevelUp19" Award_Elite="item_pkg_NavigationlevelUp_Elite19"/>
+ <item Id="20" ExpLevelUp="205" TotalExpLevelUp="1775" Award="item_pkg_NavigationlevelUp20" Award_Elite="item_pkg_NavigationlevelUp_Elite20"/>
+ <item Id="21" ExpLevelUp="225" TotalExpLevelUp="2000" Award="item_pkg_NavigationlevelUp21" Award_Elite="item_pkg_NavigationlevelUp_Elite21"/>
+ <item Id="22" ExpLevelUp="245" TotalExpLevelUp="2245" Award="item_pkg_NavigationlevelUp22" Award_Elite="item_pkg_NavigationlevelUp_Elite22"/>
+ <item Id="23" ExpLevelUp="265" TotalExpLevelUp="2510" Award="item_pkg_NavigationlevelUp23" Award_Elite="item_pkg_NavigationlevelUp_Elite23"/>
+ <item Id="24" ExpLevelUp="285" TotalExpLevelUp="2795" Award="item_pkg_NavigationlevelUp24" Award_Elite="item_pkg_NavigationlevelUp_Elite24"/>
+ <item Id="25" ExpLevelUp="305" TotalExpLevelUp="3100" Award="item_pkg_NavigationlevelUp25" Award_Elite="item_pkg_NavigationlevelUp_Elite25"/>
+ <item Id="26" ExpLevelUp="325" TotalExpLevelUp="3425" Award="item_pkg_NavigationlevelUp26" Award_Elite="item_pkg_NavigationlevelUp_Elite26"/>
+ <item Id="27" ExpLevelUp="345" TotalExpLevelUp="3770" Award="item_pkg_NavigationlevelUp27" Award_Elite="item_pkg_NavigationlevelUp_Elite27"/>
+ <item Id="28" ExpLevelUp="365" TotalExpLevelUp="4135" Award="item_pkg_NavigationlevelUp28" Award_Elite="item_pkg_NavigationlevelUp_Elite28"/>
+ <item Id="29" ExpLevelUp="385" TotalExpLevelUp="4520" Award="item_pkg_NavigationlevelUp29" Award_Elite="item_pkg_NavigationlevelUp_Elite29"/>
+ <item Id="30" ExpLevelUp="500" TotalExpLevelUp="5020" Award="item_pkg_NavigationlevelUp30" Award_Elite="item_pkg_NavigationlevelUp_Elite30"/>
+</config>

@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Award="item_gold_1000000" Limit="3" probability="50" desc=""/>
+ <item Id="2" Award="item_gold_2000000" Limit="3" probability="50" desc=""/>
+ <item Id="3" Award="item_gold_3000000" Limit="3" probability="50" desc=""/>
+ <item Id="4" Award="item_gold_4000000" Limit="3" probability="30" desc=""/>
+ <item Id="5" Award="item_gold_5000000" Limit="3" probability="20" desc=""/>
+ <item Id="6" Award="item_gold_10000000" Limit="3" probability="2" desc=""/>
+ <item Id="7" Award="item_diamond_100" Limit="3" probability="50" desc=""/>
+ <item Id="8" Award="item_diamond_200" Limit="3" probability="50" desc=""/>
+ <item Id="9" Award="item_diamond_300" Limit="3" probability="50" desc=""/>
+ <item Id="10" Award="item_diamond_400" Limit="3" probability="30" desc=""/>
+ <item Id="11" Award="item_diamond_500" Limit="3" probability="20" desc=""/>
+ <item Id="12" Award="item_diamond_1000" Limit="3" probability="2" desc=""/>
+</config>

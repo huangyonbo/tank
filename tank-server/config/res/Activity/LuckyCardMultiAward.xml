@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" ItemId="item_gold_1" Count="20000" Gold="20000" Rate="0.2"/>
+ <item Id="2" ItemId="item_gold_1" Count="30000" Gold="30000" Rate="0.1"/>
+ <item Id="3" ItemId="item_gold_1" Count="50000" Gold="50000" Rate="0.09"/>
+ <item Id="4" ItemId="item_gold_1" Count="100000" Gold="100000" Rate="0.04"/>
+ <item Id="5" ItemId="item_diamond_1" Count="20" Gold="20000" Rate="0.1"/>
+ <item Id="6" ItemId="item_diamond_1" Count="50" Gold="50000" Rate="0.05"/>
+ <item Id="7" ItemId="item_skill_lock" Count="3" Gold="0" Rate="0.11"/>
+ <item Id="8" ItemId="item_skill_lock" Count="5" Gold="0" Rate="0.05"/>
+ <item Id="9" ItemId="item_skill_frozen" Count="3" Gold="0" Rate="0.08"/>
+ <item Id="10" ItemId="item_skill_frozen" Count="5" Gold="0" Rate="0.05"/>
+ <item Id="11" ItemId="item_skill_speed" Count="3" Gold="0" Rate="0.08"/>
+ <item Id="12" ItemId="item_skill_speed" Count="5" Gold="0" Rate="0.05"/>
+</config>

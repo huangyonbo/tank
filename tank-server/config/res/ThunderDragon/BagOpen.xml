@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_bronze_gold_bag" Award="item_gold_1*(1000000-3000000)*1"/>
+ <item Id="item_silver_gold_bag" Award="item_gold_1*(8000000-12000000)*1"/>
+ <item Id="item_gold_gold_bag" Award="item_gold_1*(30000000-40000000)*1"/>
+ <item Id="item_bronze_bomb_bag" Award="item_skill_missile*(2-6)*1"/>
+ <item Id="item_silver_bomb_bag" Award="item_skill_nbomb*(2-6)*1"/>
+ <item Id="item_gold_bomb_bag" Award="item_skill_hbomb*(2-6)*1"/>
+ <item Id="item_bronze_prop_bag" Award="item_powerstone*(100-500)*1,item_skill_lock*(10-30)*1,item_skill_frozen*(10-30)*1,item_skill_speed*(10-30)*1"/>
+ <item Id="item_silver_prop_bag" Award="item_powerstone*(1000-5000)*1,item_skill_lock*(30-50)*1,item_skill_frozen*(30-50)*1,item_skill_speed*(30-50)*1"/>
+ <item Id="item_gold_prop_bag" Award="item_powerstone*(5000-10000)*1,item_skill_lock*(50-100)*1,item_skill_frozen*(50-100)*1,item_skill_speed*(50-100)*1"/>
+</config>

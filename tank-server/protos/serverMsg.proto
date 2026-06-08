@@ -1,0 +1,867 @@
+syntax = "proto2";
+
+option java_package = "common";
+
+message AddDesk {
+  optional int32 roomType = 1;
+  optional uint64 deskid = 2;
+  optional int32 seatcount = 3;
+  optional int32 gameid = 4;
+  optional int32 playercount = 5;
+  repeated int32 seatid = 6;
+  repeated uint64 playerid = 7;
+  optional int32 desk = 8;
+  optional int32 deskType = 9;
+  optional int32 minBv = 10;
+  optional int32 maxBv = 11;
+  optional int64 objId = 12;
+}
+
+message DelDesk {
+  optional uint64 deskid = 1;
+}
+
+message SitDown {
+  optional uint64 deskid = 1;
+  optional int32 seatid = 2;
+  optional uint64 playerid = 3;
+  optional int32 uid = 4;
+  optional int32 vip = 5;
+  optional string name = 6;
+  optional int32 level = 7;
+  optional int32 head = 8;
+}
+
+message StandUp {
+  optional uint64 deskid = 1;
+  optional int32 seatid = 2;
+  optional int32 uid = 3;
+  optional uint64 totalplay = 4;
+  optional uint64 totalwin = 5;
+}
+
+message Match {
+  optional int32 roomType = 1;
+  optional uint64 playerid = 2;
+  optional int32 gameid = 3;
+  optional int32 bulletval = 4;
+  optional int32 uid = 5;
+  optional int32 deskType = 6;
+  optional uint64 curDeskId = 7;
+  optional MysteryLegendRoomConfig mysteryLegendRoomConfig = 8;
+}
+
+message MysteryLegendRoomConfig {
+  optional int32 id = 1;
+  optional int32 minBulletValue = 2;
+  optional int32 maxBulletValue = 3;
+}
+
+message MatchRes {
+  optional int32 roomType = 1;
+  optional uint64 deskid = 2;
+  optional int32 seatid = 3;
+  optional uint64 playerid = 4;
+  optional int32 code = 5;
+}
+
+message MysteryLegendMatchRes {
+  optional int32 roomId = 1;
+  optional uint64 deskId = 2;
+  optional int32 seatId = 3;
+}
+
+message PubAddRoom {
+  optional string name = 1;
+}
+
+message PubSetRoomTotalPW {
+  optional string name = 1;
+  optional int64 play = 2;
+  optional int64 win = 3;
+}
+
+message PubUpdateDayPW {
+  required string name = 1;
+  required int64 play = 2;
+  required int64 win = 3;
+  required int64 date = 4;
+  required string serName = 5;
+  required int32 roomType = 6;
+}
+
+message PubCheckProList {
+  optional int32 uid = 1;
+  optional string name = 2;
+  optional string proname = 3;
+  optional int64 value = 4;
+  optional int32 vip = 5;
+  optional bool day = 6;
+  optional bool week = 7;
+  optional bool month = 8;
+  optional bool total = 9;
+  optional bool remove = 10;
+  optional int32 order = 11;
+}
+
+message BackMaintainMsg {
+  optional int32 id = 1;
+  optional int32 type = 2;
+  optional int32 operation = 3;
+  repeated int32 placeId = 4;
+  optional string version = 5;
+  optional string message = 6;
+  optional int64 start = 7;
+  optional int64 end = 8;
+}
+
+message BackPubNotice {
+  optional int32 id = 1;
+  optional int32 type = 2;
+  repeated int32 placeId = 3;
+  optional string tag = 4;
+  optional string title = 5;
+  optional string content = 6;
+  optional string picture = 7;
+  optional bool mail = 8;
+}
+
+message RoomData {
+  optional int32 id = 1;
+  optional int32 online = 2;
+  optional double totalPlay = 3;
+  optional double totalGet = 4;
+  optional double totalWin = 5;
+  optional int32 maxGun = 6;
+  optional int32 minGun = 7;
+  optional int32 vipLevel = 8;
+  optional int32 autoKick = 9;
+}
+
+message RoomDatas {
+  repeated RoomData roomDatas = 1;
+}
+
+message PlayerInfo {
+  repeated int32 playerId = 1;
+  repeated string name = 2;
+  repeated int32 sex = 3;
+  repeated int32 level = 4;
+  repeated int32 vipLevel = 5;
+  repeated int64 gold = 6;
+  repeated int64 diamond = 7;
+  repeated int64 lottery = 8;
+  repeated int64 regDate = 9;
+  repeated int64 loginDate = 10;
+  repeated int32 placeId = 11;
+  repeated string prop = 12;
+  repeated int64 shutUp = 13;
+  repeated int32 totalCharge = 14;
+  repeated int32 status = 15;
+  repeated int32 online = 16;
+  repeated int32 maxGun = 17;
+  repeated string bank = 18;
+  repeated string tempCellphone = 19;
+  repeated int64 mojin = 20;
+  repeated int32 nMaxGun = 21;
+  repeated int64 goldTotalPlay = 22;
+  repeated int64 goldTotalWin = 23;
+  repeated int64 bombTotalPlay = 24;
+  repeated int64 bombTotalWin = 25;
+}
+
+message RankingData {
+  optional int32 rank = 1;
+  optional string name = 2;
+  optional int32 uid = 3;
+  optional int64 value = 4;
+}
+
+message RankingDatas {
+  repeated RankingData rankingDatas = 1;
+}
+
+message ItemData {
+  optional string itemId = 1;
+  optional int32 count = 2;
+}
+
+message SysMail {
+  optional int32 id = 1;
+  repeated int32 receivers = 2;
+  optional string title = 3;
+  repeated int32 channelIds = 4;
+  optional string content = 5;
+  repeated ItemData itemDatas = 6;
+  optional int32 expiry = 7;
+}
+
+message IntSingle {
+  required int32 intMember = 1;
+}
+
+message StringSingle {
+  optional string words = 1;
+}
+
+message StringArray {
+  repeated string somewords = 1;
+}
+
+message IntAndString {
+  required int32 intMember = 1;
+  required string strMember = 2;
+}
+
+message CreateDesk {
+  required int32 type = 1;
+  optional int32 gameid = 2;
+  optional int32 bulletVal = 3;
+  optional int32 deskType = 4;
+}
+
+message StoreBuyGoods {
+  required string pubName = 1;
+  required string itemId = 2;
+  required int32 buyCount = 3;
+  required int32 playerId = 4;
+  required int32 channelId = 5;
+  required string playerName = 6;
+  required int32 vipLevel = 7;
+  optional string fullName = 8;
+  optional string qq = 9;
+  optional string wechat = 10;
+  optional string cellphone = 11;
+  optional string address = 12;
+}
+
+message StoreBuyGoodsResult {
+  required int32 resultCode = 1;
+}
+
+message PubStopList {
+  repeated string name = 1;
+}
+
+message PubClearList {
+  repeated string type = 1;
+  repeated string name = 2;
+}
+
+message UpdateRoom {
+  required int32 roomid = 1;
+}
+
+message ChatSet {
+  required int32 playerId = 1;
+  required int64 time = 2;
+}
+
+message PubAddBuySupport{
+  required string id = 1;
+}
+
+message PubStartSupport{
+  required string version = 1;
+}
+
+message PubAddBuyMystery{
+  required string id = 1;
+}
+
+message PubStartMystery{
+  required string buyTime = 1;
+}
+
+message PubAddLimit{
+  required string id = 1;
+}
+
+message PubStartLimit{
+  required string version = 1;
+}
+
+message PayBack{
+  required int32 uid = 1;
+  required string payMoney = 2;
+  required string goodId = 3;
+  required string info = 4;
+  required int32 orderId = 5;
+  optional string cashTicket = 6;
+}
+
+message PlayerData {
+  required int32 uid = 1;
+  optional int32 level = 2;
+  optional int32 headid = 3;
+  optional int32 bet = 4;
+  optional int32 skin = 5;
+  optional int64 maxScore = 6;
+  optional string name = 7;
+  optional string sign = 8;
+  optional string title = 9;
+  optional int32 score = 10;
+  optional int32 sex = 11;
+  optional int32 hitEggCount = 12;
+}
+
+message UpdateListName {
+  required int32 uid = 1;
+  required string name = 2;
+}
+
+message PlayerStatisticsInfo {
+  required int32 channel = 1;
+}
+
+message CertainWeekListCopy {
+  required int32 type = 1;
+}
+
+message UpdateActivityRankStatus {
+  required int32 uid = 1;
+  required int32 type = 2;
+}
+
+message UpdateActivityProgressStatus {
+  required int32 type = 1;
+  required int32 status = 2;
+}
+
+message HitEggAwardValue {
+  required int32 value = 1;
+}
+
+message HitEggAwardInfo {
+  required string playerName = 1;
+  required string itemId = 2;
+  required int32 itemCount = 3;
+}
+
+message MatchAllocRobot {
+  required int64 deskId = 1;
+  required int32 deskType = 2;
+}
+
+message MatchAllocRobotRes {
+  required int64 deskId = 1;
+  required int32 deskType = 2;
+  optional int32 uid = 3;
+  optional int32 bulletLevel = 4;
+  optional int32 level = 5;
+  optional int32 vipLevel = 6;
+  optional int64 diamond = 7;
+  optional int64 gold = 8;
+  optional string name = 9;
+  repeated string item = 10;
+  repeated int32 count = 11;
+  required int32 seatId = 12;
+}
+
+message UpdateRobot {
+  required int32 uid = 1;
+}
+
+message RobotStandup {
+  required int64 deskid = 1;
+  required int32 uid = 2;
+}
+
+message UpdateRobot2Game {
+  required int64 deskid = 1;
+  required int32 uid = 2;
+  optional int32 bulletLevel = 3;
+  optional int32 level = 4;
+  optional int32 vipLevel = 5;
+  optional int64 diamond = 6;
+  optional int64 gold = 7;
+  optional string name = 8;
+  repeated string item = 9;
+  repeated int32 count = 10;
+}
+
+message UpdateRobot2Match {
+  required int32 uid = 1;
+  optional int32 level = 2;
+  optional int64 diamond = 3;
+  optional int64 gold = 4;
+  repeated string item = 5;
+  repeated int32 count = 6;
+}
+
+message RoomPlayerData {
+  repeated int32 uid = 1;
+}
+
+message RankListType {
+  optional string type = 1;
+}
+
+message BuyStone {
+  required string item = 1;
+  required int32 count = 2;
+}
+
+message TotalPW {
+  optional int32 uid = 1;
+  repeated int32 id = 2;
+  repeated int64 play = 3;
+  repeated int64 win = 4;
+}
+
+message UpdateStoreExchange {
+  required string item = 1;
+  required int32 stock = 2;
+  required int32 limit = 3;
+  required bool reset = 4;
+}
+
+message ArenaSign {
+  required int32 id = 1;
+  required int32 uid = 2;
+  required int32 turnid = 3;
+}
+
+message SetArena {
+  required int32 id = 1;
+  required int32 icon = 2;
+  required string name = 3;
+  required string channel = 4;
+  required int32 type = 5;
+  required int32 time = 6;
+  required string sign = 7;
+  required int64 start = 8;
+  required int64 over = 9;
+  required int32 maxPlayer = 10;
+  required int32 minPlayer = 11;
+  required int32 interval = 12;
+  required int32 protect = 13;
+  required int32 settlement = 14;
+  required bool no1tip = 15;
+  required string reward = 16;
+  required int32 coin = 17;
+  required int32 maxbv = 18;
+  required int32 minbv = 19;
+  required int32 defbv = 20;
+  required int32 offbv = 21;
+  required string limit = 22;
+  required int32 maxCount = 23;
+  required string occupy = 24;
+  required int32 maxTurn = 25;
+}
+
+message DelArena {
+  required int32 id = 1;
+}
+
+message StartArena {
+  required int32 id = 1;
+}
+
+message StopArena {
+  required int32 id = 1;
+}
+
+message ArenaCheckState {
+  required int32 id = 1;
+  required int32 state = 2;
+}
+
+message ArenaCheckList {
+  required int32 uid = 1;
+  required string name = 2;
+  required int64 value = 3;
+  required int32 vip = 4;
+  required bool remove = 5;
+  required int32 gameid = 6;
+}
+
+message ArenaData {
+  repeated int32 id = 1;
+  repeated int32 signCount = 2;
+  repeated int32 joinCount = 3;
+  repeated int32 joinPop = 4;
+  repeated int32 turnid = 5;
+  repeated int32 online = 6;
+}
+
+message AddBossDesk {
+  required int32 type = 1;
+  required int32 uid = 2;
+  required int64 deskid = 3;
+  required string passw = 4;
+  required int64 endline = 5;
+  required int32 maxCount = 6;
+}
+
+message EnterBossDesk {
+  required int32 type = 1;
+  required int64 deskid = 2;
+}
+
+message LeaveBossDesk {
+  required int32 type = 1;
+  required int64 deskid = 2;
+}
+
+message DelBossDesk {
+  required int32 type = 1;
+  required int64 deskid = 2;
+}
+
+message ArenaTip {
+  required string name = 1;
+  required string game = 2;
+}
+
+message IntArray {
+  repeated int32 id = 1;
+}
+
+message Int64 {
+  required int64 value = 1;
+}
+
+message ReqSitDown {
+  required int64 playerid = 1;
+  required int32 deskid = 2;
+  required int32 seatid = 3;
+}
+
+message SitDownRes {
+  required int32 code = 1;
+  optional int64 deskid = 2;
+  optional int32 seatid = 3;
+  optional int64 playerid = 4;
+}
+
+message CreateCustomDesk{
+  required int32 deskid = 1;
+  required int64 totalPlay = 2;
+  required int64 totalWin = 3;
+  required int32 minbv = 4;
+  required int32 maxbv = 5;
+  required int32 level = 6;
+  required string limit = 7;
+  required int32 type = 8;
+  required int32 autoKick = 9;
+  required int32 deskbg = 10;
+  required int32 roomType = 11;
+}
+
+message AddMysteryLegendDesk {
+  required int32 roomType = 1;
+  required int64 playerId = 2;
+  required int32 minBv = 3;
+  required int32 maxBV = 4;
+}
+
+message UpdateListVip {
+  required int32 uid = 1;
+  required int32 vip = 2;
+}
+
+message DeskData {
+  required int32 deskid = 1;
+  required int32 minbv = 2;
+  required int32 maxbv = 3;
+  required string limit = 4;
+  repeated int32 seatid = 5;
+  repeated int32 uid = 6;
+  repeated int32 vip = 7;
+  repeated string name = 8;
+  repeated int32 level = 9;
+  repeated int32 head = 10;
+  required int32 roomType = 11;
+  required int32 type=12;
+}
+
+message DeskList {
+  required string pwcfg = 1;
+  repeated DeskData desks = 2;
+}
+
+message BroadSeat {
+  required int32 deskid = 1;
+  required int32 seatid = 2;
+  optional int32 uid = 3;
+  optional int32 vip = 4;
+  optional string name = 5;
+  optional int32 level = 6;
+  optional int32 head = 7;
+}
+
+message CreatePw {
+  required int32 seatid = 1;
+  required int64 playerid = 2;
+  required string passwd = 3;
+  required int32 uid = 4;
+  required int32 createmax = 5;
+  required int32 roomType = 6;
+}
+
+message EnterPw {
+  required int32 seatid = 1;
+  required string passwd = 2;
+  required int64 playerid = 3;
+  required int32 maxbv = 4;
+  required int32 roomType=5;
+}
+
+message UpdateDesk{
+  required int64 deskid = 1;
+  required int32 minbv = 2;
+  required int32 maxbv = 3;
+  required int32 autoKick = 4;
+  optional int32 level = 5;
+}
+
+message AddRecruit{
+  required int32 recruitor = 1;
+  required int32 beRecruitor = 2;
+}
+
+message UpdateRecharge{
+  required int32 uid = 1;
+  required int32 price = 2;
+}
+
+message GetRecruit{
+  required int32 uid = 1;
+  required int64 from = 2;
+  required int64 to = 3;
+}
+
+message RecruitData {
+  optional int32 uid = 1;
+  optional int64 recruitTime = 2;
+  optional int32 weekRecharge = 3;
+  optional int32 friendAmount = 4;
+}
+
+message RecruitDatas {
+  repeated RecruitData recruitDatas = 1;
+}
+
+message RecruitInfo {
+  required int32 friendAmount = 1;
+  required int32 friendRecharge = 2;
+  required int32 fansRecharge = 3;
+  required int32 friendCard = 4;
+  required int32 fansCard = 5;
+}
+
+message GetRecruiter{
+  required int32 uid = 1;
+}
+
+message RecruiterData {
+  optional int32 friendAmount = 1;
+  optional int32 weekRecharge = 2;
+}
+
+message BombMonster {
+  required int32 bombValue = 1;
+  required int64 dailyLimit = 2;
+  required int32 colorTicket = 3;
+}
+
+message BombMonsterResult {
+  required int32 code = 1;
+  required int32 monster = 2;
+  optional int64 refreshTime = 3;
+  optional bool colorTicket = 4;
+}
+
+message UpdatePubData {
+  required int32 opt = 1;
+  required string dataName = 2;
+  optional string tableName = 3;
+  optional int32 row = 4;
+  optional int32 col = 5;
+  optional string cellValue = 6;
+  optional string proName = 7;
+  optional string proValue = 8;
+  optional string value = 9;
+}
+
+message UpdatePubDataRes {
+  required string res = 1;
+}
+
+message MonsterAwardRecord {
+  required int32 type = 1;
+  required string username = 2;
+  required string itemId = 3;
+  optional string pkgId = 4;
+  optional int32 count = 5;
+  optional int32 uid = 6;
+}
+
+message CustomDesk {
+  required int32 deskId = 1;
+  required int32 deskType = 2;
+}
+
+message CustomSeatData {
+  required int32 deskId = 1;
+  required int32 seatId = 2;
+  required int32 uid = 3;
+  required int64 totalPlay = 4;
+  required int64 totalWin = 5;
+  optional int32 vipLevel = 6;
+  optional int64 mojin = 7;
+  optional int32 sanchaji1 = 8;
+  optional int32 sanchaji2 = 9;
+}
+
+message CustomDeskData {
+  repeated CustomSeatData seatData = 1;
+  optional int32 roomType = 2;
+}
+
+message CheckActivityListVersion {
+  required int64 version = 1;
+  required string rankName = 2;
+}
+
+message MonopolyAwardRecord {
+  required int32 uid = 1;
+  required string username = 2;
+  required string award = 3;
+  required int32 count = 4;
+}
+
+message LuckyCardAwardRecord {
+  required int32 uid = 1;
+  required string username = 2;
+  required string award = 3;
+}
+
+message AddTreasureBowlTimes {
+  required string item = 1;
+  required int32 type = 2;
+}
+
+message UpdateGuildStatus {
+  required int32 id = 1;
+  required int32 status = 2;
+}
+
+message AddLuckPlayer{
+  required int32 uid = 1;
+  required string username = 2;
+  required int32 gold = 3;
+}
+
+message IntList{
+  repeated int32 element = 1;
+}
+message SelectData{
+
+  required bool IsWin = 3;
+  required int32 selectIndex = 4;
+}
+message ThreeSelectData{
+  required int32  uid = 1;
+  repeated int64 selectList = 2;
+  repeated int64 resultList = 3;
+}
+message ThreeSelectList{
+  repeated ThreeSelectData list = 1;
+  required int32  winIndex = 2;
+  required int32 gameID = 3;
+  required double multi = 4;
+  required int64  time = 5;
+}
+message PlayData{
+  required int32 uid=1;
+  repeated int32 select = 2;
+  repeated int64 selectValue = 3;
+  required int64 winValue=4;
+}
+message GameList{
+  repeated PlayData list=1;
+  required int32 winIndex=2;
+  required int32 gameID = 3;
+  //支付比例
+  required double rate = 4;
+  required int64  time = 5;
+  required int32 leader=6;
+  required int64 totalGet=7;
+  required int64 totalGive=8;
+  required string leaderName=9;
+//  实际支付比例
+  required double realRate=10;
+  required int64 leadDiamond=11;
+  required int32 winTypeIndex=12;
+  required int64 afterDiamond=13;
+  required string brnnResult=14;
+}
+
+message SlotShzInfo{
+  required int32 uid = 1;
+  required string nikeName = 2;
+  required int64 coin = 3;
+  required int64 betNum = 4;
+  required int64 winNum = 5;
+  required string winParam = 6;
+  required int32 bibei = 7;
+  required int32 marry = 8;
+}
+
+message SlotShzInnerInfo{
+  required int32 uid = 1;
+  required string nikeName = 2;
+  required int64 coin = 3;
+  required int64 betNum = 4;
+  required int64 winNum = 5;
+  required string winParam = 6;
+}
+
+message WithdrawRecordInfo{
+  required int32 uid = 1;
+  required int64 baseAmount = 2;
+  required int64 amount = 3;
+  required int64 exAmount = 4;
+  required int32 extractType = 5;
+}
+
+message WithdrawRecordListInfo{
+  repeated WithdrawRecordInfo records = 1;
+}
+
+message UserConsumeDailyInfo{
+  required int32 uid = 1;
+  required int64 todayAmount = 2;
+  required int64 totalAmount = 3;
+  required string bizDate = 4;
+}
+
+message UserConsumeDailyListInfo{
+  repeated UserConsumeDailyInfo lists = 1;
+}
+
+message FuLuShuangQuanAwardRecord {
+  required int32 uid = 1;
+  required string username = 2;
+  required int32 headId = 3;
+  required int32 vip = 4;
+  required int32 roomType = 5;
+  required int64 award = 6;
+  required int32 awardId = 7;
+}
+
+message SlotSgmlInfo{
+  required int32 uid = 1;
+  required string nikeName = 2;
+  required int64 coin = 3;
+  required int64 betNum = 4;
+  required int64 winNum = 5;
+  required string winParam = 6;
+}
+
+message InviteVip {
+  optional int32 uid = 1;
+  optional int32 vip = 2;
+}

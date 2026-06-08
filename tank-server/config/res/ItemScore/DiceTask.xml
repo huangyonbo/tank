@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="dice_task0" Reward="item_pkg_dice_task" TargetCount="63" Title="收集到所有点数骰子一遍"/>
+ <item Id="dice_task1" Reward="item_pkg_dice_task_s" TargetCount="63" Title="收集到所有点数骰子一遍-至尊选座"/>
+</config>

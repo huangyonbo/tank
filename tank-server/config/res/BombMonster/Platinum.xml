@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" ItemId="item_skill_nbomb" Count="1" Cost="2500000" Weight="70"/>
+ <item Id="2" ItemId="item_gold_1" Count="3500000" Cost="3500000" Weight="3"/>
+ <item Id="3" ItemId="item_gold_1" Count="3000000" Cost="3000000" Weight="70"/>
+ <item Id="4" ItemId="item_gold_1" Count="2500000" Cost="2500000" Weight="100"/>
+ <item Id="5" ItemId="item_gold_1" Count="2100000" Cost="2100000" Weight="186"/>
+ <item Id="6" ItemId="item_gold_1" Count="1800000" Cost="1800000" Weight="250"/>
+ <item Id="7" ItemId="item_diamond_1" Count="3500" Cost="3500000" Weight="1"/>
+ <item Id="8" ItemId="item_diamond_1" Count="3000" Cost="3000000" Weight="30"/>
+ <item Id="9" ItemId="item_diamond_1" Count="2500" Cost="2500000" Weight="40"/>
+ <item Id="10" ItemId="item_diamond_1" Count="2000" Cost="2000000" Weight="250"/>
+</config>

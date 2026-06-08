@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Open="1" Start="00:00:00" Stop="23:30:00"/>
+ <item Id="2" Open="1" Start="00:00:00" Stop="23:30:00"/>
+ <item Id="3" Open="1" Start="00:00:00" Stop="23:30:00"/>
+ <item Id="4" Open="1" Start="00:00:00" Stop="23:30:00"/>
+ <item Id="5" Open="1" Start="00:00:00" Stop="23:30:00"/>
+ <item Id="6" Open="1" Start="00:00:00" Stop="23:30:00"/>
+ <item Id="7" Open="1" Start="00:00:00" Stop="23:30:00"/>
+</config>

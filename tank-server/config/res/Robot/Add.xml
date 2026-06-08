@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="0" RealCount="1" RobotCount="3" Add="0:1" Remove="&lt;5?0.1:0.8"/>
+ <item Id="1" RealCount="1" RobotCount="2" Add="0.3:1" Remove="&lt;5?0.1:0.7"/>
+ <item Id="2" RealCount="1" RobotCount="1" Add="0.4:1" Remove="&lt;5?0.1:0.6"/>
+ <item Id="3" RealCount="1" RobotCount="0" Add="0.5:1" Remove=""/>
+ <item Id="4" RealCount="2" RobotCount="2" Add="0:1" Remove="&lt;5?0.1:0.8"/>
+ <item Id="5" RealCount="2" RobotCount="1" Add="0.4:1" Remove="&lt;5?0.1:0.5"/>
+ <item Id="6" RealCount="2" RobotCount="0" Add="0.5:1" Remove=""/>
+ <item Id="7" RealCount="3" RobotCount="1" Add="0.3:1" Remove="&lt;5?0.1:0.6"/>
+ <item Id="8" RealCount="3" RobotCount="0" Add="0.5:1" Remove=""/>
+ <item Id="9" RealCount="4" RobotCount="0" Add="0:1" Remove=""/>
+</config>

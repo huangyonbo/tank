@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_gold_1" BaseCount="10000" Luck="1"/>
+ <item Id="item_diamond_1" BaseCount="10" Luck="1"/>
+ <item Id="item_skill_lock" BaseCount="5" Luck="1"/>
+ <item Id="item_skill_frozen" BaseCount="5" Luck="1"/>
+ <item Id="item_skill_speed" BaseCount="5" Luck="1"/>
+ <item Id="item_skill_bind_bomb" BaseCount="1" Luck="2"/>
+ <item Id="item_skill_normal_bomb" BaseCount="1" Luck="15"/>
+ <item Id="item_skill_missile" BaseCount="1" Luck="50"/>
+ <item Id="item_skill_nbomb" BaseCount="1" Luck="250"/>
+ <item Id="item_skill_hbomb" BaseCount="1" Luck="500"/>
+ <item Id="item_color_ticket_1" BaseCount="100" Luck="1"/>
+</config>

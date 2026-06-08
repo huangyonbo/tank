@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <item Id="1" WeaponTypes="0" lv1="10" lv2="40" lv3="90" lv4="200" lv5="550" lv6="900" />
+  <item Id="2" WeaponTypes="1" lv1="1700" lv2="600" lv3="650" lv4="750" lv5="800" lv6="900" />
+  <item Id="3" WeaponTypes="2" lv1="7900" lv2="2300" lv3="2500" lv4="2700" lv5="3100" lv6="3500" />
+  <item Id="4" WeaponTypes="3" lv1="17500" lv2="5200" lv3="5500" lv4="5800" lv5="6400" lv6="7000" />
+  <item Id="5" WeaponTypes="4" lv1="26500" lv2="7600" lv3="8100" lv4="8700" lv5="9900" lv6="11100" />
+  <item Id="6" WeaponTypes="5" lv1="40000" lv2="11700" lv3="12200" lv4="13400" lv5="14600" lv6="15500" />
+  <item Id="7" WeaponTypes="6" lv1="86500" lv2="27000" lv3="27500" lv4="29500" lv5="31000" lv6="33500" />
+  <item Id="8" WeaponTypes="7" lv1="199500" lv2="60000" lv3="62000" lv4="66000" lv5="70000" lv6="73000" />
+  <item Id="9" WeaponTypes="8" lv1="349000" lv2="113500" lv3="119500" lv4="125000" lv5="130500" lv6="136500" />
+  <item Id="10" WeaponTypes="9" lv1="99500" lv2="32500" lv3="34000" lv4="35500" lv5="37000" lv6="39000" />
+  <item Id="11" WeaponTypes="10" lv1="99500" lv2="32500" lv3="34000" lv4="35500" lv5="37000" lv6="39000" />
+  <item Id="12" WeaponTypes="11" lv1="99500" lv2="32500" lv3="34000" lv4="35500" lv5="37000" lv6="39000" />
+  <item Id="13" WeaponTypes="12" lv1="466500" lv2="155500" lv3="166500" lv4="178000" lv5="189500" lv6="201000" />
+  <item Id="14" WeaponTypes="13" lv1="583000" lv2="194000" lv3="205500" lv4="217000" lv5="228500" lv6="239500" />
+  <item Id="15" WeaponTypes="14" lv1="700000" lv2="233000" lv3="244500" lv4="256000" lv5="267500" lv6="278500" />
+</root>

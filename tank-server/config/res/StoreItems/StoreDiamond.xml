@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_pkg_storediamond_12" Price="120"/>
+ <item Id="item_pkg_storediamond_28" Price="280"/>
+ <item Id="item_pkg_storediamond_50" Price="500"/>
+ <item Id="item_pkg_storediamond_108" Price="1080"/>
+ <item Id="item_pkg_storediamond_328" Price="3280"/>
+ <item Id="item_pkg_storediamond_618" Price="6480"/>
+</config>

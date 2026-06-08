@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Price="64000" Prob="0.55"/>
+ <item Id="2" Price="80000" Prob="0.4"/>
+ <item Id="3" Price="120000" Prob="0.026"/>
+ <item Id="4" Price="160000" Prob="0.015"/>
+ <item Id="5" Price="400000" Prob="0.0045"/>
+ <item Id="6" Price="640000" Prob="0.002"/>
+ <item Id="7" Price="800000" Prob="0.001"/>
+ <item Id="8" Price="1200000" Prob="0.0004"/>
+ <item Id="9" Price="1600000" Prob="0.00036"/>
+ <item Id="10" Price="2000000" Prob="0.0003"/>
+ <item Id="11" Price="2400000" Prob="0.0002"/>
+ <item Id="12" Price="2800000" Prob="0.0001"/>
+ <item Id="13" Price="3200000" Prob="5e-05"/>
+ <item Id="14" Price="4000000" Prob="4e-05"/>
+ <item Id="15" Price="4800000" Prob="3e-05"/>
+ <item Id="16" Price="5600000" Prob="2e-05"/>
+</config>

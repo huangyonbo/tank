@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="task0" Must="1" Count="1" Condition="0" Reward="item_pkg_DailyTask1*1" PreTask="" taskName="今日成功登录1次"/>
+ <item Id="task1" Must="1" Count="500000000" Condition="10" Reward="item_pkg_DailyTask2*1" PreTask="" taskName="今日捕鱼消耗5亿金币"/>
+ <item Id="task2" Must="1" Count="1000000000" Condition="10" Reward="item_pkg_DailyTask3*1" PreTask="" taskName="今日捕鱼消耗10亿金币"/>
+ <item Id="task3" Must="1" Count="300" Condition="18" Reward="item_pkg_DailyTask1*1" PreTask="" taskName="今日使用100及以上炮值累计捕获任意鱼300条"/>
+ <item Id="task4" Must="1" Count="10" Condition="21" Reward="item_pkg_DailyTask1*1" PreTask="" taskName="今日使用100及以上炮值累计捕获黄金鱼10条"/>
+ <item Id="task5" Must="1" Count="5" Condition="11" Reward="item_pkg_DailyTask1*1" PreTask="" taskName="今日累计使用冰冻或锁定或加速5个"/>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="0" From="0" To="0.5" Attach="0"/>
+ <item Id="1" From="0.5" To="0.53" Attach="0.01"/>
+ <item Id="2" From="0.53" To="0.58" Attach="0.02"/>
+ <item Id="3" From="0.58" To="0.63" Attach="0.05"/>
+ <item Id="4" From="0.63" To="0.66" Attach="0.08"/>
+ <item Id="5" From="0.66" To="1" Attach="0.5"/>
+</config>

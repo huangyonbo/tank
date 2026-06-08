@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config>
+ <item Condition="0"  Count="1"      Id="task4001" Must="1" PreTask="" Reward="item_rareBone_1*1"/>
+ <item Condition="33" Count="900000" Id="task4002" Must="1" PreTask="" Reward="item_rareBone_1*1"/>
+ <item Condition="18" Count="300"    Id="task4003" Must="0" PreTask="" Reward="item_rareBone_1*1"/>
+ <item Condition="21" Count="10"     Id="task4004" Must="0" PreTask="" Reward="item_rareBone_1*1"/>
+ <item Condition="10" Count="500000" Id="task4005" Must="0" PreTask="" Reward="item_rareBone_1*1"/>
+ <item Condition="11" Count="5"      Id="task4006" Must="0" PreTask="" Reward="item_rareBone_1*1"/>
+ <item Condition="38" Count="1"      Id="task4007" Must="0" PreTask="" Reward="item_rareBone_1*1"/>
+ <item Condition="45" Count="3"      Id="task4008" Must="0" PreTask="" Reward="item_rareBone_1*1"/>
+ <item Condition="46" Count="3"      Id="task4009" Must="0" PreTask="" Reward="item_rareBone_1*1"/>
+</config>

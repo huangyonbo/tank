@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config>
+ <item Condition="18" Count="1500" Id="task1" Reward="item_nyw_count"/>
+ <item Condition="19" Count="1000" Id="task2" Reward="item_nyw_count"/>
+ <item Condition="20" Count="800" Id="task3" Reward="item_nyw_count"/>
+ <item Condition="21" Count="30" Id="task4" Reward="item_nyw_count"/>
+ <item Condition="22" Count="15" Id="task5" Reward="item_nyw_count"/>
+ <item Condition="23" Count="10" Id="task6" Reward="item_nyw_count"/>
+ <item Condition="24" Count="20" Id="task7" Reward="item_nyw_count"/>
+ <item Condition="25" Count="15" Id="task8" Reward="item_nyw_count"/>
+ <item Condition="26" Count="10" Id="task9" Reward="item_nyw_count"/>
+ <item Condition="10" Count="100000" Id="task10" Reward="item_nyw_count"/>
+ <item Condition="10" Count="500000" Id="task11" Reward="item_nyw_count"/>
+ <item Condition="10" Count="1000000" Id="task12" Reward="item_nyw_count"/>
+</config>

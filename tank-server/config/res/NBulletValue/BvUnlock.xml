@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Value="1000" Rate="1" Diamond="0" Material="0,0,0"/>
+ <item Id="2" Value="1500" Rate="0.9" Diamond="10" Material="5,5,5"/>
+ <item Id="3" Value="2000" Rate="0.85" Diamond="20" Material="10,10,10"/>
+ <item Id="4" Value="2500" Rate="0.8" Diamond="30" Material="20,20,20"/>
+ <item Id="5" Value="3000" Rate="0.8" Diamond="40" Material="30,30,30"/>
+ <item Id="6" Value="3500" Rate="0.75" Diamond="50" Material="50,50,50"/>
+ <item Id="7" Value="4000" Rate="0.75" Diamond="60" Material="80,80,80"/>
+ <item Id="8" Value="4500" Rate="0.75" Diamond="70" Material="100,100,100"/>
+ <item Id="9" Value="5000" Rate="0.7" Diamond="80" Material="150,150,150"/>
+ <item Id="10" Value="6000" Rate="0.7" Diamond="90" Material="200,200,200"/>
+ <item Id="11" Value="7000" Rate="0.7" Diamond="100" Material="250,250,250"/>
+ <item Id="12" Value="8000" Rate="0.65" Diamond="150" Material="300,300,300"/>
+ <item Id="13" Value="9000" Rate="0.65" Diamond="200" Material="400,400,400"/>
+ <item Id="14" Value="10000" Rate="0.65" Diamond="250" Material="500,500,500"/>
+ <item Id="15" Value="15000" Rate="0.6" Diamond="300" Material="700,700,700"/>
+ <item Id="16" Value="20000" Rate="0.55" Diamond="350" Material="1000,1000,1000"/>
+ <item Id="17" Value="25000" Rate="0.55" Diamond="400" Material="2000,2000,2000"/>
+ <item Id="18" Value="30000" Rate="0.5" Diamond="450" Material="3000,3000,3000"/>
+ <item Id="19" Value="35000" Rate="0.5" Diamond="500" Material="4000,4000,4000"/>
+ <item Id="20" Value="40000" Rate="0.5" Diamond="600" Material="5000,5000,5000"/>
+ <item Id="21" Value="45000" Rate="0.45" Diamond="700" Material="6000,6000,6000"/>
+ <item Id="22" Value="50000" Rate="0.45" Diamond="800" Material="7000,7000,7000"/>
+ <item Id="23" Value="60000" Rate="0.35" Diamond="900" Material="8000,8000,8000"/>
+ <item Id="24" Value="70000" Rate="0.35" Diamond="1000" Material="9000,9000,9000"/>
+ <item Id="25" Value="80000" Rate="0.3" Diamond="1500" Material="10000,10000,10000"/>
+ <item Id="26" Value="90000" Rate="0.3" Diamond="2000" Material="15000,15000,15000"/>
+ <item Id="27" Value="100000" Rate="0.25" Diamond="3000" Material="20000,20000,20000"/>
+ <item Id="28" Value="150000" Rate="0.25" Diamond="3000" Material="20000,20000,20001"/>
+ <item Id="29" Value="200000" Rate="0.25" Diamond="3000" Material="20000,20000,20002"/>
+ <item Id="30" Value="250000" Rate="0.25" Diamond="3000" Material="20000,20000,20003"/>
+ <item Id="31" Value="300000" Rate="0.25" Diamond="3000" Material="20000,20000,20004"/>
+</config>

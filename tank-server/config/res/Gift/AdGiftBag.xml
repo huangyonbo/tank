@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<config>
+ <!-- 客户端看完激励视频后请求领取：每次领取 gold 金币，每天最多 dailyLimit 次 -->
+ <item gold="500" dailyLimit="10"/>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_diamond_120" Price="120"/>
+ <item Id="item_diamond_300" Price="280"/>
+ <item Id="item_diamond_500" Price="500"/>
+ <item Id="item_diamond_1080" Price="1080"/>
+ <item Id="item_diamond_3280" Price="3280"/>
+ <item Id="item_diamond_6180" Price="6480"/>
+</config>

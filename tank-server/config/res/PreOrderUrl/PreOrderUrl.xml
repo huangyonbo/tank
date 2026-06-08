@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="-1" Name="模拟充值" Url="/preorder/4001/localtest.js;/preorder/4001/localtest.js" BindUrl="localtest.js" VerifyUrl="" ip="" Integral="5" LotteryProbability="100" Certification="0"/>
+ <item Id="2" Name="华为" Url="/preorder/4001/huawei.js" BindUrl="HuaWei.js" VerifyUrl="" ip="" Integral="1" LotteryProbability="100" Certification="0"/>
+ <item Id="15" Name="小米" Url="/preorder/4001/xiaomi.js" BindUrl="XiaoMi.js" VerifyUrl="" ip="" Integral="3" LotteryProbability="10" Certification="1"/>
+ <item Id="166" Name="vivo" Url="/preorder/4001/vivo.js" BindUrl="vivo.js" VerifyUrl="" ip="" Integral="1" LotteryProbability="100" Certification="0"/>
+ <item Id="162" Name="oppo" Url="/preorder/4002/oppo.js" BindUrl="oppo.js" VerifyUrl="" ip="" Integral="1" LotteryProbability="100" Certification="0"/>
+ <item Id="164" Name="安卓推广1" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="165" Name="安卓官方1" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="7" LotteryProbability="100" Certification="0"/>
+ <item Id="3" Name="安卓官方2" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="7" LotteryProbability="100" Certification="0"/>
+ <item Id="167" Name="安卓推广2" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="7" LotteryProbability="100" Certification="0"/>
+ <item Id="168" Name="ios推广2" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="7" LotteryProbability="100" Certification="0"/>
+ <item Id="151" Name="ios推广1" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="152" Name="ios官方1" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="7" LotteryProbability="100" Certification="0"/>
+ <item Id="4" Name="ios官方2" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="7" LotteryProbability="100" Certification="0"/>
+ <item Id="170" Name="应用宝" Url="/preorder/4003/tencent.js" BindUrl="tencent.js" VerifyUrl="" ip="" Integral="1" LotteryProbability="100" Certification="0"/>
+ <item Id="179" Name="重庆LGCPS(安卓)" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="180" Name="大连爱丽游CPS(安卓)" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="181" Name="lz1CPS(安卓)" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="182" Name="安卓谜乐" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="183" Name="ios谜乐" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="184" Name="安卓百度推广" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="185" Name="云库克" Url="/preorder/4001/quickSdk.js" BindUrl="quickSdk.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="186" Name="QuickSdk_Android(天宇游)" Url="/preorder/4002/quickSdk.js" BindUrl="quickSdk.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="187" Name="QuickSdk_Ios" Url="/preorder/4003/quickSdk.js" BindUrl="quickSdk.js" VerifyUrl="" ip="" Integral="6" LotteryProbability="100" Certification="0"/>
+ <item Id="188" Name="联想" Url="" BindUrl="" VerifyUrl="" ip="" Integral="1" LotteryProbability="100" Certification="0"/>
+ <item Id="189" Name="魅族" Url="" BindUrl="" VerifyUrl="" ip="" Integral="1" LotteryProbability="100" Certification="0"/>
+ <item Id="190" Name="广告渠道1" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="1" LotteryProbability="10" Certification="0"/>
+ <item Id="191" Name="电视台cps" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="0" LotteryProbability="5" Certification="0"/>
+ <item Id="192" Name="蛋咖" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="3" LotteryProbability="10" Certification="0"/>
+ <item Id="193" Name="多游" Url="/preorder/4001/wechat.js;/preorder/4001/alipay.js;/preorder/4001/lakalaWechat.js;/preorder/4001/lakalaAlipay.js" BindUrl="wechat.js" VerifyUrl="" ip="" Integral="3" LotteryProbability="10" Certification="0"/>
+</config>

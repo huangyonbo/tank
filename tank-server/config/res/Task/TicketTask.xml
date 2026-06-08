@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="ticket_task0" Reward="item_pkg_activityTask1" Count="1" Condition="0"/>
+ <item Id="ticket_task1" Reward="item_pkg_activityTask2" Count="2" Condition="0"/>
+ <item Id="ticket_task2" Reward="item_pkg_activityTask3" Count="3" Condition="0"/>
+ <item Id="ticket_task3" Reward="item_pkg_activityTask4" Count="3000" Condition="20"/>
+ <item Id="ticket_task4" Reward="item_pkg_activityTask5" Count="1500" Condition="27"/>
+ <item Id="ticket_task5" Reward="item_pkg_activityTask6" Count="1000" Condition="28"/>
+ <item Id="ticket_task6" Reward="item_pkg_activityTask7" Count="100" Condition="11"/>
+ <item Id="ticket_task7" Reward="item_pkg_activityTask8" Count="200" Condition="11"/>
+ <item Id="ticket_task8" Reward="item_pkg_activityTask9" Count="300" Condition="11"/>
+ <item Id="ticket_task9" Reward="item_pkg_activityTask10" Count="150" Condition="23"/>
+ <item Id="ticket_task10" Reward="item_pkg_activityTask11" Count="100" Condition="29"/>
+ <item Id="ticket_task11" Reward="item_pkg_activityTask12" Count="50" Condition="30"/>
+ <item Id="ticket_task12" Reward="item_pkg_activityTask13" Count="50" Condition="26"/>
+ <item Id="ticket_task13" Reward="item_pkg_activityTask14" Count="30" Condition="31"/>
+ <item Id="ticket_task14" Reward="item_pkg_activityTask15" Count="20" Condition="32"/>
+ <item Id="ticket_task15" Reward="item_pkg_activityTask16" Count="1000000" Condition="10"/>
+ <item Id="ticket_task16" Reward="item_pkg_activityTask17" Count="5000000" Condition="10"/>
+ <item Id="ticket_task17" Reward="item_pkg_activityTask18" Count="10000000" Condition="10"/>
+</config>

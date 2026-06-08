@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="task0" Must="1" PreTask="" Count="5" Condition="0" Reward="item_pkg_WeeklyTask1*1" taskName="本周累计登录5次"/>
+ <item Id="task1" Must="1" PreTask="" Count="10000000000" Condition="10" Reward="item_pkg_WeeklyTask2*1" taskName="本周累计捕鱼消耗100亿灵石"/>
+ <item Id="task2" Must="1" PreTask="" Count="50000000000" Condition="10" Reward="item_pkg_WeeklyTask3*1" taskName="本周累计捕鱼消耗500亿灵石"/>
+ <item Id="task3" Must="0" PreTask="" Count="60" Condition="33" Reward="item_pkg_WeeklyTask1*1" taskName="本周累计在线60分钟"/>
+ <item Id="task4" Must="0" PreTask="" Count="2500" Condition="19" Reward="item_pkg_WeeklyTask1*1" taskName="本周使用500及以上炮值累计捕获任意鱼2500条"/>
+ <item Id="task5" Must="0" PreTask="" Count="100" Condition="22" Reward="item_pkg_WeeklyTask1*1" taskName="本周使用500及以上炮值累计捕获黄金鱼100条"/>
+ <item Id="task6" Must="0" PreTask="" Count="30" Condition="11" Reward="item_pkg_WeeklyTask1*1" taskName="本周累计使用冰冻或锁定或加速30个"/>
+</config>

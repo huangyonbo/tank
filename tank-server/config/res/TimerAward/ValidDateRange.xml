@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Start="10:00" End="14:00" MaxTimes="1"/>
+ <item Id="2" Start="18:00" End="22:00" MaxTimes="1"/>
+</config>

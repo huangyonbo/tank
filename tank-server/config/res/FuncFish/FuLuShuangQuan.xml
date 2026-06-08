@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" type="1" num="20" rate="6000"/>
+ <item Id="2" type="2" num="15" rate="15"/>
+ <item Id="3" type="2" num="60" rate="1"/>
+ <item Id="4" type="2" num="5" rate="50"/>
+ <item Id="5" type="1" num="50" rate="4000"/>
+ <item Id="6" type="1" num="80" rate="1000"/>
+ <item Id="7" type="1" num="30" rate="5000"/>
+ <item Id="8" type="1" num="100" rate="500"/>
+</config>

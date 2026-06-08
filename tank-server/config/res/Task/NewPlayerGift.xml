@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="task0" ActiveScore="10" Condition="0" Count="1" Day="1" Reward="item_pkg_newPlayerActivityTask1"/>
+ <item Id="task1" ActiveScore="15" Condition="0" Count="2" Day="1" Reward="item_pkg_newPlayerActivityTask2"/>
+ <item Id="task2" ActiveScore="20" Condition="0" Count="3" Day="1" Reward="item_pkg_newPlayerActivityTask3"/>
+ <item Id="task3" ActiveScore="25" Condition="0" Count="5" Day="1" Reward="item_pkg_newPlayerActivityTask4"/>
+ <item Id="task4" ActiveScore="30" Condition="0" Count="7" Day="1" Reward="item_pkg_newPlayerActivityTask5"/>
+ <item Id="task5" ActiveScore="10" Condition="1" Count="500" Day="2" Reward="item_pkg_newPlayerActivityTask6"/>
+ <item Id="task6" ActiveScore="15" Condition="1" Count="1000" Day="2" Reward="item_pkg_newPlayerActivityTask7"/>
+ <item Id="task7" ActiveScore="20" Condition="1" Count="1500" Day="2" Reward="item_pkg_newPlayerActivityTask8"/>
+ <item Id="task8" ActiveScore="25" Condition="1" Count="2000" Day="2" Reward="item_pkg_newPlayerActivityTask9"/>
+ <item Id="task9" ActiveScore="30" Condition="1" Count="3000" Day="2" Reward="item_pkg_newPlayerActivityTask10"/>
+ <item Id="task10" ActiveScore="10" Condition="10" Count="100000" Day="3" Reward="item_pkg_newPlayerActivityTask11"/>
+ <item Id="task11" ActiveScore="15" Condition="10" Count="500000" Day="3" Reward="item_pkg_newPlayerActivityTask12"/>
+ <item Id="task12" ActiveScore="20" Condition="10" Count="1000000" Day="3" Reward="item_pkg_newPlayerActivityTask13"/>
+ <item Id="task13" ActiveScore="25" Condition="10" Count="5000000" Day="3" Reward="item_pkg_newPlayerActivityTask14"/>
+ <item Id="task14" ActiveScore="30" Condition="10" Count="10000000" Day="3" Reward="item_pkg_newPlayerActivityTask15"/>
+ <item Id="task15" ActiveScore="10" Condition="21" Count="10" Day="4" Reward="item_pkg_newPlayerActivityTask16"/>
+ <item Id="task16" ActiveScore="15" Condition="21" Count="50" Day="4" Reward="item_pkg_newPlayerActivityTask17"/>
+ <item Id="task17" ActiveScore="20" Condition="21" Count="100" Day="4" Reward="item_pkg_newPlayerActivityTask18"/>
+ <item Id="task18" ActiveScore="25" Condition="21" Count="150" Day="4" Reward="item_pkg_newPlayerActivityTask19"/>
+ <item Id="task19" ActiveScore="30" Condition="21" Count="200" Day="4" Reward="item_pkg_newPlayerActivityTask20"/>
+ <item Id="task20" ActiveScore="10" Condition="12" Count="10" Day="5" Reward="item_pkg_newPlayerActivityTask21"/>
+ <item Id="task21" ActiveScore="15" Condition="13" Count="20" Day="5" Reward="item_pkg_newPlayerActivityTask22"/>
+ <item Id="task22" ActiveScore="20" Condition="14" Count="30" Day="5" Reward="item_pkg_newPlayerActivityTask23"/>
+ <item Id="task23" ActiveScore="25" Condition="12" Count="50" Day="5" Reward="item_pkg_newPlayerActivityTask24"/>
+ <item Id="task24" ActiveScore="30" Condition="13" Count="50" Day="5" Reward="item_pkg_newPlayerActivityTask25"/>
+ <item Id="task25" ActiveScore="10" Condition="25" Count="5" Day="6" Reward="item_pkg_newPlayerActivityTask26"/>
+ <item Id="task26" ActiveScore="15" Condition="25" Count="15" Day="6" Reward="item_pkg_newPlayerActivityTask27"/>
+ <item Id="task27" ActiveScore="20" Condition="25" Count="20" Day="6" Reward="item_pkg_newPlayerActivityTask28"/>
+ <item Id="task28" ActiveScore="25" Condition="25" Count="25" Day="6" Reward="item_pkg_newPlayerActivityTask29"/>
+ <item Id="task29" ActiveScore="30" Condition="25" Count="30" Day="6" Reward="item_pkg_newPlayerActivityTask30"/>
+ <item Id="task30" ActiveScore="10" Condition="15" Count="1" Day="7" Reward="item_pkg_newPlayerActivityTask31"/>
+ <item Id="task31" ActiveScore="15" Condition="15" Count="6" Day="7" Reward="item_pkg_newPlayerActivityTask32"/>
+ <item Id="task32" ActiveScore="20" Condition="15" Count="30" Day="7" Reward="item_pkg_newPlayerActivityTask33"/>
+ <item Id="task33" ActiveScore="25" Condition="15" Count="400" Day="7" Reward="item_pkg_newPlayerActivityTask34"/>
+ <item Id="task34" ActiveScore="30" Condition="15" Count="500" Day="7" Reward="item_pkg_newPlayerActivityTask35"/>
+</config>

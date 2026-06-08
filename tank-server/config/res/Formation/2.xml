@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<config time="49.0">
+ <item Count="50" Fishid="fish1" Id="0"/>
+ <item Count="48" Fishid="fish2" Id="1"/>
+ <item Count="38" Fishid="fish7" Id="2"/>
+ <item Count="50" Fishid="fish1" Id="3"/>
+ <item Count="48" Fishid="fish2" Id="4"/>
+ <item Count="38" Fishid="fish7" Id="5"/>
+ <item Count="6" Fishid="fish6" Id="6"/>
+ <item Count="6" Fishid="fish4" Id="7"/>
+ <item Count="6" Fishid="fish5" Id="8"/>
+ <item Count="6" Fishid="fish4" Id="9"/>
+ <item Count="6" Fishid="fish6" Id="10"/>
+ <item Count="6" Fishid="fish6" Id="11"/>
+ <item Count="6" Fishid="fish4" Id="12"/>
+ <item Count="6" Fishid="fish5" Id="13"/>
+ <item Count="6" Fishid="fish4" Id="14"/>
+ <item Count="6" Fishid="fish6" Id="15"/>
+ <item Count="6" Fishid="fish6" Id="16"/>
+ <item Count="6" Fishid="fish4" Id="17"/>
+ <item Count="6" Fishid="fish5" Id="18"/>
+ <item Count="6" Fishid="fish4" Id="19"/>
+ <item Count="6" Fishid="fish6" Id="20"/>
+ <item Count="6" Fishid="fish6" Id="21"/>
+ <item Count="6" Fishid="fish4" Id="22"/>
+ <item Count="6" Fishid="fish5" Id="23"/>
+ <item Count="6" Fishid="fish4" Id="24"/>
+ <item Count="6" Fishid="fish6" Id="25"/>
+ <item Count="2" Fishid="fish17" Id="26"/>
+ <item Count="2" Fishid="fish30" Id="27"/>
+</config>

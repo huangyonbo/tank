@@ -1,0 +1,68 @@
+
+syntax = "proto2";
+
+option java_package = "framework.net.message";
+
+message ReqSer {
+    optional int32 serid = 1;
+}
+
+message ReqObj {
+	optional uint64 objid = 1;
+}
+
+message SerList {
+	repeated int32 sid = 1;
+	repeated string name = 2;
+	repeated string type = 3;
+}
+
+message SerObj {
+	optional int32 sid = 1;
+	optional int32 count = 2;
+	repeated uint64 objid = 3;
+	repeated string name = 4;
+	repeated string script = 5;
+}
+
+message LoadObj {
+	optional uint64 objectId = 1;
+	optional bytes data = 2;
+	optional int32 count = 3;
+	repeated uint64 childid = 4;
+	repeated string childname = 5;
+	repeated string childscript = 6;
+}
+
+message LoadPubSer {
+    optional int32 serid = 1;
+}
+
+message LoadPubSerRes {
+    optional int32 serid = 1;
+    repeated string name = 2;
+}
+
+message LoadPubSpace {
+    optional int32 serid = 1;
+    optional string name = 2;
+}
+
+message LoadPubSpaceRes {
+    optional int32 serid = 1;
+    optional string name = 2;
+    repeated string dataname = 3;
+}
+
+message LoadPubData {
+    optional int32 serid = 1;
+    optional string name = 2;
+    optional string dataname = 3;
+}
+
+message LoadPubDataRes {
+    optional int32 serid = 1;
+    optional string name = 2;
+    optional string dataname = 3;
+	optional bytes data = 4;
+}

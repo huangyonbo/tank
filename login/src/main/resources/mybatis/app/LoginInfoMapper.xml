@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.login.app.dao.LoginInfoDao">
+	<select id="get" resultType="com.login.app.domain.LoginInfoDO">
+		select * from login_info where id = #{value}
+	</select>
+
+	<select id="search" resultType="com.login.app.domain.LoginInfoDO">
+		select * from login_info where  user_name = #{value}
+	</select>
+
+	<insert id="save" parameterType="com.login.app.domain.LoginInfoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into login_info
+		(
+			`user_name`,
+			`password`, 
+			`game_type`,
+			`phone`, 
+			`email`, 
+			`salt`, 
+			`sex`, 
+			`ip`, 
+			`register_time`,
+			`login_time`,
+			`register_type`,
+			`channel_id`,
+			`register_device_id`,
+			`model`, 
+			`bind`, 
+			`recruiter`,
+		 	`pi`,
+		 	`nickname`,
+		 	`province`,
+		 	`city`,
+		 	`country`,
+		 	`status`
+		)
+		values
+		(
+			#{userName},
+			#{password}, 
+			#{gameType},
+			#{phone}, 
+			#{email}, 
+			#{salt}, 
+			#{sex}, 
+			#{ip}, 
+			#{registerTime},
+			#{loginTime},
+			#{registerType},
+			#{channelId},
+			#{registerDeviceId},
+			#{model}, 
+			#{bind}, 
+			#{recruiter},
+		 	#{pi},
+			#{nickname},
+			#{province},
+			#{city},
+			#{country},
+		 	#{status}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.login.app.domain.LoginInfoDO">
+		update login_info 
+		<set>
+			<if test="userName != null">`user_name` = #{userName}, </if>
+			<if test="password != null">`password` = #{password}, </if>
+			<if test="gameType != null">`game_type` = #{gameType}, </if>
+			<if test="phone != null">`phone` = #{phone}, </if>
+			<if test="email != null">`email` = #{email}, </if>
+			<if test="salt != null">`salt` = #{salt}, </if>
+			<if test="sex != null">`sex` = #{sex}, </if>
+			<if test="ip != null">`ip` = #{ip}, </if>
+			<if test="registerTime != null">`register_time` = #{registerTime}, </if>
+			<if test="loginTime != null">`login_time` = #{loginTime}, </if>
+			<if test="registerType != null">`register_type` = #{registerType}, </if>
+			<if test="channelId != null">`channel_id` = #{channelId}, </if>
+			<if test="registerDeviceId != null">`register_device_id` = #{registerDeviceId}, </if>
+			<if test="model != null">`model` = #{model}, </if>
+			<if test="bind != null">`bind` = #{bind}, </if>
+			<if test="recruiter != null">`recruiter` = #{recruiter}, </if>
+			<if test="pi != null">`pi` = #{pi}, </if>
+			<if test="nickname != null">`nickname` = #{nickname}, </if>
+			<if test="province != null">`province` = #{province}, </if>
+			<if test="city != null">`city` = #{city}, </if>
+			<if test="country != null">`country` = #{country},</if>
+			<if test="status != null">`status` = #{status}</if>
+		</set>
+		where ID = #{id}
+	</update>
+
+	<update id="updatePassword" parameterType="com.login.app.domain.LoginInfoDO">
+		update login_info
+		<set>
+			<if test="password != null">`password` = #{password}, </if>
+			<if test="salt != null">`salt` = #{salt}, </if>
+		</set>
+		where ID = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from login_info where ID = #{value}
+	</delete>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Addition="0"/>
+ <item Id="2" Addition="0"/>
+ <item Id="3" Addition="0"/>
+ <item Id="4" Addition="0"/>
+ <item Id="5" Addition="0"/>
+ <item Id="6" Addition="0.02"/>
+ <item Id="7" Addition="0.05"/>
+ <item Id="8" Addition="0.1"/>
+ <item Id="9" Addition="0.15"/>
+ <item Id="10" Addition="0.01"/>
+ <item Id="11" Addition="0.02"/>
+ <item Id="12" Addition="0.05"/>
+ <item Id="13" Addition="0.1"/>
+ <item Id="14" Addition="0"/>
+ <item Id="15" Addition="0"/>
+ <item Id="16" Addition="0.1"/>
+</config>

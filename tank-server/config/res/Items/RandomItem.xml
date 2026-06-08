@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_skill_random_1" Type="0" Name="技能道具随机包1" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_frozen*5,10:1;item_skill_speed*5,10:1;item_skill_lock*5,10:1"/>
+ <item Id="item_skill_random_2" Type="0" Name="技能道具随机包2" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_frozen*20,30:1;item_skill_speed*20,30:1;item_skill_lock*20,30:1"/>
+ <item Id="item_skill_random_3" Type="0" Name="技能道具随机包3" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_frozen*200,300:1;item_skill_speed*200,300:1;item_skill_lock*200,300:1"/>
+ <item Id="item_skill_random_4" Type="0" Name="技能道具随机包4" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_rage*10,20:1;item_skill_summon*10,20:1;item_skill_double*10,20:1"/>
+ <item Id="item_skill_random_5" Type="0" Name="技能道具随机包5" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_rage*30,50:1;item_skill_summon*30,50:1;item_skill_double*30,50:1"/>
+ <item Id="item_skill_random_6" Type="0" Name="技能道具随机包6" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_rage*150,250:1;item_skill_summon*150,250:1;item_skill_double*150,250:1"/>
+ <item Id="item_homeliness_bag" Type="2" Name="朴素的道具福袋" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_random_1*1,1:1;item_gold_1*200000,300000:1;item_diamond_1*20,30:1;item_debris_nbomb*1,3:7"/>
+ <item Id="item_delicacy_bag" Type="2" Name="精致的道具福袋" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_random_2*1,1:2;item_gold_1*1500000,3000000:2;item_diamond_1*100,200:1;item_debris_nbomb*5,10:5"/>
+ <item Id="item_gorgeous_bag" Type="2" Name="华丽的道具福袋" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_random_3*1,1:25;item_gold_1*3000000,5000000:25;item_diamond_1*200,300:10;item_debris_nbomb*15,30:40"/>
+ <item Id="item_homeliness_box" Type="2" Name="朴素的道具宝箱" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_random_4*1,1:1;item_gold_1*200000,500000:1;item_diamond_1*50,100:1;item_debris_hbomb*2,5:7"/>
+ <item Id="item_delicacy_box" Type="2" Name="精致的道具宝箱" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_random_5*1,1:2;item_gold_1*2500000,3500000:2;item_diamond_1*200,300:1;item_debris_hbomb*5,15:5"/>
+ <item Id="item_gorgeous_box" Type="2" Name="华丽的道具宝箱" Script="RandomItem" LifeTime="-1" AutoUse="1" Cost="0" RandomPkg="item_skill_random_6*1,1:25;item_gold_1*10000000,20000000:25;item_diamond_1*500,1000:10;item_debris_hbomb*20,50:40"/>
+</config>

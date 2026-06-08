@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.login.bms.dao.RegisterMgrDao">
+	<select id="get" resultType="com.login.bms.domain.RegisterMgrDO">
+		select * from register_mgr where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.login.bms.domain.RegisterMgrDO">
+		select * from register_mgr
+		<where>
+			<if test="id != null and id != ''"> and id = #{id}</if>
+			<if test="channelId != null and channelId != ''"> and channel_id = #{channelId}</if>
+			<if test="phoneRegister != null and phoneRegister != ''"> and phone_register = #{phoneRegister}</if>
+			<if test="accountRegister != null and accountRegister != ''"> and account_register = #{accountRegister}</if>
+			<if test="registerLimit != null and registerLimit != ''"> and register_limit = #{registerLimit}</if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<insert id="save" parameterType="com.login.bms.domain.RegisterMgrDO" useGeneratedKeys="true" keyProperty="id">
+		insert into register_mgr
+		(
+			`channel_id` ,
+		 	`phone_register` ,
+		 	`account_register` ,
+		 	`register_limit`
+		)
+		values
+		(
+			#{channelId} ,
+		 	#{phoneRegister} ,
+		 	#{accountRegister} ,
+		 	#{registerLimit}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.login.bms.domain.RegisterMgrDO">
+		update register_mgr
+		<set>
+			<if test="channelId != null">`channel_id` = #{channelId}, </if>
+			<if test="phoneRegister != null">`phone_register` = #{phoneRegister}, </if>
+			<if test="accountRegister != null">`account_register` = #{accountRegister}, </if>
+			<if test="registerLimit != null">`register_limit` = #{registerLimit}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="remove">
+		delete from register_mgr where id = #{value}
+	</delete>
+
+</mapper>

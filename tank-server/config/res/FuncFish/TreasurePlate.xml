@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" plate1="bet*1,prob*3000" plate2="bet*400,prob*4000" plate3="bet*800,prob*3000" plate4="" plate5="" plate6="" plate7="" plateNum="3" baseBetMax="6800" baseBetMin="6000"/>
+ <item Id="2" plate1="bet*1,prob*1000" plate2="bet*0,prob*1500" plate3="bet*2000,prob*2500" plate4="bet*1200,prob*3500" plate5="bet*0,prob*1500" plate6="" plate7="" plateNum="5" baseBetMax="6800" baseBetMin="6000"/>
+ <item Id="3" plate1="bet*1,prob*1000" plate2="bet*0,prob*1000" plate3="bet*4000,prob*2000" plate4="bet*0,prob*1000" plate5="bet*3200,prob*3000" plate6="bet*6000,prob*1000" plate7="bet*0,prob*1000" plateNum="7" baseBetMax="6800" baseBetMin="6000"/>
+</config>

@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="0" Award="3000"/>
+ <item Id="1" Award="4500"/>
+ <item Id="2" Award="6000"/>
+ <item Id="3" Award="7500"/>
+ <item Id="4" Award="9000"/>
+ <item Id="5" Award="12000"/>
+ <item Id="6" Award="15000"/>
+ <item Id="7" Award="18000"/>
+ <item Id="8" Award="21000"/>
+ <item Id="9" Award="24000"/>
+ <item Id="10" Award="27000"/>
+ <item Id="11" Award="30000"/>
+ <item Id="12" Award="33000"/>
+</config>

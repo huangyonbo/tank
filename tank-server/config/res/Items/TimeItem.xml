@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_autofile_1h" Name="自动开炮体验卡（1小时）" Script="TimeItem" LifeTime="-1" AutoUse="false" Cost="0" Property="AutoFireEnd" Time="60" CanSend="0" UseCondition="1"/>
+ <item Id="item_autofile_3h" Name="自动开炮体验卡（3小时）" Script="TimeItem" LifeTime="-1" AutoUse="false" Cost="0" Property="AutoFireEnd" Time="180" CanSend="0" UseCondition="1"/>
+ <item Id="item_autofile_6h" Name="自动开炮体验卡（6小时）" Script="TimeItem" LifeTime="-1" AutoUse="false" Cost="0" Property="AutoFireEnd" Time="360" CanSend="0" UseCondition="1"/>
+ <item Id="item_autofile_1d" Name="自动开炮体验卡（1天）" Script="TimeItem" LifeTime="-1" AutoUse="true" Cost="0" Property="AutoFireEnd" Time="1440" CanSend="0" UseCondition="1"/>
+ <item Id="item_autofile_30d" Name="自动开炮体验卡（30天）" Script="TimeItem" LifeTime="-1" AutoUse="true" Cost="0" Property="AutoFireEnd" Time="43200" CanSend="0" UseCondition="1"/>
+ <item Id="item_autofile_10m" Name="自动开炮体验卡（10分钟）" Script="TimeItem" LifeTime="-1" AutoUse="false" Cost="0" Property="AutoFireEnd" Time="10" CanSend="0" UseCondition="1"/>
+</config>

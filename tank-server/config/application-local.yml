@@ -1,0 +1,172 @@
+spring:
+  application:
+    name: tank-server
+  datasource:
+    druid:
+      # 超时时间(以秒数为单位)
+      remove-abandoned-timeout: 180
+      # 检测连接是否有效
+      validation-query: select 1
+      filter:
+        stat:
+          enabled: true
+          # 记录慢sql
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+    dynamic:
+      # 设置默认的数据源或者数据源组,默认值即为master
+      primary: master
+      # 默认非懒启动，启动立即初始化
+      lazy: false
+      datasource:
+        master:
+          url: jdbc:mysql://127.0.0.1:3306/game?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+          username: root
+          password: root
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          druid:
+            initial-size: 5
+            max-active: 30
+            min-idle: 10
+            max-wait: 3000
+  main:
+    web-application-type: NONE
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: input
+  mapper-locations: classpath*:/mapper/**/*.xml
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 参数配置
+system-config:
+  redisaddr: 127.0.0.1
+  listenBackSerPort: 9999
+  payBackHost: 81.70.207.64
+  BackHost: 81.70.207.64
+  BackPort: 6186
+  payBackPort: 8086
+  payHost: 127.0.0.1
+  payPort: 8490
+  loginHost: 81.70.207.64
+  loginPort: 8811
+  jarpath: DieFishSuanFa.jar
+  activePush: false
+  colonyHeart: false
+  testPay: true
+  enterRoomSync: true
+  guildRepositoryErrorMaxCount: 50
+  masterPort: 10017
+  gm: true
+  fishMustDie: false
+  useRoleCache: true
+# 启动配置
+server:
+  config-list:
+    - id: 1
+      type: entry
+      name: Entry
+      next: end
+      logicName: EntryLogic
+      ser: BaseServer
+      port: 7800
+      frontIp: 81.70.207.64
+      frontPort: 6001
+    - id: 2
+      type: gate
+      name: Gate1
+      next: entry
+      logicName: GateLogic
+      ser: BaseServer
+      port: 7000
+      frontIp: 81.70.207.64
+      frontPort: 6002
+    - id: 3
+      type: public
+      name: Public
+      next: game
+      logicName: PublicLogic
+      ser: BaseServer
+      port: 7200
+    - id: 4
+      type: game
+      name: Game1
+      next: gate
+      logicName: GameLogic
+      ser: BaseServer
+      port: 7100
+      maxload: 600
+    - id: 5
+      type: match
+      name: Match
+      next: public
+      logicName: MatchLogic
+      ser: BaseServer
+      port: 7300
+    - id: 6
+      type: debug
+      name: Debug
+      next: match
+      logicName: DebugLogic
+      ser: BaseServer
+      port: 7600
+      frontIp: 192.168.0.69
+      frontPort: 9527
+    - id: 7
+      type: http
+      name: Http
+      next: debug
+      logicName: HttpLogic
+      ser: BaseServer
+      port: 7701
+    - id: 8
+      type: store
+      name: Store
+      next: http
+      logicName: StoreLogic
+      ser: BaseServer
+      port: 7400
+    - id: 9
+      type: master
+      name: Master
+      next: store
+      logicName: MasterLogic
+      ser: BaseServer
+      port: 7702
+    - id: 10
+      type: back
+      name: Back
+      next: master
+      logicName: BackLogic
+      ser: BaseServer
+      port: 7500
+    # netxt
+#    - id: 11
+#      type: gate
+#      name: Gate2
+#      next: entry
+#      logicName: GateLogic2
+#      ser: BaseServer
+#      port: 7001
+#      frontIp: 192.168.0.69
+#      frontPort: 6003
+#    - id: 12
+#      type: gate
+#      name: Gate3
+#      next: entry
+#      logicName: GateLogic3
+#      ser: BaseServer
+#      port: 7002
+#      frontIp: 192.168.0.69
+#      frontPort: 6004
+#    - id: 13
+#      type: gate
+#      name: Gate4
+#      next: entry
+#      logicName: GateLogic4
+#      ser: BaseServer
+#      port: 7003
+#      frontIp: 192.168.0.69
+#      frontPort: 6005

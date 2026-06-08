@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_pkg_limit1" Name="限购礼包1"/>
+ <item Id="item_pkg_limit2" Name="限购礼包2"/>
+ <item Id="item_pkg_limit3" Name="限购礼包3"/>
+ <item Id="item_pkg_limit4" Name="限购礼包4"/>
+</config>

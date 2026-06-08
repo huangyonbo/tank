@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Rate="20" Blood="50000-70000" Award="item_pkg_bomb_monster_kill_1"/>
+ <item Id="2" Rate="20" Blood="50000-70000" Award="item_pkg_bomb_monster_kill_2"/>
+ <item Id="3" Rate="20" Blood="50000-70000" Award="item_pkg_bomb_monster_kill_3"/>
+ <item Id="4" Rate="20" Blood="50000-70000" Award="item_pkg_bomb_monster_kill_4"/>
+ <item Id="5" Rate="20" Blood="50000-70000" Award="item_pkg_bomb_monster_kill_5"/>
+</config>

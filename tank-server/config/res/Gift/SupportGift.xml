@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_pkg_supply1" Name="1万炮锻造礼包"/>
+ <item Id="item_pkg_supply2" Name="3万炮锻造礼包"/>
+ <item Id="item_pkg_supply3" Name="5万炮锻造礼包"/>
+ <item Id="item_pkg_supply4" Name="3万炮觉醒礼包"/>
+ <item Id="item_pkg_supply5" Name="5万炮觉醒礼包"/>
+ <item Id="item_pkg_supply1_ios" Name="1万炮锻造礼包"/>
+ <item Id="item_pkg_supply2_ios" Name="3万炮锻造礼包"/>
+ <item Id="item_pkg_supply3_ios" Name="5万炮锻造礼包"/>
+ <item Id="item_pkg_supply4_ios" Name="3万炮觉醒礼包"/>
+ <item Id="item_pkg_supply5_ios" Name="5万炮觉醒礼包"/>
+</config>

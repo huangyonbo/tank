@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_card_jd_50" Name="50元京东购物卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_jd_100" Name="100元京东购物卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_jd_500" Name="500元京东购物卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_jd_1000" Name="1000元京东购物卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_recharge_10" Name="10元话费充值卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_recharge_50" Name="50元话费充值卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_recharge_100" Name="100元话费充值卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_recharge_vir_100" Name="100元话费卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_recharge_30" Name="30元话费充值卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_Tencent_10" Name="腾讯VIP周卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_Tencent_20" Name="腾讯VIP月卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_Tencent_50" Name="腾讯VIP季卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_Tencent_198" Name="腾讯VIP年卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_Tencent_51" Name="腾讯超级影视VIP月卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_Youku_20" Name="优酷VIP月卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_Youku_56" Name="优酷VIP季卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_Youku_198" Name="优酷VIP年卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_iQIYI_20" Name="爱奇艺月卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_iQIYI_58" Name="爱奇艺季卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+ <item Id="item_card_iQIYI_198" Name="爱奇艺年卡" Script="CardItem" LifeTime="-1" AutoUse="0" Cost="0" UseCondition="1" Virtual="1"/>
+</config>

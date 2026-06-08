@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_autofile_6h" Price="50" CostMaterial="奖券" Properties="ColorTicket"/>
+ <item Id="item_card_recharge_10" Price="1000" CostMaterial="奖券" Properties="ColorTicket"/>
+</config>

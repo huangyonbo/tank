@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" PKGId="item_new_player_seven_day_pkg_1" Progress="10"/>
+ <item Id="2" PKGId="item_new_player_seven_day_pkg_2" Progress="10"/>
+ <item Id="3" PKGId="item_new_player_seven_day_pkg_3" Progress="10"/>
+ <item Id="4" PKGId="item_new_player_seven_day_pkg_4" Progress="10"/>
+ <item Id="5" PKGId="item_new_player_seven_day_pkg_5" Progress="10"/>
+ <item Id="6" PKGId="item_new_player_seven_day_pkg_6" Progress="10"/>
+ <item Id="7" PKGId="item_new_player_seven_day_pkg_7" Progress="10"/>
+</config>

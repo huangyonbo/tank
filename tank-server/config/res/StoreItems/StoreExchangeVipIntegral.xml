@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_pkg_skill_lock_50" Price="100" Virtual="true" Stock="1000" ItemName="锁定" CostMaterial="贵族积分" ItemId="item_vip_integral" Version="0" WeekReset="true" Condition="1"/>
+ <item Id="item_pkg_skill_frozen_50" Price="100" Virtual="true" Stock="1000" ItemName="冰冻" CostMaterial="贵族积分" ItemId="item_vip_integral" Version="0" WeekReset="true" Condition="1"/>
+ <item Id="item_pkg_skill_speed_50" Price="100" Virtual="true" Stock="1000" ItemName="狂暴" CostMaterial="贵族积分" ItemId="item_vip_integral" Version="0" WeekReset="true" Condition="1"/>
+ <item Id="item_skill_missile" Price="240" Virtual="true" Stock="1000" ItemName="高级三叉戟" CostMaterial="贵族积分" ItemId="item_vip_integral" Version="0" WeekReset="true" Condition="4"/>
+ <item Id="item_skill_nbomb" Price="1200" Virtual="true" Stock="1000" ItemName="至尊三叉戟" CostMaterial="贵族积分" ItemId="item_vip_integral" Version="0" WeekReset="true" Condition="4"/>
+ <item Id="item_skill_hbomb" Price="2400" Virtual="true" Stock="1000" ItemName="传说三叉戟" CostMaterial="贵族积分" ItemId="item_vip_integral" Version="0" WeekReset="true" Condition="4"/>
+</config>

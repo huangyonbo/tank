@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_mystery1" Name="神秘礼包1" Script="MysteryItem" LifeTime="-1" AutoUse="1" Cost="0" BaseRewardPkg="pkg_mg_base_1" ExtremeRewardPkg="pkg_mg_extreme_1"/>
+ <item Id="item_mystery2" Name="神秘礼包2" Script="MysteryItem" LifeTime="-1" AutoUse="1" Cost="0" BaseRewardPkg="pkg_mg_base_2" ExtremeRewardPkg="pkg_mg_extreme_2"/>
+ <item Id="item_mystery3" Name="神秘礼包3" Script="MysteryItem" LifeTime="-1" AutoUse="1" Cost="0" BaseRewardPkg="pkg_mg_base_3" ExtremeRewardPkg="pkg_mg_extreme_3"/>
+ <item Id="item_mystery1_ios" Name="神秘礼包1_ios" Script="MysteryItem" LifeTime="-1" AutoUse="1" Cost="0" BaseRewardPkg="pkg_mg_base_1_ios" ExtremeRewardPkg="pkg_mg_extreme_1_ios"/>
+ <item Id="item_mystery2_ios" Name="神秘礼包2_ios" Script="MysteryItem" LifeTime="-1" AutoUse="1" Cost="0" BaseRewardPkg="pkg_mg_base_2_ios" ExtremeRewardPkg="pkg_mg_extreme_2_ios"/>
+ <item Id="item_mystery3_ios" Name="神秘礼包3_ios" Script="MysteryItem" LifeTime="-1" AutoUse="1" Cost="0" BaseRewardPkg="pkg_mg_base_3_ios" ExtremeRewardPkg="pkg_mg_extreme_3_ios"/>
+</config>

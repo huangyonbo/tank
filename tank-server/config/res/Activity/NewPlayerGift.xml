@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" ActiveScore="50" Award="item_gold_1*20000"/>
+ <item Id="2" ActiveScore="150" Award="item_diamond_1*50"/>
+ <item Id="3" ActiveScore="300" Award="item_skill_normal_bomb*1"/>
+ <item Id="4" ActiveScore="500" Award="item_gold_1*200000"/>
+ <item Id="5" ActiveScore="700" Award="item_skill_normal_bomb*2"/>
+</config>

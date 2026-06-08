@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="FreeRefreshTimes" Value="1"/>
+ <item Id="RefreshCost" Value="Diamond*10"/>
+ <item Id="SuccessRate" Value="0.48"/>
+ <item Id="GridCount" Value="3"/>
+ <item Id="RefreshInterval" Value="300000"/>
+</config>

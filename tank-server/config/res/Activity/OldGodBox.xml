@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Award="item_old_god_gift_1" Limit="0" dropLimit="0" probability="100" desc=""/>
+ <item Id="2" Award="item_old_god_gift_2" Limit="0" dropLimit="0" probability="100" desc=""/>
+ <item Id="3" Award="item_old_god_gift_3" Limit="0" dropLimit="0" probability="50" desc=""/>
+ <item Id="4" Award="item_old_god_gift_4" Limit="0" dropLimit="0" probability="10" desc=""/>
+ <item Id="5" Award="item_old_god_gift_5" Limit="0" dropLimit="0" probability="10" desc=""/>
+ <item Id="6" Award="item_old_god_gift_6" Limit="0" dropLimit="0" probability="2" desc=""/>
+ <item Id="7" Award="item_old_god_gift_7" Limit="0" dropLimit="0" probability="1" desc=""/>
+ <item Id="8" Award="item_old_god_gift_8" Limit="0" dropLimit="0" probability="20" desc=""/>
+ <item Id="9" Award="item_old_god_gift_9" Limit="0" dropLimit="0" probability="10" desc=""/>
+ <item Id="10" Award="item_old_god_gift_10" Limit="0" dropLimit="3" probability="5" desc=""/>
+ <item Id="11" Award="item_old_god_gift_11" Limit="0" dropLimit="4" probability="4" desc=""/>
+ <item Id="12" Award="item_old_god_gift_12" Limit="0" dropLimit="5" probability="3" desc=""/>
+ <item Id="13" Award="item_old_god_gift_13" Limit="0" dropLimit="6" probability="2" desc=""/>
+ <item Id="14" Award="item_old_god_gift_14" Limit="0" dropLimit="6" probability="1" desc=""/>
+ <item Id="15" Award="item_old_god_gift_15" Limit="0" dropLimit="6" probability="1" desc=""/>
+ <item Id="16" Award="item_old_god_gift_16" Limit="0" dropLimit="6" probability="1" desc=""/>
+ <item Id="17" Award="item_old_god_gift_17" Limit="0" dropLimit="6" probability="1" desc=""/>
+ <item Id="18" Award="item_old_god_gift_18" Limit="5" dropLimit="12" probability="1" desc=""/>
+</config>

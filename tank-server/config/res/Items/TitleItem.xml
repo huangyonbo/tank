@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="item_title1" Name="大富翁" Script="TitleItem" LifeTime="604800000" AutoUse="1" Cost="0" Title="title1"/>
+ <item Id="item_title2" Name="核弹库" Script="TitleItem" LifeTime="604800000" AutoUse="1" Cost="0" Title="title2"/>
+ <item Id="item_title3" Name="爆裂狂" Script="TitleItem" LifeTime="604800000" AutoUse="1" Cost="0" Title="title3"/>
+ <item Id="item_title4" Name="鱼王猎人" Script="TitleItem" LifeTime="604800000" AutoUse="1" Cost="0" Title="title4"/>
+ <item Id="item_title5" Name="贵族12" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title5"/>
+ <item Id="item_title6" Name="鹰眼" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title6"/>
+ <item Id="item_title7" Name="冰封万里" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title7"/>
+ <item Id="item_title8" Name="狂暴战士" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title8"/>
+ <item Id="item_title9" Name="捕鱼达人" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title9"/>
+ <item Id="item_title10" Name="小有成就" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title10"/>
+ <item Id="item_title11" Name="成就达人" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title11"/>
+ <item Id="item_title12" Name="名满世界" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title12"/>
+ <item Id="item_title13" Name="贵族1" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title13"/>
+ <item Id="item_title14" Name="贵族2" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title14"/>
+ <item Id="item_title15" Name="贵族3" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title15"/>
+ <item Id="item_title16" Name="贵族4" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title16"/>
+ <item Id="item_title17" Name="贵族5" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title17"/>
+ <item Id="item_title18" Name="贵族6" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title18"/>
+ <item Id="item_title19" Name="贵族7" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title19"/>
+ <item Id="item_title20" Name="贵族8" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title20"/>
+ <item Id="item_title21" Name="贵族9" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title21"/>
+ <item Id="item_title22" Name="贵族10" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title22"/>
+ <item Id="item_title23" Name="贵族11" Script="TitleItem" LifeTime="-1" AutoUse="1" Cost="0" Title="title23"/>
+</config>

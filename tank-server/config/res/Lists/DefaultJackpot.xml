@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="SingleHitFishScore" Default="50000000"/>
+ <item Id="TotalHitFishScore" Default="50000000"/>
+ <item Id="HitFishPoints" Default="1000000"/>
+ <item Id="BigKunActivity" Default="1000000"/>
+</config>

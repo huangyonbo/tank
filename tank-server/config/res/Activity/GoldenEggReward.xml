@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" Award="item_skill_missile" Count="1" RmbValue="50" GoldValue="500000" Weight="5"/>
+ <item Id="2" Award="item_skill_normal_bomb" Count="1" RmbValue="15" GoldValue="150000" Weight="10"/>
+ <item Id="3" Award="item_skill_bind_bomb" Count="1" RmbValue="2" GoldValue="20000" Weight="50"/>
+ <item Id="4" Award="item_gold_1" Count="50000" RmbValue="5" GoldValue="50000" Weight="40"/>
+ <item Id="5" Award="item_diamond_1" Count="50" RmbValue="5" GoldValue="50000" Weight="40"/>
+ <item Id="6" Award="item_color_ticket_1" Count="200" RmbValue="2" GoldValue="66000" Weight="45"/>
+ <item Id="7" Award="item_gold_1" Count="20000" RmbValue="2" GoldValue="20000" Weight="70"/>
+ <item Id="8" Award="item_diamond_1" Count="20" RmbValue="2" GoldValue="20000" Weight="80"/>
+ <item Id="9" Award="item_powerstone" Count="20" RmbValue="2" GoldValue="20000" Weight="150"/>
+ <item Id="10" Award="item_gold_1" Count="10000" RmbValue="1" GoldValue="10000" Weight="230"/>
+ <item Id="11" Award="item_diamond_1" Count="10" RmbValue="1" GoldValue="10000" Weight="180"/>
+ <item Id="12" Award="item_powerstone" Count="10" RmbValue="1" GoldValue="10000" Weight="100"/>
+</config>

@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="1" BroadCastLightCount="10"/>
+</config>

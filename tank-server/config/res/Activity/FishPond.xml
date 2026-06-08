@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config>
+ <item Id="161" Name="金币鱼" Speed="0.8" InitialValue="5000000" SmallFishName="黄鳊鱼" CatchTimeSmall="0" MidFishName="马夫鱼" CatchTimeMid="15" BossName="机甲狂鲨" CatchTimeBoss="35" PmdCondition="8000000" CatchConsume="98000" Cost="5000000" CostType="1"/>
+ <item Id="162" Name="魔晶1鱼" Speed="0.8" InitialValue="500000" SmallFishName="蓝鲷鱼" CatchTimeSmall="0" MidFishName="魔鬼鱼" CatchTimeMid="15" BossName="银龙" CatchTimeBoss="35" PmdCondition="1000000" CatchConsume="9800" Cost="500000" CostType="2"/>
+ <item Id="163" Name="魔晶2鱼" Speed="0.8" InitialValue="5000000" SmallFishName="小刺豚" CatchTimeSmall="0" MidFishName="长嘴鱼" CatchTimeMid="15" BossName="金龙" CatchTimeBoss="35" PmdCondition="8000000" CatchConsume="98000" Cost="5000000" CostType="2"/>
+</config>
