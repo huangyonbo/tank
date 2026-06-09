@@ -91,7 +91,7 @@ public class FuncUtils {
      */
     public static boolean isValidPassword(String pwd) {
         if (pwd == null) return false;
-        String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,20}$";
+        String regex = "^[a-zA-Z0-9]{6,12}$";
         return pwd.matches(regex);
     }
 
