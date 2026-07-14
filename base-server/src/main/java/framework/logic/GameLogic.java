@@ -346,6 +346,12 @@ public class GameLogic implements ILogic,PropertyKey {
 				baseServer.response(reqid,new byte[]{2});
 				return;
 			}
+			GamePlayer playerTemp = kernel.getPlayer(uid, true);
+			if (playerTemp != null) {
+				kernel.onClientReconnect(playerTemp);
+				baseServer.response(reqid, new byte[]{0});
+				return;
+			}
 			GamePlayer newPlayer = (GamePlayer) kernel.createObjectByScript("Player");
 			newPlayer.setProperty(PLAYER_PROPERTY_UID, uid);
 			newPlayer.setProperty(PLAYER_PROPERTY_HEAD, headurl);

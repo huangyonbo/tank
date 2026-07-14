@@ -183,7 +183,7 @@ public class LevelModule implements ILogicModule {
         player.removeTempData(TEMP_LEVEL_START_LEVEL_ID);
     }
 
-    void OnPlayerOffLine(IKernel kernel, IGameObject player) {
+    public void OnPlayerOffLine(IKernel kernel, IGameObject player) {
         player.removeTempData(TEMP_LEVEL_LAST_FINISH_TIME);
         player.removeTempData(TEMP_LEVEL_STARTED);
         player.removeTempData(TEMP_LEVEL_START_LEVEL_ID);

@@ -61,7 +61,7 @@ public class CustomMapModule implements ILogicModule {
 
     private static final String TEMP_CUSTOM_LEVEL_STARTED = "TempCustomLevelStarted";
     private static final String TEMP_CUSTOM_LEVEL_LAST_FINISH_TIME = "TempCustomLevelLastFinishTime";
-    private static final long START_AFTER_FINISH_COOLDOWN_MS = 5000L;
+    private static final long START_AFTER_FINISH_COOLDOWN_MS = 2000L;
 
     private static final long REDIS_HOT_TTL_SECONDS = 24 * 60 * 60L; // 1天
     private static final String REDIS_HOT_RANK = "CustomMap::HotRank::1D";
@@ -627,12 +627,12 @@ public class CustomMapModule implements ILogicModule {
         });
     }
 
-    void OnPlayerOnLine(IKernel kernel, IGameObject player) {
+    public void OnPlayerOnLine(IKernel kernel, IGameObject player) {
         player.removeTempData(TEMP_CUSTOM_LEVEL_LAST_FINISH_TIME);
         player.removeTempData(TEMP_CUSTOM_LEVEL_STARTED);
     }
 
-    void OnPlayerOffLine(IKernel kernel, IGameObject player) {
+    public void OnPlayerOffLine(IKernel kernel, IGameObject player) {
         player.removeTempData(TEMP_CUSTOM_LEVEL_LAST_FINISH_TIME);
         player.removeTempData(TEMP_CUSTOM_LEVEL_STARTED);
     }
@@ -688,6 +688,8 @@ public class CustomMapModule implements ILogicModule {
                 resp.put("successCount", countLong(updated.getSuccessCount()));
                 kernel.response(player, reqid, CustomMsg.String.newBuilder().setValue(resp.toJSONString()).build().toByteArray());
             });
+            player.setTempData(TEMP_CUSTOM_LEVEL_LAST_FINISH_TIME, kernel.getServerTime());
+            player.removeTempData(TEMP_CUSTOM_LEVEL_STARTED);
             return;
         }
 
@@ -712,9 +714,9 @@ public class CustomMapModule implements ILogicModule {
             resp.put("difficulty", difficultyOf(updated));
             resp.put("failCount", countLong(updated.getFailCount()));
             kernel.response(player, reqid, CustomMsg.String.newBuilder().setValue(resp.toJSONString()).build().toByteArray());
+            player.setTempData(TEMP_CUSTOM_LEVEL_LAST_FINISH_TIME, kernel.getServerTime());
+            player.removeTempData(TEMP_CUSTOM_LEVEL_STARTED);
         });
-        player.setTempData(TEMP_CUSTOM_LEVEL_LAST_FINISH_TIME, kernel.getServerTime());
-        player.removeTempData(TEMP_CUSTOM_LEVEL_STARTED);
     }
 
     private JSONObject loadMapForRead(IKernel kernel, long mapId, boolean addHeat, int viewerUid) {

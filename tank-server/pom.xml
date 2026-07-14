@@ -27,7 +27,7 @@
     </dependencies>
 
     <build>
-        <finalName>fishSever</finalName>
+        <finalName>tankSever</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
