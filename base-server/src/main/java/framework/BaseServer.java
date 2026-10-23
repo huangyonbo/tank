@@ -63,6 +63,7 @@ public class BaseServer extends Actor {
 	ActorTimer checkActor;
 	private int reqId = 0;
 	private Map<Integer, Consumer<byte[]>> mapReqs = new HashMap<>();
+	private Map<Integer, ActorTimer> requestTimeouts = new HashMap<>();
 	private Map<Integer, RecvReqData> waitResponses = new HashMap<>();
 	private Map<Integer, MethodCallBackData> requestMsg = new HashMap<>();
 	private Map<Integer, MethodCallBackData> colonyReqMsg = new HashMap<>();
@@ -590,6 +591,42 @@ public class BaseServer extends Actor {
 		sendMsgToServer(sername, InnerMsgDef.INNER_MSG_REQUEST.ordinal(), build.build().toByteArray());
 	}
 
+	/** Google Play 等强一致流程专用的有界 RPC；超时回调 null，并清理请求表。 */
+	public void request(String sername, int msgid, byte[] data, long timeoutMs, Consumer<byte[]> cb) {
+		if (timeoutMs <= 0) {
+			request(sername, msgid, data, cb);
+			return;
+		}
+		int reqid = reqId++;
+		mapReqs.put(reqid, cb);
+		ActorTimer timeout = setTimer(this, timeoutMs, 1, "onRequestTimeout", reqid);
+		if (timeout == null) {
+			mapReqs.remove(reqid);
+			if (cb != null) {
+				cb.accept(null);
+			}
+			return;
+		}
+		requestTimeouts.put(reqid, timeout);
+
+		InnerMsg.Request.Builder build = InnerMsg.Request.newBuilder();
+		build.setReqid(reqid);
+		build.setMsgid(msgid);
+		if (data != null) {
+			build.setData(ByteString.copyFrom(data));
+		}
+		sendMsgToServer(sername, InnerMsgDef.INNER_MSG_REQUEST.ordinal(), build.build().toByteArray());
+	}
+
+	void onRequestTimeout(Object timerInfo, int leftCount) {
+		int reqid = (Integer) timerInfo;
+		requestTimeouts.remove(reqid);
+		Consumer<byte[]> cb = mapReqs.remove(reqid);
+		if (cb != null) {
+			cb.accept(null);
+		}
+	}
+
 	private void _response(RecvReqData req,byte[] data){
 		if (req == null){
 			return;
@@ -610,6 +647,10 @@ public class BaseServer extends Actor {
 
 	void onResponse(IoSession session, byte[] bytes) throws InvalidProtocolBufferException {
 		InnerMsg.Response req = InnerMsg.Response.parseFrom(bytes);
+		ActorTimer timeout = requestTimeouts.remove(req.getReqid());
+		if (timeout != null) {
+			timeout.stop();
+		}
 		Consumer<byte[]> cb = mapReqs.remove(req.getReqid());
 		if (cb != null){
 			byte[] msg = req.getData() == null ? null : req.getData().toByteArray();

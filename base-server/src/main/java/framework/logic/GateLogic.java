@@ -754,7 +754,7 @@ public class GateLogic implements ILogic {
         SendMessage msg = new SendMessage(ClientMsgDef.CLIENT_HEART_BEAT.ordinal(), (curTime + "").getBytes("UTF-8"));
         sendMessageToClient(session, msg, false);
         Object attribute = session.getAttribute(PLAYER_PROPERTY_UID);
-        if (Strings.isNotBlank(attribute.toString())) {
+        if (attribute != null && Strings.isNotBlank(attribute.toString())) {
             getJedis().expire(attribute.toString(), 600L);
         }
         session.setAttribute(LAST_HEAT_BEAT_TIME_KEY, curTime);
@@ -799,6 +799,10 @@ public class GateLogic implements ILogic {
 
     @Override
     public void onAddClient(IoSession session) {
+        if (!SystemConfigData.getConfig("clientVerify", true)) {
+            session.setAttribute(LAST_HEAT_BEAT_TIME_KEY, System.currentTimeMillis());
+            return;
+        }
         Random rand = new Random();
         short code = (short) (rand.nextInt() % 65536);
         session.setAttribute("VerifyCode", code);

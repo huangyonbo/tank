@@ -83,6 +83,14 @@ public class Actor extends Thread {
         _messageQ.add(message);
     }
 
+    /** Queue arbitrary completion work back onto this actor's single thread. */
+    public void post(Runnable runnable) {
+        if (runnable == null) {
+            return;
+        }
+        send(new RunnableMessage(runnable));
+    }
+
     /// loopCount -1 means infinite loop.
     public ActorTimer setTimer(Object listener, long miliseconds, int loopCount, String methodName, Object msgInfo) {
         ActorTimer actorTimer = null;
@@ -232,6 +240,9 @@ public class Actor extends Thread {
                 TimerMsg timerMsg = (TimerMsg) message;
                 timerMsg.GetActorTimer().runCallBack(timerMsg.leftCount);
                 break;
+            case Message.SYS_RUNNABLE:
+                ((RunnableMessage) message).runnable.run();
+                break;
             case Message.SYS_FORWARD_MSG:
                 ForwardMsg forwardMsg = (ForwardMsg) message;
                 ForwardMsgHandler forwardMsgHandler = _forwardMsgHandlerMap.get(forwardMsg.msgID);
@@ -284,6 +295,15 @@ public class Actor extends Thread {
             default:
                 logger.error("[{}] No handler for NetMessage: {}", getName(), message.msgID);
                 break;
+        }
+    }
+
+    private static final class RunnableMessage extends Message {
+        private final Runnable runnable;
+
+        private RunnableMessage(Runnable runnable) {
+            super(0, Message.SYS_RUNNABLE);
+            this.runnable = runnable;
         }
     }
 

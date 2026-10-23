@@ -174,8 +174,11 @@ public enum RequestMsgDef implements MsgDef{
     REQ_CUSTOM_MAP_END(10016, "自定义地图结束"),
 
     REQ_AD_GIFT_BAG_CLAIM(10017, "看广告领金币礼包"),
-
-
+    REQ_GOOGLE_PLAY_BUY_GOLD(10018, "Google Play buy gold"),
+    REQ_GOOGLE_PLAY_PREPARE(10019, "Google Play purchase eligibility and account id"),
+    REQ_GOOGLE_PLAY_PRODUCTS(10020, "Google Play product list"),
+    REQ_REWARDED_AD_VERIFY(10021, "Rewarded ad verify and token issue"),
+    REQ_REWARDED_AD_CLAIM(10022, "Rewarded ad claim gold by token"),
 
     REQ_END(9999, "结束");
 

@@ -44,13 +44,13 @@ mybatis-plus:
 system-config:
   redisaddr: 127.0.0.1
   listenBackSerPort: 9999
-  payBackHost: 81.70.207.64
-  BackHost: 81.70.207.64
+  payBackHost: 62.234.62.199
+  BackHost: 62.234.62.199
   BackPort: 6186
   payBackPort: 8086
   payHost: 127.0.0.1
   payPort: 8490
-  loginHost: 81.70.207.64
+  loginHost: 62.234.62.199
   loginPort: 8811
   jarpath: DieFishSuanFa.jar
   activePush: false
@@ -62,6 +62,17 @@ system-config:
   gm: true
   fishMustDie: false
   useRoleCache: true
+  # Google Play package/account secret/service-account path must be supplied as
+  # server-only JVM properties; do not commit credentials into this file.
+  googlePlayRequireObfuscatedAccountId: true
+  googlePlayEnforceMinorLimits: false
+  googlePlayPackageName: com.whaleversegames.tank
+  googlePlayServiceAccountPath: D:\code\minigame-tank\server\tank\tank-server\config\tank-1de76-1557d75e803b.json
+  googlePlayAccountIdSecret: "9f3a6c2d8e1b4a70b5c9d0f6a2e8c134"
+  rewardedAdDailyLimit: 20
+  rewardedAdMinIntervalMs: 0
+  rewardedAdRewardTolerance: 1.2
+  clientVerify: true
 # 启动配置
 server:
   config-list:
@@ -72,7 +83,7 @@ server:
       logicName: EntryLogic
       ser: BaseServer
       port: 7800
-      frontIp: 81.70.207.64
+      frontIp: 62.234.62.199
       frontPort: 6001
     - id: 2
       type: gate
@@ -81,7 +92,7 @@ server:
       logicName: GateLogic
       ser: BaseServer
       port: 7000
-      frontIp: 81.70.207.64
+      frontIp: 62.234.62.199
       frontPort: 6002
     - id: 3
       type: public

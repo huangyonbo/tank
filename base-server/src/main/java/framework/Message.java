@@ -18,6 +18,7 @@ public class Message {
 	public static final int SYS_HTTP_SERVER_MSG = 9; // 作为httpServer接受
 
 	public static final int SYS_TIMER_MSG = 10;
+	public static final int SYS_RUNNABLE = 11;
 
 	public static final int SYS_RPC_CALL = 21;
 	public static final int SYS_RPC_RET = 22;

@@ -89,6 +89,8 @@ public class StoreLogic implements ILogic {
         baseServer.addRequestListener(this, InnerMsgDef.INNER_MSG_REQ_READ_ROLE.ordinal(), "onReqReadRoleData");
         baseServer.addRequestListener(this, InnerMsgDef.INNER_MSG_REQ_ROLE_PARAM.ordinal(), "onReqRoleParam");
         baseServer.addRequestListener(this, InnerMsgDef.INNER_MSG_STORE_ROLE_PARAM.ordinal(), "onStoreRoleParam");
+        baseServer.addRequestListener(this, InnerMsgDef.INNER_MSG_GOOGLE_PLAY_STORE_ROLE_PARAM.ordinal(),
+                "onGooglePlayStoreRoleParam");
         baseServer.addRequestListener(this, InnerMsgDef.INNER_MSG_CHANGE_NAME.ordinal(), "onReqChangeName");
         baseServer.addRequestListener(this, InnerMsgDef.INNER_MSG_REQ_OFFLINE.ordinal(), "onReqOffline");
         //m_baseServer.AddRequestListener(this, InnerMsgDef.INNER_MSG_ADD_BLACKLIST.ordinal(),"onReqAddBlackList");
@@ -358,6 +360,37 @@ public class StoreLogic implements ILogic {
             RolesService service = dataManager.getService(RolesService.class);
             service.updateById(role);
             baseServer.response(reqid, new byte[0]);
+        }
+    }
+
+    /** Google Play 新链路专用：只持久化玩家归档，并用 ACK 表示数据库是否真正写入。 */
+    void onGooglePlayStoreRoleParam(int reqid, byte[] bytes) throws InvalidProtocolBufferException {
+        InnerMsg.RoleParam roleParam = InnerMsg.RoleParam.parseFrom(bytes);
+        int uid = roleParam.getUid();
+        byte[] param = roleParam.getParam().toByteArray();
+        Roles role = getRoles(uid, true);
+        if (role == null) {
+            logger.error("Google Play store player archive failed, uid={} not found", uid);
+            baseServer.response(reqid, new byte[]{1});
+            return;
+        }
+        try {
+            RolesService service = dataManager.getService(RolesService.class);
+            boolean updated = service.lambdaUpdate()
+                    .set(Roles::getParam, param)
+                    .eq(Roles::getId, uid)
+                    .update();
+            if (!updated) {
+                Roles persisted = service.lambdaQuery().eq(Roles::getId, uid).one();
+                updated = persisted != null && Arrays.equals(persisted.getParam(), param);
+            }
+            if (updated) {
+                role.setParam(param);
+            }
+            baseServer.response(reqid, updated ? new byte[0] : new byte[]{1});
+        } catch (Exception e) {
+            logger.error("Google Play store player archive failed uid={}", uid, e);
+            baseServer.response(reqid, new byte[]{1});
         }
     }
 

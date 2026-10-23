@@ -1132,6 +1132,19 @@ public interface IKernel {
      */
     void executeSomeToStore(Class<? extends AbstractService<?>> clazz, String method, List<Object> objects, Consumer<String> cb);
 
+    /** Google Play 专用的有界 Store RPC；超时或异常时回调 null。 */
+    void executeGooglePlayToStore(Class<? extends AbstractService<?>> clazz, String method,
+                                  List<Object> objects, Consumer<String> cb);
+
+    /**
+     * 立即持久化当前玩家归档，并在数据库确认写入后回调。
+     * 支付发货等需要崩溃一致性的流程不能依赖周期性存档。
+     */
+    void flushGooglePlayPlayer(IGameObject player, Consumer<Boolean> cb);
+
+    /** Marshal an asynchronous completion back to the game actor thread. */
+    void runOnLogicThread(Runnable runnable);
+
     /**
      * 集群的时候判断是不是主逻辑
      *

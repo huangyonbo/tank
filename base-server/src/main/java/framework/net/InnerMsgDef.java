@@ -142,7 +142,8 @@ public enum InnerMsgDef {
     INNER_MSG_SEND_BULLET_ADD_SPEED_RECORD(123, "子弹加速记录"),
     INNER_MSG_UPDATE_RATE_LIMIT(124, "更新限流"),
     INNER_MSG_B2G_UPDATE_RATE_LIMIT(125, "后台限流"),
-    INNER_MSG_ACCOUNT_STATUS(126, "账号状态");
+    INNER_MSG_ACCOUNT_STATUS(126, "账号状态"),
+    INNER_MSG_GOOGLE_PLAY_STORE_ROLE_PARAM(127, "Google Play发货存角色参数");
 
     private final int id;
     private final String desc;

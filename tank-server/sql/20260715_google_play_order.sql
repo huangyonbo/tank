@@ -1,0 +1,35 @@
+CREATE TABLE `google_play_order` (
+    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `purchase_token_hash` CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL COMMENT 'purchaseToken SHA-256, never store plaintext token',
+    `uid` INT NOT NULL,
+    `package_name` VARCHAR(200) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    `product_id` VARCHAR(200) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    `google_order_id` VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin NULL,
+    `obfuscated_account_id` CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    `purchase_time_millis` BIGINT NOT NULL DEFAULT 0,
+    `quantity` INT NOT NULL DEFAULT 1,
+    `price_yuan` INT NOT NULL COMMENT 'server-side compliance and recharge amount snapshot',
+    `reward_version` INT NOT NULL,
+    `gold_amount` BIGINT NOT NULL,
+    `head_id` INT NOT NULL DEFAULT 0,
+    `head_hours` INT NOT NULL DEFAULT 0,
+    `fulfillment_hash` CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL COMMENT 'immutable fulfillment snapshot SHA-256',
+    `status` TINYINT NOT NULL COMMENT '1 verified, 2 processing, 3 shipped, 4 consumed, 5 manual review',
+    `processing_owner` VARCHAR(64) CHARACTER SET ascii COLLATE ascii_bin NULL,
+    `create_time` BIGINT NOT NULL,
+    `update_time` BIGINT NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_google_play_token_hash` (`purchase_token_hash`),
+    UNIQUE KEY `uk_google_play_order_id` (`google_order_id`),
+    KEY `idx_google_play_uid_status` (`uid`, `status`),
+    KEY `idx_google_play_update_time` (`update_time`),
+    CONSTRAINT `chk_google_play_status` CHECK (`status` BETWEEN 1 AND 5),
+    CONSTRAINT `chk_google_play_owner` CHECK ((`status` = 2 AND `processing_owner` IS NOT NULL)
+        OR (`status` <> 2 AND `processing_owner` IS NULL)),
+    CONSTRAINT `chk_google_play_quantity` CHECK (`quantity` = 1),
+    CONSTRAINT `chk_google_play_reward` CHECK (`price_yuan` > 0 AND `reward_version` > 0
+        AND `gold_amount` > 0 AND `head_id` >= 0 AND `head_hours` >= 0
+        AND ((`head_id` = 0 AND `head_hours` = 0) OR (`head_id` > 0 AND `head_hours` > 0))),
+    CONSTRAINT `chk_google_play_token_hash` CHECK (`purchase_token_hash` REGEXP '^[0-9a-f]{64}$'),
+    CONSTRAINT `chk_google_play_fulfillment_hash` CHECK (`fulfillment_hash` REGEXP '^[0-9a-f]{64}$')
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Google Play consumable fulfillment idempotency';

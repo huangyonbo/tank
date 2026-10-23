@@ -3271,6 +3271,112 @@ public class Kernel implements IKernel,PropertyKey {
 		});
 	}
 
+	@Override
+	public void executeGooglePlayToStore(Class<? extends AbstractService<?>> requireType, String method,
+										 List<Object> objects, Consumer<String> cb) {
+		if (ObjectUtils.isEmpty(requireType) || StringUtils.isEmpty(method)) {
+			logger.error("invalid Google Play Store RPC params type={} method={}", requireType, method);
+			if (cb != null) {
+				cb.accept(null);
+			}
+			return;
+		}
+		try {
+			InnerMsg.LoadDataFromDb.Builder builder = InnerMsg.LoadDataFromDb.newBuilder();
+			builder.setDao(StringUtils.uncapitalize(requireType.getSimpleName()));
+			builder.setMethod(method);
+			if (objects != null) {
+				for (Object obj : objects) {
+					if (obj == null) {
+						throw new IllegalArgumentException("Google Play Store RPC parameter is null");
+					}
+					Class<?> clazz = obj.getClass();
+					if (List.class.isAssignableFrom(clazz)) {
+						clazz = List.class;
+					}
+					if (Map.class.isAssignableFrom(clazz)) {
+						clazz = Map.class;
+					}
+					builder.addTypes(clazz.getTypeName());
+					String value = obj instanceof String ? obj.toString() : new ParamData().encode(obj);
+					if (value == null) {
+						throw new IllegalArgumentException("cannot encode Google Play Store RPC parameter");
+					}
+					builder.addValues(value);
+				}
+			}
+
+			gameLogic.getServer().request(ServerSet.SERVER_LOGIC_NAME_STORE,
+					InnerMsgDef.INNER_MSG_EXECUTE_SQL_METHOD.ordinal(),
+					builder.build().toByteArray(), 15000L, bytes -> {
+						if (bytes == null) {
+							if (cb != null) {
+								cb.accept(null);
+							}
+							return;
+						}
+						try {
+							InnerMsg.ComeFromDbData response = InnerMsg.ComeFromDbData.parseFrom(bytes);
+							String value = response.getCode() == 0 ? response.getDatas() : "";
+							if (cb != null) {
+								cb.accept(value.isEmpty() ? null : value);
+							}
+						} catch (Exception e) {
+							logger.error("parse Google Play Store RPC response failed method={}", method, e);
+							if (cb != null) {
+								cb.accept(null);
+							}
+						}
+					});
+		} catch (Exception e) {
+			logger.error("execute Google Play Store RPC failed method={}", method, e);
+			if (cb != null) {
+				cb.accept(null);
+			}
+		}
+	}
+
+	@Override
+	public void flushGooglePlayPlayer(IGameObject gameObject, Consumer<Boolean> cb) {
+		if (!(gameObject instanceof GamePlayer)) {
+			if (cb != null) {
+				cb.accept(false);
+			}
+			return;
+		}
+
+		GamePlayer player = (GamePlayer) gameObject;
+		try {
+			classSet.runEvent(KernelEvent.KEVENT_ON_STORE, player.getScript(), player);
+			IoBuffer buff = IoBuffer.allocate(10);
+			buff.setAutoExpand(true);
+			player.storeToArchive(buff);
+			int size = buff.position();
+
+			InnerMsg.RoleParam roleParam = InnerMsg.RoleParam.newBuilder()
+					.setUid(player.getInt(PLAYER_PROPERTY_UID))
+					.setParam(ByteString.copyFrom(buff.array(), 0, size))
+					.build();
+			gameLogic.getServer().request(ServerSet.SERVER_LOGIC_NAME_STORE,
+					InnerMsgDef.INNER_MSG_GOOGLE_PLAY_STORE_ROLE_PARAM.ordinal(), roleParam.toByteArray(),
+					15000L, data -> {
+						if (cb != null) {
+							cb.accept(data != null && data.length == 0);
+						}
+					});
+		} catch (Exception e) {
+			logger.error("flushGooglePlayPlayer failed uid={}", player.getInt(PLAYER_PROPERTY_UID), e);
+			if (cb != null) {
+				cb.accept(false);
+			}
+		}
+	}
+
+	@Override
+	public void runOnLogicThread(Runnable runnable) {
+		gameLogic.getServer().post(runnable);
+	}
+
 	public void onNetReady() {
 		onReady();
 		for (ILogicModule module : modules.values()) {
