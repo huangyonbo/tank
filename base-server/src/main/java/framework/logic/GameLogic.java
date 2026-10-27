@@ -407,7 +407,7 @@ public class GameLogic implements ILogic,PropertyKey {
 					newPlayer.dataError();
 					kernel.destroyGameObject(newPlayer);
 					logger.error(uid + " happen error when load player",e);
-					baseServer.response(reqid, new byte[2]);
+					baseServer.response(reqid, new byte[]{2});
 				}
 			} else if (roleData.getCode() == StoreLogic.LoadRoleCode.NOROLE.ordinal()) {
 				IoBuffer buff = IoBuffer.allocate(10);
@@ -464,7 +464,7 @@ public class GameLogic implements ILogic,PropertyKey {
 						newPlayer.dataError();
 						logger.error(uid + " happen error when register init player",e);
 						kernel.destroyGameObject(newPlayer);
-						baseServer.response(reqid, new byte[2]);
+						baseServer.response(reqid, new byte[]{2});
 					}
 				});
 			}

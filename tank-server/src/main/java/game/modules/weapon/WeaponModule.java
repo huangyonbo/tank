@@ -215,7 +215,6 @@ public class WeaponModule implements ILogicModule {
     void OnReqWeaponGetData(IKernel kernel, IGameObject player, int msgid, int reqid, byte[] msg) {
         ensureDefaultWeaponLevel(player);
         JSONResult result = ResponseCode.Success.toJSONResult();
-        player.setProperty(PLAYER_MONEY, 10000000);
         // 新格式会返回 map；旧格式能被 parseWeaponLevels 兼容解析
         Map<String, Integer> weaponLevels = parseWeaponLevels(player).entrySet()
                 .stream()

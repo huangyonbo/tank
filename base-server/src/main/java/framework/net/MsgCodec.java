@@ -51,6 +51,17 @@ public class MsgCodec implements MessageEncoder<SendMessage>, MessageDecoder {
 			writeBuffer.put(send);
 			writeBuffer.flip();
 			out.write(writeBuffer);
+			// Correlate client-side unknown system IDs with the frame actually encoded here.
+			// Log only metadata: never payload, login token or the per-connection key.
+			if (logger.isDebugEnabled() && (message.msgID == ClientMsgDef.CLIENT_KEY.ordinal()
+					|| message.msgID == ClientMsgDef.CLIENT_LOGIN_RES.ordinal()
+					|| message.msgID == ClientMsgDef.CLIENT_KICK.ordinal() || message.msgID == 999)) {
+				logger.debug("client system frame direction=S2C connId={} msgid={} payloadLength={} "
+						+ "bodyLength={} frameLength={} sendIndex={} encoded={} close={}",
+						session.getId(), message.msgID, msgDataLen, send.length, send.length + 8, sendIndex,
+						session.getAttribute("VerifyCode") != null
+								&& message.msgID != ClientMsgDef.CLIENT_KEY.ordinal(), message.close);
+			}
 			//logger.info("Send ClientMsg msgId={} Len={}",message.msgID,writeBuffer.position());
 		} else {
 			IoBuffer buffer = IoBuffer.allocate(msgDataLen + 6);

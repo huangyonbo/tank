@@ -46,10 +46,10 @@ data：CustomMsg.String，value 为 JSON 字符串
   -> 收到 PurchaseState.PURCHASED
   -> 请求 10018，提交 productId + purchaseToken
   -> 服务端调用 Google Android Publisher API 验单
-  -> 服务端发金币并强制保存玩家数据
+  -> 服务端向 PlayerMoney 发金币并强制保存玩家数据
   -> 服务端标记订单 SHIPPED
   -> 服务端 consume Google 商品
-  -> code=0，前端刷新金币余额
+  -> code=0，前端确认发货终态，金币显示跟随服务端 PlayerMoney 绝对余额同步
 ```
 
 客户端不要调用 `consumeAsync()` 或 `acknowledgePurchase()`。本项目由服务端在奖励落库后执行 consume。
@@ -71,7 +71,8 @@ data：CustomMsg.String，value 为 JSON 字符串
   "products": [
     {
       "productId": "google_gold_12",
-      "rewardVersion": 1,
+      "rewardVersion": 2,
+      "balanceProperty": "PlayerMoney",
       "gold": 600000,
       "headId": 0,
       "headHours": 0
@@ -93,6 +94,10 @@ data：CustomMsg.String，value 为 JSON 字符串
 | `google_gold_648` | 32,400,000 | 开启 |
 
 服务端不下发展示价格。商品标题、描述、币种、格式化价格必须使用 Google `ProductDetails` 返回的数据。
+
+本次 P5 钱包切换（2026-10-27）统一使用游戏权威字段 `PlayerMoney`。部署代码及 XML 后，新订单快照使用 `rewardVersion=2`；六档商品与关闭的沙盒档版本均为 2，奖励数量及开关不变。10020 和购买成功响应的 `balanceProperty` 固定为 `PlayerMoney`，不再按订单版本选择旧 `Gold` 钱包。
+
+历史 `rewardVersion=1` 已发货订单保留原快照，重试只返回 `already_fulfilled`，不迁移历史 `Gold`、不回写订单版本、不向 `PlayerMoney` 补发。未执行的货币发放步骤统一使用 `PlayerMoney`，已有 `REWARD_STEP` 仍阻止重复发放。
 
 ## 4. 查询 Google ProductDetails
 
@@ -243,6 +248,9 @@ private fun handlePurchase(purchase: Purchase) {
   "orderId": "GPA.1234-5678-9012-34567",
   "duplicate": false,
   "consumePending": false,
+  "rewardVersion": 2,
+  "balanceProperty": "PlayerMoney",
+  "rewardGold": 600000,
   "gold": 123456789,
   "headId": 0
 }
@@ -258,12 +266,19 @@ private fun handlePurchase(purchase: Purchase) {
   "orderId": "GPA.1234-5678-9012-34567",
   "duplicate": true,
   "consumePending": false,
+  "rewardVersion": 2,
+  "balanceProperty": "PlayerMoney",
+  "rewardGold": 600000,
   "gold": 123456789,
   "headId": 0
 }
 ```
 
 只有 `code == 0` 表示奖励已经持久化。`consumePending == true` 也表示已到账，只是 Google consume 待服务端后续补偿；客户端要保留同一 token，不要重新购买同一笔。
+
+`code=23,status=processing,retryable=true` 是一次查询的中间态响应，不是发货终态，也不承诺随后向这个 reqid 再推一条终态。保留原 productId + purchaseToken 并退避重试；后续请求将返回 code=0/fulfilled 或 already_fulfilled，或明确的失败/人工审核状态。余额属性推送不替代该终态确认。
+
+10018 的字段名 `gold` 保持兼容，值始终是当前 `PlayerMoney` 绝对余额（含历史 v1 订单的重试回包），不是本单奖励增量；`rewardGold` 才是订单快照中的奖励数量。客户端只用服务端同步的 `PlayerMoney` 覆盖余额，不得把 `gold` 或 `rewardGold` 再加到本地钱包。`rewardVersion` 在历史订单响应中仍可能为 1，不能据此把返回余额解释为旧 `Gold`。
 
 ## 9. 错误和重试
 
@@ -332,4 +347,17 @@ private fun handlePurchase(purchase: Purchase) {
 - 服务账号授予目标应用 Android Publisher 权限。
 - 配置 `googlePlayPackageName`、`googlePlayServiceAccountPath`、`googlePlayAccountIdSecret`。
 - `googlePlayAccountIdSecret` 至少 32 字符，必须稳定，不能随意轮换。
+
+### P5 钱包切换部署顺序
+
+1. 先发布 P5 新客户端（vc16+）；其对旧后端 `rewardVersion=1` 商品应显示暂不可用。
+2. 部署含钱包切换的服务端代码和 `GooglePlayProducts.xml`，首次切换建议重启 game 进程，保证 Java 实现与配置同时生效；不需要 SQL 或余额迁移。
+3. 代码生效后，后续 XML 调整支持通过管理命令 `updateCfg res/GooglePlay/GooglePlayProducts.xml` 触发 `RefreshCfg` 热加载。配置文件必须先更新到各 game 实例实际使用的配置目录；检查加载日志和 10020 实际回包，不能只看管理命令的 success（配置校验失败会保留旧商品表）。
+4. 客户端重新请求 10020 或重登，确认六档 `rewardVersion=2`、`balanceProperty=PlayerMoney` 后，用新客户端做许可测试购买及升级／结算连续性验收。现有登录会话中的属性声明不变，无需强制重登才能接收余额同步。
+
+旧客户端可能把绝对余额再次加到本地显示值；切换窗口不使用旧包真实购买。已有 v2 订单后，不应回滚到向 `Gold` 发货的实现，应关闭新购入口并向前修复，保留订单记录。
+
+### 后台核账口径
+
+坦克金币以玩家 `PlayerMoney` 为准，IAP 通过 `PROP_CHANGE` 记录 `google iap reward amount=...`。共享框架／旧商城仍有 `Gold` 引用（包括 GM 的 `OnTestAddValue(type=0)`、后台扣道具日志、旧商城和通用玩家日志），不能以这些旧字段核验坦克充值到账；历史 `Gold` 仅用于核对切换前旧订单。本工单保留这些旧模块及历史数据，不做跨模块钱包替换。
 

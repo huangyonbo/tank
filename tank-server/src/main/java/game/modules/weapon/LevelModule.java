@@ -3,6 +3,7 @@ package game.modules.weapon;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.protobuf.InvalidProtocolBufferException;
+import framework.SystemConfigData;
 import framework.game.*;
 import game.custommsg.CustomMsg;
 import game.custommsg.RequestMsgDef;
@@ -19,12 +20,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 武器模块
  */
 public class LevelModule implements ILogicModule {
-
+    private static final Logger logger = LoggerFactory.getLogger(LevelModule.class);
 
     private static final String CONFIG_PATH = "res/AllLevels/AllLevels.xml";
 
@@ -66,6 +70,7 @@ public class LevelModule implements ILogicModule {
 
         kernel.regEvent(KernelEvent.KEVENT_OFF_LINE, "Player", this, "OnPlayerOffLine");
         kernel.regEvent(KernelEvent.KEVENT_ON_LINE, "Player", this, "OnPlayerOnLine");
+        kernel.regEvent(KernelEvent.KEVENT_ON_CREATE_CLASS, "Player", this, "OnPlayerClassCreate");
 
         return true;
     }
@@ -106,23 +111,46 @@ public class LevelModule implements ILogicModule {
         int coin;
     }
 
+    public void OnPlayerClassCreate(IKernel kernel, String script) {
+        kernel.declareProperty(script, LevelAttemptState.PROPERTY, ValueType.STRING, false, false, true);
+        kernel.declareProperty(script, PLAYER_PROGRESS_REVISION, ValueType.INT, false, true, true);
+    }
+
     /**
      * 关卡开始：结束后一秒内不能再次开始；且必须先开始后结束。
      * <p>
      * 请求 msg 约定：`CustomMsg.String(value=JSON)`
      * JSON字段：
      * - `levelId`（int）
-     * - `isSpecial`（boolean，可选）：特殊关卡不校验前置关卡/跳关限制
+     * - `settlementVersion`（int，可选）：2 表示结算必须携带 attemptId
+     * 特殊关卡仅由服务端识别 levelId=999，不接受客户端绕过跳关限制。
      */
     void OnReqLevelStart(IKernel kernel, IGameObject player, int msgid, int reqid, byte[] msg)
             throws InvalidProtocolBufferException {
         ServerCodeDef code = ServerCodeDef.CODE_SUCCESS;
         long now = kernel.getServerTime();
+        JSONResult result = ResponseCode.Success.toJSONResult();
+        boolean save = false;
 
         try {
             CustomMsg.String msgData = CustomMsg.String.parseFrom(msg);
             JSONObject jsonObject = JSONObject.parseObject(msgData.getValue());
+            if (jsonObject == null) {
+                code = ServerCodeDef.CODE_PARAM_ERR;
+                return;
+            }
+            int settlementVersion = LevelAttemptState.settlementVersion(jsonObject);
+            if (requiresV2() && settlementVersion != 2) {
+                code = ServerCodeDef.CODE_PARAM_ERR;
+                result.put("status", "settlement_upgrade_required");
+                return;
+            }
+            if (!LevelAttemptState.integer(jsonObject.get("levelId"))
+                    || jsonObject.getLongValue("levelId") > Integer.MAX_VALUE || jsonObject.getLongValue("levelId") <= 0) {
+                throw new LevelAttemptState.ContractException("invalid_level_id");
+            }
             int levelId = jsonObject.getIntValue("levelId");
+            String gameplayMode = LevelAttemptState.gameplayMode(jsonObject, levelId);
             boolean isSpecial = false;
             if (levelId == 999) {
                 isSpecial = true;
@@ -137,15 +165,46 @@ public class LevelModule implements ILogicModule {
             }
 
             // 结束后 1 秒内不可再开始
-            long lastFinishTime = player.getTempLong(TEMP_LEVEL_LAST_FINISH_TIME);
+            LevelAttemptState state = new LevelAttemptState(player.getString(LevelAttemptState.PROPERTY));
+            long lastFinishTime = Math.max(state.data.getLongValue("lastFinishTime"),
+                    player.getTempLong(TEMP_LEVEL_LAST_FINISH_TIME));
             if (lastFinishTime > 0 && (now - lastFinishTime) < START_AFTER_FINISH_COOLDOWN_MS) {
                 code = ServerCodeDef.CODE_TIME_LIMIT;
+                result.put("status", "level_restart_cooldown");
+                result.put("retryAfterMs", START_AFTER_FINISH_COOLDOWN_MS - (now - lastFinishTime));
+                result.put("nextStartAt", lastFinishTime + START_AFTER_FINISH_COOLDOWN_MS);
+                result.put("retryable", true);
                 return;
             }
 
-            // 已开始则不能重复开始
-            if (player.getTempBool(TEMP_LEVEL_STARTED)) {
+            // 重连/开始回包丢失时返回原凭据，不重新随机小目标。
+            JSONObject active = state.active();
+            if (active != null && now - active.getLongValue("startedAt") < LevelAttemptState.MAX_AGE_MS
+                    && Math.max(1, active.getIntValue("progressRevision"))
+                    == Math.max(1, player.getInt(PLAYER_PROGRESS_REVISION))) {
+                if (active.getIntValue("levelId") == levelId) {
+                    // Upgrading the client does not create another attempt or reroll its target.
+                    if (settlementVersion == 2) {
+                        active.put("requiresAttemptId", true);
+                        active.put("requiresResolution", true);
+                    }
+                    JSONObject originalStart = active.getJSONObject("startResponse");
+                    originalStart.put("settlementVersion", active.getBooleanValue("requiresAttemptId") ? 2 : 1);
+                    originalStart.put("gameplayMode", gameplayMode);
+                    originalStart.put("attemptExpiresAt", active.getLongValue("startedAt") + LevelAttemptState.MAX_AGE_MS);
+                    if (!originalStart.containsKey("littleTargetAssigned")) {
+                        originalStart.put("littleTargetAssigned", originalStart.containsKey("littleTargetId"));
+                    }
+                    player.setProperty(LevelAttemptState.PROPERTY, state.data.toJSONString());
+                    result.putAll(active.getJSONObject("startResponse"));
+                    result.put("resumed", true);
+                    save = true;
+                    return;
+                }
                 code = ServerCodeDef.CODE_WRONG_STATE;
+                result.put("status", "unfinished_level");
+                result.put("attemptId", active.getString("attemptId"));
+                result.put("levelId", active.getIntValue("levelId"));
                 return;
             }
 
@@ -160,31 +219,73 @@ public class LevelModule implements ILogicModule {
             }
             player.setTempData(TEMP_LEVEL_STARTED, true);
             player.setTempData(TEMP_LEVEL_START_LEVEL_ID, levelId);
-        } finally {
-            JSONResult result = ResponseCode.Success.toJSONResult();
-            result.setDesc(code);
-            // 随机一个小目标，下发给前端（可选）
-            if (code == ServerCodeDef.CODE_SUCCESS && m_LittleTargetsModule != null) {
+            String attemptId = UUID.randomUUID().toString();
+            result.put("attemptId", attemptId);
+            result.put("levelId", levelId);
+            result.put("resumed", false);
+            result.put("settlementVersion", settlementVersion);
+            result.put("gameplayMode", gameplayMode);
+            result.put("attemptExpiresAt", now + LevelAttemptState.MAX_AGE_MS);
+            result.put("progressRevision", Math.max(1, player.getInt(PLAYER_PROGRESS_REVISION)));
+            result.put("littleTargetAssigned", false);
+            result.put("littleTargetId", 0);
+            result.put("littleTargetNeed", 0);
+            if (m_LittleTargetsModule != null) {
                 LittleTargetsModule.LittleTargetData target = m_LittleTargetsModule.onLevelStart(kernel, player);
                 if (target != null) {
+                    result.put("littleTargetAssigned", true);
                     result.put("littleTargetId", target.id);
                     result.put("littleTargetNeed", target.targetValues);
                 }
             }
-            kernel.response(player, reqid, result);
+            active = new JSONObject();
+            active.put("attemptId", attemptId);
+            active.put("levelId", levelId);
+            active.put("startedAt", now);
+            active.put("progressRevision", Math.max(1, player.getInt(PLAYER_PROGRESS_REVISION)));
+            // 新客户端可选择严格模式；旧客户端仍可不带 attemptId 结算。
+            active.put("requiresAttemptId", settlementVersion == 2);
+            active.put("requiresResolution", settlementVersion == 2);
+            active.put("startResponse", JSON.parseObject(result.toJSONString()));
+            state.data.put("active", active);
+            player.setProperty(LevelAttemptState.PROPERTY, state.data.toJSONString());
+            save = true;
+        } catch (Exception e) {
+            logger.warn("level start rejected uid={}", player.getInt(PLAYER_PROPERTY_UID), e);
+            code = ServerCodeDef.CODE_PARAM_ERR;
+            if (e instanceof LevelAttemptState.ContractException) {
+                result.put("status", ((LevelAttemptState.ContractException) e).status);
+            }
+        } finally {
+            result.setDesc(code);
+            if (!result.containsKey("status")) {
+                result.put("status", code == ServerCodeDef.CODE_SUCCESS ? "level_started" : "level_start_rejected");
+            }
+            if (save && code == ServerCodeDef.CODE_SUCCESS) {
+                respondAfterSave(kernel, player, reqid, result);
+            } else {
+                kernel.response(player, reqid, result);
+            }
         }
+    }
+
+    private static boolean requiresV2() {
+        Object configured = SystemConfigData.getConfig("levelSettlementRequireV2", (Object) false);
+        return Boolean.parseBoolean(String.valueOf(configured));
     }
 
     // 玩家上线：把当前已通关进度写入排行榜（避免排行榜为空）
     public void OnPlayerOnLine(IKernel kernel, IGameObject player) {
+        if (player.getInt(PLAYER_PROGRESS_REVISION) <= 0) {
+            player.setProperty(PLAYER_PROGRESS_REVISION, 1);
+        }
         updateLevelCompletedRank(kernel, player);
-        player.removeTempData(TEMP_LEVEL_LAST_FINISH_TIME);
+        // 保存的关卡凭据和回执跨断线/重登保留；临时字段只用于兼容旧连接。
         player.removeTempData(TEMP_LEVEL_STARTED);
         player.removeTempData(TEMP_LEVEL_START_LEVEL_ID);
     }
 
     public void OnPlayerOffLine(IKernel kernel, IGameObject player) {
-        player.removeTempData(TEMP_LEVEL_LAST_FINISH_TIME);
         player.removeTempData(TEMP_LEVEL_STARTED);
         player.removeTempData(TEMP_LEVEL_START_LEVEL_ID);
     }
@@ -208,6 +309,10 @@ public class LevelModule implements ILogicModule {
         long capGold = 0;
         boolean canConsumeStart = false;
         JSONObject achievementStatus = null;
+        LevelAttemptState state = null;
+        String attemptId = null;
+        int finishedLevelId = 0;
+        boolean replay = false;
         try {
             if (msg == null || msg.length == 0) {
                 code = ServerCodeDef.CODE_PARAM_ERR;
@@ -226,11 +331,16 @@ public class LevelModule implements ILogicModule {
                 return;
             }
 
+            if (!LevelAttemptState.integer(json.get("levelId")) || json.getLongValue("levelId") > Integer.MAX_VALUE
+                    || json.getLongValue("levelId") <= 0) {
+                throw new LevelAttemptState.ContractException("invalid_level_id");
+            }
             Integer levelId = json.getInteger("levelId");
             if (levelId == null || levelId <= 0) {
                 code = ServerCodeDef.CODE_PARAM_ERR;
                 return;
             }
+            LevelAttemptState.gameplayMode(json, levelId);
 
             boolean isSpecial = levelId == 999;
             Long frontcoin = json.getLong("coin");
@@ -238,15 +348,78 @@ public class LevelModule implements ILogicModule {
                 code = ServerCodeDef.CODE_PARAM_ERR;
                 return;
             }
-            boolean isWin = json.getBoolean("isWin");
-            // 只有开始后才能结束
-            if (!player.getTempBool(TEMP_LEVEL_STARTED)) {
-                code = ServerCodeDef.CODE_WRONG_STATE;
+            boolean isWin = LevelAttemptState.resolveWin(json);
+            state = new LevelAttemptState(player.getString(LevelAttemptState.PROPERTY));
+            attemptId = json.getString("attemptId");
+            if (attemptId != null && attemptId.length() > 128) {
+                code = ServerCodeDef.CODE_PARAM_ERR;
                 return;
             }
-            int startLevelId = player.getTempInt(TEMP_LEVEL_START_LEVEL_ID);
+            JSONObject receipt = state.receipt(attemptId);
+            if (receipt != null) {
+                if (receipt.getIntValue("levelId") != levelId) {
+                    code = ServerCodeDef.CODE_PARAM_ERR;
+                    return;
+                }
+                result.putAll(receipt);
+                result.put("duplicate", true);
+                replay = true;
+                return;
+            }
+            JSONObject active = state.active();
+            int startLevelId;
+            if (active != null) {
+                if (requiresV2() && !active.getBooleanValue("requiresAttemptId")) {
+                    code = ServerCodeDef.CODE_PARAM_ERR;
+                    result.put("status", "settlement_upgrade_required");
+                    return;
+                }
+                int revision = Math.max(1, player.getInt(PLAYER_PROGRESS_REVISION));
+                if (Math.max(1, active.getIntValue("progressRevision")) != revision) {
+                    code = ServerCodeDef.CODE_WRONG_STATE;
+                    result.put("status", "progress_revision_changed");
+                    result.put("progressRevision", revision);
+                    return;
+                }
+                if (active.getBooleanValue("requiresAttemptId") && (attemptId == null || attemptId.isEmpty())) {
+                    code = ServerCodeDef.CODE_PARAM_ERR;
+                    result.put("status", "attempt_id_required");
+                    return;
+                }
+                if (active.getBooleanValue("requiresResolution")) {
+                    String resolution = LevelAttemptState.validateStrictFinish(json, active);
+                    json.put("resolution", resolution);
+                }
+                if ((active.getBooleanValue("requiresAttemptId") || attemptId != null)
+                        && !active.getString("attemptId").equals(attemptId)) {
+                    code = ServerCodeDef.CODE_WRONG_STATE;
+                    result.put("status", "attempt_mismatch");
+                    return;
+                }
+                if (kernel.getServerTime() - active.getLongValue("startedAt") >= LevelAttemptState.MAX_AGE_MS) {
+                    code = ServerCodeDef.CODE_WRONG_STATE;
+                    result.put("status", "attempt_expired");
+                    return;
+                }
+                attemptId = active.getString("attemptId");
+                startLevelId = active.getIntValue("levelId");
+            } else if ((attemptId == null || attemptId.isEmpty()) && player.getTempBool(TEMP_LEVEL_STARTED)) {
+                if (requiresV2()) {
+                    code = ServerCodeDef.CODE_PARAM_ERR;
+                    result.put("status", "settlement_upgrade_required");
+                    return;
+                }
+                // 仅兼容部署前已经开始的一局，不能凭客户端任意构造的 ID 补结算。
+                attemptId = UUID.randomUUID().toString();
+                startLevelId = player.getTempInt(TEMP_LEVEL_START_LEVEL_ID);
+            } else {
+                code = ServerCodeDef.CODE_WRONG_STATE;
+                result.put("status", "attempt_not_found");
+                return;
+            }
             if (startLevelId != levelId.intValue()) {
                 code = ServerCodeDef.CODE_PARAM_ERR;
+                result.put("status", "level_id_mismatch");
                 return;
             }
 
@@ -258,11 +431,23 @@ public class LevelModule implements ILogicModule {
 
             // 配置 -1 表示不发放金币；按上限逻辑最多只给上限金币
             capGold = levelData.coin > 0 ? (long) levelData.coin : 0;
-            awardGold = Math.min(frontcoin, capGold);
+            boolean noEarnings = active != null && active.getBooleanValue("requiresResolution")
+                    && ("Restart".equals(json.getString("resolution")) || "Aborted".equals(json.getString("resolution")));
+            awardGold = noEarnings ? 0 : Math.min(frontcoin, capGold);
             canConsumeStart = true;
+            finishedLevelId = levelId;
+            result.put("isWin", isWin);
+            result.put("resolution", json.containsKey("resolution") ? json.getString("resolution") : "legacy");
+            result.put("reportedIsWin", json.getBoolean("isWin"));
+            result.put("earningsSuppressed", noEarnings);
+            if (json.containsKey("countProgress")) {
+                result.put("countProgress", json.getBoolean("countProgress"));
+            }
+            result.put("levelsCompletedBefore", player.getInt(PLAYER_LEVELS_COMPLETED));
+            result.put("balanceBefore", player.getLong(PLAYER_MONEY));
 
             // 小目标进度结算（前端上报本局小目标ID和本局完成量）
-            if (m_LittleTargetsModule != null) {
+            if (!noEarnings && m_LittleTargetsModule != null) {
                 Integer ltId = json.getInteger("littleTargetId");
                 Long ltDelta = json.getLong("littleTargetDelta");
                 if (ltId != null && ltDelta != null && ltDelta > 0) {
@@ -276,7 +461,7 @@ public class LevelModule implements ILogicModule {
 
             if (awardGold > 0) {
                 long curGold = player.getLong(PLAYER_MONEY);
-                player.setProperty(PLAYER_MONEY, curGold + awardGold,
+                player.setProperty(PLAYER_MONEY, Math.addExact(curGold, awardGold),
                         IKernel.PlayerLogType.PROP_CHANGE.ordinal(),
                         "FinishLevel " + levelId + " award=" + awardGold);
             }
@@ -291,7 +476,7 @@ public class LevelModule implements ILogicModule {
 
             // 关卡产出成就（前端上报：当次每个 achievement 的产出数量）
             // achievementOutput: { "achievementId": deltaCount, ... }
-            if (m_AchievementModule != null) {
+            if (!noEarnings && m_AchievementModule != null) {
                 JSONObject outAch = json.getJSONObject("achievementCounts");
                 if (outAch != null) {
                     Map<Integer, Long> totalMap = parseLongMap(player.getString(PLAYER_PROPERTY_ACHIEVEMENT_TOTAL_COUNTS));
@@ -322,7 +507,7 @@ public class LevelModule implements ILogicModule {
                             continue;
                         }
 
-                        long total = totalMap.getOrDefault(achievementId, 0L) + delta;
+                        long total = Math.addExact(totalMap.getOrDefault(achievementId, 0L), delta);
                         totalMap.put(achievementId, total);
 
                         int mask = claimedMap.getOrDefault(achievementId, 0);
@@ -335,7 +520,7 @@ public class LevelModule implements ILogicModule {
                             if (total >= threshold && (mask & (1 << lvIdx)) == 0) {
                                 long reward = cfg.lvAward[lvIdx];
                                 if (reward > 0) {
-                                    achievementAwardGold += reward;
+                                    achievementAwardGold = Math.addExact(achievementAwardGold, reward);
                                 }
                                 mask |= (1 << lvIdx);
                             }
@@ -368,29 +553,98 @@ public class LevelModule implements ILogicModule {
                     }
                     if (achievementAwardGold > 0) {
                         long curGold = player.getLong(PLAYER_MONEY);
-                        player.setProperty(PLAYER_MONEY, curGold + achievementAwardGold,
+                        player.setProperty(PLAYER_MONEY, Math.addExact(curGold, achievementAwardGold),
                                 IKernel.PlayerLogType.PROP_CHANGE.ordinal(), "AchievementReward");
                     }
                 }
             }
-        } finally {
+        } catch (Exception e) {
             if (canConsumeStart) {
-                long now = kernel.getServerTime();
-                player.setTempData(TEMP_LEVEL_STARTED, false);
-                player.setTempData(TEMP_LEVEL_START_LEVEL_ID, 0);
-                player.setTempData(TEMP_LEVEL_IS_SPECIAL, false);
-                player.setTempData(TEMP_LEVEL_LAST_FINISH_TIME, now);
+                logger.error("level finish failed uid={} attempt={}", player.getInt(PLAYER_PROPERTY_UID), attemptId, e);
+            } else {
+                logger.warn("invalid level finish uid={}: {}", player.getInt(PLAYER_PROPERTY_UID), e.toString());
             }
+            code = canConsumeStart ? ServerCodeDef.CODE_FAILED : ServerCodeDef.CODE_PARAM_ERR;
+            result.put("status", canConsumeStart ? "settlement_requires_review" : "invalid_request");
+            if (e instanceof LevelAttemptState.ContractException) {
+                result.put("status", ((LevelAttemptState.ContractException) e).status);
+            }
+            result.put("retryable", false);
+            if (canConsumeStart) {
+                result.put("manualReview", true);
+            }
+        } finally {
+            if (replay) {
+                respondAfterSave(kernel, player, reqid, result);
+            } else {
+                if (canConsumeStart) {
+                    long now = kernel.getServerTime();
+                    player.setTempData(TEMP_LEVEL_STARTED, false);
+                    player.setTempData(TEMP_LEVEL_START_LEVEL_ID, 0);
+                    player.setTempData(TEMP_LEVEL_IS_SPECIAL, false);
+                    player.setTempData(TEMP_LEVEL_LAST_FINISH_TIME, now);
+                }
 
-            result.setDesc(code);
-            result.put("awardGold", awardGold);
-            result.put("achievementAwardGold", achievementAwardGold);
-            if (achievementStatus != null) {
-                result.put("achievementStatus", achievementStatus);
+                result.setDesc(code);
+                result.put("awardGold", awardGold);
+                result.put("achievementAwardGold", achievementAwardGold);
+                if (achievementStatus != null) {
+                    result.put("achievementStatus", achievementStatus);
+                }
+                if (!result.containsKey("status")) {
+                    result.put("status", code == ServerCodeDef.CODE_SUCCESS ? "level_settled" : "level_finish_rejected");
+                }
+                if (canConsumeStart) {
+                    result.put("attemptId", attemptId);
+                    result.put("levelId", finishedLevelId);
+                    result.put("duplicate", false);
+                    long settledAt = kernel.getServerTime();
+                    result.put("nextStartAt", settledAt + START_AFTER_FINISH_COOLDOWN_MS);
+                    result.put("progressRevision", Math.max(1, player.getInt(PLAYER_PROGRESS_REVISION)));
+                    result.put("levelsCompletedAfter", player.getInt(PLAYER_LEVELS_COMPLETED));
+                    result.put("balanceAfter", player.getLong(PLAYER_MONEY));
+                    state.finish(result, settledAt);
+                    player.setProperty(LevelAttemptState.PROPERTY, state.data.toJSONString());
+                    respondAfterSave(kernel, player, reqid, result);
+                } else {
+                    kernel.response(player, reqid,
+                            CustomMsg.String.newBuilder().setValue(result.toJSONString()).build().toByteArray());
+                }
             }
-            kernel.response(player, reqid,
-                    CustomMsg.String.newBuilder().setValue(result.toJSONString()).build().toByteArray());
         }
+    }
+
+    private void respondAfterSave(IKernel kernel, IGameObject player, int reqid, JSONObject response) {
+        // Reuse the existing bounded, acknowledged player archive flush. The receipt and money
+        // are in one archive; a lost response can safely be retried with the same attemptId.
+        JSONObject snapshot = JSON.parseObject(response.toJSONString());
+        kernel.flushGooglePlayPlayer(player, saved -> {
+            JSONObject reply = JSON.parseObject(snapshot.toJSONString());
+            reply.put("progressRevision", Math.max(1, player.getInt(PLAYER_PROGRESS_REVISION)));
+            reply.put("levelsCompleted", player.getInt(PLAYER_LEVELS_COMPLETED));
+            reply.put("retryable", false);
+            if (reply.containsKey("nextStartAt")) {
+                reply.put("retryAfterMs", Math.max(0L, reply.getLongValue("nextStartAt") - kernel.getServerTime()));
+            }
+            if (!Boolean.TRUE.equals(saved)) {
+                reply.put("code", ServerCodeDef.CODE_FAILED.getId());
+                reply.put("status", "player_save_pending");
+                reply.put("retryable", true);
+            }
+            logger.info("level archive ack uid={} attemptId={} levelId={} status={} saved={} duplicate={} "
+                            + "resolution={} isWin={} awardGold={} reqid={} code={} progressRevision={} "
+                            + "reportedIsWin={} countProgress={} levelsCompletedBefore={} levelsCompletedAfter={} "
+                            + "balanceBefore={} balanceAfter={}", player.getInt(PLAYER_PROPERTY_UID),
+                    reply.getString("attemptId"), reply.getInteger("levelId"), reply.getString("status"),
+                    saved, reply.getBoolean("duplicate"), reply.getString("resolution"),
+                    reply.getBoolean("isWin"), reply.getLong("awardGold"), reqid, reply.getInteger("code"),
+                    reply.getInteger("progressRevision"), reply.getBoolean("reportedIsWin"),
+                    reply.getBoolean("countProgress"), reply.getInteger("levelsCompletedBefore"),
+                    reply.getInteger("levelsCompletedAfter"), reply.getLong("balanceBefore"),
+                    reply.getLong("balanceAfter"));
+            kernel.response(player, reqid, CustomMsg.String.newBuilder()
+                    .setValue(reply.toJSONString()).build().toByteArray());
+        });
     }
 
     /**

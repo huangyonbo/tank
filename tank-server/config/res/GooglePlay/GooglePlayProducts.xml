@@ -2,11 +2,11 @@
 <!-- Independent Google Play products. Never reuse or delete a ProductId that has orders. -->
 <config>
     <!-- Disabled by default; reserved for license-tester sandbox verification. -->
-    <item Id="google_gold_1" ProductId="google_gold_1" PriceYuan="1" Enabled="false" RewardVersion="1" Gold="1000" HeadId="0" HeadHours="0"/>
-    <item Id="google_gold_12" ProductId="google_gold_12" PriceYuan="12" Enabled="true" RewardVersion="1" Gold="600000" HeadId="0" HeadHours="0"/>
-    <item Id="google_gold_28" ProductId="google_gold_28" PriceYuan="28" Enabled="true" RewardVersion="1" Gold="1400000" HeadId="0" HeadHours="0"/>
-    <item Id="google_gold_50" ProductId="google_gold_50" PriceYuan="50" Enabled="true" RewardVersion="1" Gold="2500000" HeadId="0" HeadHours="0"/>
-    <item Id="google_gold_108" ProductId="google_gold_108" PriceYuan="108" Enabled="true" RewardVersion="1" Gold="5400000" HeadId="0" HeadHours="0"/>
-    <item Id="google_gold_328" ProductId="google_gold_328" PriceYuan="328" Enabled="true" RewardVersion="1" Gold="16400000" HeadId="0" HeadHours="0"/>
-    <item Id="google_gold_648" ProductId="google_gold_648" PriceYuan="648" Enabled="true" RewardVersion="1" Gold="32400000" HeadId="0" HeadHours="0"/>
+    <item Id="google_gold_1" ProductId="google_gold_1" PriceYuan="1" Enabled="false" RewardVersion="2" Gold="1000" HeadId="0" HeadHours="0"/>
+    <item Id="google_gold_12" ProductId="google_gold_12" PriceYuan="12" Enabled="true" RewardVersion="2" Gold="600000" HeadId="0" HeadHours="0"/>
+    <item Id="google_gold_28" ProductId="google_gold_28" PriceYuan="28" Enabled="true" RewardVersion="2" Gold="1400000" HeadId="0" HeadHours="0"/>
+    <item Id="google_gold_50" ProductId="google_gold_50" PriceYuan="50" Enabled="true" RewardVersion="2" Gold="2500000" HeadId="0" HeadHours="0"/>
+    <item Id="google_gold_108" ProductId="google_gold_108" PriceYuan="108" Enabled="true" RewardVersion="2" Gold="5400000" HeadId="0" HeadHours="0"/>
+    <item Id="google_gold_328" ProductId="google_gold_328" PriceYuan="328" Enabled="true" RewardVersion="2" Gold="16400000" HeadId="0" HeadHours="0"/>
+    <item Id="google_gold_648" ProductId="google_gold_648" PriceYuan="648" Enabled="true" RewardVersion="2" Gold="32400000" HeadId="0" HeadHours="0"/>
 </config>

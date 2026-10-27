@@ -186,6 +186,7 @@ public class ShopModule implements ILogicModule {
             JSONObject item = new JSONObject();
             item.put("productId", product.productId);
             item.put("rewardVersion", product.rewardVersion);
+            item.put("balanceProperty", PLAYER_MONEY);
             item.put("gold", product.goldAmount);
             item.put("headId", product.headId);
             item.put("headHours", product.headHours);
@@ -297,6 +298,8 @@ public class ShopModule implements ILogicModule {
             }
 
             tokenHash = sha256Hex(purchaseToken);
+            resp.put("productId", productId);
+            resp.put("verificationId", shortHash(tokenHash));
             processingOwner = UUID.randomUUID().toString();
             if (!acquireLocalLock(tokenHash, processingOwner)) {
                 resp.put("retryable", true);
@@ -695,7 +698,7 @@ public class ShopModule implements ILogicModule {
 
         if (rewardStep < rewardSteps) {
             GrantResult grantResult = rewardStep == 0
-                    ? grantGold(player, product.goldAmount)
+                    ? grantMoney(player, product.goldAmount)
                     : grantHead(kernel, player, product.headId, product.headHours);
             if (grantResult == GrantResult.UNKNOWN) {
                 rec.setValue(row, OrderRecCol.MANUAL_REVIEW.index, 1);
@@ -824,24 +827,26 @@ public class ShopModule implements ILogicModule {
                 });
     }
 
-    private GrantResult grantGold(IGameObject player, long amount) {
-        long before = player.getLong(PLAYER_PROPERTY_GOLD);
+    private GrantResult grantMoney(IGameObject player, long amount) {
+        long before = player.getLong(PLAYER_MONEY);
         long expected;
         try {
             expected = Math.addExact(before, amount);
         } catch (ArithmeticException e) {
-            logger.error("Google Play gold overflow uid={} before={} amount={}",
+            logger.error("Google Play money overflow uid={} before={} amount={}",
                     player.getInt(PLAYER_PROPERTY_UID), before, amount);
             return GrantResult.NO_EFFECT;
         }
 
         try {
-            player.setProperty(PLAYER_PROPERTY_GOLD, expected);
+            player.setProperty(PLAYER_MONEY, expected,
+                    IKernel.PlayerLogType.PROP_CHANGE.ordinal(),
+                    "google iap reward amount=" + amount);
         } catch (Exception e) {
-            logger.error("Google Play gold listener failed uid={} expected={}",
+            logger.error("Google Play money listener failed uid={} expected={}",
                     player.getInt(PLAYER_PROPERTY_UID), expected, e);
         }
-        long actual = player.getLong(PLAYER_PROPERTY_GOLD);
+        long actual = player.getLong(PLAYER_MONEY);
         if (actual == expected) {
             return GrantResult.GRANTED;
         }
@@ -1167,7 +1172,10 @@ public class ShopModule implements ILogicModule {
         resp.put("orderId", nullToEmpty(googleOrderId));
         resp.put("duplicate", duplicate);
         resp.put("consumePending", consumePending);
-        resp.put("gold", player.getLong(PLAYER_PROPERTY_GOLD));
+        resp.put("balanceProperty", PLAYER_MONEY);
+        resp.put("rewardVersion", product.rewardVersion);
+        resp.put("rewardGold", product.goldAmount);
+        resp.put("gold", player.getLong(PLAYER_MONEY));
         resp.put("headId", product.headId);
         respond(kernel, player, reqid, resp, ServerCodeDef.CODE_SUCCESS,
                 duplicate ? "already_fulfilled" : "fulfilled",
@@ -1576,6 +1584,19 @@ public class ShopModule implements ILogicModule {
         try {
             resp.put("code", code.getId());
             resp.put("status", status);
+            if ("processing".equals(status)) {
+                resp.put("retryable", true);
+            }
+            // Log the response after the state machine has reached this outcome.
+            // Never log the raw purchase token or the entire client request.
+            logger.info("Google Play response uid={} reqid={} verificationId={} productId={} orderId={} "
+                            + "code={} status={} retryable={} manualReview={} duplicate={} consumePending={} "
+                            + "balanceProperty={} balance={}",
+                    player == null ? 0 : player.getInt(PLAYER_PROPERTY_UID), reqid,
+                    resp.getString("verificationId"), resp.getString("productId"), resp.getString("orderId"),
+                    code.getId(), status, resp.getBooleanValue("retryable"), resp.getBooleanValue("manualReview"),
+                    resp.getBooleanValue("duplicate"), resp.getBooleanValue("consumePending"),
+                    resp.getString("balanceProperty"), resp.getLong("gold"));
             kernel.response(player, reqid, CustomMsg.String.newBuilder()
                     .setValue(resp.toJSONString()).build().toByteArray());
         } catch (Exception e) {

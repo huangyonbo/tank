@@ -25,6 +25,12 @@
         <activiti.version>5.22.0</activiti.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
         <!-- 基础 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

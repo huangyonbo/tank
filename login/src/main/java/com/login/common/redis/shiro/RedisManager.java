@@ -12,12 +12,16 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.Set;
+import java.util.Collections;
 
 /**
  *
  */
 @Data
 public class RedisManager {
+    private static final String CONSUME_MATCHING_VALUE_SCRIPT =
+            "if redis.call('GET', KEYS[1]) == ARGV[1] then "
+            + "return redis.call('DEL', KEYS[1]) end return 0";
 
     @Value("${spring.redis.host}")
     private String host = "127.0.0.1";
@@ -129,10 +133,8 @@ public class RedisManager {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
-            jedis.set(key, value);
-            if (expire != 0) {
-                jedis.expire(key, expire);
-            }
+            if (expire > 0) jedis.setex(key, expire, value);
+            else jedis.set(key, value);
         } finally {
             if (jedis != null) {
                 jedis.close();
@@ -143,6 +145,14 @@ public class RedisManager {
 
     public void set(String key, String value,int expire) {
         set(key.getBytes(),value.getBytes(),expire);
+    }
+
+    public boolean matchesAndDelete(String key, String value) {
+        try (Jedis jedis = jedisPool.getResource()) {
+            Object consumed = jedis.eval(CONSUME_MATCHING_VALUE_SCRIPT,
+                    Collections.singletonList(key), Collections.singletonList(value));
+            return Long.valueOf(1L).equals(consumed);
+        }
     }
 
     /**
