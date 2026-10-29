@@ -118,8 +118,8 @@ public class StoneStore implements ILogicModule {
 
 		kernel.listenPropertyChange(PLAYER_PROPERTY_VIPLEVEL, "Player", this, "OnVipLevelChanged");
 
-		kernel.regRequestMessage(RequestMsgDef.REQ_STONE_EXCHANGE.ordinal(), this, "OnReqExStone");
-		kernel.regRequestMessage(RequestMsgDef.REQ_TRANSFORM_TO_STONE_TIMES.ordinal(), this,
+		kernel.regRequestMessage(RequestMsgDef.REQ_STONE_EXCHANGE.getId(), this, "OnReqExStone");
+		kernel.regRequestMessage(RequestMsgDef.REQ_TRANSFORM_TO_STONE_TIMES.getId(), this,
 				"OnReqTransformToStoneTimes");// 兑换石转灵石
 
 		kernel.regClientMessage(C2SMsgDef.C2S_REQ_STONE_STOCK.ordinal(), this, "OnReqStoneStock");

@@ -43,11 +43,10 @@ public class SendItemModule implements ILogicModule {
     public boolean onInit(IKernel kernel) {
         kernel.regEvent(KernelEvent.KEVENT_ON_LINE, "Player", this, "OnPlayerOnLine");
         kernel.declareHeartBeat(CheckSendItemHeart, this, "OnCheckRecord");
-        kernel.regRequestMessage(RequestMsgDef.REQ_SEND_ITEM_NEW.ordinal(), this, "OnSendItem");
-        kernel.regRequestMessage(RequestMsgDef.REQ_SEND_HISTORY.ordinal(), this, "OnGetHistory");
+        kernel.regRequestMessage(RequestMsgDef.REQ_SEND_ITEM_NEW.getId(), this, "OnSendItem");
+        kernel.regRequestMessage(RequestMsgDef.REQ_SEND_HISTORY.getId(), this, "OnGetHistory");
         kernel.regServerMsg(ServerMsgDef.B2C_UPDATE_SEND_ITEM_CONFIG.ordinal(),this, "OnUpdateSendItemConfig");
 
-//        kernel.regRequestMessage(RequestMsgDef.REQ_CHECK_SEND_PLAYER.ordinal(), this, "OnCheckUid");
         kernel.regCommand(CommandDef.CMD_CHECK_SEND_ITEMS.ordinal(), "Player", this, "OnRecvCheckItem");
         m_playerModule = (PlayerModule) kernel.getModule("PlayerModule");
         m_ItemModule = kernel.getModule(ItemModule.class);
@@ -97,17 +96,6 @@ public class SendItemModule implements ILogicModule {
             kernel.addHeartBeat(CheckSendItemHeart, player, 60000, -1);
         }
         this.OnCheckRecord(kernel, player);
-    }
-
-    public void OnCheckUid(IKernel kernel, IGameObject player, int msgid, int reqid, byte[] msg)
-            throws InvalidProtocolBufferException {
-        CustomMsg.CheckUidInfo check = CustomMsg.CheckUidInfo.parseFrom(msg);
-        int uid = check.getUid();
-        String name = kernel.getUserName(uid);
-
-        CustomMsg.CheckUidInfoRes.Builder res = CustomMsg.CheckUidInfoRes.newBuilder();
-        res.setName(name == null ? "" : m_playerModule.replaceSensitiveWord(name));
-        kernel.response(player, reqid, res.build().toByteArray());
     }
 
     public void OnCheckRecord(IKernel kernel, IGameObject player) {

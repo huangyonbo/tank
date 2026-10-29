@@ -105,9 +105,9 @@ public class ActivityMgr implements ILogicModule {
         kernel.regServerMsg(ServerMsgDef.B2G_CLOSE_ACTIVITY.ordinal(), this, "OnCloseActivity");
         kernel.regServerRequest(ServerMsgDef.B2G_ACTIVITY_UPDATE_CONFIG.ordinal(), this, "UpdateActivityConfig");
         kernel.regClientMessage(C2SMsgDef.C2S_GET_ACTIVITY_AWARD.ordinal(), this, "OnGetActivityReward");
-        kernel.regRequestMessage(RequestMsgDef.REQ_ACTIVITY_REWARD.ordinal(), this, "OnGetActivityRewardNeedCallBack");
-        kernel.regRequestMessage(RequestMsgDef.REQ_ACTIVITY_CONFIG_NEW.ordinal(), this, "OnReqActivityConfig");
-        kernel.regRequestMessage(RequestMsgDef.REQ_ACTIVITY_INFO.ordinal(), this, "OnReqActivityInfo");
+        kernel.regRequestMessage(RequestMsgDef.REQ_ACTIVITY_REWARD.getId(), this, "OnGetActivityRewardNeedCallBack");
+        kernel.regRequestMessage(RequestMsgDef.REQ_ACTIVITY_CONFIG_NEW.getId(), this, "OnReqActivityConfig");
+        kernel.regRequestMessage(RequestMsgDef.REQ_ACTIVITY_INFO.getId(), this, "OnReqActivityInfo");
         return true;
     }
 

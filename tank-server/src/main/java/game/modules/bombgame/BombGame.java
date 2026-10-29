@@ -56,9 +56,9 @@ public class BombGame implements ILogicModule{
 		// kernel.RegEvet(KernelEvent.KEVENT_ON_CREATE_CLASS, "Player", this, "OnPlayerClassCreate");
 		kernel.regEvent(KernelEvent.KEVENT_ON_CREATE_CLASS, "Player", this, "OnPlayerClassCreate");
 		kernel.regEvent(KernelEvent.KEVENT_ON_LINE, "Player", this, "OnPlayerOnLine");
-		kernel.regRequestMessage(RequestMsgDef.REQ_BOMB_TO_AMMO.ordinal(), this, "OnReqBomb2Ammo");//弹头转弹药
-		kernel.regRequestMessage(RequestMsgDef.REQ_AMMO_TO_BOMB.ordinal(), this, "OnReqAmmo2Bomb");//弹药转弹头
-		kernel.regRequestMessage(RequestMsgDef.REQ_SMITHING.ordinal(), this, "OnReqSmithing");//炮台锻造
+		kernel.regRequestMessage(RequestMsgDef.REQ_BOMB_TO_AMMO.getId(), this, "OnReqBomb2Ammo");//弹头转弹药
+		kernel.regRequestMessage(RequestMsgDef.REQ_AMMO_TO_BOMB.getId(), this, "OnReqAmmo2Bomb");//弹药转弹头
+		kernel.regRequestMessage(RequestMsgDef.REQ_SMITHING.getId(), this, "OnReqSmithing");//炮台锻造
 		kernel.regEvent(KernelEvent.KEVENT_ON_UPDATE_CFG, "World", this, "RefreshCfg");
 		kernel.listenPropertyChange(PLAYER_PROPERTY_VIPLEVEL, "Player", this, "OnVipLevelChanged");
 		kernel.regCommand(CommandDef.CMD_CLEAR_BOMB_2_BOMBCOIN.ordinal(), "Player", this, "OnRecvClearBomb2Ammo");

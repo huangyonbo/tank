@@ -36,7 +36,7 @@ public class BuyFuncItem implements ILogicModule {
 	 */
 	@Override
 	public boolean onInit(IKernel kernel) {
-		kernel.regRequestMessage(RequestMsgDef.REQ_BUY_FUNCITEM.ordinal(), this, "OnReqBuyItem");
+		kernel.regRequestMessage(RequestMsgDef.REQ_BUY_FUNCITEM.getId(), this, "OnReqBuyItem");
 		kernel.regEvent(KernelEvent.KEVENT_ON_UPDATE_CFG, "World", this, "RefreshCfg");
 		RefreshCfg(kernel, "res/Game/BuyFuncItem.xml");
 		m_ItemModule = (ItemModule) kernel.getModule("ItemModule");

@@ -50,8 +50,8 @@ public class CombineModule implements ILogicModule {
 	 */
 	@Override
 	public boolean onInit(IKernel kernel) {
-		kernel.regRequestMessage(RequestMsgDef.REQ_COMBINE.ordinal(), this, "OnReqCombine");
-		kernel.regRequestMessage(RequestMsgDef.REQ_COMBINE_TO_GOLD.ordinal(), this, "OnReqCombineToGold");
+		kernel.regRequestMessage(RequestMsgDef.REQ_COMBINE.getId(), this, "OnReqCombine");
+		kernel.regRequestMessage(RequestMsgDef.REQ_COMBINE_TO_GOLD.getId(), this, "OnReqCombineToGold");
 
 		kernel.regEvent(KernelEvent.KEVENT_ON_UPDATE_CFG, "World", this, "RefreshCfg");
 		RefreshCfg(kernel, "res/Combine/BagCombine.xml");

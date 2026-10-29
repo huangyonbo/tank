@@ -138,9 +138,9 @@ public class RoomModule implements ILogicModule {
 		kernel.regServerMsg(ServerMsgDef.M2G_CREATE_MYSTERY_LEGEND_DESK.ordinal(), this, "OnCreateMysteryLegendDesk");
 		kernel.regServerMsg(ServerMsgDef.P2G_ALLROOM_RUNINFO.ordinal(), this, "OnRecvAllRoomRunInfo");
 
-		kernel.regRequestMessage(RequestMsgDef.REQ_ROOM_PLAYERS.ordinal(), this, "OnReqRoomPlayers");
-		kernel.regRequestMessage(RequestMsgDef.REQ_ROOM_FISHLIST.ordinal(), this, "OnReqRoomFishList");
-		kernel.regRequestMessage(RequestMsgDef.REQ_GOLD_ROOM_CONFIG.ordinal(), this, "OnReqGoldRoomConfig");
+		kernel.regRequestMessage(RequestMsgDef.REQ_ROOM_PLAYERS.getId(), this, "OnReqRoomPlayers");
+		kernel.regRequestMessage(RequestMsgDef.REQ_ROOM_FISHLIST.getId(), this, "OnReqRoomFishList");
+		kernel.regRequestMessage(RequestMsgDef.REQ_GOLD_ROOM_CONFIG.getId(), this, "OnReqGoldRoomConfig");
 		kernel.regEvent(KernelEvent.KEVENT_ON_UPDATE_CFG, "World", this, "RefreshCfg");
 		kernel.regCommand(CommandDef.CMD_CHANGE_DAY.ordinal(), "Player", this, "OnCmdChangeDay");
 

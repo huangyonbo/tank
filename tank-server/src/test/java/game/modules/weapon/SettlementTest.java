@@ -170,11 +170,11 @@ public class SettlementTest implements PropertyKey {
     }
 
     @Test
-    public void queryingWeaponsMustNotResetPlayerBalance() {
+    public void loadingWeaponStateMustNotResetPlayerBalance() {
         properties.put(PLAYER_MONEY, 5770L);
         WeaponModule weapons = new WeaponModule();
-        weapons.OnReqWeaponGetData(kernel, player, 10000, 1, null);
-        weapons.OnReqWeaponGetData(kernel, player, 10000, 2, null);
+        weapons.OnPlayerOnLine(kernel, player);
+        weapons.OnPlayerOnLine(kernel, player);
         assertEquals(5770L, properties.get(PLAYER_MONEY));
     }
 

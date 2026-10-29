@@ -40,7 +40,7 @@ public class PaySetModule implements ILogicModule {
 	@Override
 	public boolean onInit(IKernel kernel) {
 		kernel.regServerRequest(ServerMsgDef.B2G_UPDATE_PAYSET.ordinal(), this, "OnUpdatePaySet");
-		kernel.regRequestMessage(RequestMsgDef.REQ_GET_PAY_WAYS.ordinal(), this, "OnGetPayWays");
+		kernel.regRequestMessage(RequestMsgDef.REQ_GET_PAY_WAYS.getId(), this, "OnGetPayWays");
 		return true;
 	}
 

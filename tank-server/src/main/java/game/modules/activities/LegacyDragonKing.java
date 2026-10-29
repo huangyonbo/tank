@@ -48,7 +48,7 @@ public class LegacyDragonKing extends BaseActivity implements PropertyKey{
 
 
     public boolean OnInit(IKernel kernel) {
-        kernel.regRequestMessage(RequestMsgDef.EQ_LDK_DO_PLAY.ordinal(), this, "PlayLogic");
+        kernel.regRequestMessage(RequestMsgDef.EQ_LDK_DO_PLAY.getId(), this, "PlayLogic");
         kernel.regClientMessage(C2SMsgDef.C2S_GET_LDK_REWARD.ordinal(), this, "OnRecClientDone");
         kernel.declareHeartBeat("HB_CheckLdkRewardStatus", this, "OnCheckGetRewardStatus");
         mailModule = (MailModule) kernel.getModule("MailModule");

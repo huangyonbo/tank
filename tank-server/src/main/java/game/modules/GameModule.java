@@ -5,13 +5,8 @@ import common.ServerMsg;
 import common.ServerMsgDef;
 import framework.back.GameObjectData;
 import framework.game.*;
-import framework.game.IKernel.PlayerState;
 import framework.net.InnerMsgDef;
 import framework.net.message.InnerMsg;
-import game.custommsg.C2SMsgDef;
-import game.custommsg.CommandDef;
-import game.custommsg.CustomMsg;
-import game.custommsg.RequestMsgDef;
 import game.modules.utils.UtilFunc;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.slf4j.Logger;
@@ -33,10 +28,6 @@ public class GameModule implements ILogicModule {
 	@Override
 	public boolean onInit(IKernel kernel) {
 		kernel.addDisconnectEvent(this, "OnPlayerDisconnect");
-		kernel.regRequestMessage(RequestMsgDef.REQ_SERVER_TIME.ordinal(), this, "OnReqSerTime");
-		kernel.regClientMessage(C2SMsgDef.C2S_READY.ordinal(), this, "OnClientReady");
-		kernel.regClientMessage(C2SMsgDef.C2S_CHANGE_SCENE.ordinal(), this, "OnClientChangeScene");
-		kernel.regClientMessage(C2SMsgDef.C2S_QUIT_GAME.ordinal(), this, "OnClientQuit");
 
 		kernel.regServerRequest(ServerMsgDef.M2G_UPDATE_CFG.ordinal(), this, "OnRecvUpdateCfg");
 		//kernel.regServerRequest(ServerMsgDef.M2G_UPDATE_JAR.ordinal(), this, "OnRecvUpdateJar");
@@ -66,26 +57,6 @@ public class GameModule implements ILogicModule {
 
 	public int OnPlayerDisconnect(IKernel kernel, IGameObject player) {
 		return player.getInt(PLAYER_PROPERTY_OFFPROTECT);
-	}
-
-	public void OnReqSerTime(IKernel kernel, IGameObject player, int msgid, int reqid, byte[] msg) {
-//		logger.info("OnReqSerTime客户端请求服务器时间戳: {}", kernel.getServerTime());
-		CustomMsg.ServerTime.Builder build = CustomMsg.ServerTime.newBuilder();
-		build.setTime(kernel.getServerTime());
-		kernel.response(player, reqid, build.build().toByteArray());
-	}
-
-	public void OnClientChangeScene(IKernel kernel, IGameObject player, int msgid, byte[] msg) {
-		kernel.setState(player, PlayerState.STATE_CHANGESCENE);
-	}
-
-	void OnClientQuit(IKernel kernel, IGameObject player, int msgid, byte[] msg) {
-		kernel.kickPlayerNoTip(player);
-	}
-
-	public void OnClientReady(IKernel kernel, IGameObject player, int msgid, byte[] msg) {
-		kernel.setState(player, PlayerState.STATE_NORMAL);
-		kernel.command(player, CommandDef.CMD_CLIENT_READY.ordinal(), player);
 	}
 
 	void OnRecvUpdateCfg(IKernel kernel, int reqid, byte[] data) throws InvalidProtocolBufferException {

@@ -443,8 +443,6 @@ public interface PropertyKey {
     String PLAYER_LAST_PW_DESKID = "PlayerLastPwDeskId";
 
 
-    String PLAYER_LAST_TIME_GOT_PRIZE = "PlayerLastTimeGotPrize";//上次领取奖励时间
-    String PLAYER_PRIZE_LEVEL = "PlayerPrizeLevel";//奖励等级或奖励进度等级
     String PLAYER_MAX_LEVEL_INCOME = "PlayerMaxLevelIncome";//单关最高收益
     String PLAYER_DOUBLE_COINS_PURCHASED = "PlayerDoubleCoinsPurchased";//是否购买双倍金币
     String PLAYER_LEVELS_COMPLETED = "PlayerLevelsCompleted";//已完成关卡数量
@@ -453,7 +451,6 @@ public interface PropertyKey {
     String PLAYER_WEAPONS_LEVELS = "PlayerWeaponsLevels";//各武器等级数组
     String PLAYER_TANK_SPEED_LEVEL = "PlayerTankSpeedLevel";//坦克速度等级
     String PLAYER_TANK_ARMOR_LEVEL = "PlayerTankArmorLevel";//坦克护甲等级
-    String PLAYER_IS_PAYING = "PlayerIsPaying";//是否付费玩家标记
 
     // 成就累计数量（key-value 字符串：achievementId=count;...）
     String PLAYER_PROPERTY_ACHIEVEMENT_TOTAL_COUNTS = "AchievementTotalCounts";

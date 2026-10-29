@@ -188,8 +188,7 @@ public class StoreModule implements ILogicModule {
 		//kernel.RegServerMsg(ServerMsgDef.H2G_PAY_BACK.ordinal(), this, "OnPayCallBack");
 		kernel.regServerMsg(ServerMsgDef.MASTER_ACTIVE_PUSH.ordinal(), this, "OnActivePush");
 		// REQ_ORDER_RES 订单结果请求：迁移到 MallsModule（本实现直接发放，返回空结构即可）
-		// kernel.regRequestMessage(RequestMsgDef.REQ_ORDER_RES.ordinal(), this, "OnReqOrderInfo"); // 请求订单信息
-		kernel.regRequestMessage(RequestMsgDef.REQ_SET_TEMP_CELLPHONE.ordinal(), this, "OnReqSetTempCellphone");
+		kernel.regRequestMessage(RequestMsgDef.REQ_SET_TEMP_CELLPHONE.getId(), this, "OnReqSetTempCellphone");
 
 		// kernel.DeclareHeartBeat("HB_CheckOrder", this, "OnCheckOrder");
 		kernel.regEvent(KernelEvent.KEVENT_ON_CREATE_CLASS, "Player", this, "OnPlayerClassCreate");
@@ -1056,19 +1055,6 @@ public class StoreModule implements ILogicModule {
 		tip.orderId = orderId;
 		tip.objects = objects;
 		m_mapOrderRes.put(uid,tip);
-	}
-
-	void OnReqOrderInfo(IKernel kernel, IGameObject player, int msgid, int reqid, byte[] data)throws InvalidProtocolBufferException {
-		int uid = player.getInt(PLAYER_PROPERTY_UID);
-		OrderResTip orderTip = m_mapOrderRes.remove(uid);
-		if (orderTip != null){
-			logger.info("player:{} OnReqOrderInfo {}  ", uid,orderTip.orderId);
-		}else{
-			logger.info("player:{} OnReqOrderInfo  no orderId",uid);
-		}
-		CustomMsg.String.Builder build = CustomMsg.String.newBuilder();
-		build.setValue("");
-		kernel.response(player,reqid,build.build().toByteArray());
 	}
 
 	void OnReqSetTempCellphone(IKernel kernel, IGameObject player, int msgid, int reqid, byte[] data) throws InvalidProtocolBufferException {

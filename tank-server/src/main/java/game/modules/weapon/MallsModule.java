@@ -49,7 +49,7 @@ public class MallsModule implements ILogicModule {
 		// 支付回调
 		kernel.regServerRequest(ServerMsgDef.H2G_PAY_BACK.ordinal(), this, "OnRecPayCallBack");
 		// 兼容旧前端：订单结果请求
-		kernel.regRequestMessage(RequestMsgDef.REQ_ORDER_RES.ordinal(), this, "OnReqOrderInfo");
+		kernel.regRequestMessage(RequestMsgDef.REQ_ORDER_RES.getId(), this, "OnReqOrderInfo");
 		// 充值相关属性 + 幂等记录
 		kernel.regEvent(KernelEvent.KEVENT_ON_CREATE_CLASS, "Player", this, "OnPlayerClassCreate");
 

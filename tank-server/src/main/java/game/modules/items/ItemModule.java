@@ -59,7 +59,7 @@ public class ItemModule implements ILogicModule {
     public boolean onInit(IKernel kernel) {
         kernel.regClientMessage(C2SMsgDef.C2S_USE_ITEM.ordinal(), this, "OnUseItem");
         kernel.regClientMessage(C2SMsgDef.C2S_READ_ITEM.ordinal(), this, "OnReadItem");
-        kernel.regRequestMessage(RequestMsgDef.REQ_ITEMRECYCLE.ordinal(), this, "OnRecycleItem");
+        kernel.regRequestMessage(RequestMsgDef.REQ_ITEMRECYCLE.getId(), this, "OnRecycleItem");
 
 
         kernel.regEvent(KernelEvent.KEVENT_ON_CREATE_CLASS, "Player", this, "OnPlayerCreateClass");

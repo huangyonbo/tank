@@ -8,15 +8,12 @@ import framework.mybatis.service.impl.PlayerWeaponStateService;
 import game.custommsg.CustomMsg;
 import game.custommsg.RequestMsgDef;
 import game.custommsg.ServerCodeDef;
-import game.modules.activities.code.JSONResult;
-import game.modules.activities.code.ResponseCode;
 import game.modules.utils.UtilFunc;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * 武器模块
@@ -45,7 +42,6 @@ public class WeaponModule implements ILogicModule {
         kernel.regRequestMessage(RequestMsgDef.REQ_WEAPON_UPGRADE.getId(), this, "OnReqWeaponUpgrade");
         kernel.regRequestMessage(RequestMsgDef.REQ_SPEED_UPGRADE.getId(), this, "OnReqSpeedUpgrade");
         kernel.regRequestMessage(RequestMsgDef.REQ_ARMOR_UPGRADE.getId(), this, "OnReqArmorUpgrade");
-        kernel.regRequestMessage(RequestMsgDef.REQ_WEAPON_GET_DATA.getId(), this, "OnReqWeaponGetData");
         kernel.regEvent(KernelEvent.KEVENT_ON_LINE, "Player", this, "OnPlayerOnLine");
 
         kernel.regEvent(KernelEvent.KEVENT_ON_UPDATE_CFG, "World", this, "RefreshCfg");
@@ -207,26 +203,6 @@ public class WeaponModule implements ILogicModule {
         player.setProperty(PLAYER_TANK_ARMOR_LEVEL, cur + 1);
         persistWeaponState(kernel, player);
         UtilFunc.responseSerCodeStr(kernel, player, reqid, ServerCodeDef.CODE_SUCCESS);
-    }
-
-    /**
-     * 返回前端：武器等级、坦克速度等级、坦克护甲等级
-     */
-    void OnReqWeaponGetData(IKernel kernel, IGameObject player, int msgid, int reqid, byte[] msg) {
-        ensureDefaultWeaponLevel(player);
-        JSONResult result = ResponseCode.Success.toJSONResult();
-        // 新格式会返回 map；旧格式能被 parseWeaponLevels 兼容解析
-        Map<String, Integer> weaponLevels = parseWeaponLevels(player).entrySet()
-                .stream()
-                .collect(Collectors.toMap(
-                        e -> String.valueOf(e.getKey()),
-                        Map.Entry::getValue
-                ));
-        result.put("weaponLevels", weaponLevels);
-        result.put("tankSpeedLevel", player.getInt(PLAYER_TANK_SPEED_LEVEL));
-        result.put("tankArmorLevel", player.getInt(PLAYER_TANK_ARMOR_LEVEL));
-
-        kernel.response(player, reqid, result);
     }
 
     /**

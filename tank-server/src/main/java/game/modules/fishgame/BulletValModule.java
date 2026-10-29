@@ -93,10 +93,10 @@ public class BulletValModule implements ILogicModule {
 		kernel.regClientMessage(C2SMsgDef.C2S_SUB_VALUE.ordinal(), this, "OnSubValue");
 		kernel.regClientMessage(C2SMsgDef.C2S_CHANGE_BULLETVAL.ordinal(), this, "OnChangeBulletVal");
 
-		kernel.regRequestMessage(RequestMsgDef.REQ_GET_BULLETVAL_LIST.ordinal(), this, "OnGetBulletValList");
-		kernel.regRequestMessage(RequestMsgDef.REQ_UNLOCK_BV.ordinal(), this, "OnUnlockBV");
-		kernel.regRequestMessage(RequestMsgDef.REQ_UNLOCK_TO.ordinal(), this, "OnUnlockTo");
-		//kernel.RegRequestMessage(RequestMsgDef.REQ_SMITHING.ordinal(), this, "OnReqSmithing");
+		kernel.regRequestMessage(RequestMsgDef.REQ_GET_BULLETVAL_LIST.getId(), this, "OnGetBulletValList");
+		kernel.regRequestMessage(RequestMsgDef.REQ_UNLOCK_BV.getId(), this, "OnUnlockBV");
+		kernel.regRequestMessage(RequestMsgDef.REQ_UNLOCK_TO.getId(), this, "OnUnlockTo");
+		//kernel.RegRequestMessage(RequestMsgDef.REQ_SMITHING.getId(), this, "OnReqSmithing");
 		kernel.listenPropertyChange(PLAYER_PROPERTY_BULLETLEVEL, "Player", this, "OnBulletLevelChanged");
 
 		kernel.regServerRequest(ServerMsgDef.B2G_GET_BULLET_VALUE_PARAM.ordinal(), this, "OnGetBulletLevelValue");

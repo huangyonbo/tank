@@ -49,8 +49,8 @@ public class CornucopiaActivity extends BaseActivity{
         itemModule = kernel.getModule(ItemModule.class);
 //        kernel.regEvent(KernelEvent.KEVENT_ON_LINE, "Player", this, "OnPlayerOnLine");
 //        kernel.regEvent(KernelEvent.KEVENT_ON_CREATE_CLASS, "Player", this, "OnPlayerClassCreate");
-        kernel.regRequestMessage(RequestMsgDef.REQ_CORNUCOPIA_VALUE.ordinal(), this, "OnCornucopiaValue");
-        kernel.regRequestMessage(RequestMsgDef.REQ_CORNUCOPIA_HISTORY.ordinal(), this, "OnCornucopiaHistory");
+        kernel.regRequestMessage(RequestMsgDef.REQ_CORNUCOPIA_VALUE.getId(), this, "OnCornucopiaValue");
+        kernel.regRequestMessage(RequestMsgDef.REQ_CORNUCOPIA_HISTORY.getId(), this, "OnCornucopiaHistory");
         kernel.regCommand(CommandDef.CMD_CHANGE_DAY.ordinal(), "Player", this, "OnChangeDay");
         try {
             onUpdateStatisticsConfig(null, 0, 0, null);

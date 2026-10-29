@@ -31,7 +31,7 @@ public class RedeemCode implements ILogicModule {
 		// 注册对象创建事件
 		kernel.regEvent(KernelEvent.KEVENT_ON_CREATE_CLASS, "Player", this, "OnPlayerClassCreate");
 		// 注册客户端消息
-		kernel.regRequestMessage(RequestMsgDef.REQ_REDEEMCODE.ordinal(), this, "OnReqRedeem");
+		kernel.regRequestMessage(RequestMsgDef.REQ_REDEEMCODE.getId(), this, "OnReqRedeem");
 		// 获取其他模块对象
 		m_ItemModule = (ItemModule) kernel.getModule("ItemModule");// 道具模块
 		m_OfflineDataModule = (OfflineDataModule) kernel.getModule("OfflineDataModule");// 掉线处理模块

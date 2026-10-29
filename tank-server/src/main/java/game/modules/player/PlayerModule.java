@@ -104,18 +104,18 @@ public class PlayerModule implements ILogicModule {
 		kernel.regEvent(KernelEvent.KEVENT_OFF_LINE, "Player", this, "OnPlayerOffLine");
 		kernel.regEvent(KernelEvent.KEVENT_ON_STANDUP, "Player", this, "OnPlayerStandUp");
 
-		kernel.regRequestMessage(RequestMsgDef.REQ_HEADID.ordinal(), this, "OnReqHeadId");
-		kernel.regRequestMessage(RequestMsgDef.REQ_HEADURL.ordinal(), this, "OnReqHeadUrl");
-		kernel.regRequestMessage(RequestMsgDef.REQ_CHANGE_NAME.ordinal(), this, "OnReqChangeName");
-		kernel.regRequestMessage(RequestMsgDef.REQ_PLAYER_DATA.ordinal(), this, "OnReqPlayerData");
-		kernel.regRequestMessage(RequestMsgDef.REQ_BIND_CHANNEL.ordinal(), this, "OnRecvBind");
-		kernel.regRequestMessage(RequestMsgDef.REQ_BOMB_EDEN_OPEN_CONFIG.ordinal(), this, "onReqBombEdenOpenConfig");
-		kernel.regRequestMessage(RequestMsgDef.REQ_CHANGE_PASSWORD.ordinal(), this, "OnReqChangePassword");
-		kernel.regRequestMessage(RequestMsgDef.REQ_CHANGE_PASSWORD_NEW.ordinal(), this, "OnReqChangePasswordNew");
-		kernel.regRequestMessage(RequestMsgDef.REQ_BIND_PHONE.ordinal(), this, "OnReqBindPhone");
-		kernel.regRequestMessage(RequestMsgDef.REQ_TOURIST_BIND_PHONE.ordinal(), this, "OnReqTouristBindPhone");
-		kernel.regRequestMessage(RequestMsgDef.REQ_UN_BIND_PHONE.ordinal(), this, "OnReqUnBindPhone");
-		kernel.regRequestMessage(RequestMsgDef.REQ_REAL_NAME.ordinal(), this, "OnRecvRealName");
+		kernel.regRequestMessage(RequestMsgDef.REQ_HEADID.getId(), this, "OnReqHeadId");
+		kernel.regRequestMessage(RequestMsgDef.REQ_HEADURL.getId(), this, "OnReqHeadUrl");
+		kernel.regRequestMessage(RequestMsgDef.REQ_CHANGE_NAME.getId(), this, "OnReqChangeName");
+		kernel.regRequestMessage(RequestMsgDef.REQ_PLAYER_DATA.getId(), this, "OnReqPlayerData");
+		kernel.regRequestMessage(RequestMsgDef.REQ_BIND_CHANNEL.getId(), this, "OnRecvBind");
+		kernel.regRequestMessage(RequestMsgDef.REQ_BOMB_EDEN_OPEN_CONFIG.getId(), this, "onReqBombEdenOpenConfig");
+		kernel.regRequestMessage(RequestMsgDef.REQ_CHANGE_PASSWORD.getId(), this, "OnReqChangePassword");
+		kernel.regRequestMessage(RequestMsgDef.REQ_CHANGE_PASSWORD_NEW.getId(), this, "OnReqChangePasswordNew");
+		kernel.regRequestMessage(RequestMsgDef.REQ_BIND_PHONE.getId(), this, "OnReqBindPhone");
+		kernel.regRequestMessage(RequestMsgDef.REQ_TOURIST_BIND_PHONE.getId(), this, "OnReqTouristBindPhone");
+		kernel.regRequestMessage(RequestMsgDef.REQ_UN_BIND_PHONE.getId(), this, "OnReqUnBindPhone");
+		kernel.regRequestMessage(RequestMsgDef.REQ_REAL_NAME.getId(), this, "OnRecvRealName");
 
 		kernel.regServerRequest(ServerMsgDef.B2G_GET_ONLINE_PLAYER.ordinal(), this, "OnGetOnlinePlayer");
 		kernel.regServerRequest(ServerMsgDef.B2G_DEDUCT_ITEMS.ordinal(), this, "OnDeductItems");
