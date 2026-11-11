@@ -42,6 +42,8 @@ public class AchievementModule implements ILogicModule {
         kernel.declareProperty(script, PLAYER_TANK_SPEED_LEVEL, ValueType.INT, true, false, true);
         kernel.declareProperty(script, PLAYER_TANK_ARMOR_LEVEL, ValueType.INT, true, false, true);
         kernel.declareProperty(script, PLAYER_DOUBLE_COINS_PURCHASED, ValueType.BOOL, false, true, true);
+        kernel.declareProperty(script, PLAYER_IS_PAYING, ValueType.BOOL, false, true, true);
+        kernel.declareProperty(script, PLAYER_PAYING_ENTITLEMENT_REVISION, ValueType.INT, false, true, true);
         kernel.declareProperty(script, PLAYER_PROPERTY_ACHIEVEMENT_TOTAL_COUNTS, ValueType.STRING, false, false, true);
         kernel.declareProperty(script, PLAYER_PROPERTY_ACHIEVEMENT_REWARD_CLAIMED_MASKS, ValueType.STRING, false, false, true);
 	}

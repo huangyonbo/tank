@@ -10,6 +10,30 @@ import org.springframework.transaction.annotation.Transactional;
 public class GooglePlayOrderService extends AbstractServiceImpl<GooglePlayOrderMapper, GooglePlayOrder> {
     private static final long PROCESSING_LEASE_MS = 5L * 60 * 1000;
 
+    /** Stable keyset page and inventory generation in one repeatable-read snapshot. */
+    @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
+    public java.util.Map<String,Object> fulfilledPageForUid(Integer uid, String packageName, Long afterId) {
+        if (uid == null || uid <= 0 || !validLength(packageName, 200) || afterId == null || afterId < 0)
+            throw new IllegalArgumentException("invalid entitlement page identity");
+        java.util.Map<String,Object> page = new java.util.HashMap<>(baseMapper.fulfilledInventory(uid, packageName));
+        page.put("orders", lambdaQuery().eq(GooglePlayOrder::getUid, uid)
+                .eq(GooglePlayOrder::getPackageName, packageName)
+                .in(GooglePlayOrder::getStatus, GooglePlayOrder.STATUS_SHIPPED, GooglePlayOrder.STATUS_CONSUMED)
+                .gt(GooglePlayOrder::getId, afterId).orderByAsc(GooglePlayOrder::getId).last("LIMIT 8").list());
+        return page;
+    }
+
+    /** Read-only eligibility inventory. The extra row detects an unsafe truncated account scan. */
+    public java.util.List<GooglePlayOrder> fulfilledForUid(Integer uid, String packageName) {
+        if (uid == null || uid <= 0 || !validLength(packageName, 200)) {
+            throw new IllegalArgumentException("invalid entitlement inventory identity");
+        }
+        return lambdaQuery().eq(GooglePlayOrder::getUid, uid)
+                .eq(GooglePlayOrder::getPackageName, packageName)
+                .in(GooglePlayOrder::getStatus, GooglePlayOrder.STATUS_SHIPPED, GooglePlayOrder.STATUS_CONSUMED)
+                .orderByAsc(GooglePlayOrder::getId).last("LIMIT 501").list();
+    }
+
     @Transactional
     public GooglePlayOrder claimAndAcquire(GooglePlayOrder request) {
         if (!isValidRequest(request) || isBlank(request.getProcessingOwner())) {

@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -288,6 +289,46 @@ public class LevelModule implements ILogicModule {
     public void OnPlayerOffLine(IKernel kernel, IGameObject player) {
         player.removeTempData(TEMP_LEVEL_STARTED);
         player.removeTempData(TEMP_LEVEL_START_LEVEL_ID);
+    }
+
+    /** Called only by the permission-checked GM command, on the game actor. */
+    public void correctProgressRevision(IKernel kernel, int operatorUid, IGameObject player,
+                                        int expected, int revision, String reason, Consumer<String> callback) {
+        int uid = player.getInt(PLAYER_PROPERTY_UID);
+        int current = Math.max(1, player.getInt(PLAYER_PROGRESS_REVISION));
+        if (operatorUid <= 0 || uid <= 0 || expected < 1 || revision <= expected
+                || reason == null || reason.trim().isEmpty() || reason.length() > 200) {
+            callback.accept("invalid_revision_correction");
+            return;
+        }
+        if (current != expected && current != revision) {
+            callback.accept("revision_conflict current=" + current);
+            return;
+        }
+        String pendingKey = "ProgressRevisionCorrectionPending";
+        if (player.haveTempData(pendingKey)) {
+            callback.accept("revision_save_pending");
+            return;
+        }
+        player.addTempData(pendingKey, ValueType.BOOL, true);
+        logger.info("progress revision requested operatorUid={} uid={} time={} old={} new={} reason={}",
+                operatorUid, uid, kernel.getServerTime(), current, revision, reason.replaceAll("[\\r\\n\\t]", " "));
+        try {
+            player.setProperty(PLAYER_PROGRESS_REVISION, revision,
+                    IKernel.PlayerLogType.PROP_CHANGE.ordinal(), "progress revision correction operator=" + operatorUid);
+            kernel.flushGooglePlayPlayer(player, saved -> {
+                player.removeTempData(pendingKey);
+                logger.info("progress revision archive ack operatorUid={} uid={} old={} new={} saved={}",
+                        operatorUid, uid, current, revision, saved);
+                callback.accept(Boolean.TRUE.equals(saved) ? "revision_saved old=" + current + " new=" + revision
+                        : "revision_save_pending retry_same_command");
+            });
+        } catch (Exception failure) {
+            player.removeTempData(pendingKey);
+            logger.error("progress revision save failed operatorUid={} uid={} revision={}", operatorUid, uid, revision, failure);
+            callback.accept("revision_save_pending retry_same_command");
+        }
+        // Keep the old active attempt: its next 10005 must report progress_revision_changed.
     }
 
     /**

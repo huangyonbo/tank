@@ -35,6 +35,7 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.interfaces.RSAPrivateKey;
@@ -58,7 +59,11 @@ public class GateLogic implements ILogic {
     private Map<Integer, DisconnectWaiter> disconnectCache = new HashMap<>();
     static final String CLINET_ATT_KEY = "clientMsgCache";
     static final String CLIENT_LOGIN_READY = "clientLoginReady";
+    static final String RESUME_GRANT = "authenticatedResumeGrant";
+    private static final String LOGIN_STARTED = "loginStartedAt";
     private long clientHeartbeatTimeoutMs = 180000L;
+    private long disconnectGraceMs = 120000L;
+    private long loginTimeoutMs = 15000L;
     private static String s_pub_key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJERRwCYSK40dq5AkTNa3+UhD8yJWKp9zTXv95ej+irUmeHQxJQkTcWNuJ0mFSo+CGDz6D5qab3Puli7QxveQBm2qsrn3qJoOSWDUgjOqZrPhX/bzji+4WVrgaaFrsnA6YOZo9okzr7zwkJDm2nfMUZUF5ZDI0KFVdd8FLKEhoRwIDAQAB";
     //	static final String s_pub_key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC3aBC24nDr2S8+H8lOjUbYQ5f/BXhrhgoSf6mt2oO2Z9qtvM+XDGU6v1dRHZ8qyE3PyDy+QK1DW0xD013lA8HWCaXobPRU3G9MUcwQdQUl/nYZPTftKEGh5rReBFCYgsrp8zw6qXIQOSK3/kYmNqROQksM5rOzpna6lIEt+Nu/vwIDAQAB";
 //private static String s_pub_key = "BwIAAACkAABSU0EyAAQAAAEAAQAxsBuZZ4JDIRpvc/1aXWEDPQJKqrLndSy9CZCY1zJDnTMNvNVa/52lH04nSCQhzPGZ2QEVvrJBISiOBrEFV65sZidbgyyMSxhzB+mLCoYTv7PLSwZXyeTQwPp2VfoYrelIt6tWROMvq2VyDaOp5338cAKE+jYt7AI1UNVpKOgBultnro8ncx0DZ/Ix/7riywhD4p7uaUBtzxakr8IRgAvixMLoXQ9cykYbw+7cEygRbljAJytWfO71pJqhjZYHlPNjqGJMeuE3nV9pTn0H0JnjO0gE2JzCS2Irctq2JpQGhozykdCRyK2L1JeBSRw6QWH/xehcqJvC/9xlhXv2Rn7DXyGkckUdLABbrQa+JqmDoMEyX36PPQLlDWAcFN7UDRALbvyPUP5fTvxqDlBTZ+rG+D2vXhgFg9M52LR7LT7ptzMkFbTN/diZxRxdWuvxT4xk2VSYcmHcPjVkNKsZzvqIqENFMwrlbcyAnnmW8AdnLO2fBw+5lnaLBf5VQcmHIYJvwOE0cbvyEqUnv/nwEA7kCB77O0OgMUtD8Z9lE98ctOg+GZlvmxDiVQxS50BdGeMBB2Yg/rBrcuVBp58Z0EeQIXHwRokURGLLtH7NGvKaFi4jWkGvJi9LFkgfTO1WRDTCGtmGp5A3do268JNDjyIYE74Z6dmkRbZbduM892XyyoSbZi1USS0DMGUU42j0yEo6vc5ZqiUK5TEwdYfLwmquapwXCbo4xr4+Bk9P8N8VFNvqycXD9/14QipEEi4OrU0=";
@@ -75,6 +80,7 @@ public class GateLogic implements ILogic {
         long time = 0;
         String game;
         int uid;
+        ResumeGrant grant;
 
         DisconnectWaiter(String game, int uid) {
             this.game = game;
@@ -89,7 +95,7 @@ public class GateLogic implements ILogic {
                 time = now;
                 return false;
             }
-            if (now > time + 400000) {
+            if (now > time + disconnectGraceMs) {
                 //通知游戏服务器玩家断开连接
                 logger.info("上次断开链接的清除 {}  {}  {} {} 状态 {}", uid, getServer().getSerName(), getServer().getFrontPort(), time, now);
                 notifyGamePlayerDisconnect(game, uid);
@@ -99,11 +105,53 @@ public class GateLogic implements ILogic {
         }
     }
 
+    /** Gate-local recovery proof. Never stores the reusable plaintext login ticket. */
+    static class ResumeGrant {
+        final byte[] fingerprint;
+        final String deviceId;
+        final String game;
+        final byte[] loadPlayer;
+        final byte[] loginResponse;
+
+        ResumeGrant(String token, String deviceId, String game, byte[] loadPlayer, byte[] loginResponse) {
+            this.fingerprint = fingerprint(token);
+            this.deviceId = deviceId;
+            this.game = game;
+            this.loadPlayer = loadPlayer;
+            this.loginResponse = loginResponse;
+        }
+
+        boolean matches(ClientMsg.Login login) {
+            return mismatch(login) == null;
+        }
+
+        String mismatch(ClientMsg.Login login) {
+            if (deviceId == null || deviceId.trim().isEmpty() || login.getDeviceId().trim().isEmpty()) return "missing_device_id";
+            if (!deviceId.equals(login.getDeviceId())) return "device_changed";
+            if (!MessageDigest.isEqual(fingerprint, fingerprint(login.getToken()))) return "ticket_changed";
+            return null;
+        }
+    }
+
+    private static byte[] fingerprint(String token) {
+        try {
+            return MessageDigest.getInstance("SHA-256").digest(token.getBytes(StandardCharsets.UTF_8));
+        } catch (NoSuchAlgorithmException impossible) {
+            throw new IllegalStateException(impossible);
+        }
+    }
+
     @Override
     public boolean onInit(BaseServer ser) {
         baseServer = ser;
         clientHeartbeatTimeoutMs = Math.max(60000L, Long.parseLong(String.valueOf(
                 SystemConfigData.getConfig("gateClientHeartbeatTimeoutMs", (Object) 180000L))));
+        disconnectGraceMs = Math.max(60000L, Long.parseLong(String.valueOf(
+                SystemConfigData.getConfig("gateDisconnectGraceMs", (Object) 120000L))));
+        loginTimeoutMs = Math.max(5000L, Long.parseLong(String.valueOf(
+                SystemConfigData.getConfig("gateLoginTimeoutMs", (Object) 15000L))));
+        logger.info("Gate session policy heartbeatMs={} disconnectGraceMs={} loginTimeoutMs={}",
+                clientHeartbeatTimeoutMs, disconnectGraceMs, loginTimeoutMs);
         baseServer.addNetMsgListener(this, InnerMsgDef.INNER_MSG_SYNC_LOAD.ordinal(), "onRecSyncLoad");
         baseServer.addNetMsgListener(this, InnerMsgDef.INNER_MSG_FORWARD.ordinal(), "onRecForwardMsg");
         baseServer.addNetMsgListener(this, InnerMsgDef.INNER_MSG_BROADCAST.ordinal(), "onRecBroadCast");
@@ -293,6 +341,10 @@ public class GateLogic implements ILogic {
     }
 
     private void sendMessageToClient(IoSession session, SendMessage message, boolean send) {
+        if (message.msgID == 999) {
+            logger.warn("blocked undefined client outer frame connId={} uid={} outerMsgId=999", session.getId(), getUidBySession(session));
+            return;
+        }
         if (send) {//需要立刻发送的消息
             if (message.close) {
                 writeMsg(session, 0);
@@ -332,13 +384,20 @@ public class GateLogic implements ILogic {
         if (_obj == null) {
             return;
         }
-        disconnectCache.put(uid, new DisconnectWaiter(_obj.toString(), uid));
+        DisconnectWaiter waiter = new DisconnectWaiter(_obj.toString(), uid);
+        waiter.time = System.currentTimeMillis();
+        waiter.grant = (ResumeGrant) session.getAttribute(RESUME_GRANT);
+        disconnectCache.put(uid, waiter);
     }
 
     private void notifyGamePlayerDisconnect(String game, int uid) {
+        notifyGamePlayerDisconnect(game, uid, 0);
+    }
+
+    private void notifyGamePlayerDisconnect(String game, int uid, int code) {
         InnerMsg.CliDisconnect.Builder builder = InnerMsg.CliDisconnect.newBuilder();
         builder.setUid(uid);
-        builder.setCode(0);
+        builder.setCode(code);
         byte[] data = builder.build().toByteArray();
         baseServer.sendMsgToServer(game, InnerMsgDef.INNER_MSG_CLIENT_DISCONNECT.ordinal(), data);
     }
@@ -393,6 +452,7 @@ public class GateLogic implements ILogic {
         // Every new TCP socket first receives its own CLIENT_KEY (20). After applying
         // that key the client sends Login (0 or 24), then waits for LoginRes (1).
         // Resume must authenticate the token before replacing the existing session.
+        logger.info("client handshake connId={} outerMsgId=24 payloadLength={}", session.getId(), bytes == null ? 0 : bytes.length);
         onRecRequestLogin(session, bytes);
     }
 
@@ -413,12 +473,18 @@ public class GateLogic implements ILogic {
             sendLoginFailure(session, 2);
             return;
         }
-        if (loginInfo.getId() <= 0 || loginInfo.getToken().trim().isEmpty()) {
+        if (loginInfo.getId() <= 0 || (loginInfo.getUid() != 0 && loginInfo.getUid() != loginInfo.getId())
+                || loginInfo.getToken().trim().isEmpty()) {
             sendLoginFailure(session, 2);
             return;
         }
+        if (session.getAttribute(LOGIN_STARTED) != null) {
+            sendLoginFailure(session, 2, "duplicate_login_on_socket");
+            return;
+        }
+        session.setAttribute(LOGIN_STARTED, System.currentTimeMillis());
         session.setAttribute(CLIENT_LOGIN_READY, false);
-        logger.info("玩家登录流程 请求登陆服器 onRecRequestLogin {}", loginInfo.getId());
+        logger.info("玩家登录流程 请求登陆服器 onRecRequestLogin uid={} connId={}", loginInfo.getId(), session.getId());
         session.setAttribute(PLAYER_PROPERTY_ID, loginInfo.getId());
         session.setAttribute(PLAYER_PROPERTY_UID, loginInfo.getId());
         session.setAttribute("Token", loginInfo.getToken());
@@ -429,12 +495,16 @@ public class GateLogic implements ILogic {
         session.setAttribute(PLAYER_PROPERTY_MACADDR, loginInfo.getMacAddr());
         session.setAttribute("PhoneBrand", loginInfo.getPhoneBrand());
         session.setAttribute("PhoneModel", loginInfo.getPhoneModel());
+        if (tryResume(session, loginInfo)) {
+            return;
+        }
         Map<String, Object> params = new HashMap<>();
         params.put("uid", loginInfo.getId());
         params.put("token", loginInfo.getToken());
         String extend = loginInfo.getTestPay() + "-" + loginInfo.getAge();
         params.put("extend", extend);//扩展参数，登录服会原路返回
-        waitLoginSessions.put(loginInfo.getId(), session);
+        IoSession superseded = waitLoginSessions.put(loginInfo.getId(), session);
+        if (superseded != null && superseded != session) superseded.close(true);
         String loginUrl = SystemConfigData.getLoginServerUrl("login_Auth");
         AsyncResult asyncResult = AsyncResult.builder()
                 .msgId(HttpResMsgDef.CLIENT_LOGIN_CHECK.ordinal())
@@ -443,6 +513,46 @@ public class GateLogic implements ILogic {
                 .build();
         HttpClientUtil.doPost(httpClientApi, loginUrl, params, asyncResult, asyncResult);
 //		logger.info(" 玩家登录流程--请求登陆服务  {} {}",loginInfo.getId());
+    }
+
+    private boolean tryResume(IoSession session, ClientMsg.Login login) {
+        int uid = login.getId();
+        IoSession old = loginSessions.get(uid);
+        if (old != null && !Boolean.TRUE.equals(old.getAttribute(CLIENT_LOGIN_READY))) {
+            logger.info("login recovery unavailable connId={} uid={} reason=active_load_pending", session.getId(), uid);
+            return false;
+        }
+        ResumeGrant grant = old != null && Boolean.TRUE.equals(old.getAttribute(CLIENT_LOGIN_READY))
+                ? (ResumeGrant) old.getAttribute(RESUME_GRANT) : null;
+        DisconnectWaiter waiter = disconnectCache.get(uid);
+        if (grant == null && waiter != null && System.currentTimeMillis() <= waiter.time + disconnectGraceMs) {
+            grant = waiter.grant;
+        }
+        String unavailable = grant == null ? "no_resume_grant" : grant.mismatch(login);
+        if (unavailable != null) {
+            logger.info("login recovery unavailable connId={} uid={} reason={}", session.getId(), uid, unavailable);
+            return false;
+        }
+        IoSession game = baseServer.getServerSet().getServer(grant.game);
+        if (game == null || !game.isConnected()) {
+            sendLoginFailure(session, 3, "resume_game_unavailable");
+            return true;
+        }
+        IoSession pending = waitLoginSessions.remove(uid);
+        if (pending != null && pending != session) pending.close(true);
+        session.setAttribute("BackSer", grant.game);
+        session.setAttribute(RESUME_GRANT, grant);
+        // Install the replacement before closing the old socket: its close callback
+        // must not create a waiter for the newly restored player.
+        loginSessions.put(uid, session);
+        if (old != null && old != session) {
+            old.setAttribute(CLIENT_LOGIN_READY, false);
+            old.close(true);
+        }
+        session.removeAttribute("Token");
+        logger.info("login recovery connId={} uid={} game={} status=resume_authenticated", session.getId(), uid, grant.game);
+        requestPlayerLoad(session, uid, grant);
+        return true;
     }
 
     public void onCheckLogin(byte[] bytes, Object obj) {
@@ -455,7 +565,7 @@ public class GateLogic implements ILogic {
         if (bytes == null) {
             logger.info("onCheckLogin fail");
             waitLoginSessions.remove(uid, requestedSession);
-            sendLoginFailure(requestedSession, 2);
+            sendLoginFailure(requestedSession, 2, "login_auth_unavailable");
         } else {
             try {
                 CheckLoginResult checkLoginResult = JsonUtil.decodeToObj(new String(bytes), CheckLoginResult.class);
@@ -466,7 +576,7 @@ public class GateLogic implements ILogic {
             } catch (Exception e) {
                 logger.warn("login check failed uid={}", uid, e);
                 waitLoginSessions.remove(uid, requestedSession);
-                sendLoginFailure(requestedSession, 2);
+                sendLoginFailure(requestedSession, 2, "login_auth_invalid_response");
             }
         }
     }
@@ -494,13 +604,21 @@ public class GateLogic implements ILogic {
             String extend = loginRes.getExtend();
             checkLoginSuccess(cliSession, uid, name, head, sex, channel, payInfo, phone, recruiter, extend, loginRes.getIp());
         } else {
-            logger.info("checkToken fail {}", loginRes.getMessage());
-            sendLoginFailure(cliSession, 2);
+            logger.info("checkToken fail uid={} connId={} authCode={}", uid, cliSession.getId(), loginRes.getCode());
+            sendLoginFailure(cliSession, 2, "login_ticket_rejected");
         }
     }
 
     private void sendLoginFailure(IoSession session, int code) {
+        sendLoginFailure(session, code, "invalid_login");
+    }
+
+    private void sendLoginFailure(IoSession session, int code, String reason) {
+        logger.warn("login rejected connId={} uid={} code={} reason={}",
+                session.getId(), getUidBySession(session), code, reason);
         session.setAttribute(CLIENT_LOGIN_READY, false);
+        session.removeAttribute("Token");
+        session.removeAttribute(RESUME_GRANT);
         List<SendMessage> pending = getMessages(session);
         if (pending != null) pending.clear();
         ClientMsg.LoginRes response = ClientMsg.LoginRes.newBuilder().setCode(code).build();
@@ -576,57 +694,47 @@ public class GateLogic implements ILogic {
             disconnectCache.remove(id);
             cliSession.setAttribute(LAST_HEAT_BEAT_TIME_KEY, System.currentTimeMillis());
             logger.info(" 玩家登录流程--请求逻辑服务  {} {}", id, lastGame);
-            baseServer.request(lastGame, InnerMsgDef.INNER_MSG_LOAD_PLAYER.ordinal(), data, (resp) -> {
-                if (loginSessions.get(id) != cliSession || !cliSession.isConnected()) {
-                    return;
-                }
-                logger.info(" 玩家登录流程--逻辑服务返回  {} {}", id);
-                ClientMsg.LoginRes.Builder builder1 = ClientMsg.LoginRes.newBuilder();
-                SendMessage msg = null;
-                if (resp != null) {
-                    byte code = resp.length == 0 ? 2 : resp[0];
-                    if (code == 0) {//通知客户端登录成功
-                        builder1.setCode(0);
-                        builder1.setUid(id);
-                        builder1.setName(name);
-                        builder1.setHead(head);
-                        builder1.setSex(sex);
-                        msg = new SendMessage(ClientMsgDef.CLIENT_LOGIN_RES.ordinal(), builder1.build().toByteArray());
-                        cliSession.setAttribute(CLIENT_LOGIN_READY, true);
-                    } else {
-                        try {
-                            jedis.hset(playerKey, "LastGame", "");
-                        } catch (Exception e) {
-                            logger.error("checkLoginSuccess error1 ", e);
-                        }
-                        builder1.setCode(code);
-                        msg = new SendMessage(ClientMsgDef.CLIENT_LOGIN_RES.ordinal(), builder1.build().toByteArray(), true);
-                    }
-                } else {
-                    builder1.setCode(2);
-                    msg = new SendMessage(ClientMsgDef.CLIENT_LOGIN_RES.ordinal(), builder1.build().toByteArray(), true);
-                }
-                if (msg.close) {
-                    cliSession.setAttribute(CLIENT_LOGIN_READY, false);
-                    loginSessions.remove(id, cliSession);
-                    List<SendMessage> pending = getMessages(cliSession);
-                    if (pending != null) pending.clear();
-                }
-                // Failure was removed from loginSessions above, so a queued close
-                // would never be drained by execute(). Send the failure immediately.
-                sendMessageToClient(cliSession, msg, msg.close);
-            });
+            byte[] success = ClientMsg.LoginRes.newBuilder().setCode(0).setUid(id)
+                    .setName(name).setHead(head).setSex(sex).build().toByteArray();
+            ResumeGrant grant = new ResumeGrant(String.valueOf(cliSession.getAttribute("Token")),
+                    devId, lastGame, data, success);
+            cliSession.removeAttribute("Token");
+            requestPlayerLoad(cliSession, id, grant);
         } else {
             try {
                 jedis.hset(playerKey, "LastGame", "");
             } catch (Exception e) {
                 logger.error("checkLoginSuccess error2 ", e);
             }
-            ClientMsg.LoginRes.Builder builder = ClientMsg.LoginRes.newBuilder();
-            builder.setCode(3);
-            SendMessage msg = new SendMessage(ClientMsgDef.CLIENT_LOGIN_RES.ordinal(), builder.build().toByteArray(), true);
-            sendMessageToClient(cliSession, msg, true);
+            sendLoginFailure(cliSession, 3, "no_game_server");
         }
+    }
+
+    private void requestPlayerLoad(IoSession session, int uid, ResumeGrant grant) {
+        session.setAttribute(RESUME_GRANT, grant);
+        session.setAttribute(LAST_HEAT_BEAT_TIME_KEY, System.currentTimeMillis());
+        baseServer.request(grant.game, InnerMsgDef.INNER_MSG_LOAD_PLAYER.ordinal(), grant.loadPlayer, loginTimeoutMs, resp -> {
+            if (loginSessions.get(uid) != session || !session.isConnected()) return;
+            int code = resp == null || resp.length == 0 ? 2 : resp[0];
+            if (code < 0 || code > 3) code = 2;
+            logger.info("login game response connId={} uid={} game={} responseLength={} code={}",
+                    session.getId(), uid, grant.game, resp == null ? -1 : resp.length, code);
+            if (code == 0) {
+                session.setAttribute(RESUME_GRANT, grant);
+                session.setAttribute(CLIENT_LOGIN_READY, true);
+                disconnectCache.remove(uid);
+                sendMessageToClient(session,
+                        new SendMessage(ClientMsgDef.CLIENT_LOGIN_RES.ordinal(), grant.loginResponse), false);
+            } else {
+                loginSessions.remove(uid, session);
+                // A transport timeout keeps the authenticated recovery proof during
+                // the bounded grace window. Explicit role refusals revoke it.
+                if (resp == null) createWait(session, uid);
+                else disconnectCache.remove(uid);
+                session.removeAttribute(RESUME_GRANT);
+                sendLoginFailure(session, code, "game_load_rejected");
+            }
+        });
     }
 
     public void onRecSyncLoad(IoSession session, byte[] bytes) {
@@ -703,6 +811,10 @@ public class GateLogic implements ILogic {
         if (cliSession == null) {
             return;
         }
+        if (forwardMsg.getMsgid() == 999) {
+            logger.warn("unexpected client frame outerMsgId=999 uid={} connId={} originConnId={} payloadLength={}",
+                    uid, cliSession.getId(), session == null ? -1 : session.getId(), forwardMsg.getData().size());
+        }
         SendMessage msg = new SendMessage(forwardMsg.getMsgid(), forwardMsg.getData().toByteArray());
         sendMessageToClient(cliSession, msg, false);
     }
@@ -746,6 +858,8 @@ public class GateLogic implements ILogic {
 
     public void kickPlayer(IoSession session, int code) {
         if (code >= 0) {
+            session.removeAttribute(RESUME_GRANT);
+            session.removeAttribute("Token");
             session.setAttribute(CLIENT_LOGIN_READY, false);
             ClientMsg.Kick.Builder build = ClientMsg.Kick.newBuilder();
             build.setCode(code);
@@ -758,6 +872,14 @@ public class GateLogic implements ILogic {
         InnerMsg.KickPlayer kick = InnerMsg.KickPlayer.parseFrom(bytes);
         int uid = kick.getUid();
         int code = kick.getCode();
+        DisconnectWaiter waiter = disconnectCache.remove(uid);
+        if (waiter != null) notifyGamePlayerDisconnect(waiter.game, uid, code);
+        IoSession pending = waitLoginSessions.remove(uid);
+        if (pending != null) kickPlayer(pending, code);
+        if (code == KickType.FROZEN.ordinal()) {
+            InnerMsg.Frozen frozen = InnerMsg.Frozen.newBuilder().setUid(uid).build();
+            baseServer.sendMsgToServer(ServerSet.SERVER_LOGIC_NAME_STORE, InnerMsgDef.INNER_MSG_FROZEN.ordinal(), frozen.toByteArray());
+        }
         if (loginSessions.containsKey(uid)) {
             IoSession cliSession = loginSessions.remove(uid);
             kickPlayer(cliSession, code);
@@ -767,9 +889,6 @@ public class GateLogic implements ILogic {
                 builder.setUid(uid);
                 builder.setCode(KickType.FROZEN.ordinal());
                 byte[] data = builder.build().toByteArray();
-                InnerMsg.Frozen.Builder build1 = InnerMsg.Frozen.newBuilder();
-                build1.setUid(uid);
-                baseServer.sendMsgToServer(ServerSet.SERVER_LOGIC_NAME_STORE, InnerMsgDef.INNER_MSG_FROZEN.ordinal(), build1.build().toByteArray());
                 baseServer.sendMsgToServer(backSerName, InnerMsgDef.INNER_MSG_CLIENT_DISCONNECT.ordinal(), data);
             }
         }
@@ -865,6 +984,17 @@ public class GateLogic implements ILogic {
 
     @Override
     public void execute() {
+        long authNow = System.currentTimeMillis();
+        Iterator<Map.Entry<Integer, IoSession>> authIterator = waitLoginSessions.entrySet().iterator();
+        while (authIterator.hasNext()) {
+            IoSession pending = authIterator.next().getValue();
+            Object started = pending.getAttribute(LOGIN_STARTED);
+            if (!pending.isConnected() || started instanceof Number
+                    && authNow - ((Number) started).longValue() > loginTimeoutMs) {
+                authIterator.remove();
+                if (pending.isConnected()) sendLoginFailure(pending, 2, "login_auth_timeout");
+            }
+        }
         if (loginSessions.size() > 0) {
             long now = System.currentTimeMillis();
             Iterator<Map.Entry<Integer, IoSession>> iter = loginSessions.entrySet().iterator();

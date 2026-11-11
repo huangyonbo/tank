@@ -62,6 +62,8 @@
         </RollingFile>
     </appenders>
     <loggers>
+        <!-- Enable only metadata for the N-12/999 capture; defaults to INFO. -->
+        <logger name="framework.net.MsgCodec" level="${sys:tank.clientFrameLogLevel:-INFO}"/>
         <logger name="ClassicRoomLog" additivity="false" level="info">
             <appender-ref ref="RollingCRoom" />
         </logger>

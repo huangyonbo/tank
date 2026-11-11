@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 import static framework.PropertyKey.*;
 import static org.junit.Assert.*;
@@ -211,9 +212,9 @@ public class GateLogicTest {
         assertEquals(0, server.disconnects);
         long now = System.currentTimeMillis();
         assertFalse(waiter.tick(now));
-        assertFalse(waiter.tick(now + 399999L));
+        assertFalse(waiter.tick(now + 119000L));
         sessions(gate, "loginSessions").put(42, session(42));
-        assertTrue(waiter.tick(now + 400001L));
+        assertTrue(waiter.tick(now + 120001L));
         assertEquals(0, server.disconnects);
     }
 
@@ -223,8 +224,178 @@ public class GateLogicTest {
         RecordingServer server = attachServer(gate);
         GateLogic.DisconnectWaiter waiter = gate.new DisconnectWaiter("game1", 42);
         assertFalse(waiter.tick(1L));
-        assertFalse(waiter.tick(400000L));
-        assertTrue(waiter.tick(400002L));
+        assertFalse(waiter.tick(120000L));
+        assertTrue(waiter.tick(120002L));
+        assertEquals(1, server.disconnects);
+    }
+
+    @Test
+    public void bothHandshakeIdsRecoverThreeTimesWithConsumedTicketAndNoKick() throws Exception {
+        for (boolean resume : new boolean[]{false, true}) {
+            GateLogic gate = new GateLogic();
+            RecordingServer server = attachServer(gate);
+            IoSession game = session(0);
+            server.servers = new ServerSet("test") {
+                @Override public IoSession getServer(String name) { return game; }
+            };
+            IoSession current = session(42);
+            current.setAttribute(GateLogic.CLIENT_LOGIN_READY, true);
+            current.setAttribute(GateLogic.RESUME_GRANT, grant(42));
+            sessions(gate, "loginSessions").put(42, current);
+            for (long offlineMs : new long[]{5000, 12000, 30000}) {
+                current.close(true);
+                gate.onSessionClosed(current);
+                GateLogic.DisconnectWaiter waiter = (GateLogic.DisconnectWaiter) sessions(gate, "disconnectCache").get(42);
+                waiter.time -= offlineMs;
+                IoSession next = session(42);
+                next.setAttribute("Type", "Client");
+                byte[] login = ClientMsg.Login.newBuilder().setId(42).setUid(42).setToken("consumed")
+                        .setDeviceId("device-42").build().toByteArray();
+                if (resume) gate.onClientResume(next, login); else gate.onRecRequestLogin(next, login);
+                assertEquals(42, server.lastLoad.getUid());
+                assertFalse(Boolean.TRUE.equals(next.getAttribute(GateLogic.CLIENT_LOGIN_READY)));
+                assertTrue(sessions(gate, "waitLoginSessions").isEmpty());
+                server.loadCallback.accept(new byte[]{0});
+                gate.execute();
+                assertTrue(Boolean.TRUE.equals(next.getAttribute(GateLogic.CLIENT_LOGIN_READY)));
+                assertSame(next, sessions(gate, "loginSessions").get(42));
+                assertTrue(sessions(gate, "disconnectCache").isEmpty());
+                assertNull(next.getAttribute("Token"));
+                @SuppressWarnings("unchecked")
+                List<SendMessage> sent = (List<SendMessage>) next.getAttribute("written");
+                assertEquals(1, sent.size());
+                assertEquals(1, sent.get(0).msgID);
+                assertEquals(42, ClientMsg.LoginRes.parseFrom(sent.get(0).data).getUid());
+                current = next;
+            }
+            assertEquals(3, server.loads);
+            assertEquals(0, server.disconnects);
+        }
+    }
+
+    @Test
+    public void liveRecoveryClosesOldSocketSilentlyAndIgnoresStaleLoadCallback() throws Exception {
+        GateLogic gate = new GateLogic();
+        RecordingServer server = attachServer(gate);
+        IoSession game = session(0);
+        server.servers = new ServerSet("test") {
+            @Override public IoSession getServer(String name) { return game; }
+        };
+        IoSession old = session(42);
+        old.setAttribute(GateLogic.CLIENT_LOGIN_READY, true);
+        old.setAttribute(GateLogic.RESUME_GRANT, grant(42));
+        sessions(gate, "loginSessions").put(42, old);
+        IoSession next = session(42); next.setAttribute("Type", "Client");
+        gate.onRecRequestLogin(next, ClientMsg.Login.newBuilder().setId(42).setToken("consumed")
+                .setDeviceId("device-42").build().toByteArray());
+        assertFalse(old.isConnected());
+        assertNull(old.getAttribute("written"));
+        gate.onSessionClosed(old);
+        assertSame(next, sessions(gate, "loginSessions").get(42));
+        assertTrue(sessions(gate, "disconnectCache").isEmpty());
+        IoSession replacement = session(42);
+        sessions(gate, "loginSessions").put(42, replacement);
+        server.loadCallback.accept(new byte[]{0});
+        assertFalse(Boolean.TRUE.equals(next.getAttribute(GateLogic.CLIENT_LOGIN_READY)));
+        assertSame(replacement, sessions(gate, "loginSessions").get(42));
+    }
+
+    @Test
+    public void recoveryProofRejectsWrongTicketDeviceAndBlankDevice() {
+        GateLogic.ResumeGrant grant = grant(42);
+        ClientMsg.Login.Builder login = ClientMsg.Login.newBuilder().setId(42).setToken("consumed").setDeviceId("device-42");
+        assertTrue(grant.matches(login.build()));
+        assertFalse(grant.matches(login.setToken("wrong").build()));
+        assertFalse(grant.matches(login.setToken("consumed").setDeviceId("other-device").build()));
+        assertFalse(grant.matches(login.setDeviceId("").build()));
+        assertEquals("missing_device_id", grant.mismatch(login.build()));
+        assertEquals("device_changed", grant.mismatch(login.setDeviceId("other-device").build()));
+        assertEquals("ticket_changed", grant.mismatch(login.setDeviceId("device-42").setToken("other-ticket").build()));
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    public void undefinedOuter999IsBlockedWhileBusinessCode999IsStillDelivered() throws Exception {
+        GateLogic gate = new GateLogic(); attachServer(gate);
+        IoSession current = session(42); current.setAttribute(GateLogic.CLIENT_LOGIN_READY,true);
+        sessions(gate,"loginSessions").put(42,current);
+        gate.onRecForwardMsg(null,InnerMsg.ForwardMsg.newBuilder().setUid(42).setMsgid(999).build().toByteArray());
+        gate.execute(); assertNull(current.getAttribute("written"));
+        gate.onRecForwardMsg(null,InnerMsg.ForwardMsg.newBuilder().setUid(42)
+                .setMsgid(ClientMsgDef.CLIENT_RESPONSE.ordinal()).setData(com.google.protobuf.ByteString.copyFromUtf8("{code:999}")).build().toByteArray());
+        gate.execute();
+        List<SendMessage> sent=(List<SendMessage>)current.getAttribute("written");
+        assertEquals(1,sent.size()); assertEquals(ClientMsgDef.CLIENT_RESPONSE.ordinal(),sent.get(0).msgID);
+    }
+
+    @Test
+    public void gameRefusalRevokesRecoveryAndCannotEnableBusiness() throws Exception {
+        GateLogic gate = new GateLogic();
+        RecordingServer server = attachServer(gate);
+        IoSession game = session(0);
+        server.servers = new ServerSet("test") {
+            @Override public IoSession getServer(String name) { return game; }
+        };
+        IoSession old = session(42);
+        old.setAttribute(GateLogic.RESUME_GRANT, grant(42));
+        sessions(gate, "loginSessions").put(42, old);
+        gate.onSessionClosed(old);
+        IoSession next = session(42); next.setAttribute("Type", "Client");
+        gate.onClientResume(next, ClientMsg.Login.newBuilder().setId(42).setToken("consumed")
+                .setDeviceId("device-42").build().toByteArray());
+        server.loadCallback.accept(new byte[]{1});
+        assertNull(next.getAttribute(GateLogic.RESUME_GRANT));
+        assertFalse(Boolean.TRUE.equals(next.getAttribute(GateLogic.CLIENT_LOGIN_READY)));
+        assertTrue(sessions(gate, "loginSessions").isEmpty());
+        assertTrue(sessions(gate, "disconnectCache").isEmpty());
+    }
+
+    private static GateLogic.ResumeGrant grant(int uid) {
+        return new GateLogic.ResumeGrant("consumed", "device-42", "game1",
+                InnerMsg.LoadPlayer.newBuilder().setUid(uid).build().toByteArray(),
+                ClientMsg.LoginRes.newBuilder().setCode(0).setUid(uid).build().toByteArray());
+    }
+
+    @Test
+    public void expiredOrDifferentProofCannotReplaceCurrentOwner() throws Exception {
+        GateLogic gate = new GateLogic();
+        IoSession old = session(42);
+        old.setAttribute(GateLogic.CLIENT_LOGIN_READY, true);
+        old.setAttribute(GateLogic.RESUME_GRANT, grant(42));
+        sessions(gate, "loginSessions").put(42, old);
+        java.lang.reflect.Method resume = GateLogic.class.getDeclaredMethod("tryResume", IoSession.class, ClientMsg.Login.class);
+        resume.setAccessible(true);
+        ClientMsg.Login.Builder login = ClientMsg.Login.newBuilder().setId(42).setToken("wrong").setDeviceId("device-42");
+        assertEquals(false, resume.invoke(gate, session(42), login.build()));
+        assertTrue(old.isConnected());
+        assertSame(old, sessions(gate, "loginSessions").get(42));
+        old.close(true); gate.onSessionClosed(old);
+        GateLogic.DisconnectWaiter waiter = (GateLogic.DisconnectWaiter) sessions(gate, "disconnectCache").get(42);
+        waiter.time = System.currentTimeMillis() - 120001L;
+        assertEquals(false, resume.invoke(gate, session(42), login.setToken("consumed").build()));
+    }
+
+    @Test
+    public void loadTimeoutKeepsBoundedRecoveryProofButAdminKickRevokesIt() throws Exception {
+        GateLogic gate = new GateLogic();
+        RecordingServer server = attachServer(gate);
+        IoSession game = session(0);
+        server.servers = new ServerSet("test") {
+            @Override public IoSession getServer(String name) { return game; }
+        };
+        IoSession old = session(42);
+        old.setAttribute(GateLogic.CLIENT_LOGIN_READY, true);
+        old.setAttribute(GateLogic.RESUME_GRANT, grant(42));
+        sessions(gate, "loginSessions").put(42, old);
+        IoSession next = session(42); next.setAttribute("Type", "Client");
+        gate.onRecRequestLogin(next, ClientMsg.Login.newBuilder().setId(42).setToken("consumed")
+                .setDeviceId("device-42").build().toByteArray());
+        server.loadCallback.accept(null);
+        assertTrue(sessions(gate, "loginSessions").isEmpty());
+        GateLogic.DisconnectWaiter waiter = (GateLogic.DisconnectWaiter) sessions(gate, "disconnectCache").get(42);
+        assertNotNull(waiter.grant);
+        gate.onRecKickPlayer(null, InnerMsg.KickPlayer.newBuilder().setUid(42).setCode(1).build().toByteArray());
+        assertTrue(sessions(gate, "disconnectCache").isEmpty());
         assertEquals(1, server.disconnects);
     }
 
@@ -274,12 +445,28 @@ public class GateLogicTest {
         int disconnects;
         ServerSet servers;
         InnerMsg.ForwardMsg last;
+        InnerMsg.LoadPlayer lastLoad;
+        Consumer<byte[]> loadCallback;
+        int loads;
 
         @Override public ServerSet getServerSet() { return servers; }
         @Override public int getFrontPort() { return 0; }
 
+        @Override public void request(String game, int msgid, byte[] data, long timeoutMs, Consumer<byte[]> callback) {
+            assertEquals(InnerMsgDef.INNER_MSG_LOAD_PLAYER.ordinal(), msgid);
+            assertTrue(timeoutMs > 0);
+            try { lastLoad = InnerMsg.LoadPlayer.parseFrom(data); }
+            catch (Exception invalid) { throw new AssertionError(invalid); }
+            loads++;
+            loadCallback = callback;
+        }
+
         @Override
         public void sendMsgToServer(String server, int msgid, byte[] bytes) {
+            if (msgid == InnerMsgDef.INNER_MSG_FROZEN.ordinal()) {
+                assertEquals(ServerSet.SERVER_LOGIC_NAME_STORE, server);
+                return;
+            }
             assertEquals("game1", server);
             if (msgid == InnerMsgDef.INNER_MSG_CLIENT_DISCONNECT.ordinal()) {
                 disconnects++;
@@ -311,6 +498,7 @@ public class GateLogicTest {
                 new Class<?>[]{IoSession.class}, (proxy, method, args) -> {
                     if (method.getName().equals("getAttribute")) return attributes.get(args[0]);
                     if (method.getName().equals("setAttribute")) return attributes.put(args[0], args[1]);
+                    if (method.getName().equals("removeAttribute")) return attributes.remove(args[0]);
                     if (method.getName().equals("write")) {
                         @SuppressWarnings("unchecked")
                         List<SendMessage> sent = (List<SendMessage>) attributes.computeIfAbsent("written", k -> new ArrayList<SendMessage>());

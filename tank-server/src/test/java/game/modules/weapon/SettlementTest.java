@@ -58,6 +58,11 @@ public class SettlementTest implements PropertyKey {
                         temporary.remove(args[0]);
                         return defaultValue(method.getReturnType());
                     }
+                    if (name.equals("haveTempData")) return temporary.containsKey(args[0]);
+                    if (name.equals("addTempData")) {
+                        temporary.put((String) args[0], args[2]);
+                        return defaultValue(method.getReturnType());
+                    }
                     if (name.startsWith("get") && args != null && args.length == 1 && args[0] instanceof String) {
                         Object value = (name.startsWith("getTemp") ? temporary : properties).get(args[0]);
                         if (method.getReturnType() == int.class) return value == null ? 0 : ((Number) value).intValue();
@@ -167,6 +172,44 @@ public class SettlementTest implements PropertyKey {
         levels.OnPlayerOffLine(kernel, player);
         levels.OnPlayerOnLine(kernel, player);
         assertEquals(5, properties.get(PLAYER_PROGRESS_REVISION));
+    }
+
+    @Test
+    public void controlledRevisionCommandInvalidatesAttemptAndIsIdempotent() throws Exception {
+        String id = start(1);
+        String[] outcome = {null};
+        levels.correctProgressRevision(kernel, 10001, player, 1, 2, "T04 correction", result -> outcome[0] = result);
+        assertTrue(outcome[0].startsWith("revision_saved"));
+        assertEquals(2, properties.get(PLAYER_PROGRESS_REVISION));
+        finish(id, 1, true, "Won");
+        assertEquals("progress_revision_changed", response.getString("status"));
+        assertFalse(properties.containsKey(PLAYER_MONEY));
+        levels.correctProgressRevision(kernel, 10001, player, 1, 2, "T04 correction", result -> outcome[0] = result);
+        assertTrue(outcome[0].startsWith("revision_saved"));
+        assertEquals(2, properties.get(PLAYER_PROGRESS_REVISION));
+        levels.OnPlayerOnLine(kernel, player);
+        assertEquals(2, properties.get(PLAYER_PROGRESS_REVISION));
+        levels.correctProgressRevision(kernel, 10001, player, 1, 3, "stale", result -> outcome[0] = result);
+        assertTrue(outcome[0].startsWith("revision_conflict"));
+        levels.correctProgressRevision(kernel, 10001, player, 2, 1, "rollback", result -> outcome[0] = result);
+        assertEquals("invalid_revision_correction", outcome[0]);
+    }
+
+    @Test
+    public void revisionCorrectionWaitsForArchiveAckAndCanRetryFailedSave() {
+        properties.put(PLAYER_PROGRESS_REVISION, 1);
+        deferSave = true;
+        String[] outcome = {null};
+        levels.correctProgressRevision(kernel, 10001, player, 1, 2, "audit test", result -> outcome[0] = result);
+        assertNull(outcome[0]);
+        levels.correctProgressRevision(kernel, 10001, player, 2, 3, "conflicting write", result -> outcome[0] = result);
+        assertEquals("revision_save_pending", outcome[0]);
+        pendingSave.accept(false);
+        assertEquals("revision_save_pending retry_same_command", outcome[0]);
+        deferSave = false;
+        levels.correctProgressRevision(kernel, 10001, player, 1, 2, "audit test retry", result -> outcome[0] = result);
+        assertTrue(outcome[0].startsWith("revision_saved"));
+        assertEquals(2, properties.get(PLAYER_PROGRESS_REVISION));
     }
 
     @Test
@@ -334,6 +377,9 @@ public class SettlementTest implements PropertyKey {
             properties.put(PLAYER_MONEY, 605770L);
             properties.put(PLAYER_PROPERTY_GOLD, 123L);
             for (int version : new int[]{1, 2}) {
+                boolean entitlementActive = version == 1;
+                properties.put(PLAYER_IS_PAYING, entitlementActive);
+                properties.put(PLAYER_PAYING_ENTITLEMENT_REVISION, version);
                 framework.game.Record rec = new framework.game.Record("GooglePlayOrderRec", 16, 200,
                         false, false, true);
                 properties.put("GooglePlayOrderRec", rec);
@@ -346,12 +392,24 @@ public class SettlementTest implements PropertyKey {
                 request.put("purchaseToken", token);
                 lastMoneyWrite = null;
                 response = null;
+                deferSave = true;
                 shop.OnGooglePlayBuyGold(recovery, player, 10018, 126,
+                        CustomMsg.String.newBuilder().setValue(request.toJSONString()).build().toByteArray());
+                assertNull(response);
+                assertEquals(entitlementActive, properties.get(PLAYER_IS_PAYING));
+                pendingSave.accept(false);
+                assertEquals("player_save_pending", response.getString("status"));
+                deferSave = false;
+                response = null;
+                shop.OnGooglePlayBuyGold(recovery, player, 10018, 127,
                         CustomMsg.String.newBuilder().setValue(request.toJSONString()).build().toByteArray());
                 assertNotNull(response);
                 assertEquals(0, response.getIntValue("code"));
                 assertEquals("already_fulfilled", response.getString("status"));
                 assertTrue(response.getBooleanValue("duplicate"));
+                assertEquals(entitlementActive, properties.get(PLAYER_IS_PAYING));
+                assertEquals(entitlementActive, response.getBooleanValue("isPayingPlayer"));
+                assertEquals(version, response.getIntValue("payingEntitlementRevision"));
                 assertFalse(response.getBooleanValue("consumePending"));
                 assertEquals("PlayerMoney", response.getString("balanceProperty"));
                 assertEquals(605770L, response.getLongValue("gold"));
@@ -365,6 +423,119 @@ public class SettlementTest implements PropertyKey {
             shop.onDestroy();
             if (oldPackage == null) System.clearProperty("googlePlayPackageName");
             else System.setProperty("googlePlayPackageName", oldPackage);
+            if (oldSecret == null) System.clearProperty("googlePlayAccountIdSecret");
+            else System.setProperty("googlePlayAccountIdSecret", oldSecret);
+        }
+    }
+
+    @Test
+    public void cancelledAndPendingPurchasesNeverGrantPayingEntitlement() throws Exception {
+        IKernel current = (IKernel) Proxy.newProxyInstance(getClass().getClassLoader(), new Class<?>[]{IKernel.class},
+                (proxy, method, args) -> method.getName().equals("getPlayer") ? player : method.invoke(kernel, args));
+        for (int state : new int[]{1, 2}) {
+            ShopModule shop = new ShopModule();
+            try {
+                Method lock = ShopModule.class.getDeclaredMethod("acquireLocalLock", String.class, String.class);
+                lock.setAccessible(true); lock.invoke(shop, "test-hash", "test-owner");
+                Class<?> productType = Class.forName(ShopModule.class.getName() + "$GooglePlayProduct");
+                Method verified = ShopModule.class.getDeclaredMethod("handleVerifiedPurchase", IKernel.class,
+                        IGameObject.class, int.class, JSONObject.class, String.class, productType,
+                        String.class, String.class, String.class, int.class, IRecord.class,
+                        GooglePlayPurchaseVerifier.Purchase.class);
+                verified.setAccessible(true);
+                GooglePlayPurchaseVerifier.Purchase purchase = new GooglePlayPurchaseVerifier.Purchase();
+                purchase.purchaseState = state;
+                verified.invoke(shop, current, player, 129, new JSONObject(), "example.tank.test", null,
+                        "test-token", "test-hash", "test-owner", 999001, null, purchase);
+                assertEquals(state == 1 ? "not_purchased" : "pending", response.getString("status"));
+                assertFalse(player.getBool(PLAYER_IS_PAYING));
+                assertFalse(properties.containsKey(PLAYER_MONEY));
+            } finally { shop.onDestroy(); }
+        }
+    }
+
+    @Test
+    public void firstFulfillmentPersistsPayingFlagWithAwardedReceiptBeforeAcknowledging() throws Exception {
+        verifyNewFulfillmentEntitlement(0);
+    }
+
+    @Test
+    public void newFulfillmentAfterRefundReactivatesAtAHigherRevision() throws Exception {
+        verifyNewFulfillmentEntitlement(2);
+    }
+
+    @SuppressWarnings("unchecked")
+    private void verifyNewFulfillmentEntitlement(int initialRevision) throws Exception {
+        String oldSecret = System.getProperty("googlePlayAccountIdSecret");
+        System.setProperty("googlePlayAccountIdSecret", "test-only-secret-32-characters-long");
+        ShopModule shop = new ShopModule();
+        try {
+            Class<?> productType = Class.forName(ShopModule.class.getName() + "$GooglePlayProduct");
+            Constructor<?> productConstructor = productType.getDeclaredConstructor(String.class, int.class,
+                    boolean.class, int.class, long.class, int.class, int.class);
+            productConstructor.setAccessible(true);
+            Object product = productConstructor.newInstance("google_gold_12", 12, true, 2, 600000L, 0, 0);
+            framework.game.Record rec = new framework.game.Record("GooglePlayOrderRec", 16, 200, false, false, true);
+            IKernel fulfillment = (IKernel) Proxy.newProxyInstance(getClass().getClassLoader(), new Class<?>[]{IKernel.class},
+                    (proxy, method, args) -> {
+                        if (method.getName().equals("getPlayer")) return player;
+                        if (method.getName().equals("declareRecord")) return rec;
+                        if (method.getName().equals("executeGooglePlayToStore")) {
+                            if (args[1].equals("markShipped")) ((Consumer<String>) args[3]).accept("false");
+                            else if (args[1].equals("completeFromPlayerRecord")) {
+                                GooglePlayOrder order = (GooglePlayOrder) ((List<?>) args[2]).get(0);
+                                order.setStatus(GooglePlayOrder.STATUS_CONSUMED);
+                                ((Consumer<String>) args[3]).accept(JSON.toJSONString(order));
+                            } else fail("unexpected store operation");
+                            return null;
+                        }
+                        return method.invoke(kernel, args);
+                    });
+            shop.OnPlayerClassCreate(fulfillment, "Player");
+            properties.put("GooglePlayOrderRec", rec);
+            properties.put(PLAYER_MONEY, 605770L);
+            properties.put(PLAYER_PROPERTY_GOLD, 123L);
+            properties.put(PLAYER_IS_PAYING, false);
+            properties.put(PLAYER_PAYING_ENTITLEMENT_REVISION, initialRevision);
+            Method save = ShopModule.class.getDeclaredMethod("saveCompletedLocalOrder", IRecord.class,
+                    String.class, productType, String.class, long.class, int.class, int.class);
+            save.setAccessible(true);
+            String hash = "synthetic-first-fulfillment-hash", owner = "synthetic-owner";
+            save.invoke(shop, rec, hash, product, "GPA.TEST", now, 2, 0);
+            Method lock = ShopModule.class.getDeclaredMethod("acquireLocalLock", String.class, String.class);
+            lock.setAccessible(true); assertEquals(true, lock.invoke(shop, hash, owner));
+            Class<?> heartbeatType = Class.forName(ShopModule.class.getName() + "$LeaseHeartbeat");
+            Constructor<?> heartbeat = heartbeatType.getDeclaredConstructor(String.class,
+                    java.util.concurrent.ScheduledFuture.class, java.util.concurrent.atomic.AtomicBoolean.class,
+                    java.util.concurrent.atomic.AtomicLong.class);
+            heartbeat.setAccessible(true);
+            java.util.concurrent.ScheduledFuture<?> future = (java.util.concurrent.ScheduledFuture<?>) Proxy.newProxyInstance(
+                    getClass().getClassLoader(), new Class<?>[]{java.util.concurrent.ScheduledFuture.class},
+                    (proxy, method, args) -> defaultValue(method.getReturnType()));
+            Field heartbeats = ShopModule.class.getDeclaredField("leaseHeartbeats"); heartbeats.setAccessible(true);
+            ((Map<String, Object>) heartbeats.get(shop)).put(hash, heartbeat.newInstance(owner, future,
+                    new java.util.concurrent.atomic.AtomicBoolean(true), new java.util.concurrent.atomic.AtomicLong(System.nanoTime())));
+            Method finish = ShopModule.class.getDeclaredMethod("continueRewardFulfillmentInternal", IKernel.class,
+                    IGameObject.class, int.class, JSONObject.class, String.class, productType,
+                    String.class, String.class, String.class, int.class, String.class, IRecord.class);
+            finish.setAccessible(true);
+            deferSave = true;
+            finish.invoke(shop, fulfillment, player, 128, new JSONObject(), "example.tank.test", product,
+                    "synthetic-token", hash, owner, 999001, "GPA.TEST", rec);
+            assertEquals(true, properties.get(PLAYER_IS_PAYING));
+            assertEquals(initialRevision + 1, properties.get(PLAYER_PAYING_ENTITLEMENT_REVISION));
+            assertEquals(3, rec.getInt(0, 1));
+            assertNull(response);
+            pendingSave.accept(true);
+            assertEquals("fulfilled", response.getString("status"));
+            assertFalse(response.getBooleanValue("duplicate"));
+            assertTrue(response.getBooleanValue("isPayingPlayer"));
+            assertEquals(initialRevision + 1, response.getIntValue("payingEntitlementRevision"));
+            assertEquals(605770L, properties.get(PLAYER_MONEY));
+            assertEquals(123L, properties.get(PLAYER_PROPERTY_GOLD));
+            assertNull(lastMoneyWrite);
+        } finally {
+            shop.onDestroy();
             if (oldSecret == null) System.clearProperty("googlePlayAccountIdSecret");
             else System.setProperty("googlePlayAccountIdSecret", oldSecret);
         }

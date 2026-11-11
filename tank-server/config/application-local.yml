@@ -70,7 +70,19 @@ system-config:
   googlePlayServiceAccountPath: D:\code\minigame-tank\server\tank\tank-server\config\tank-1de76-1557d75e803b.json
   googlePlayAccountIdSecret: "9f3a6c2d8e1b4a70b5c9d0f6a2e8c134"
   rewardedAdDailyLimit: 20
-  rewardedAdMinIntervalMs: 0
+  rewardedAdMinIntervalMs: 30000
+  # Enable after clients send adResult=Finished; SSV is still needed for trusted proof.
+  rewardedAdRequireCompletionResult: true
+  # Enable only after v0.11.2 clients send settlementVersion=2 and persist attemptId.
+  levelSettlementRequireV2: true
+  gateClientHeartbeatTimeoutMs: 180000
+  gateDisconnectGraceMs: 120000
+  gateLoginTimeoutMs: 15000
+  legacyStoreItemsEnabled: false
+  # Official eligibility scan on login/reconnect and every ten seconds while online.
+  googlePlayPayingEntitlementReconcileEnabled: true
+  googlePlayPayingEntitlementPollMs: 10000
+  googlePlayEntitlementAuditsPerMinute: 60
   rewardedAdRewardTolerance: 1.2
   clientVerify: true
 # 启动配置

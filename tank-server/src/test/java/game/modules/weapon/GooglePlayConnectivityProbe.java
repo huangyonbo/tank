@@ -9,8 +9,8 @@ import java.net.URLEncoder;
 /** Manual read-only probe through the same Java OAuth/HTTP code as production. Not a JUnit test. */
 public final class GooglePlayConnectivityProbe {
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            throw new IllegalArgumentException("usage: configRoot reportedOrderId");
+        if (args.length != 2 && args.length != 4) {
+            throw new IllegalArgumentException("usage: configRoot reportedOrderId [uid productId]");
         }
         SystemConfigData.load(args[0], null);
         GooglePlayPurchaseVerifier verifier = new GooglePlayPurchaseVerifier();
@@ -18,6 +18,25 @@ public final class GooglePlayConnectivityProbe {
                 String.class, String.class);
         request.setAccessible(true);
         String packageName = SystemConfigData.getConfig("googlePlayPackageName", "");
+        if (args.length == 4) {
+            try {
+                int uid = Integer.parseInt(args[2]);
+                if (uid <= 0) throw new IllegalArgumentException();
+                javax.crypto.Mac mac = javax.crypto.Mac.getInstance("HmacSHA256");
+                mac.init(new javax.crypto.spec.SecretKeySpec(SystemConfigData.getConfig("googlePlayAccountIdSecret", "")
+                        .getBytes(java.nio.charset.StandardCharsets.UTF_8), "HmacSHA256"));
+                StringBuilder expected = new StringBuilder();
+                for (byte value : mac.doFinal(("google-play:" + uid).getBytes(java.nio.charset.StandardCharsets.UTF_8)))
+                    expected.append(String.format("%02x", value & 255));
+                Boolean active = verifier.getOrderEntitlement(packageName,args[1],args[3],expected.toString());
+                JsonObject summary = new JsonObject(); summary.addProperty("readOnly",true);
+                summary.addProperty("orderId",args[1]); summary.addProperty("uid",uid); summary.addProperty("eligible",active);
+                System.out.println(summary); return;
+            } catch (Exception failure) {
+                System.out.println("{\"readOnly\":true,\"errorType\":\"" + failure.getClass().getSimpleName() + "\"}");
+                System.exit(1); return;
+            }
+        }
         String base = "https://androidpublisher.googleapis.com/androidpublisher/v3/applications/"
                 + URLEncoder.encode(packageName, "UTF-8");
         try {

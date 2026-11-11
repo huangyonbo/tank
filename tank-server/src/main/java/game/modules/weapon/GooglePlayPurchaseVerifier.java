@@ -19,6 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.Signature;
+import java.security.MessageDigest;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Base64;
 
@@ -32,6 +33,93 @@ class GooglePlayPurchaseVerifier {
     private JsonObject serviceAccount;
     private String accessToken;
     private long accessTokenExpireAt;
+
+    static final class Entitlement {
+        final Boolean active;
+        final boolean refunded;
+        Entitlement(Boolean active, boolean refunded) { this.active = active; this.refunded = refunded; }
+    }
+
+    /** Null means uncertain: network/identity errors and partial refunds never authorize a revocation. */
+    Boolean getOrderEntitlement(String packageName, String orderId, String productId, String expectedAccountId) throws Exception {
+        return getOrderEntitlement(packageName, orderId, productId, expectedAccountId, null);
+    }
+
+    Boolean getOrderEntitlement(String packageName, String orderId, String productId, String expectedAccountId,
+                                String expectedTokenHash) throws Exception {
+        return getOrderAssessment(packageName, orderId, productId, expectedAccountId, expectedTokenHash).active;
+    }
+
+    Entitlement getOrderAssessment(String packageName, String orderId, String productId, String expectedAccountId,
+                                   String expectedTokenHash) throws Exception {
+        String base = API_ROOT + encode(packageName);
+        JsonObject order = requestJson("GET", base + "/orders/" + encode(orderId), null);
+        if (!orderId.equals(getString(order, "orderId")) || !hasProduct(order, "lineItems", productId))
+            return auditEntitlement(orderId, order, null, null, "order_identity_or_product_mismatch");
+        String token = getString(order, "purchaseToken");
+        if (token == null || token.isEmpty())
+            return auditEntitlement(orderId, order, null, null, "purchase_token_missing");
+        if (expectedTokenHash != null) {
+            byte[] digest = MessageDigest.getInstance("SHA-256").digest(token.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hash = new StringBuilder();
+            for (byte value : digest) hash.append(String.format("%02x", value & 0xff));
+            if (!MessageDigest.isEqual(expectedTokenHash.getBytes(StandardCharsets.UTF_8),
+                    hash.toString().getBytes(StandardCharsets.UTF_8)))
+                return auditEntitlement(orderId, order, null, null, "purchase_token_mismatch");
+        }
+        JsonObject purchase = requestJson("GET", base + "/purchases/productsv2/tokens/" + encode(token), null);
+        Entitlement result = classifyAssessment(order, purchase, orderId, productId, expectedAccountId);
+        auditEntitlement(orderId, order, purchase, result.active,
+                result.refunded ? "verified_full_refund" : (result.active == null ? "state_or_identity_uncertain" : "official_state_pair"));
+        return result;
+    }
+
+    private Entitlement auditEntitlement(String orderId, JsonObject order, JsonObject purchase, Boolean active, String reason) {
+        JsonObject context = purchase != null && purchase.has("purchaseStateContext")
+                && purchase.get("purchaseStateContext").isJsonObject()
+                ? purchase.getAsJsonObject("purchaseStateContext") : null;
+        // Log only state labels: raw responses, account IDs, tokens and exception URLs are private.
+        logger.info("Google entitlement order audit orderId={} orderState={} purchaseState={} active={} reason={}",
+                orderId, auditState(order, "state"), auditState(context, "purchaseState"), active, reason);
+        return new Entitlement(active, false);
+    }
+
+    private static String auditState(JsonObject json, String key) {
+        if (json == null || !json.has(key) || json.get(key).isJsonNull()) return "MISSING";
+        if (!json.get(key).isJsonPrimitive()) return "UNRECOGNIZED";
+        String state = json.get(key).getAsString();
+        return state.matches("[A-Z_]{1,40}") ? state : "UNRECOGNIZED";
+    }
+
+    static Boolean classifyEntitlement(JsonObject order, JsonObject purchase, String orderId,
+                                      String productId, String expectedAccountId) {
+        return classifyAssessment(order, purchase, orderId, productId, expectedAccountId).active;
+    }
+
+    static Entitlement classifyAssessment(JsonObject order, JsonObject purchase, String orderId,
+                                          String productId, String expectedAccountId) {
+        String account = getString(purchase, "obfuscatedExternalAccountId");
+        if (expectedAccountId == null || expectedAccountId.isEmpty() || account == null
+                || !MessageDigest.isEqual(expectedAccountId.getBytes(StandardCharsets.UTF_8), account.getBytes(StandardCharsets.UTF_8))
+                || !orderId.equals(getString(order, "orderId")) || !orderId.equals(getString(purchase, "orderId"))
+                || !hasProduct(order, "lineItems", productId) || !hasProduct(purchase, "productLineItem", productId)) return new Entitlement(null, false);
+        // Full monetary refund is authoritative after binding checks, even without product revocation.
+        String state = getString(order, "state");
+        if ("REFUNDED".equals(state)) return new Entitlement(false, true);
+        if (!purchase.has("purchaseStateContext") || !purchase.get("purchaseStateContext").isJsonObject()) return new Entitlement(null, false);
+        String purchaseState = getString(purchase.getAsJsonObject("purchaseStateContext"), "purchaseState");
+        if ("PROCESSED".equals(state) && "PURCHASED".equals(purchaseState)) return new Entitlement(true, false);
+        if ("CANCELED".equals(state) && "CANCELLED".equals(purchaseState)) return new Entitlement(false, false);
+        return new Entitlement(null, false);
+    }
+
+    private static boolean hasProduct(JsonObject object, String field, String productId) {
+        if (!object.has(field) || !object.get(field).isJsonArray()) return false;
+        for (com.google.gson.JsonElement item : object.getAsJsonArray(field)) {
+            if (item.isJsonObject() && productId.equals(getString(item.getAsJsonObject(), "productId"))) return true;
+        }
+        return false;
+    }
 
     Purchase getProductPurchase(String packageName, String productId, String purchaseToken) throws Exception {
         String url = API_ROOT + encode(packageName) + "/purchases/products/" + encode(productId)

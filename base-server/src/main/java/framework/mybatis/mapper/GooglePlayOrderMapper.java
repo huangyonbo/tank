@@ -9,6 +9,12 @@ import org.apache.ibatis.annotations.Update;
 
 public interface GooglePlayOrderMapper extends BaseMapper<GooglePlayOrder> {
 
+    @Select("SELECT COUNT(*) AS orderCount, COALESCE(MAX(id),0) AS maxId, "
+            + "COALESCE(SUM(update_time),0) AS version FROM google_play_order "
+            + "WHERE uid=#{uid} AND package_name=#{packageName} AND status IN (3,4)")
+    java.util.Map<String,Object> fulfilledInventory(@Param("uid") Integer uid,
+                                                   @Param("packageName") String packageName);
+
     @Select("SELECT CAST(UNIX_TIMESTAMP(CURRENT_TIMESTAMP(3)) * 1000 AS SIGNED)")
     Long currentTimeMillis();
 

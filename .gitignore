@@ -5,7 +5,11 @@ target/
 *.log
 JarEncode/out/
 JarEncode/src/
-
+/tank-server/docs/*
+/tank-server/logs/*
+/tank-server/tools/*
+/tank-server/deploy/*
+*/src/test/*
 .idea/
 *.iml
 *.iws
@@ -13,3 +17,13 @@ JarEncode/src/
 .mvn
 mvnw*
 *rebel.xml*
+
+# Google service-account private keys must be supplied outside source control.
+/tank-server/config/google-play-service-account*.json
+/tank-server/config/tank-1de76-1557d75e803b.json
+
+/base-server/src/test/java/**
+/login/src/test/java/**
+/tank-server/src/test/*
+# Deployed binaries and operational process records are not source files.
+/tank-server/deploy/

@@ -109,6 +109,7 @@ public class ShopModule implements ILogicModule {
 
     private volatile Map<String, GooglePlayProduct> googlePlayProducts = Collections.emptyMap();
     private final GooglePlayPurchaseVerifier googleVerifier = new GooglePlayPurchaseVerifier();
+    private PayingEntitlementReconciler payingEntitlements;
     private final ConcurrentMap<String, LocalProcessingLock> localProcessing = new ConcurrentHashMap<>();
     private final ConcurrentMap<String, LeaseHeartbeat> leaseHeartbeats = new ConcurrentHashMap<>();
     private final ConcurrentMap<Integer, AtomicInteger> verifyingByUid = new ConcurrentHashMap<>();
@@ -138,6 +139,19 @@ public class ShopModule implements ILogicModule {
         kernel.regRequestMessage(RequestMsgDef.REQ_GOOGLE_PLAY_BUY_GOLD.getId(), this, "OnGooglePlayBuyGold");
         loadGooglePlayProducts(kernel);
 
+        if (getBooleanConfig("googlePlayPayingEntitlementReconcileEnabled", false)) {
+            payingEntitlements = new PayingEntitlementReconciler(kernel, getConfiguredPackageName(),
+                    (order, accountId) -> googleVerifier.getOrderAssessment(order.getPackageName(),
+                            order.getGoogleOrderId(), order.getProductId(), accountId, order.getPurchaseTokenHash()),
+                    uid -> expectedAccountId(uid), uid -> fulfillmentByUid.containsKey(uid));
+            payingEntitlements.setAuditsPerMinute(Integer.parseInt(String.valueOf(
+                    SystemConfigData.getConfig("googlePlayEntitlementAuditsPerMinute", (Object) 60))));
+            long interval = Long.parseLong(String.valueOf(SystemConfigData.getConfig("googlePlayPayingEntitlementPollMs", (Object) PayingEntitlementReconciler.DEFAULT_POLL_MS)));
+            payingEntitlements.start(interval);
+            kernel.regEvent(KernelEvent.KEVENT_ON_LINE, "Player", this, "OnPayingEntitlementLogin");
+            kernel.regEvent(KernelEvent.KEVENT_ON_RECONNECT, "Player", this, "OnPayingEntitlementLogin");
+        }
+
         if (isBlank(getConfiguredPackageName())) {
             logger.error("googlePlayPackageName is empty; Google Play purchases will be rejected");
         }
@@ -149,6 +163,7 @@ public class ShopModule implements ILogicModule {
 
     @Override
     public void onDestroy() {
+        if (payingEntitlements != null) payingEntitlements.close();
         for (LeaseHeartbeat heartbeat : leaseHeartbeats.values()) {
             heartbeat.future.cancel(false);
         }
@@ -162,11 +177,58 @@ public class ShopModule implements ILogicModule {
     }
 
     public void OnPlayerClassCreate(IKernel kernel, String script) {
+        GooglePlayRefunds.declare(kernel, script);
+        kernel.declareProperty(script, PayingEntitlementReconciler.PROGRESS, ValueType.STRING, false, false, true);
         IRecord rec = kernel.declareRecord(script, GOOGLE_PLAY_ORDER_REC, OrderRecCol.values().length,
                 GOOGLE_PLAY_ORDER_REC_MAX_ROWS, false, false, true);
         for (OrderRecCol col : OrderRecCol.values()) {
             rec.setColType(col.index, col.type);
         }
+    }
+
+    public void OnPayingEntitlementLogin(IKernel kernel, IGameObject player) {
+        if (payingEntitlements != null) payingEntitlements.check(player);
+    }
+
+    private boolean isCompletedLocalOrder(IRecord rec, int row) {
+        int status = rec.getInt(row, OrderRecCol.STATUS.index);
+        return (status == PAY_STATUS_AWARDED || status == PAY_STATUS_SHIPPED)
+                && rec.getInt(row, OrderRecCol.MANUAL_REVIEW.index) != 1;
+    }
+
+    private boolean ensurePayingEntitlement(IGameObject player, String source) {
+        if (player.getInt(PLAYER_PROPERTY_UID) <= 0) return false;
+        int revision = player.getInt(PLAYER_PAYING_ENTITLEMENT_REVISION);
+        // A completed receipt proves past fulfillment, not current refund eligibility.
+        // Preserve the audited account state, including an authoritative false.
+        if ("duplicate_fulfillment".equals(source)) return revision > 0;
+        if (revision > 0 && player.getBool(PLAYER_IS_PAYING)) return true;
+        if (revision < 0 || revision == Integer.MAX_VALUE) return false;
+        int next = revision + 1;
+        try {
+            player.setProperty(PLAYER_IS_PAYING, true, IKernel.PlayerLogType.PROP_CHANGE.ordinal(),
+                    "paying entitlement source=" + source);
+            player.setProperty(PLAYER_PAYING_ENTITLEMENT_REVISION, next);
+        } catch (Exception failure) {
+            logger.error("paying entitlement update failed uid={} source={}",
+                    player.getInt(PLAYER_PROPERTY_UID), source, failure);
+        }
+        return player.getBool(PLAYER_IS_PAYING) && player.getInt(PLAYER_PAYING_ENTITLEMENT_REVISION) == next;
+    }
+
+    private boolean requirePayingEntitlement(IKernel kernel, IGameObject player, int reqid, JSONObject resp,
+                                             String tokenHash, String processingOwner, String source) {
+        if ("duplicate_fulfillment".equals(source) && player.getInt(PLAYER_PAYING_ENTITLEMENT_REVISION) <= 0) {
+            resp.put("manualReview", true);
+            respond(kernel, player, reqid, resp, ServerCodeDef.CODE_WRONG_STATE,
+                    "entitlement_review_required", tokenHash, processingOwner);
+            return false;
+        }
+        if (ensurePayingEntitlement(player, source)) return true;
+        resp.put("retryable", true);
+        respond(kernel, player, reqid, resp, ServerCodeDef.CODE_FAILED,
+                "entitlement_update_pending", tokenHash, processingOwner);
+        return false;
     }
 
     public void RefreshCfg(IKernel kernel, String path) {
@@ -541,8 +603,13 @@ public class ShopModule implements ILogicModule {
                             "payment_record_full", tokenHash, processingOwner);
                     return;
                 }
-                flushRecoveredOrder(kernel, player, reqid, resp, packageName, product,
-                        purchaseToken, tokenHash, processingOwner, rec, true);
+                // This branch follows a fresh Google purchaseState=PURCHASED check.
+                // Initialize legacy state only; never override an existing refund revision.
+                if (player.getInt(PLAYER_PAYING_ENTITLEMENT_REVISION) <= 0
+                        && !requirePayingEntitlement(kernel, player, reqid, resp, tokenHash,
+                        processingOwner, "verified_purchase_restore")) return;
+                recoverCompletedOrder(kernel, player, reqid, resp, packageName, product,
+                        purchaseToken, tokenHash, processingOwner, rec);
                 return;
             }
 
@@ -762,6 +829,8 @@ public class ShopModule implements ILogicModule {
         rec.setValue(row, OrderRecCol.STATUS.index, PAY_STATUS_AWARDED);
         rec.setValue(row, OrderRecCol.GOOGLE_ORDER_ID.index, nullToEmpty(googleOrderId));
         rec.setValue(row, OrderRecCol.UPDATE_TIME.index, kernel.getServerTime());
+        if (!requirePayingEntitlement(kernel, player, reqid, resp, tokenHash, processingOwner,
+                "first_fulfillment")) return;
         kernel.flushGooglePlayPlayer(player, flushed -> {
             if (!Boolean.TRUE.equals(flushed)) {
                 if (!isCurrentRequest(kernel, player, uid, tokenHash, processingOwner)) {
@@ -972,6 +1041,14 @@ public class ShopModule implements ILogicModule {
                                        GooglePlayProduct product, String purchaseToken,
                                        String tokenHash, String processingOwner, IRecord rec) {
         int uid = player.getInt(PLAYER_PROPERTY_UID);
+        int row = findLocalRow(rec, tokenHash);
+        if (row < 0 || !isCompletedLocalOrder(rec, row) || !localSnapshotMatches(rec, row, product)) {
+            respond(kernel, player, reqid, resp, ServerCodeDef.CODE_FAILED,
+                    "payment_record_missing", tokenHash, processingOwner);
+            return;
+        }
+        if (!requirePayingEntitlement(kernel, player, reqid, resp, tokenHash, processingOwner,
+                "duplicate_fulfillment")) return;
         kernel.flushGooglePlayPlayer(player, flushed -> {
             if (!Boolean.TRUE.equals(flushed)) {
                 if (!isCurrentRequest(kernel, player, uid, tokenHash, processingOwner)) {
@@ -1177,6 +1254,8 @@ public class ShopModule implements ILogicModule {
         resp.put("rewardGold", product.goldAmount);
         resp.put("gold", player.getLong(PLAYER_MONEY));
         resp.put("headId", product.headId);
+        resp.put("isPayingPlayer", player.getBool(PLAYER_IS_PAYING));
+        resp.put("payingEntitlementRevision", player.getInt(PLAYER_PAYING_ENTITLEMENT_REVISION));
         respond(kernel, player, reqid, resp, ServerCodeDef.CODE_SUCCESS,
                 duplicate ? "already_fulfilled" : "fulfilled",
                 tokenHash, processingOwner);

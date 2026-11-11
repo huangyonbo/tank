@@ -804,7 +804,11 @@ public class StoreModule implements ILogicModule {
 		}
 
 		// logger.info("send S2C_STORE_ITEMS:" + storeItems.toString());
-		kernel.sendMessage(player, S2CMsgDef.S2C_STORE_ITEMS.ordinal(), storeItems.build().toByteArray());
+		// Awesome Tanks uses 10020. The shared legacy catalog is opt-in only.
+		if (Boolean.parseBoolean(String.valueOf(framework.SystemConfigData.getConfig(
+				"legacyStoreItemsEnabled", (Object) false)))) {
+			kernel.sendMessage(player, S2CMsgDef.S2C_STORE_ITEMS.ordinal(), storeItems.build().toByteArray());
+		}
 
 	}
 

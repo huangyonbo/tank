@@ -20,6 +20,31 @@ import static org.junit.Assert.*;
 
 public class GoogleCatalogTest {
     @Test
+    @SuppressWarnings("unchecked")
+    public void pollingInitializesWithYamlIntegerLongAndStringIntervals() throws Exception {
+        java.lang.reflect.Field valuesField = framework.SystemConfigData.class.getDeclaredField("values");
+        valuesField.setAccessible(true);
+        Map<String,Object> values = (Map<String,Object>) valuesField.get(null);
+        Map<String,Object> original = new HashMap<>(values);
+        IKernel kernel = (IKernel) Proxy.newProxyInstance(getClass().getClassLoader(),new Class<?>[]{IKernel.class},
+                (proxy,method,args) -> null);
+        try {
+            values.put("googlePlayPayingEntitlementReconcileEnabled",true);
+            values.put("googlePlayPackageName","example.tank.test");
+            values.put("googlePlayAccountIdSecret","synthetic-config-secret-32-characters");
+            for (Object interval : new Object[]{300000,300000L,"300000"}) {
+                values.put("googlePlayPayingEntitlementPollMs",interval);
+                ShopModule shop = new ShopModule();
+                try {
+                    assertTrue(shop.onInit(kernel));
+                    java.lang.reflect.Field check = ShopModule.class.getDeclaredField("payingEntitlements");
+                    check.setAccessible(true); assertNotNull(check.get(shop));
+                } finally { shop.onDestroy(); }
+            }
+        } finally { values.clear(); values.putAll(original); }
+    }
+
+    @Test
     public void realCatalogReturnsSixPositiveGoldProductsAndKeepsGoodConfigOnBadReload() throws Exception {
         NodeList items = DocumentBuilderFactory.newInstance().newDocumentBuilder()
                 .parse(new File("config/res/GooglePlay/GooglePlayProducts.xml")).getElementsByTagName("item");
@@ -56,6 +81,9 @@ public class GoogleCatalogTest {
             expected.put("google_gold_328", 16400000L);
             expected.put("google_gold_648", 32400000L);
             assertEquals(expected, products(response[0]));
+            String evidenceDirectory = System.getProperty("p3.evidenceDirectory");
+            if (evidenceDirectory != null) java.nio.file.Files.write(java.nio.file.Paths.get(evidenceDirectory, "local-10020.json"),
+                    response[0].toJSONString().getBytes(java.nio.charset.StandardCharsets.UTF_8));
             corrupt[0] = true;
             shop.RefreshCfg(kernel, "res/GooglePlay/GooglePlayProducts.xml");
             shop.OnGooglePlayProducts(kernel, null, 10020, 1, null);

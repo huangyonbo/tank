@@ -445,6 +445,8 @@ public interface PropertyKey {
 
     String PLAYER_MAX_LEVEL_INCOME = "PlayerMaxLevelIncome";//单关最高收益
     String PLAYER_DOUBLE_COINS_PURCHASED = "PlayerDoubleCoinsPurchased";//是否购买双倍金币
+    String PLAYER_IS_PAYING = "PlayerIsPaying";//已履约付费账号权益（本人可见、持久化）
+    String PLAYER_PAYING_ENTITLEMENT_REVISION = "PlayerPayingEntitlementRevision";//权威付费权益版本，退款撤销后禁止旧回执恢复
     String PLAYER_LEVELS_COMPLETED = "PlayerLevelsCompleted";//已完成关卡数量
     String PLAYER_PROGRESS_REVISION = "PlayerProgressRevision";//进度校正版本，供客户端清理本地进度缓存
     String PLAYER_MONEY = "PlayerMoney";//金币

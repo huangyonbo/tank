@@ -521,13 +521,22 @@ public class GameObject implements IGameObject {
 				types[j] = _types[buffer.getShort()];
 			}
 			int rows = buffer.getShort();
+			// Compatibility rollback: retain permanent refund receipts even without a game-module declaration.
+			if (rec == null && RefundArchiveGuard.RECORD.equals(name)) {
+				rec = new Record(name, cols, 30000, false, false, true);
+				for (int col = 0; col < cols; col++) rec.setColType(col, types[col]);
+				rec.setOwner(this);
+				m_Records.put(name, rec);
+			}
 			Object[] objs = new Object[cols];
 			for (int j = 0; j < rows; ++j) {
 				for (int k = 0; k < cols; ++k) {
 					objs[k] = UtilFunc.loadObjFromBuffer(types[k], buffer);
 				}
 				if (rec != null) {
-					rec.innerAddRow(objs);
+					if (!rec.innerAddRow(objs) && RefundArchiveGuard.RECORD.equals(name)) {
+						throw new IllegalStateException("cannot truncate permanent refund receipts");
+					}
 				}
 			}
 		}

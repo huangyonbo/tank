@@ -90,6 +90,9 @@ public class GMModule implements ILogicModule {
 		AddCmd("gp", this, "OnGpCmd");
 		// 设置属性
 		AddCmd("sp", this, "OnSpCmd");
+		AddCmd("progressRevision", this, "OnProgressRevisionCmd");
+		AddCmd("refundPending", this, "OnRefundPendingCmd");
+		AddCmd("refundReview", this, "OnRefundReviewCmd");
 
 		// 查看表数据
 		AddCmd("gr", this, "OnGrCmd");
@@ -233,6 +236,41 @@ public class GMModule implements ILogicModule {
 		kernel.addGmLog(player, target, cmd, res);
 	}
 
+	void OnProgressRevisionCmd(IKernel kernel, IGameObject self, IGameObject target, String[] args) {
+		if (args.length < 5) {
+			CmdResult(kernel, self, "usage: /gm progressRevision expected new reason");
+			return;
+		}
+		try {
+			int expected = Integer.parseInt(args[2]);
+			int revision = Integer.parseInt(args[3]);
+			String reason = String.join(" ", java.util.Arrays.copyOfRange(args, 4, args.length));
+			game.modules.weapon.LevelModule module = kernel.getModule(game.modules.weapon.LevelModule.class);
+			module.correctProgressRevision(kernel, self.getInt(PLAYER_PROPERTY_UID), target, expected, revision,
+					reason, result -> CmdResult(kernel, self, result));
+		} catch (NumberFormatException invalid) {
+			CmdResult(kernel, self, "invalid_revision_number");
+		}
+	}
+
+	void OnRefundPendingCmd(IKernel kernel, IGameObject self, IGameObject target, String[] args) {
+		CmdResult(kernel,self,game.modules.weapon.GooglePlayRefunds.pending(target).toJSONString());
+	}
+
+	void OnRefundReviewCmd(IKernel kernel, IGameObject self, IGameObject target, String[] args) {
+		if(args.length<6) {CmdResult(kernel,self,"usage: /gm refundReview orderId expectedBefore expectedAfter evidence");return;}
+		try {
+			String evidence=String.join(" ",java.util.Arrays.copyOfRange(args,5,args.length));
+			boolean reviewed=game.modules.weapon.GooglePlayRefunds.acknowledgeReview(target,args[2],
+					Long.parseLong(args[3]),Long.parseLong(args[4]),evidence);
+			if(!reviewed) {CmdResult(kernel,self,"refund_review_snapshot_or_evidence_mismatch");return;}
+			logger.warn("GM refund review operatorUid={} targetUid={} orderId={} action=close_without_debit",
+					self.getInt(PLAYER_PROPERTY_UID),target.getInt(PLAYER_PROPERTY_UID),args[2]);
+			kernel.flushGooglePlayPlayer(target,saved -> CmdResult(kernel,self,
+					Boolean.TRUE.equals(saved)?"refund_review_saved_no_additional_debit":"refund_review_save_pending_retry_same_command"));
+		} catch(NumberFormatException invalid) {CmdResult(kernel,self,"invalid_refund_balance_snapshot");}
+	}
+
 	void OnSwitch(IKernel kernel, int serid, int msgid, byte[] msg) {
 		m_switch = msg[0] == 1;
 	}
@@ -360,6 +398,10 @@ public class GMModule implements ILogicModule {
 		if (args.length < 4) {
 			return;
 		}
+		if (PLAYER_PROGRESS_REVISION.equals(args[2])) {
+			CmdResult(kernel, self, "use /gm progressRevision expected new reason");
+			return;
+		}
 		Object val = null;
 		ValueType type = target.getProType(args[2]);
 		switch (type) {
@@ -427,6 +469,7 @@ public class GMModule implements ILogicModule {
 		if (args.length < 6) {
 			return;
 		}
+		if (protectRefundRecord(kernel,self,args[2])) return;
 		IRecord rec = target.getRecord(args[2]);
 		int row = Integer.parseInt(args[3]);
 		int col = Integer.parseInt(args[4]);
@@ -484,6 +527,7 @@ public class GMModule implements ILogicModule {
 		if (args.length < 4) {
 			return;
 		}
+		if (protectRefundRecord(kernel,self,args[2])) return;
 		IRecord rec = target.getRecord(args[2]);
 		if (rec == null) {
 			return;
@@ -498,12 +542,18 @@ public class GMModule implements ILogicModule {
 		if (args.length < 3) {
 			return;
 		}
+		if (protectRefundRecord(kernel,self,args[2])) return;
 		IRecord rec = target.getRecord(args[2]);
 		if (rec == null) {
 			return;
 		}
 		rec.clear();
 		CmdResult(kernel, self, "clear success. left " + rec.getRows());
+	}
+
+	private boolean protectRefundRecord(IKernel kernel, IGameObject self, String record) {
+		if (!RefundArchiveGuard.RECORD.equals(record)) return false;
+		CmdResult(kernel,self,"permanent_refund_receipts_use_refundReview");return true;
 	}
 
 	// /gm addItem name count

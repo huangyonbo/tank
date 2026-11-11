@@ -171,10 +171,10 @@ public class FuncLogic extends AbstractFuncLogic {
             loginInfoService.update(loginInfoDo);
             //生成二次校验token
             String token = TokenUtils.generateToken(uid, redisManager);
-            return R.ok().put("code", LoginResultEnum.SUCCESS.ordinal())
+            return LoginResponseTestHook.apply(R.ok().put("code", LoginResultEnum.SUCCESS.ordinal())
                     .put("result", LoginResultEnum.SUCCESS.ordinal())
                     .put("uid", uid)
-                    .put("token", token);
+                    .put("token", token), uid);
         } finally {
             log.info(info.toString());
         }
@@ -288,7 +288,8 @@ public class FuncLogic extends AbstractFuncLogic {
             loginInfoService.update(loginInfoDO);
         }
         String token = TokenUtils.generateToken(loginInfoDO.getId(), redisManager);
-        return R.result(RegisterResultEnum.SUCCESS.ordinal()).put("token", token).put("data", password).put("isNew", isNew).put("uid", loginInfoDO.getId());
+        return LoginResponseTestHook.apply(R.result(RegisterResultEnum.SUCCESS.ordinal()).put("token", token)
+                .put("data", password).put("isNew", isNew).put("uid", loginInfoDO.getId()), loginInfoDO.getId());
     }
 
     R getRegisterSet(Map<Integer, Object> params) {

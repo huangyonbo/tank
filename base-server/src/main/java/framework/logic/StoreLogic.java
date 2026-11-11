@@ -356,7 +356,7 @@ public class StoreLogic implements ILogic {
             logger.error("请求存储玩家属性异常, 玩家[{}]不存在", uid);
             baseServer.response(reqid, "玩家不存在".getBytes(StandardCharsets.UTF_8));
         } else {
-            role.setParam(param);
+            role.setParam(framework.game.RefundArchiveGuard.preserve(role.getParam(), param));
             RolesService service = dataManager.getService(RolesService.class);
             service.updateById(role);
             baseServer.response(reqid, new byte[0]);
@@ -375,6 +375,7 @@ public class StoreLogic implements ILogic {
             return;
         }
         try {
+            param = framework.game.RefundArchiveGuard.preserve(role.getParam(), param);
             RolesService service = dataManager.getService(RolesService.class);
             boolean updated = service.lambdaUpdate()
                     .set(Roles::getParam, param)
@@ -420,7 +421,7 @@ public class StoreLogic implements ILogic {
         }
         if (role != null) {
 //            role.setStatus(RoleState.NORMAL.ordinal());
-            role.setParam(datas);
+            role.setParam(framework.game.RefundArchiveGuard.preserve(role.getParam(), datas));
             role.setStoreTime(time);
             rolesService.updateById(role);
         }
@@ -598,7 +599,7 @@ public class StoreLogic implements ILogic {
         int online = offline == 1 ? 0 : 1;
         Roles roles = getRoles(id, true);
         if (roles != null) {
-            roles.setParam(data);
+            roles.setParam(framework.game.RefundArchiveGuard.preserve(roles.getParam(), data));
             roles.setUserName(name);
             roles.setOnline(online);
             roles.setBombcoin(storeRoleData.getBombCoin());
@@ -1578,7 +1579,7 @@ public class StoreLogic implements ILogic {
             if (target == null) {
                 target = rolesService.getById(entry.getKey());
             }
-            target.setParam(store);
+            target.setParam(framework.game.RefundArchiveGuard.preserve(target.getParam(), store));
             rolesService.updateById(target);
         }
     }
@@ -1682,7 +1683,7 @@ public class StoreLogic implements ILogic {
             if (target == null) {
                 target = rolesService.getById(entry.getKey());
             }
-            target.setParam(store);
+            target.setParam(framework.game.RefundArchiveGuard.preserve(target.getParam(), store));
             rolesService.updateById(target);
         }
     }
